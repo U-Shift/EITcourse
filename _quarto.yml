@@ -1,6 +1,10 @@
 project:
   type: book
 
+execute:
+  freeze: auto
+  
+  
 book:
   title: "Get your dataset ready!"
   subtitle: "Using R and GIS"
@@ -24,7 +28,7 @@ book:
   sidebar:
     tools:
       - icon: download
-        href: https://github.com/U-Shift/EITcourse/raw/main/_book/EITcourse.pdf
+        href: https://github.com/U-Shift/EITcourse/raw/main/_book/Get-your-dataset-ready!.pdf
         text: "Download PDF"
         target: _blank
   page-footer:
