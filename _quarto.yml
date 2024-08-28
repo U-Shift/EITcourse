@@ -2,12 +2,13 @@ project:
   type: book
 
 book:
-  title: "EIT course - Get your dataset ready!"
+  title: "Get your dataset ready!"
   subtitle: "Using R and GIS"
   author: 
     - name: "Rosa Félix"
       email: rosamfelix@tecnico.pt
       orcid: 0000-0002-5642-6006
+      # affiliation: "Instituto Superior Técnico - University of Lisbon"
     - name: "Gabriel Valença"
       email: gabrielvalenca@tecnico.pt
       orcid: 0000-0002-3684-3005
@@ -17,16 +18,31 @@ book:
     - intro.qmd
     - summary.qmd
     - references.qmd
-
+  
+  repo-url: https://github.com/U-Shift/EITcourse
+  favicon: images/favicon.png
+  sidebar:
+    tools:
+      - icon: download
+        href: https://github.com/U-Shift/EITcourse/raw/main/_book/EITcourse.pdf
+        text: "Download PDF"
+        target: _blank
+  page-footer:
+    left: "R Félix, G Valença"
+    center: "EIT course"
+    right: "September 2024"
+    
+    
 bibliography: references.bib
 
 format:
   html:
     theme:
       light: cosmo
-      dark: [cosmo, theme-dark.scss]
+      dark: superhero
   pdf:
     documentclass: scrreprt
 
 editor: visual
 
+google-scholar: true
