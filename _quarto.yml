@@ -2,9 +2,16 @@ project:
   type: book
 
 book:
-  title: "EITcourse"
-  author: "Norah Jones"
-  date: "8/28/2024"
+  title: "EIT course - Get your dataset ready!"
+  subtitle: "Using R and GIS"
+  author: 
+    - name: "Rosa Félix"
+      email: rosamfelix@tecnico.pt
+      orcid: 0000-0002-5642-6006
+    - name: "Gabriel Valença"
+      email: gabrielvalenca@tecnico.pt
+      orcid: 0000-0002-3684-3005
+  date: today
   chapters:
     - index.qmd
     - intro.qmd
@@ -15,7 +22,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
   pdf:
     documentclass: scrreprt
 
