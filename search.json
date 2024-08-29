@@ -32,7 +32,7 @@
     "href": "structure.html",
     "title": "2  Course Structure",
     "section": "",
-    "text": "3 Detailed schedule\nThe course will take place at Campus Sterre, Building S8, room 2.4.\nCode\n# eval: false\nCampus_S8_coord = c(3.7105372, 51.0241258)\nCampus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord))\nCampus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assing crs\n\nmapview::mapview(Campus_S8) # quick map view"
+    "text": "3 Detailed schedule\nThe course will take place at Campus Sterre, Building S8, room 2.4.\nCode\nCampus_S8_coord = c(3.7105372, 51.0241258)\nCampus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord))\nCampus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assing crs\n\nmapview::mapview(Campus_S8) # quick map view"
   },
   {
     "objectID": "structure.html#day-1",
@@ -54,5 +54,19 @@
     "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "intro.html#section",
+    "href": "intro.html#section",
+    "title": "4  Introduction",
+    "section": "4.1 ",
+    "text": "4.1 \n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
