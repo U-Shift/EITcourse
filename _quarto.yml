@@ -23,7 +23,12 @@ book:
   chapters:
     - index.qmd
     - structure.qmd
-    - summary.qmd
+    - part: "**Day 1**"
+      chapters:
+        - summary.qmd
+    - part: "**Day 2**"
+      chapters:
+        - intro.qmd
     - references.qmd
   
   repo-url: https://github.com/U-Shift/EITcourse

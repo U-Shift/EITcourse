@@ -54,5 +54,33 @@
     "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "intro.html#why-r-and-gis",
+    "href": "intro.html#why-r-and-gis",
+    "title": "4  Introduction",
+    "section": "4.1 Why R and GIS",
+    "text": "4.1 Why R and GIS\n\nOpen-source tools widely used in data analytics and spatial analysis\nFlexibility and reproducibility in data manipulation and visualization\nCritical for urban mobility and transportation research, with spatial relevance\nLarge transportation datasets are becoming increasingly common"
+  },
+  {
+    "objectID": "intro.html#course-objectives",
+    "href": "intro.html#course-objectives",
+    "title": "4  Introduction",
+    "section": "4.2 Course objectives",
+    "text": "4.2 Course objectives\n\n4.2.1 Introduce R Programming Basics\n\nEquip participants with foundational skills in R programming\nEmphasize reproducible research practices to ensure transparency and replicability in analyses\n\n\n\n4.2.2 Teach Data Manipulation Techniques\n\nUse key R packages for data cleaning, manipulation, and summarization of datasets\nEnable participants to efficiently handle large and complex transportation datasets\n\n\n\n4.2.3 Spatial Data Visualization\n\nIntroduce methods for quick and effective spatial data visualization using R and GIS tools\nProvide hands-on experience with creating interactive maps and visualizations\n\n\n\n4.2.4 Perform Basic Spatial Analysis\n\nTeach participants how to perform spatial analysis of transportation datasets using GIS techniques with R\nCover practical applications such as georeferencing data, accessibility analysis, and routing ODs\nUtilize real-world transportation data for practical, hands-on learning"
+  },
+  {
+    "objectID": "intro.html#target-audience",
+    "href": "intro.html#target-audience",
+    "title": "4  Introduction",
+    "section": "4.3 Target audience",
+    "text": "4.3 Target audience\n\nPh.D. candidates from DTN and other researchers\nPolicy makers and practitioners in urban mobility\nBeginners to intermediate R users, no prior experience needed\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
