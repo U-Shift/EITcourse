@@ -16,10 +16,13 @@ book:
     - name: "Gabriel Valença"
       email: gabrielvalenca@tecnico.pt
       orcid: 0000-0002-3684-3005
+    - name: "Rafael Pereira"
+      email: rafael.pereira@ipea.gov.br
+      orcid: 0000-0003-2125-7465
   date: today
   chapters:
     - index.qmd
-    - intro.qmd
+    - structure.qmd
     - summary.qmd
     - references.qmd
   
@@ -44,9 +47,14 @@ format:
     theme:
       light: cosmo
       dark: superhero
+    code-fold: show
+    code-tools: true
   pdf:
     documentclass: scrreprt
-
+    # engine: knitr
+    toc: true
+# prefer-html: true
+    
 editor: visual
 
 google-scholar: true

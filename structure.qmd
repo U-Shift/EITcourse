@@ -1,0 +1,78 @@
+# Course Structure
+
+The course consists of an in-person 2-day course, taking place during the EIT DTN Annual Meeting on the **19th and 20th September 2024**.
+
+The first day will focus on learning the basics of R programming and how to treat and explore datasets. The second day will focus on analyzing spatial datasets, and routing origins to destinations.
+
+## Day 1
+
+### Morning {.unnumbered}
+
+-   Introduction to **programming** techniques and **data structures**
+
+-   Introduction to R, and RStudio: **software installation** and main packages
+
+-   **R base and basics**: examples and exercises
+
+### Afternoon {.unnumbered}
+
+-   **Data manipulation**: using the dplyr package to select, filter, left-join, group and summarize
+
+-   Introduction to **GIS** and **spatial data**: import and visualize vector data
+
+-   R markdown and **interactive maps**
+
+## Day 2
+
+### Morning {.unnumbered}
+
+-   **Desire lines** from OD and transport zones
+
+-   **Georeference** coordinates: examples from surveys
+
+-   **Accessibility analysis**: from buffers to road networks
+
+### Afternoon {.unnumbered}
+
+-   **Open Transportation data**: where to find it
+
+-   **Routing with R**: multimodal and intermodal (*r5r demo* - Rafael Pereira)
+
+-   Group **exercise**
+
+# Detailed schedule
+
+| Day 1 |                                                       |
+|-------|-------------------------------------------------------|
+| 9.00  | Introductions and Presentation of the course contents |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+|       |                                                       |
+
+# Location
+
+The course will take place at Campus Sterre, Building S8, room 2.4.
+
+<!-- ::: {.content-visible unless-format="pdf"} -->
+```{r}
+Campus_S8_coord = c(3.7105372, 51.0241258)
+Campus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord))
+Campus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assing crs
+
+mapview::mapview(Campus_S8) # quick map view
+```
+<!-- ::: -->
+
+# Resources
+
+-   Laptop, with any OS Internet connection
+
+-   Github repository with all the materials (data, code and guidelines)
+
+-   Survey datasets, school locations and public transport operator datasets

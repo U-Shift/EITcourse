@@ -1,9 +1,73 @@
-# Preface {.unnumbered}
+# Introduction
 
-This is a Quarto book.
+This course aims to provide tools to deal with exploring and treating transportation datasets using R programming, an open-source and widely used tool for data analytics in urban mobility.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Additionally, this course provides guidance towards the use of reproducible methods to deal with large datasets that require manipulation and/or spatial analysis.
 
-```{r}
-1 + 1
-```
+The course has a **hands-on** approach, where participants will learn the basics of **coding**, **data manipulation**, and **spatial analysis** for urban mobility and transportation.
+
+## Mobility data
+
+There is an emerging increase in mobility data, through new forms of technology, which result in very large and diverse datasets.
+
+![E-Scooter trip data in Lisbon. How to deal with it?](images/clipboard-2086563605.png){fig-align="center" width="600"}
+
+Knowing how to get, treat and analyze complex datasets with the up-to-date technologies is extremely relevant for academia, policy makers and start-ups, since it allows them to:
+
+1.  acquire critical view on urban mobility based on data;
+
+2.  spatially identify locations in the city that require policy priorities;
+
+3.  and improve the efficiency of data analysis processes.
+
+### Why R and GIS{.unnumbered}
+
+Most academic programs focus on teaching modelling and deep analysis of data. However, there is a need to learn how to explore and prepare a dataset for modelling. The use of **programming and GIS** techniques have enormous advantages, including their flexibility; reproducibility; and transparency and understanding the step-by-step process.
+
+The use of GIS techniques in transportation is, traditionally, not considered in transportation learning programs, despite being of enormous relevance when doing accessibility analysis or reeling with georreferenced transportation data, such as bike sharing route trips’ datasets, origin-destination flows datasets, home/work locations, GTFS public transit data, and so on. There is a need to learn how to locate these open datasets, how to explore them and how to integrate them into transportation and urban analysis. Additionally, the use of open source software and datasets allows researchers to perform methods that are reproducible and transparent.
+
+#### TLDR {.unnumbered}
+
+-   Open-source tools widely used in data analytics and spatial analysis
+
+-   Flexibility and reproducibility in data manipulation and visualization
+
+-   Critical for urban mobility and transportation research, with spatial relevance
+
+-   Large transportation datasets are becoming increasingly common
+
+## Course objectives
+
+### Introduce R Programming Basics{.unnumbered}
+
+-   Equip participants with foundational skills in R programming
+
+-   Emphasize reproducible research practices to ensure transparency and replicability in analyses
+
+### Teach Data Manipulation Techniques{.unnumbered}
+
+-   Use key R packages for data cleaning, manipulation, and summarization of datasets
+
+-   Enable participants to efficiently handle large and complex transportation datasets
+
+### Spatial Data Visualization{.unnumbered}
+
+-   Introduce methods for quick and effective spatial data visualization using R and GIS tools
+
+-   Provide hands-on experience with creating interactive maps and visualizations
+
+### Perform Basic Spatial Analysis{.unnumbered}
+
+-   Teach participants how to perform spatial analysis of transportation datasets using GIS techniques with R
+
+-   Cover practical applications such as georeferencing data, accessibility analysis, and routing ODs
+
+-   Utilize real-world transportation data for practical, hands-on learning
+
+## Target audience
+
+-   Ph.D. candidates from DTN and other researchers
+
+-   Policy makers and practitioners in urban mobility
+
+-   Beginners to intermediate R users, no prior experience needed

@@ -4,6 +4,48 @@ This is a book created from markdown and executable code.
 
 See @knuth84 for additional discussion of literate programming.
 
-```{r}
-1 + 1
-```
+## Why R and GIS
+
+-   Open-source tools widely used in data analytics and spatial analysis
+
+-   Flexibility and reproducibility in data manipulation and visualization
+
+-   Critical for urban mobility and transportation research, with spatial relevance
+
+-   Large transportation datasets are becoming increasingly common
+
+## Course objectives
+
+### Introduce R Programming Basics
+
+-   Equip participants with foundational skills in R programming
+
+-   Emphasize reproducible research practices to ensure transparency and replicability in analyses
+
+### Teach Data Manipulation Techniques
+
+-   Use key R packages for data cleaning, manipulation, and summarization of datasets
+
+-   Enable participants to efficiently handle large and complex transportation datasets
+
+### Spatial Data Visualization
+
+-   Introduce methods for quick and effective spatial data visualization using R and GIS tools
+
+-   Provide hands-on experience with creating interactive maps and visualizations
+
+### Perform Basic Spatial Analysis
+
+-   Teach participants how to perform spatial analysis of transportation datasets using GIS techniques with R
+
+-   Cover practical applications such as georeferencing data, accessibility analysis, and routing ODs
+
+-   Utilize real-world transportation data for practical, hands-on learning
+
+## Target audience
+
+-   Ph.D. candidates from DTN and other researchers
+
+-   Policy makers and practitioners in urban mobility
+
+-   Beginners to intermediate R users, no prior experience needed
