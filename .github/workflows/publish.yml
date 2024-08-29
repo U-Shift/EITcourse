@@ -34,6 +34,8 @@ jobs:
           packages:
             any::knitr
             any::rmarkdown
+            any::sf
+            any::mapview
 
     # add software dependencies here and any libraries
       
