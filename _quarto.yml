@@ -57,6 +57,7 @@ format:
     code-fold: show
     code-tools: true
     number-depth: 3
+    toc-expand: 3
   pdf:
     documentclass: scrreprt
     # engine: knitr
