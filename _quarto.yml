@@ -20,11 +20,13 @@ book:
       email: rafael.pereira@ipea.gov.br
       orcid: 0000-0003-2125-7465
   date: today
+  # date-modified: today
   chapters:
     - index.qmd
     - structure.qmd
     - part: "**Day 1**"
       chapters:
+        - software.qmd
         - summary.qmd
     - part: "**Day 2**"
       chapters:
@@ -54,10 +56,12 @@ format:
       dark: superhero
     code-fold: show
     code-tools: true
+    number-depth: 3
   pdf:
     documentclass: scrreprt
     # engine: knitr
     toc: true
+    number-depth: 3
 # prefer-html: true
     
 editor: visual

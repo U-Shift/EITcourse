@@ -1,0 +1,103 @@
+---
+eval: false
+code-fold: false
+engine: knitr
+---
+
+# Software
+
+In this chapter we will guide you through the installation of R and QGIS.
+
+## R and RStudio
+
+You will need **R** installed on your computer (version 4.4.1 or higher) and also **RStudio**[^software-1].
+
+[^software-1]: We will use RStudio, although if you already use other studio such as VScod, that's also fine.
+
+### R
+
+### RStudio
+
+## QGIS
+
+QGIS is a geographic information system software that is free and open-source. QGIS supports Windows, macOS, and Linux. It supports viewing, editing, printing, and analysis of geospatial data in a range of data formats[^software-2].
+
+[^software-2]: <https://en.wikipedia.org/wiki/QGIS>
+
+In this course QGIS will be used to geocode coordinates, make accessibility analysis using the street network, and visualize OD flows.
+
+QGIS allows the visualization of data with a graphical user interface (GUI), which can be preferable for basic usage. For advanced computation with geo data, programming software such as Python or R can be more adequate.
+
+### Download
+
+You should go for the Long-Term Version provided by QGIS. If you have installed the most up-to-date version, that's also fine.
+
+<https://qgis.org/download/>
+
+This download will be about 1.2-1.6 GB.
+
+You should also have Python installed. Otherwise QGIS will install it for you \[?\].
+
+::: {.panel-tabset .nav-pills}
+#### Windows
+
+[Download](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi) and open the executable file.
+
+#### Mac
+
+[Download](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) and open the executable file.
+
+#### Ubuntu
+
+You can look for QGIS in the Ubuntu **Software Center** or install it via the terminal.
+
+```{bash}
+sudo apt install gnupg software-properties-common
+sudo mkdir -m755 -p /etc/apt/keyrings  # not needed since apt version 2.4.0 like Debian 12 and Ubuntu 22 or newer
+sudo wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg
+```
+
+Add the QGIS repo for the latest stable QGIS (3.38.x Grenoble) to `/etc/apt/sources.list.d/qgis.sources`:
+
+```         
+Types: deb deb-src
+URIs: https://qgis.org/ubuntugis-ltr
+Suites: jammy
+Architectures: amd64
+Components: main
+Signed-By: /etc/apt/keyrings/qgis-archive-keyring.gpg
+```
+
+```{bash}
+sudo apt update
+sudo apt install qgis qgis-plugin-grass saga
+sudo apt install python3-qgis
+```
+
+:::
+
+Consider change the language to English in the global options (easier to follow tutorials).
+
+### Plugins
+
+For this course we will use the Open Route Service plugin.
+
+#### Basemaps
+
+Install the useful free basemaps.
+
+> Copy-past into the python console: [https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py](https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py)
+
+#### Open Route Service
+
+[Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. Copy your API.
+
+> In QGIS Plugins → Manage and install plugins → Search for **ORS Tools** → Install Open ORS Tools, provider, settings, and paste API key.
+
+#### qgis2web
+
+This is an useful pluggin to create interactive HTML maps.
+
+> In QGIS Plugins → Manage and install plugins → Search for **qgis2web** → Install qgis2web.
+
+Tutorial here: <https://www.qgistutorials.com/en/docs/leaflet_maps_with_qgis2leaf.html>

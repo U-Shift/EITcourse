@@ -1,7 +1,33 @@
-# Summary
+# Software
 
-In summary, this book has no content whatsoever.
+In this chapter we will guide you through the installation of R and QGIS.
+
+## R and RStudio
 
 ```{r}
 1 + 1
 ```
+
+## QGIS
+
+QGIS is a geographic information system software that is free and open-source. QGIS supports Windows, macOS, and Linux. It supports viewing, editing, printing, and analysis of geospatial data in a range of data formats[^summary-1].
+
+[^summary-1]: <https://en.wikipedia.org/wiki/QGIS>
+
+In this course QGIS will be used to geocode coordinates, make accessibility analysis using the street network, and visualize OD flows.
+
+QGIS allows the visualization of data with a graphical user interface (GUI), which can be preferable for basic usage. For advanced computation with geo data, programming software such as Python or R can be more adequate.
+
+### Download
+
+You should go for the Long-Term Version provided by QGIS. If you have installed the most up-to-date version, that's also fine.
+
+<https://qgis.org/download/>
+
+#### Windows
+
+#### Mac
+
+#### Ubuntu
+
+### Plugins
