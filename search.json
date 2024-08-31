@@ -107,43 +107,21 @@
     "href": "software.html#footnotes",
     "title": "3  Software",
     "section": "",
-    "text": "We will use RStudio, although if you already use other studio such as VScod, that’s also fine.↩︎\nhttps://en.wikipedia.org/wiki/QGIS↩︎",
+    "text": "We will use RStudio, although if you already use other studio such as VScode, that’s also fine.↩︎\nhttps://en.wikipedia.org/wiki/QGIS↩︎",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "4  Software",
+    "objectID": "r-basics.html",
+    "href": "r-basics.html",
+    "title": "4  R basics",
     "section": "",
-    "text": "4.1 R and RStudio\nCode\n1 + 1\n\n\n[1] 2",
+    "text": "4.1 Simple things\n1+1\n\n[1] 2\nc(1, 2, 3)\n\n[1] 1 2 3\n\nc(1:3)\n\n[1] 1 2 3\na = data.frame(\n  var1 = c(1:3),\n  var2 = c(\"alpha\", \"beta\", \"gama\")\n)\na\n\n  var1  var2\n1    1 alpha\n2    2  beta\n3    3  gama\n\nView(a)\nb = c(1:3, 50:100)\nb\n\n [1]   1   2   3  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65\n[20]  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84\n[39]  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100\n\nsummary(b)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00   60.25   73.50   70.94   86.75  100.00",
     "crumbs": [
       "**Day 1**",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html#qgis",
-    "href": "summary.html#qgis",
-    "title": "4  Software",
-    "section": "4.2 QGIS",
-    "text": "4.2 QGIS\nQGIS is a geographic information system software that is free and open-source. QGIS supports Windows, macOS, and Linux. It supports viewing, editing, printing, and analysis of geospatial data in a range of data formats1.\nIn this course QGIS will be used to geocode coordinates, make accessibility analysis using the street network, and visualize OD flows.\nQGIS allows the visualization of data with a graphical user interface (GUI), which can be preferable for basic usage. For advanced computation with geo data, programming software such as Python or R can be more adequate.\n\n4.2.1 Download\nYou should go for the Long-Term Version provided by QGIS. If you have installed the most up-to-date version, that’s also fine.\nhttps://qgis.org/download/\n\nWindows\n\n\nMac\n\n\nUbuntu\n\n\n\n4.2.2 Plugins",
-    "crumbs": [
-      "**Day 1**",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html#footnotes",
-    "href": "summary.html#footnotes",
-    "title": "4  Software",
-    "section": "",
-    "text": "https://en.wikipedia.org/wiki/QGIS↩︎",
-    "crumbs": [
-      "**Day 1**",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Software</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
     ]
   },
   {
