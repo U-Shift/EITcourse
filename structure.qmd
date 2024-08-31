@@ -1,3 +1,9 @@
+---
+format:
+  pdf:
+    prefer-html: false
+---
+
 # Course Structure
 
 The course consists of an in-person 2-day course, taking place during the EIT DTN Annual Meeting on the **19th and 20th September 2024**.
@@ -55,19 +61,31 @@ The first day will focus on learning the basics of R programming and how to trea
 |       |                                                       |
 |       |                                                       |
 
+| Day 2 |               |
+|-------|---------------|
+| 9.00  | Getting ready |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+|       |               |
+
 # Location
 
 The course will take place at Campus Sterre, Building S8, room 2.4.
 
-<!-- ::: {.content-visible unless-format="pdf"} -->
 ```{r}
 Campus_S8_coord = c(3.7105372, 51.0241258)
-Campus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord))
+Campus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord)) # create point
 Campus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assing crs
 
 mapview::mapview(Campus_S8) # quick map view
 ```
-<!-- ::: -->
+
 
 # Resources
 
