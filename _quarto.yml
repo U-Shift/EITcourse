@@ -27,7 +27,7 @@ book:
     - part: "**Day 1**"
       chapters:
         - software.qmd
-        - summary.qmd
+        - r-basics.qmd
     - part: "**Day 2**"
       chapters:
         - intro.qmd
@@ -63,6 +63,7 @@ format:
     # engine: knitr
     toc: true
     number-depth: 3
+    output-file: "EITcourse_GetYourDatasetReady2024"
 # prefer-html: true
     
 editor: visual

@@ -12,7 +12,7 @@ In this chapter we will guide you through the installation of R and QGIS.
 
 You will need **R** installed on your computer (version 4.4.1 or higher) and also **RStudio**[^software-1].
 
-[^software-1]: We will use RStudio, although if you already use other studio such as VScod, that's also fine.
+[^software-1]: We will use RStudio, although if you already use other studio such as VScode, that's also fine.
 
 ### R
 
@@ -73,7 +73,6 @@ sudo apt update
 sudo apt install qgis qgis-plugin-grass saga
 sudo apt install python3-qgis
 ```
-
 :::
 
 Consider change the language to English in the global options (easier to follow tutorials).
@@ -86,7 +85,7 @@ For this course we will use the Open Route Service plugin.
 
 Install the useful free basemaps.
 
-> Copy-past into the python console: [https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py](https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py)
+> Copy-past into the python console: <https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py>
 
 #### Open Route Service
 
