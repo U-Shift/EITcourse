@@ -49,12 +49,12 @@ The first day will focus on learning the basics of R programming and how to trea
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                         |
-|--------------|----------------------------------------------------------|
-| 9.00  | Introductions and Presentation of the course contents                                                                   |
-| 9.30  | Introduction to programming techniques and data structures                                                              |
-| 10.00 | Introduction to R, RStudio and QGIS: hands-on to install software and main packages                                     |
-| 10.30 | *Coffee break*                                                                                                          |
-| 10.45 | (cont.)                                                                                                                 |
+|-----------------|-------------------------------------------------------|
+| 9.30  | Introductions and Presentation of the course contents                                                                   |
+| 10.00 | Introduction to programming techniques and data structures                                                              |
+| 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                           |
+| 11.00 | *Coffee break*                                                                                                          |
+| 11.15 | (cont.)                                                                                                                 |
 | 11.30 | R basics: examples and exercises                                                                                        |
 |       |                                                                                                                         |
 | 12.30 | *Lunch break*                                                                                                           |
@@ -63,26 +63,26 @@ The first day will focus on learning the basics of R programming and how to trea
 | 15.00 | Introduction to GIS and spatial data: import and visualize vector data                                                  |
 | 15.30 | *Coffee break*                                                                                                          |
 | 15.45 | (cont.)                                                                                                                 |
-| 16.15 | R markdown and interactive maps                                                                                         |
+| 16.15 | View and export interactive maps                                                                                        |
 | 17.00 | *End of day 1*                                                                                                          |
 
-| Day 2 |                                                                                               |
-|--------------|----------------------------------------------------------|
-| 9.00  | Desire-lines from OD pairs and transport zones: examples and exercises with QGIS and R        |
-| 10.00 | Georeferenced coordinates from survey responses: example and exercises with QGIS and R        |
-| 10.30 | *Coffee break*                                                                                |
-| 10.45 | (cont.)                                                                                       |
-| 11.00 | Accessibility analysis - from buffers to road networks: example and exercises with QGIS and R |
-|       |                                                                                               |
-| 12.30 | *Lunch break*                                                                                 |
-|       |                                                                                               |
-| 13.30 | Open Transportation data: where to find it (OSM and GTFS)                                     |
-| 14.30 | Uni-modal and Inter-modal Routing with r5r                                                    |
-| 15.30 | Accessibility analysis with r5r                                                               |
-| 16.00 | *Coffee break*                                                                                |
-| 16.15 | Group exercise using data manipulation and spatial analysis methods                           |
-| 17.00 | Survey and feedback from participants                                                         |
-| 17.15 | *End of day 2*                                                                                |
+| Day 2 |                                                                                    |
+|-----------------|-------------------------------------------------------|
+| 9.00  | Desire-lines from OD pairs and transport zones: examples and exercises             |
+| 10.00 | Georeferenced coordinates from survey responses: example and exercises             |
+| 10.30 | *Coffee break*                                                                     |
+| 10.45 | (cont.)                                                                            |
+| 11.00 | Euclidean distance and buffers: example and exercises                              |
+|       |                                                                                    |
+| 12.30 | *Lunch break*                                                                      |
+|       |                                                                                    |
+| 13.30 | Open Transportation data: where to find it (OSM and GTFS)                          |
+| 14.30 | Uni-modal and Inter-modal Routing with r5r                                         |
+| 15.30 | Accessibility analysis with r5r                                                    |
+| 16.00 | *Coffee break*                                                                     |
+| 16.15 | Using you data: manipulation and spatial analysis methods and further applications |
+| 16.45 | Survey and feedback from participants                                              |
+| 17.00 | *End of day 2*                                                                     |
 
 # Location
 
