@@ -49,7 +49,7 @@ The first day will focus on learning the basics of R programming and how to trea
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                         |
-|-----------------|-------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                                   |
 | 10.00 | Introduction to programming techniques and data structures                                                              |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                           |
@@ -67,12 +67,12 @@ The first day will focus on learning the basics of R programming and how to trea
 | 17.00 | *End of day 1*                                                                                                          |
 
 | Day 2 |                                                                                    |
-|-----------------|-------------------------------------------------------|
-| 9.00  | Desire-lines from OD pairs and transport zones: examples and exercises             |
-| 10.00 | Georeferenced coordinates from survey responses: example and exercises             |
-| 10.30 | *Coffee break*                                                                     |
-| 10.45 | (cont.)                                                                            |
-| 11.00 | Euclidean distance and buffers: example and exercises                              |
+|------------------|------------------------------------------------------|
+| 9.30  | Desire-lines from OD pairs and transport zones: examples and exercises             |
+| 10.30 | Georeferenced coordinates from survey responses: example and exercises             |
+| 11.00 | *Coffee break*                                                                     |
+| 11.15 | (cont.)                                                                            |
+| 11.30 | Euclidean distance and buffers: example and exercises                              |
 |       |                                                                                    |
 | 12.30 | *Lunch break*                                                                      |
 |       |                                                                                    |
@@ -98,7 +98,7 @@ mapview::mapview(Campus_S8, map.types = "OpenStreetMap") # quick map view
 
 # Resources
 
--   You laptop, with any OS Internet connection
+-   You laptop, with any OS
 
 -   Github repository with all the materials (data, code and guidelines)
 
