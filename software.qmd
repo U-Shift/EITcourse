@@ -18,6 +18,10 @@ You will need **R** installed on your computer (version 4.4.1 or higher) and als
 
 ### RStudio
 
+### Rtools
+
+### R packages
+
 ## QGIS
 
 QGIS is a geographic information system software that is free and open-source. QGIS supports Windows, macOS, and Linux. It supports viewing, editing, printing, and analysis of geospatial data in a range of data formats[^software-2].
