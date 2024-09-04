@@ -28,8 +28,16 @@ book:
       chapters:
         - software.qmd
         - r-basics.qmd
+        - data-manipulation.qmd
+        - spatial-data.qmd
+        - interactive-maps.qmd
     - part: "**Day 2**"
       chapters:
+        - desire-lines.qmd
+        - geocode.qmd
+        - distances.qmd
+        - open-data.qmd
+        - r5r.qmd
         - intro.qmd
     - references.qmd
   
