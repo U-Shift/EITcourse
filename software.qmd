@@ -122,9 +122,9 @@ install.packages("sf")
 install.packages("mapview")
 ```
 
-## Other software
+## r5r
 
-### Java Development Kit 21 and r5r
+### Java Development Kit
 
 You will need this to work with the **r5r** package.
 It is also known as JDK 21.
@@ -151,7 +151,9 @@ Then, in R you will also need rJava package.
 install.packages("rJava")
 ```
 
-Finally, install the **r5r** package:
+### r5r
+
+Install the **r5r** package:
 
 ```{r}
 install.packages("r5r")
