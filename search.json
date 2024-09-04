@@ -77,11 +77,11 @@
     "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\"))\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")"
   },
   {
-    "objectID": "software.html#other-software",
-    "href": "software.html#other-software",
+    "objectID": "software.html#r5r",
+    "href": "software.html#r5r",
     "title": "3  Software",
-    "section": "3.4 Other software",
-    "text": "3.4 Other software\n\n3.4.1 Java Development Kit 21 and r5r\nYou will need this to work with the r5r package. It is also known as JDK 21.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version\n\n\n\n\nThen, in R you will also need rJava package.\n\ninstall.packages(\"rJava\")\n\nFinally, install the r5r package:\n\ninstall.packages(\"r5r\")\n\n# development version:\n# devtools::install_github(\"ipeaGIT/r5r\", subdir = \"r-package\")\n\n\n\n3.4.2 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others."
+    "section": "3.4 r5r",
+    "text": "3.4 r5r\n\n3.4.1 Java Development Kit\nYou will need this to work with the r5r package. It is also known as JDK 21.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version\n\n\n\n\nThen, in R you will also need rJava package.\n\ninstall.packages(\"rJava\")\n\n\n\n3.4.2 r5r\nInstall the r5r package:\n\ninstall.packages(\"r5r\")\n\n# development version:\n# devtools::install_github(\"ipeaGIT/r5r\", subdir = \"r-package\")\n\n\n\n3.4.3 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others."
   },
   {
     "objectID": "software.html#footnotes",
@@ -105,9 +105,93 @@
     "text": "4.2 Practical exercise\nDataset: the number of trips between all municipalities in the Metropolitan Area of Lisbon, Portugal (Instituto National de Estatística 2018).\n\nImport dataset\n\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\n\n\n\nTake a first look at the data\nSummary statistics\n\nsummary(data)\n\n  Origin_mun        Destination_mun        Total             Walk       \n Length:315         Length:315         Min.   :     7   Min.   :     0  \n Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  \n Mode  :character   Mode  :character   Median :  1090   Median :     0  \n                                       Mean   : 16825   Mean   :  4033  \n                                       3rd Qu.:  5374   3rd Qu.:     0  \n                                       Max.   :875144   Max.   :306289  \n      Bike              Car            PTransit            Other        \n Min.   :   0.00   Min.   :     0   Min.   :     0.0   Min.   :    0.0  \n 1st Qu.:   0.00   1st Qu.:   263   1st Qu.:     5.0   1st Qu.:    0.0  \n Median :   0.00   Median :   913   Median :   134.0   Median :    0.0  \n Mean   :  80.19   Mean   :  9956   Mean   :  2602.6   Mean   :  152.4  \n 3rd Qu.:   0.00   3rd Qu.:  4408   3rd Qu.:   975.5   3rd Qu.:   62.5  \n Max.   :5362.00   Max.   :349815   Max.   :202428.0   Max.   :11647.0  \n\n\nCheck the structure of the data\n\nstr(data)\n\n'data.frame':   315 obs. of  8 variables:\n $ Origin_mun     : chr  \"Alcochete\" \"Alcochete\" \"Alcochete\" \"Alcochete\" ...\n $ Destination_mun: chr  \"Alcochete\" \"Almada\" \"Amadora\" \"Barreiro\" ...\n $ Total          : num  20478 567 188 867 114 ...\n $ Walk           : num  6833 0 0 0 0 ...\n $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...\n $ Car            : num  12484 353 107 861 114 ...\n $ PTransit       : num  833 0 81 5 0 ...\n $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...\n\n\nCheck the first 10 values of each variable\n\nhead(data, 10)\n\n   Origin_mun Destination_mun Total Walk Bike   Car PTransit Other\n1   Alcochete       Alcochete 20478 6833  320 12484      833     7\n2   Alcochete          Almada   567    0    0   353        0   214\n3   Alcochete         Amadora   188    0    0   107       81     0\n4   Alcochete        Barreiro   867    0    0   861        5     0\n5   Alcochete         Cascais   114    0    0   114        0     0\n6   Alcochete          Lisboa  2840   69    0  1994      775     0\n7   Alcochete          Loures   634    0    0   634        0     0\n8   Alcochete           Moita   261    0    0   256        5     0\n9   Alcochete         Montijo  8714  130   91  7062     1431     0\n10  Alcochete        Odivelas   129    0    0   129        0     0\n\n\nCheck the number of rows (observations) and columns (variables)\n\nnrow(data)\n\n[1] 315\n\nncol(data)\n\n[1] 8\n\n\nOpen the dataset\n\nView(data)\n\n\n\nExplore the data\nCheck the total number of trips\nUse ‘$’ to select a variable of the Data\n\nsum(data$Total)\n\n[1] 5299853\n\n\nPercentage of car trips related to the total\n\nsum(data$Car)/sum(data$Total) * 100\n\n[1] 59.17638\n\n\nPercentage of active modes related to the total\n\n(sum(data$Walk)+ sum(data$Bike)) / sum(data$Total) * 100\n\n[1] 24.44883\n\n\n\n\nModify original data\nCreate a column with the sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nFilter by condition (create new tables)\nFilter trips only with origin from Lisbon\n\ndata_Lisbon = data[data$Origin_mun == \"Lisboa\",]\n\nFilter trips with origin different from Lisbon\n\ndata_out_Lisbon = data[data$Origin_mun != \"Lisboa\",]\n\nFilter trips with origin and destination in Lisbon\n\ndata_in_Out_Lisbon = data[data$Origin_mun == \"Lisboa\" & data$Destination_mun == \"Lisboa\",]\n\n\n\nModify original data\nCreate a column\nThe sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nRemove a column\nLook at the first row\n\ndata[1,] #rows and columns start from 1\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153\n\n\nLook at first row and column\n\ndata[1,1]\n\n[1] \"Alcochete\"\n\n\nRemove the first column\n\ndata = data[,-1] #first column\n\nCreate a table only with origin, destination and walking trips\nThere are many ways to do the same operation.\n\nnames(data)\n\n[1] \"Destination_mun\" \"Total\"           \"Walk\"            \"Bike\"           \n[5] \"Car\"             \"PTransit\"        \"Other\"           \"Active\"         \n\n\n\ndata_walk2 = data[,c(1,2,4)]\n\n\ndata_walk3 = data[,-c(3,5:9)]\n\n\n\nExport data\nSave data in .csv and .Rds\n\nwrite.csv(data, 'dataset.csv', row.names = FALSE)\nsaveRDS(data, 'data/dataset.Rds') #Choose a different file. \n\n\n\nImport data\n\ncsv_file = read.csv(\"dataset.csv\")\nrds_file =readRDS(\"data/dataset.Rds\")\n\n\n\n\n\n\n\nInstituto National de Estatística. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas Do Porto e de Lisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt."
   },
   {
+    "objectID": "data-manipulation.html#select-variables",
+    "href": "data-manipulation.html#select-variables",
+    "title": "5  Data manipulation",
+    "section": "5.1 Select variables",
+    "text": "5.1 Select variables\nHave a look at your dataset. You can open using View(), look at the information at the “Environment” panel, or even print the same information using glimpse()\n\nglimpse(data)\n\nWe will create a new dataset with Origin, Walk, Bike and Total. This time we will use the select() function.\n\ndata_new = select(data, Origin_mun, Walk, Bike, Total) # the first argument is the dataset\n\nThe first argument, as usually in R, is the dataset, and the remainings are the columns to select.\nWith most of the dplyr functions you don’t need to refer to data$... you can simply type the variable names (and even without the \"...\"!). This makes coding in R simpler :)\nYou can also remove columns that you don’t need.\n\ndata_new = select(data_new, -Total) # dropping the Total column\n\n\n5.1.1 Using pipes!\nNow, let’s introduce pipes. Pipes are a rule as: “For this, do this.”\nThis is usefull to skip the first argument of the functions (usually the dataset to apply the function).\nApplying a pipe to the select() function, we can write as:\n\ndata_new = data |&gt; select(Origin_mun, Walk, Bike, Total)\n\nTwo things to note:\n\nThe pipe symbol can be written as |&gt; or %&gt;%. 1 To write it you may also use the ctrl+shift+m shortcut.\nAfter typing select( you can press tab and the list of available variables of that dataset will show up! Enter to select. With this you prevent typo errors."
+  },
+  {
+    "objectID": "data-manipulation.html#filter-observations",
+    "href": "data-manipulation.html#filter-observations",
+    "title": "5  Data manipulation",
+    "section": "5.2 Filter observations",
+    "text": "5.2 Filter observations"
+  },
+  {
+    "objectID": "data-manipulation.html#join-data-tables",
+    "href": "data-manipulation.html#join-data-tables",
+    "title": "5  Data manipulation",
+    "section": "5.3 Join data tables",
+    "text": "5.3 Join data tables"
+  },
+  {
+    "objectID": "data-manipulation.html#group_by-and-summarize",
+    "href": "data-manipulation.html#group_by-and-summarize",
+    "title": "5  Data manipulation",
+    "section": "5.4 group_by and summarize",
+    "text": "5.4 group_by and summarize"
+  },
+  {
+    "objectID": "data-manipulation.html#footnotes",
+    "href": "data-manipulation.html#footnotes",
+    "title": "5  Data manipulation",
+    "section": "",
+    "text": "You can change this in RStudio &gt; Tools &gt; Global Options &gt; Code.↩︎"
+  },
+  {
+    "objectID": "spatial-data.html",
+    "href": "spatial-data.html",
+    "title": "6  Introduction to spatial data",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "interactive-maps.html",
+    "href": "interactive-maps.html",
+    "title": "7  Interactive maps",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "desire-lines.html",
+    "href": "desire-lines.html",
+    "title": "8  OD pairs and desire lines",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "geocode.html",
+    "href": "geocode.html",
+    "title": "9  Georeferenced coordinates",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "distances.html",
+    "href": "distances.html",
+    "title": "10  Euclidean distances and buffers",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "open-data.html",
+    "href": "open-data.html",
+    "title": "11  Open transportation data",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "r5r.html",
+    "href": "r5r.html",
+    "title": "12  Routing and Accessibility with r5r",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "5  Introduction",
+    "title": "13  Introduction",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\ndata_walk = data[,c(\"Origin_mun\", \"Destination_mun\", \"Walk\")]\nhead(data_walk)\n\n\n  Origin_mun Destination_mun Walk\n1  Alcochete       Alcochete 6833\n2  Alcochete          Almada    0\n3  Alcochete         Amadora    0\n4  Alcochete        Barreiro    0\n5  Alcochete         Cascais    0\n6  Alcochete          Lisboa   69\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   },
