@@ -38,6 +38,7 @@ Download the `.pkg` file and install it as usual.
 You can look for R in the Ubuntu **Software Center** or install it via the terminal:
 
 ```{bash}
+# sudo apt update && sudo apt upgrade -y
 sudo apt install r-base
 ```
 
@@ -87,12 +88,18 @@ RStudio is available for free download from [Posit RStudio](https://posit.co/dow
 Install it via the terminal:
 
 ```{bash}
+sudo apt install libssl-dev libclang-dev
 wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.04.2-764-amd64.deb
 sudo dpkg -i rstudio*
 rm -v rstudio*
 ```
 
 If you already use Ubuntu **24**, please check and replace the correct url from [RStudio Dailies](https://dailies.rstudio.com/)
+
+```{bash}
+#| echo: false
+sudo apt install libcurl4-openssl-dev libgit2-dev
+```
 :::
 
 ## R packages
@@ -106,15 +113,12 @@ You can install them in RStudio by searching for them in the **Packages** tab:
 **or** by running the following code in the console:
 
 ```{r}
-listpackages = c("tidyverse",
-             "readxl",
-             "remotes",
-             "devtools",
-             "usethis",
-             "sf",
-             "mapview"
-             )
-install.packages(listpackages, dependencies = TRUE)
+install.packages("tidyverse")
+install.packages("readxl")
+
+install.packages(c("remotes", "devtools", "usethis"))
+install.packages("sf")
+install.packages("mapview")
 ```
 
 ## Other software
@@ -169,3 +173,5 @@ openrouteservice::ors_api_key("YOUR-API-KEY")
 This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again.
 
 This is useful also to write your `openrouteservice` scripts without sharing your key with others.
+
+
