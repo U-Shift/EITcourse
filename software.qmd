@@ -120,14 +120,15 @@ install.packages("readxl")
 install.packages(c("remotes", "devtools", "usethis"))
 install.packages("sf")
 install.packages("mapview")
+install.packages("rmarkdown")
 ```
 
 ## r5r
 
 ### Java Development Kit
 
-You will need this to work with the **r5r** package.
 It is also known as JDK 21.
+You will need this to work with the **r5r** package.
 
 ::: {.panel-tabset .nav-pills}
 ### Windows and MacOS
@@ -142,7 +143,6 @@ Install it via the terminal:
 sudo apt install -y openjdk-21-jdk openjdk-21-jre
 java -version
 ```
-
 :::
 
 Then, in R you will also need rJava package.
@@ -176,5 +176,3 @@ openrouteservice::ors_api_key("YOUR-API-KEY")
 This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again.
 
 This is useful also to write your `openrouteservice` scripts without sharing your key with others.
-
-
