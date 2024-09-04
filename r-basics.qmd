@@ -193,6 +193,26 @@ data$Active = data$Walk + data$Bike
 
 **Remove a column**
 
+Look at the first row
+
+```{r}
+data[1,] #rows and columns start from 1
+```
+
+Look at first column
+
+```{r}
+data[,1]
+```
+
+Look at first row and column
+
+```{r}
+data[1,1]
+```
+
+Remove the first column
+
 ```{r}
 data = data[,-1] #first column
 ```
@@ -206,13 +226,13 @@ names(data)
 ```
 
 ```{r}
-data_walk = data[,c("Origin_mun", "Destination_mun", "Walk")]
-```
-
-```{r}
 data_walk2 = data[,c(1,2,4)]
 ```
 
 ```{r}
 data_walk3 = data[,-c(3,5:9)]
+```
+
+```{r}
+class(data)
 ```
