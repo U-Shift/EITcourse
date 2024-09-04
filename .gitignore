@@ -49,3 +49,6 @@ po/*~
 rsconnect/
 
 /.quarto/
+/_book/
+!/_book/Get-your-dataset-ready!.pdf
+/_freeze/
