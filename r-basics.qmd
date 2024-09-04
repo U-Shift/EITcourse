@@ -235,3 +235,10 @@ saveRDS(data, 'data/dataset.Rds') #Choose a different file.
 csv_file = read.csv("data/dataset.csv")
 rds_file = readRDS("data/dataset.Rds")
 ```
+
+```{r}
+#| include: false
+# this coverts this quarto to a plain r script
+knitr::purl("r-basics.qmd", "code/r-basics.R", documentation = 0)
+
+```
