@@ -6,62 +6,119 @@ engine: knitr
 
 # Software
 
-In this chapter we will guide you through the installation of R and QGIS.
+In this chapter we will guide you through the installation of R, RStudio and the packages you will need for this course.
 
-## R and RStudio
-
-You will need **R** installed on your computer (version 4.4.1 or higher) and also **RStudio**[^software-1].
+**R** and **RStudio**[^software-1] are separate downloads.
 
 [^software-1]: We will use RStudio, although if you already use other studio such as VScode, that's also fine.
 
-### R
+## R
 
+You will need **R** installed on your computer.
+**R stats** (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.
 
-
-### RStudio
-
+The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN).
+The most recent version is 4.4.1, but you can use >= 4.1.x if you already have it installed.
 
 ::: {.panel-tabset .nav-pills}
-#### Windows
+### Windows
+
+[Download R-4.4.1 for Windows](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe) and run the executable file.
+
+You will also need to install Rtools, which is a collection of tools necessary to build R packages in Windows.
+
+
+### Mac
+
+[Download R-4.4.1 for MacOX](https://cran.r-project.org/).
+You will have to choose between the arm64 or the x86-64 version.
+
+Download the `.pkg` file and install it as usual.
+
+### Ubuntu
+
+
+>These are instructions for Ubuntu.
+If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
+
+You can look for R in the Ubuntu **Software Center** or install it via the terminal:
+
+```{bash}
+sudo apt install r-base
+```
+
+**Or**, if you prefer, you can install the latest version of R from CRAN:
+
+```{bash}
+# update indices
+sudo apt update -qq
+# install two helper packages we need
+sudo apt install --no-install-recommends software-properties-common dirmngr
+# add the signing key (by Michael Rutter) for these repos
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+```
+
+Then run:
+
+```{bash}
+sudo apt install r-base r-base-core r-recommended r-base-dev
+```
+
+[Optional] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
+:::
+
+After this installation, you don't need to open R base.
+Please proceed to install RStudio.
+
+## RStudio
+
+::: {.panel-tabset .nav-pills}
+### Windows
 
 [Download](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi) and open the executable file.
+Change
 
-#### Mac
+### Mac
 
 [Download](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) and open the executable file.
 
-#### Ubuntu
+### Ubuntu
 
-You can look for QGIS in the Ubuntu **Software Center** or install it via the terminal.
+>These are instructions for Ubuntu/Debian.
+If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
 
-```{bash}
-sudo apt install gnupg software-properties-common
-sudo mkdir -m755 -p /etc/apt/keyrings  # not needed since apt version 2.4.0 like Debian 12 and Ubuntu 22 or newer
-sudo wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg
-```
-
-Add the QGIS repo for the latest stable QGIS (3.38.x Grenoble) to `/etc/apt/sources.list.d/qgis.sources`:
-
-```         
-Types: deb deb-src
-URIs: https://qgis.org/ubuntugis-ltr
-Suites: jammy
-Architectures: amd64
-Components: main
-Signed-By: /etc/apt/keyrings/qgis-archive-keyring.gpg
-```
+You can look for R in the Ubuntu **Software Center** or install it via the terminal:
 
 ```{bash}
-sudo apt update
-sudo apt install qgis qgis-plugin-grass saga
-sudo apt install python3-qgis
+sudo apt install r-base
 ```
+
+**Or**, if you prefer, you can install the latest version of R from CRAN:
+
+```{bash}
+# update indices
+sudo apt update -qq
+# install two helper packages we need
+sudo apt install --no-install-recommends software-properties-common dirmngr
+# add the signing key (by Michael Rutter) for these repos
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+```
+
+Then run:
+
+```{bash}
+sudo apt install r-base r-base-core r-recommended r-base-dev
+```
+
+[Optional] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
 :::
 
 
-### Rtools
-
-### R packages
+## R packages
 
 ## Other software
 
@@ -73,4 +130,13 @@ You will need this to workl with the **r5r** package.
 
 [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. Copy your API.
 
-> In QGIS Plugins → Manage and install plugins → Search for **ORS Tools** → Install Open ORS Tools, provider, settings, and paste API key.
+In RStudio terminal, run:
+
+```{r}
+# install.packages("openrouteservice")
+openrouteservice::ors_api_key("YOUR-API-KEY")
+```
+
+This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again.
+
+This is useful also to write your `openrouteservice` scripts without sharing your key with others.
