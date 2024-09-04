@@ -4,4 +4,8 @@ This is a book created from markdown and executable code.
 
 See @knuth84 for additional discussion of literate programming.
 
-## 
+```{r}
+data = readRDS("data/TRIPSmode_mun.Rds")
+data_walk = data[,c("Origin_mun", "Destination_mun", "Walk")]
+head(data_walk)
+```

@@ -14,11 +14,9 @@ In this chapter we will guide you through the installation of R, RStudio and the
 
 ## R
 
-You will need **R** installed on your computer.
-**R stats** (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.
+You will need **R** installed on your computer. **R stats** (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.
 
-The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN).
-The most recent version is 4.4.1, but you can use >= 4.1.x if you already have it installed.
+The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN). The most recent version is `4.4.1`, but you can use `>= 4.1.x` if you already have it installed.
 
 ::: {.panel-tabset .nav-pills}
 ### Windows
@@ -27,19 +25,15 @@ The most recent version is 4.4.1, but you can use >= 4.1.x if you already have i
 
 You will also need to install Rtools, which is a collection of tools necessary to build R packages in Windows.
 
-
 ### Mac
 
-[Download R-4.4.1 for MacOX](https://cran.r-project.org/).
-You will have to choose between the arm64 or the x86-64 version.
+[Download R-4.4.1 for MacOX](https://cran.r-project.org/). You will have to choose between the arm64 or the x86-64 version.
 
 Download the `.pkg` file and install it as usual.
 
 ### Ubuntu
 
-
->These are instructions for Ubuntu.
-If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
+> These are instructions for Ubuntu. If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
 
 You can look for R in the Ubuntu **Software Center** or install it via the terminal:
 
@@ -66,71 +60,106 @@ Then run:
 sudo apt install r-base r-base-core r-recommended r-base-dev
 ```
 
-[Optional] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
+\[Optional\] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
 :::
 
-After this installation, you don't need to open R base.
-Please proceed to install RStudio.
+After this installation, you don't need to open R base. Please proceed to install RStudio.
 
 ## RStudio
 
+RStudio Desktop is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.
+
+RStudio is available for free download from [Posit RStudio](https://posit.co/download/rstudio-desktop/).
+
 ::: {.panel-tabset .nav-pills}
-### Windows
+### Windows 10/11
 
-[Download](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi) and open the executable file.
-Change
+[Download RStudio 2024.04](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe) and run the executable file.
 
-### Mac
+### MacOS
 
-[Download](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) and open the executable file.
+[Download RStudio 2024.04](https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg) and install it as usual.
 
 ### Ubuntu
 
->These are instructions for Ubuntu/Debian.
-If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
+> These are instructions for Ubuntu **22** / Debian 12. If you use other linux distribution, please follow the instructions on [Posit RStudio](https://posit.co/download/rstudio-desktop/).
 
-You can look for R in the Ubuntu **Software Center** or install it via the terminal:
-
-```{bash}
-sudo apt install r-base
-```
-
-**Or**, if you prefer, you can install the latest version of R from CRAN:
+Install it via the terminal:
 
 ```{bash}
-# update indices
-sudo apt update -qq
-# install two helper packages we need
-sudo apt install --no-install-recommends software-properties-common dirmngr
-# add the signing key (by Michael Rutter) for these repos
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.04.2-764-amd64.deb
+sudo dpkg -i rstudio*
+rm -v rstudio*
 ```
 
-Then run:
-
-```{bash}
-sudo apt install r-base r-base-core r-recommended r-base-dev
-```
-
-[Optional] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
+If you already use Ubuntu **24**, please check and replace the correct url from [RStudio Dailies](https://dailies.rstudio.com/)
 :::
-
 
 ## R packages
 
+You will need to install some packages to work with the data and scripts in this course.
+
+You can install them in RStudio by searching for them in the **Packages** tab:
+
+![](images/clipboard-3443685728.png)
+
+**or** by running the following code in the console:
+
+```{r}
+listpackages = c("tidyverse",
+             "readxl",
+             "remotes",
+             "devtools",
+             "usethis",
+             "sf",
+             "mapview"
+             )
+install.packages(listpackages, dependencies = TRUE)
+```
+
 ## Other software
 
-### Java Development Kit 21
+### Java Development Kit 21 and r5r
 
-You will need this to workl with the **r5r** package.
+You will need this to work with the **r5r** package.
+It is also known as JDK 21.
+
+::: {.panel-tabset .nav-pills}
+### Windows and MacOS
+
+Go to [Java Development Kit 21](https://jdk.java.net/archive/), download the latest 21 build corresponding to your operating system and run the executable file.
+
+### Ubuntu
+
+Install it via the terminal:
+
+```{bash}
+sudo apt install -y openjdk-21-jdk openjdk-21-jre
+java -version
+```
+
+:::
+
+Then, in R you will also need rJava package.
+
+```{r}
+install.packages("rJava")
+```
+
+Finally, install the **r5r** package:
+
+```{r}
+install.packages("r5r")
+
+# development version:
+# devtools::install_github("ipeaGIT/r5r", subdir = "r-package")
+```
 
 ### Open Route Service
 
 [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. Copy your API.
 
-In RStudio terminal, run:
+In RStudio console, run:
 
 ```{r}
 # install.packages("openrouteservice")
