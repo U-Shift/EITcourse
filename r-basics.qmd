@@ -12,78 +12,84 @@ In this chapter we will introduce to the R basics and some exercises to get fami
 
 ### Math operations
 
--   Sum
+#### **Sum**
 
 ```{r}
 1+1
 ```
 
--   Subtraction
+#### **Subtraction**
 
 ```{r}
 5-2
 ```
 
--   Multiplication
+#### **Multiplication**
 
 ```{r}
-# Multiplication
 2*2
+```
 
-# Division
+#### **Division**
+
+```{r}
 8/2
 ```
 
-```{r}
-
-```
+#### **Round the number**
 
 ```{r}
-# Round the number
-
 round(3.14)
 round(3.14, 1) # The "1" indicates to round it up to 1 decimal digit.
 
 # You can use help ?round in the console to see the description of the function. 
 ```
 
--   Basic shortpaths
+### Basic shortpaths
+
+#### **Perform Combinations**
 
 ```{r}
-# Perform combinations
-
 c(1, 2, 3)
 c(1:3) # The ":" indicates a range between the first and second numbers. 
 ```
 
+#### **Create a comment with ctrl + shift + r**
+
 ```{r}
-# Create a comment with ctrl + shift + r
+
 # Comments help you organize your code. The software will not run the comment. 
 ```
 
--   Create a table:
+#### Create a table
 
-    A simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.
+A simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.
+
+**Define the variables**
 
 ```{r}
-
-# Define the variables
 modes <- c("car", "PT", "walking", "cycling") # you can use "=" or "<-"
 Trips = c(200, 50, 300, 150) # uppercase letters modify
 
-# Join in table
+```
+
+**Join the variables to create a table**
+
+```{r}
 table_example = data.frame(modes, Trips)
 ```
 
+**Take a look at the table**
+
+Visualize the table by clicking on the "Data" in the "Environment" page or use the following function.
+
 ```{r}
-# Visualize the table by clicking on the "Data" in the "Environment" page. 
-# Or use the following function:
 View(table_example)
 ```
 
 ## Practical exercise
 
-Import dataset with the number of trips between all municipalities in the Metropolitan Area of Lisbon, Portugal.
+Import dataset with the number of trips between all municipalities in the Metropolitan Area of Lisbon, Portugal [@IMOB].
 
 ```{r}
 data = readRDS("data/TRIPSmode_mun.Rds")
