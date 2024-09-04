@@ -199,12 +199,6 @@ Look at the first row
 data[1,] #rows and columns start from 1
 ```
 
-Look at first column
-
-```{r}
-data[,1]
-```
-
 Look at first row and column
 
 ```{r}
@@ -233,6 +227,18 @@ data_walk2 = data[,c(1,2,4)]
 data_walk3 = data[,-c(3,5:9)]
 ```
 
+#### Export data
+
+Save data in **.csv** and **.Rds**
+
 ```{r}
-class(data)
+write.csv(data, 'dataset.csv', row.names = FALSE)
+saveRDS(data, 'data/dataset.Rds') #Choose a different file. 
+```
+
+#### Import data
+
+```{r}
+csv_file = read.csv("dataset.csv")
+rds_file =readRDS("data/dataset.Rds")
 ```
