@@ -1,0 +1,88 @@
+---
+eval: true
+code-fold: false
+engine: knitr
+---
+
+# Data manipulation
+
+In this chapter we will use some very useful `dplyr` functions to handle and manipulate data.
+
+You can load the `dplyr` package directly, or load the entire tidy universe (`tidyverse`).
+
+```{r}
+#| message: false
+library(dplyr)
+```
+
+Using the same dataset as in [R basics](https://u-shift.github.io/EITcourse/r-basics.html), we will do the same operations but in a simplified way.
+
+```{r}
+data = readRDS("data/TRIPSmode_mun.Rds")
+```
+
+> Note that it is very important to understand the R basics, that's why we started from there, even if the following functions will provide the same results.
+
+## Select variables
+
+Have a look at your dataset. You can open using `View()`, look at the information at the "Environment" panel, or even print the same information using `glimpse()`
+
+```{r}
+#| eval: false
+glimpse(data)
+```
+
+We will create a new dataset with *Origin*, *Walk,* *Bike* and *Total*. This time we will use the `select()` function.
+
+```{r}
+data_new = select(data, Origin_mun, Walk, Bike, Total) # the first argument is the dataset
+```
+
+The first argument, as usually in R, is the dataset, and the remainings are the columns to select.
+
+With most of the `dplyr` functions you don't need to refer to `data$...` you can simply type the variable names (and even without the `"..."`!). This makes coding in R simpler :)
+
+You can also remove columns that you don't need.
+
+```{r}
+data_new = select(data_new, -Total) # dropping the Total column
+```
+
+### Using pipes!
+
+Now, let's introduce pipes. Pipes are a rule as: "**For this, do this.**"
+
+This is usefull to skip the first argument of the functions (usually the dataset to apply the function).
+
+Applying a pipe to the `select()` function, we can write as:
+
+```{r}
+data_new = data |> select(Origin_mun, Walk, Bike, Total)
+```
+
+Two things to **note**:
+
+1.  The pipe symbol can be written as `|>` or `%>%`. [^data-manipulation-1] To write it you may also use the `ctrl+shift+m` shortcut.
+
+2.  After typing `select(` you can press `tab` and the list of available variables of that dataset will show up! `Enter` to select. With this you prevent typo errors.
+
+[^data-manipulation-1]: You can change this in RStudio \> Tools \> Global Options \> Code.
+
+## Filter observations
+
+## Join data tables
+
+## `group_by` and summarize
+
+#### 
+
+
+
+
+
+
+```{r}
+#| include: false
+# this converts this quarto to a plain r script
+knitr::purl("data-manipulation.qmd", "code/data-manipulation.R", documentation = 0)
+```
