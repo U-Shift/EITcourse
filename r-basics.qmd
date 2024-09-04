@@ -10,21 +10,32 @@ In this chapter we will introduce to the R basics and some exercises to get fami
 
 ## Simple operations
 
--   Math operations
+### Math operations
+
+-   Sum
 
 ```{r}
-
-# Sum
 1+1
+```
 
-# Substraction
+-   Subtraction
+
+```{r}
 5-2
+```
 
+-   Multiplication
+
+```{r}
 # Multiplication
 2*2
 
 # Division
 8/2
+```
+
+```{r}
+
 ```
 
 ```{r}
