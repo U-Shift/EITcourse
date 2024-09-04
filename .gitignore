@@ -52,3 +52,5 @@ rsconnect/
 _book/
 !_book/Get-your-dataset-ready!.pdf
 _freeze/
+data/dataset.Rds
+data/dataset.csv
