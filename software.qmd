@@ -98,7 +98,8 @@ If you already use Ubuntu **24**, please check and replace the correct url from 
 
 ```{bash}
 #| echo: false
-sudo apt install libcurl4-openssl-dev libgit2-dev
+sudo apt install libcurl4-openssl-dev libgit2-dev libfontconfig1-dev libxml2-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+sudo apt install libudunits2-dev libgdal-dev libgeos-dev
 ```
 :::
 
