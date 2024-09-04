@@ -89,26 +89,130 @@ View(table_example)
 
 ## Practical exercise
 
-Import dataset with the number of trips between all municipalities in the Metropolitan Area of Lisbon, Portugal [@IMOB].
+**Dataset:** the number of trips between all municipalities in the Metropolitan Area of Lisbon, Portugal [@IMOB].
+
+#### Import dataset
 
 ```{r}
 data = readRDS("data/TRIPSmode_mun.Rds")
 ```
 
-Take a first look at the data
+#### Take a first look at the data
+
+**Summary statistics**
 
 ```{r}
-# Summary statistics
 summary(data)
+```
 
-# First 10 values of each variable
-head(data)
+**Check the structure of the data**
 
-# Take a look at the data
-View(data)
+```{r}
+str(data)
+```
 
-# Check the number of rows (observations) and columns (variables)
+**Check the first 10 values of each variable**
+
+```{r}
+head(data, 10)
+```
+
+**Check the number of rows (observations) and columns (variables)**
+
+```{r}
 nrow(data)
 
 ncol(data)
+```
+
+**Open the dataset**
+
+```{r}
+View(data)
+```
+
+#### Explore the data
+
+**Check the total number of trips**
+
+Use '\$' to select a variable of the Data
+
+```{r}
+sum(data$Total)
+```
+
+**Percentage of car trips related to the total**
+
+```{r}
+sum(data$Car)/sum(data$Total) * 100
+```
+
+**Percentage of active modes related to the total**
+
+```{r}
+(sum(data$Walk)+ sum(data$Bike)) / sum(data$Total) * 100
+```
+
+#### Modify original data
+
+**Create a column with the sum of the number of trips for active modes**
+
+```{r}
+data$Active = data$Walk + data$Bike
+```
+
+**Filter by condition (create new tables)**
+
+Filter trips only with origin from Lisbon
+
+```{r}
+data_Lisbon = data[data$Origin_mun == "Lisboa",]
+```
+
+Filter trips with origin **different** from Lisbon
+
+```{r}
+data_out_Lisbon = data[data$Origin_mun != "Lisboa",]
+```
+
+Filter trips with origin and destination in Lisbon
+
+```{r}
+data_in_Out_Lisbon = data[data$Origin_mun == "Lisboa" & data$Destination_mun == "Lisboa",]
+```
+
+#### Modify original data
+
+**Create a column**
+
+The sum of the number of trips for active modes
+
+```{r}
+data$Active = data$Walk + data$Bike
+```
+
+**Remove a column**
+
+```{r}
+data = data[,-1] #first column
+```
+
+**Create a table only with origin, destination and walking trips**
+
+There are many ways to do the same operation.
+
+```{r}
+names(data)
+```
+
+```{r}
+data_walk = data[,c("Origin_mun", "Destination_mun", "Walk")]
+```
+
+```{r}
+data_walk2 = data[,c(1,2,4)]
+```
+
+```{r}
+data_walk3 = data[,-c(3,5:9)]
 ```
