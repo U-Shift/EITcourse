@@ -20,7 +20,7 @@ Knowing how to get, treat and analyze complex datasets with the up-to-date techn
 
 3.  and improve the efficiency of data analysis processes.
 
-### Why R and GIS{.unnumbered}
+### Why R and GIS {.unnumbered}
 
 Most academic programs focus on teaching modelling and deep analysis of data. However, there is a need to learn how to explore and prepare a dataset for modelling. The use of **programming and GIS** techniques have enormous advantages, including their flexibility; reproducibility; and transparency and understanding the step-by-step process.
 
@@ -38,25 +38,25 @@ The use of GIS techniques in transportation is, traditionally, not considered in
 
 ## Course objectives
 
-### Introduce R Programming Basics{.unnumbered}
+### Introduce R Programming Basics {.unnumbered}
 
 -   Equip participants with foundational skills in R programming
 
 -   Emphasize reproducible research practices to ensure transparency and replicability in analyses
 
-### Teach Data Manipulation Techniques{.unnumbered}
+### Teach Data Manipulation Techniques {.unnumbered}
 
 -   Use key R packages for data cleaning, manipulation, and summarization of datasets
 
 -   Enable participants to efficiently handle large and complex transportation datasets
 
-### Spatial Data Visualization{.unnumbered}
+### Spatial Data Visualization {.unnumbered}
 
 -   Introduce methods for quick and effective spatial data visualization using R and GIS tools
 
 -   Provide hands-on experience with creating interactive maps and visualizations
 
-### Perform Basic Spatial Analysis{.unnumbered}
+### Perform Basic Spatial Analysis {.unnumbered}
 
 -   Teach participants how to perform spatial analysis of transportation datasets using GIS techniques with R
 

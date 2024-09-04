@@ -16,31 +16,10 @@ You will need **R** installed on your computer (version 4.4.1 or higher) and als
 
 ### R
 
+
+
 ### RStudio
 
-### Rtools
-
-### R packages
-
-## QGIS
-
-QGIS is a geographic information system software that is free and open-source. QGIS supports Windows, macOS, and Linux. It supports viewing, editing, printing, and analysis of geospatial data in a range of data formats[^software-2].
-
-[^software-2]: <https://en.wikipedia.org/wiki/QGIS>
-
-In this course QGIS will be used to geocode coordinates, make accessibility analysis using the street network, and visualize OD flows.
-
-QGIS allows the visualization of data with a graphical user interface (GUI), which can be preferable for basic usage. For advanced computation with geo data, programming software such as Python or R can be more adequate.
-
-### Download
-
-You should go for the Long-Term Version provided by QGIS. If you have installed the most up-to-date version, that's also fine.
-
-<https://qgis.org/download/>
-
-This download will be about 1.2-1.6 GB.
-
-You should also have Python installed. Otherwise QGIS will install it for you \[?\].
 
 ::: {.panel-tabset .nav-pills}
 #### Windows
@@ -79,28 +58,19 @@ sudo apt install python3-qgis
 ```
 :::
 
-Consider change the language to English in the global options (easier to follow tutorials).
 
-### Plugins
+### Rtools
 
-For this course we will use the Open Route Service plugin.
+### R packages
 
-#### Basemaps
+## Other software
 
-Install the useful free basemaps.
+### Java Development Kit 21
 
-> Copy-past into the python console: <https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py>
+You will need this to workl with the **r5r** package.
 
-#### Open Route Service
+### Open Route Service
 
 [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. Copy your API.
 
 > In QGIS Plugins → Manage and install plugins → Search for **ORS Tools** → Install Open ORS Tools, provider, settings, and paste API key.
-
-#### qgis2web
-
-This is an useful pluggin to create interactive HTML maps.
-
-> In QGIS Plugins → Manage and install plugins → Search for **qgis2web** → Install qgis2web.
-
-Tutorial here: <https://www.qgistutorials.com/en/docs/leaflet_maps_with_qgis2leaf.html>
