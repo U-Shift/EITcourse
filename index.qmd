@@ -71,3 +71,11 @@ The use of GIS techniques in transportation is, traditionally, not considered in
 -   Policy makers and practitioners in urban mobility
 
 -   Beginners to intermediate R users, no prior experience needed
+
+## Recommended readings
+
+-   Engel, Claudia A. (2023) [Introduction to R](https://cengel.github.io/R-intro/)
+
+-   Lovelace, Robin, Nowosad, Jakub & Muenchow, Johannes. (2023) [Geocomputation with R](https://geocompr.robinlovelace.net/)
+
+-   Pereira, Rafael H. M. & Herszenhut, Daniel. (2023) [Introduction to urban accessibility: a practical guide with R](https://ipeagit.github.io/intro_access_book/index.en.html). Ipea - Institute of Applied Economic Research
