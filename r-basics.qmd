@@ -238,6 +238,7 @@ rds_file = readRDS("data/dataset.Rds")
 
 ```{r}
 #| include: false
+#| eval: false
 # this coverts this quarto to a plain r script
 knitr::purl("r-basics.qmd", "code/r-basics.R", documentation = 0)
 
