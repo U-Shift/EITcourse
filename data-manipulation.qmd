@@ -1,5 +1,5 @@
 ---
-eval: false
+eval: true
 code-fold: false
 engine: knitr
 ---
@@ -64,7 +64,7 @@ glimpse(TRIPS)
 We will create a new dataset with *Origin*, *Walk,* *Bike* and *Total*. This time we will use the `select()` function.
 
 ```{r}
-TRIPS_new = select(TRIPS, Origin_mun, Walk, Bike, Total) # the first argument is the dataset
+TRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the dataset
 ```
 
 The first argument, as usually in R, is the dataset, and the remaining ones are the columns to select.
@@ -86,7 +86,7 @@ This is useful to skip the first argument of the functions (usually the dataset 
 Applying a pipe to the `select()` function, we can write as:
 
 ```{r}
-TRIPS_new = TRIPS |> select(Origin_mun, Walk, Bike, Total)
+TRIPS_new = TRIPS |> select(Origin, Walk, Bike, Total)
 ```
 
 Two things to **note**:
@@ -110,8 +110,16 @@ You can have other conditions inside the condition.
 
 ```{r}
 summary(TRIPS$Total)
-TABLE2 = TABLE2 |> filter(Total > median(Total)) 
+TRIPS3 = TRIPS |> filter(Total > median(Total)) 
 ```
+
+Other filter conditions:
+
+-   `==` equal, `!=` different
+-   `<` smaller, `>` greater, `<=` smaller or equal, `>=` greater or equal
+-   `&` and, `|` or
+-   `is.na`, `!is.na` is not NA
+-   `%in%`, `!%in%` not in
 
 ## Create new variables
 
@@ -152,59 +160,177 @@ We can change the `Lisbon` variable to a factor, and `Internal` too.
 ```{r}
 TRIPS = TRIPS |> 
   mutate(Lisbon_factor = factor(Lisbon, labels = c("No", "Yes")),
-         Internal_factor = factor(Internal, labels = c("Intermunicipal", "Intramunicipal")))
+         Internal_factor = factor(Internal, labels = c("Inter", "Intra")))
 ```
 
 But how do we know which levels come first? A simple way is to use `table()` or `unique()` functions.
 
 ```{r}
-# first number to appear is the first level
-unique(TRIPS$Internal) # this will show all the different values
+unique(TRIPS$Lisbon) # this will show all the different values
 table(TRIPS$Lisbon) # this will show the frequency of each value
+table(TRIPS$Lisbon_factor)
 ```
 
-## Arrange data
+The first number to appear is the first level, and so on.
 
 ## Join data tables
 
+When having relational tables - *i.e.* with a common identifier - it is useful to be able to join them in a very efficient way.
+
+`left_join` is a function that joins two tables **by a common column**. The **first table is the one that will be kept**, and the **second one will be joined to** it. How `left_join` works:
+
+[![A visual representation of the left join where every row in x appears in the output.[^data-manipulation-3]](images/clipboard-1594422253.png){fig-align="center" width="424"}](https://r4ds.hadley.nz/joins#fig-join-left)
+
+[^data-manipulation-3]: Source: [R for Data Science](https://r4ds.hadley.nz/).
+
+[^data-manipulation-4]: Source: [R for Data Science](https://r4ds.hadley.nz/).
+
+Let's **join the municipalities** to this table with a supporting table that includes all the **relation** between neighbourhoods and municipalities, and the respective names and codes.
 ```{r}
 Municipalities = readRDS("data/Municipalities_names.Rds")
 ```
 
-## `group_by` and summarize
+```{r}
+head(TRIPS)
+tail(Municipalities)
+```
 
-#### 
+We can see that we have a common variable: `Origin` in `TRIPS` and `Neighborhood_code` in `Municipalities`.
+
+To join these two tables we need to specify the common variable in each table, using the `by` argument.
+
+```{r}
+TRIPSjoin = TRIPS |> left_join(Municipalities, by = c("Origin" = "Neighborhood_code"))
+```
+
+If you prefer, you can mutate or rename a variable so both tables have the same name.
+When **both tables have the same name**, you don't need to specify the `by` argument.
+
+```{r}
+#| message: false
+Municipalities = Municipalities |> rename(Origin = "Neighborhood_code") # change name
+TRIPSjoin = TRIPS |> left_join(Municipalities) # automatic detects common variable
+```
+
+As you can see, both tables don't need to be the same length.
+The `left_join` function will keep all the observations from the first table, and join the second table to it.
+If there is no match, the variables from the second table will be filled with `NA`.
+
+## group_by and summarize
+
+We have a very large table with all the neighbourhoods and their respective municipalities.
+We want to know the total number of trips with origin in each municipality.
+
+To make it easier to understand, let's keep only the variables we need.
+
+```{r}
+TRIPSredux = TRIPSjoin |> select(Origin, Municipality, Internal, Car, Total)
+head(TRIPSredux)
+```
+
+We can group this table by the `Municipality` variable and summarize the number of trips with origin in each municipality.
+
+```{r}
+#| message: false
+TRIPSsum = TRIPSredux |> 
+  group_by(Municipality) |> # you won't notice any chagne with only this
+  summarize(Total = sum(Total))
+head(TRIPSsum)
+```
+
+We summed the total number of trips in each municipality.
+
+If we want to group by more than one variable, we can add more `group_by()` functions.
+
+```{r}
+#| message: false
+TRIPSsum2 = TRIPSredux |> 
+  group_by(Municipality, Internal) |> 
+  summarize(Total = sum(Total),
+            Car = sum(Car))
+head(TRIPSsum2)
+```
+
+We summed the total number of trips and car trips in each municipality, **separated by** inter and intra municipal trips.
+
+> It is a good practice to use the `ungroup()` function after the `group_by()` function. This will remove the grouping. If you don't do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.
+
+
+## Arrange data
+
+You can **sort** a dataset by one or more variables.
+
+For instance, `arrange()` by Total trips, ascending or descending order.
+
+```{r}
+TRIPS2 = TRIPSsum2 |> arrange(Total)
+TRIPS2 = TRIPSsum2 |> arrange(-Total) # descending
+TRIPS2 = TRIPSsum2 |> arrange(Municipality) # alphabetic
+TRIPS4 = TRIPS |> arrange(Lisbon_factor, Total)
+```
+
+This is not the same as opening the view table and click on the arrows.
+When you do that, the order is not saved in the dataset.
+If you want to save the order, you need to use the `arrange()` function.
 
 ## All together now!
 
 This is the pipes magic.
+It takes the last result and applies the next function to it. "With this, do this.".
+You can chain as many functions as you want.
 
 ```{r}
+#| message: false
 TRIPS_pipes = TRIPS |> 
-  select(Origin, Walk, Bike, Total) |> 
+  select(Origin, Internal, Car, Total) |> 
   
   mutate(Origin_num = as.integer(Origin)) |> 
-  mutate(Internal_factor = factor(Internal, labels = c("Intermunicipal", "Intramunicipal"))) |> 
+  mutate(Internal_factor = factor(Internal, labels = c("Inter", "Intra"))) |> 
   
-  filter(Internal_factor == "Intramunicipal",
-         Lisbon == 1) |>
+  filter(Internal_factor == "Inter")|>
   
-  left_join(Municipalities, by = c("Origin" = "Code")) |>
+  left_join(Municipalities) |>
   
-  group_by(Origin) |>
+  group_by(Municipality) |>
   summarize(Total = sum(Total),
-            Walk = sum(Walk),
-            Bike = sum(Bike),
             Car = sum(Car),
             Car_perc = Car/Total * 100) |> 
   
-  arrange(desc(Total))
+  arrange(desc(Car_perc))
 ```
 
-With this code we will have a table with the total number of internal trips in Lisbon, by mode, with their names instead of codes, arranged by the total number of trips.
+With this code we will have a table with the total number of intercity trips, by municipality, with their names instead of codes, arranged by the percentage of car trips.
 
 ```{r}
 TRIPS_pipes
+```
+
+## Other dplyr functions
+
+You can explore other `dplyr` functions and variations to manipulate data in the **dplyr cheat sheet**:
+
+[![](images/clipboard-2101323289.png)](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+
+Take a particular attention to `pivot_wider` and `pivot_longer` ([`tidyr`](https://tidyr.tidyverse.org/articles/pivot.html) package) to transform **OD matrices** in **wide** and **long** formats.
+
+```{r}
+#| echo: false
+#| eval: true
+pivot = data.frame(Origins = c("A", "A", "B", "C", "C"),
+                   Destinations = c("B", "C", "A", "C", "A"),
+                   Trips = c(20, 45, 10, 5, 30))
+knitr::kable(pivot, caption = "OD matrix in long format")
+```
+
+```{r}
+#| echo: false
+#| eval: true
+matrix = pivot |> 
+  tidyr::pivot_wider(names_from = Destinations,
+                                     values_from = Trips,
+                                     names_sort = TRUE) |> 
+  dplyr::rename(Trips = "Origins")
+knitr::kable(matrix, caption = "OD matrix in wide format")
 ```
 
 ```{r}
