@@ -117,7 +117,11 @@ str(data)
 **Check the first values of each variable**
 
 ```{r}
-data # first 10 values
+#| eval: false
+data
+```
+
+```{r}
 head(data, 3) # first 3 values
 ```
 
