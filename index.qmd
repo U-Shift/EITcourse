@@ -1,3 +1,9 @@
+Materials for the course delivered at the **EIT Doctoral Training Network Annual Forum**, in Gent (Belgium), 19th and 20th September 2024.
+
+![](images/EIT_logo-EU1-horizontal_1.png){fig-align="center" width="473"}
+
+![](images/Ist-logo.jpg){fig-align="center" width="164"} ![](images/ipea-logo.png){fig-align="center" width="246"}
+
 # Introduction
 
 This course aims to provide tools to deal with exploring and treating transportation datasets using R programming, an open-source and widely used tool for data analytics in urban mobility.
