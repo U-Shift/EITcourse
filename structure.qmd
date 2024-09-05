@@ -1,7 +1,7 @@
 ---
 format:
   pdf:
-    prefer-html: false
+    prefer-html: true
 ---
 
 # Course Structure
@@ -42,14 +42,14 @@ The first day will focus on learning the basics of R programming and how to trea
 
 -   **Open Transportation data**: where to find it
 
--   **Acessibility analysis with R**: *r5r demo* (Rafael Pereira)
+-   **Accessibility analysis with R**: *r5r demo* (Rafael Pereira)
 
 -   Group **exercise**
 
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                         |
-|-------------------|-----------------------------------------------------|
+|------------|------------------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                                   |
 | 10.00 | Introduction to programming techniques and data structures                                                              |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                           |
@@ -67,7 +67,7 @@ The first day will focus on learning the basics of R programming and how to trea
 | 17.00 | *End of day 1*                                                                                                          |
 
 | Day 2 |                                                                                    |
-|-------------------|-----------------------------------------------------|
+|-------------|-----------------------------------------------------------|
 | 9.30  | Desire-lines from OD pairs and transport zones: examples and exercises             |
 | 10.30 | Georeferenced coordinates from survey responses: example and exercises             |
 | 11.00 | *Coffee break*                                                                     |
