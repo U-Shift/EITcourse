@@ -36,20 +36,20 @@ The first day will focus on learning the basics of R programming and how to trea
 
 -   **Georeference** coordinates: examples from surveys
 
--   **Accessibility analysis**: from buffers to road networks
+-   **Routing**: from euclidean distances to road networks
 
 ### Afternoon {.unnumbered}
 
 -   **Open Transportation data**: where to find it
 
--   **Routing with R**: multimodal and intermodal (*r5r demo* - Rafael Pereira)
+-   **Acessibility analysis with R**: *r5r demo* (Rafael Pereira)
 
 -   Group **exercise**
 
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                         |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                                   |
 | 10.00 | Introduction to programming techniques and data structures                                                              |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                           |
@@ -67,18 +67,17 @@ The first day will focus on learning the basics of R programming and how to trea
 | 17.00 | *End of day 1*                                                                                                          |
 
 | Day 2 |                                                                                    |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | 9.30  | Desire-lines from OD pairs and transport zones: examples and exercises             |
 | 10.30 | Georeferenced coordinates from survey responses: example and exercises             |
 | 11.00 | *Coffee break*                                                                     |
 | 11.15 | (cont.)                                                                            |
-| 11.30 | Euclidean distance and buffers: example and exercises                              |
+| 11.30 | Euclidean and routing distances with sf and r5r                                    |
 |       |                                                                                    |
 | 12.30 | *Lunch break*                                                                      |
 |       |                                                                                    |
 | 13.30 | Open Transportation data: where to find it (OSM and GTFS)                          |
-| 14.30 | Uni-modal and Inter-modal Routing with r5r                                         |
-| 15.30 | Accessibility analysis with r5r                                                    |
+| 14.00 | Accessibility analysis with r5r                                                    |
 | 16.00 | *Coffee break*                                                                     |
 | 16.15 | Using you data: manipulation and spatial analysis methods and further applications |
 | 16.45 | Survey and feedback from participants                                              |
