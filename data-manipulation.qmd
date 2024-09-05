@@ -12,16 +12,45 @@ You can load the `dplyr` package directly, or load the entire tidy universe (`ti
 
 ```{r}
 #| message: false
+# library(tidyverse)
 library(dplyr)
 ```
 
-Using the same dataset as in [R basics](https://u-shift.github.io/EITcourse/r-basics.html), we will do the same operations but in a simplified way.
+Using the same dataset as in [R basics](https://u-shift.github.io/EITcourse/r-basics.html) but with slightly differences[^data-manipulation-1].
+
+[^data-manipulation-1]: This dataset includes the number of trips with origin in each neighborhood, divided by mode of transport, and inter or intra municipal trips.
+
+We will do the same operations but in a simplified way.
 
 ```{r}
-data = readRDS("data/TRIPSmode_mun.Rds")
+#| include: false
+#| eval: false
+# data preparation
+TABLE = readRDS(url("https://github.com/U-Shift/MQAT/raw/main/data/IMOBmodel0.Rds"))
+TABLE = TABLE |> 
+  rename(Origin = "Origin_dicofre16",
+         Lisbon = "Lisboa",
+         Internal = "internal") |> 
+  select(1,3:8,2,9)
+saveRDS(TABLE, "data/TRIPSorigin.Rds")
+
+Municipalities = readRDS(url("https://github.com/U-Shift/MQAT/raw/main/data/Dicofre_names.Rds"))
+Municipalities = Municipalities |> 
+  rename(Mun_code = "DTCC",
+         Neighborhood_code = "Dicofre",
+         Municipality = "Concelho",
+         Neighborhood = "Freguesia")
+saveRDS(Municipalities, "data/Municipalities_names.Rds")
+write.table(Municipalities, "data/Municipalities_names.txt", row.names = FALSE, sep = "\t")
+```
+
+```{r}
+TRIPS = readRDS("data/TRIPSorigin.Rds")
 ```
 
 > Note that it is very important to understand the R basics, that's why we started from there, even if the following functions will provide the same results.
+
+You don't need to know everything! And you don't need to know by heart. The following functions are the ones you will probably use most of the time to handle data.
 
 ## Select variables
 
@@ -29,60 +58,158 @@ Have a look at your dataset. You can open using `View()`, look at the informatio
 
 ```{r}
 #| eval: false
-glimpse(data)
+glimpse(TRIPS)
 ```
 
 We will create a new dataset with *Origin*, *Walk,* *Bike* and *Total*. This time we will use the `select()` function.
 
 ```{r}
-data_new = select(data, Origin_mun, Walk, Bike, Total) # the first argument is the dataset
+TRIPS_new = select(TRIPS, Origin_mun, Walk, Bike, Total) # the first argument is the dataset
 ```
 
-The first argument, as usually in R, is the dataset, and the remainings are the columns to select.
+The first argument, as usually in R, is the dataset, and the remaining ones are the columns to select.
 
 With most of the `dplyr` functions you don't need to refer to `data$...` you can simply type the variable names (and even without the `"..."`!). This makes coding in R simpler :)
 
 You can also remove columns that you don't need.
 
 ```{r}
-data_new = select(data_new, -Total) # dropping the Total column
+TRIPS_new = select(TRIPS_new, -Total) # dropping the Total column
 ```
 
 ### Using pipes!
 
 Now, let's introduce pipes. Pipes are a rule as: "**For this, do this.**"
 
-This is usefull to skip the first argument of the functions (usually the dataset to apply the function).
+This is useful to skip the first argument of the functions (usually the dataset to apply the function).
 
 Applying a pipe to the `select()` function, we can write as:
 
 ```{r}
-data_new = data |> select(Origin_mun, Walk, Bike, Total)
+TRIPS_new = TRIPS |> select(Origin_mun, Walk, Bike, Total)
 ```
 
 Two things to **note**:
 
-1.  The pipe symbol can be written as `|>` or `%>%`. [^data-manipulation-1] To write it you may also use the `ctrl+shift+m` shortcut.
+1.  The pipe symbol can be written as `|>` or `%>%`. [^data-manipulation-2] To write it you may also use the `ctrl+shift+m` shortcut.
 
 2.  After typing `select(` you can press `tab` and the list of available variables of that dataset will show up! `Enter` to select. With this you prevent typo errors.
 
-[^data-manipulation-1]: You can change this in RStudio \> Tools \> Global Options \> Code.
+[^data-manipulation-2]: You can change this in RStudio \> Tools \> Global Options \> Code.
 
 ## Filter observations
 
+You can filter observations based on a condition using the `filter()` function.
+
+```{r}
+TRIPS2 = TRIPS[TRIPS$Total > 25000,] # using r-base, you cant forget the comma
+TRIPS2 = TRIPS2 |> filter(Total > 25000) # using dplyr, it's easier
+```
+
+You can have other conditions inside the condition.
+
+```{r}
+summary(TRIPS$Total)
+TABLE2 = TABLE2 |> filter(Total > median(Total)) 
+```
+
+## Create new variables
+
+You can also try again to create a variable of Car percentage using pipes! To create a new variable or change an existing one (overwriting), you can use the `mutate()` function.
+
+```{r}
+TRIPS$Car_perc = TRIPS$Car/TRIPS$Total * 100 # using r-base
+
+TRIPS = TRIPS |> mutate(Car_perc = Car/Total * 100) # using dplyr
+```
+
+## Change data type
+
+Data can be in different formats. For example, the variable *Origin* is a character, but we can convert it to a numeric variable.
+
+```{r}
+class(TRIPS$Origin)
+TRIPS = TRIPS |> 
+  mutate(Origin_num = as.integer(Origin)) # you can use as.numeric() as well
+class(TRIPS$Origin_num)
+```
+
+Most used data types are:
+
+-   integer (`int`)
+-   numeric (`num`)
+-   character (`chr`)
+-   logical (`logical`)
+-   date (`Date`)
+-   factor (`factor`)
+
+### Factors
+
+Factors are useful to deal with categorical data. You can convert a character to a factor using `as.factor()`, and also use labels and levels for categorical ordinal data.
+
+We can change the `Lisbon` variable to a factor, and `Internal` too.
+
+```{r}
+TRIPS = TRIPS |> 
+  mutate(Lisbon_factor = factor(Lisbon, labels = c("No", "Yes")),
+         Internal_factor = factor(Internal, labels = c("Intermunicipal", "Intramunicipal")))
+```
+
+But how do we know which levels come first? A simple way is to use `table()` or `unique()` functions.
+
+```{r}
+# first number to appear is the first level
+unique(TRIPS$Internal) # this will show all the different values
+table(TRIPS$Lisbon) # this will show the frequency of each value
+```
+
+## Arrange data
+
 ## Join data tables
+
+```{r}
+Municipalities = readRDS("data/Municipalities_names.Rds")
+```
 
 ## `group_by` and summarize
 
 #### 
 
+## All together now!
 
+This is the pipes magic.
 
+```{r}
+TRIPS_pipes = TRIPS |> 
+  select(Origin, Walk, Bike, Total) |> 
+  
+  mutate(Origin_num = as.integer(Origin)) |> 
+  mutate(Internal_factor = factor(Internal, labels = c("Intermunicipal", "Intramunicipal"))) |> 
+  
+  filter(Internal_factor == "Intramunicipal",
+         Lisbon == 1) |>
+  
+  left_join(Municipalities, by = c("Origin" = "Code")) |>
+  
+  group_by(Origin) |>
+  summarize(Total = sum(Total),
+            Walk = sum(Walk),
+            Bike = sum(Bike),
+            Car = sum(Car),
+            Car_perc = Car/Total * 100) |> 
+  
+  arrange(desc(Total))
+```
 
+With this code we will have a table with the total number of internal trips in Lisbon, by mode, with their names instead of codes, arranged by the total number of trips.
 
+```{r}
+TRIPS_pipes
+```
 
 ```{r}
 #| include: false
+#| echo: false
 # this converts this quarto to a plain r script
 knitr::purl("data-manipulation.qmd", "code/data-manipulation.R", documentation = 0)
 ```
