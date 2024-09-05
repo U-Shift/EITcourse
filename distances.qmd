@@ -1,6 +1,11 @@
-# Euclidean distances and buffers
+# Euclidean and routing distances
 
-This is a book created from markdown and executable code.
+We will show how to estimate euclidean distances (*as crown flights*) using `sf` package, and the distances using a road network using `r5r` package (demonstrative).
+
+## Euclidean distances
+
+Taking the municipality centroids, or survey respondents' location
+
 
 See @knuth84 for additional discussion of literate programming.
 
