@@ -127,8 +127,7 @@ install.packages("rmarkdown")
 
 ### Java Development Kit
 
-It is also known as JDK 21.
-You will need this to work with the **r5r** package.
+It is also known as JDK 21. You will need this to work with the **r5r** package.
 
 ::: {.panel-tabset .nav-pills}
 ### Windows and MacOS
@@ -144,12 +143,6 @@ sudo apt install -y openjdk-21-jdk openjdk-21-jre
 java -version
 ```
 :::
-
-Then, in R you will also need rJava package.
-
-```{r}
-install.packages("rJava")
-```
 
 ### r5r
 
