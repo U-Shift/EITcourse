@@ -4,237 +4,441 @@
     "href": "index.html",
     "title": "Get your dataset ready!",
     "section": "",
-    "text": "1 Introduction\nThis course aims to provide tools to deal with exploring and treating transportation datasets using R programming, an open-source and widely used tool for data analytics in urban mobility.\nAdditionally, this course provides guidance towards the use of reproducible methods to deal with large datasets that require manipulation and/or spatial analysis.\nThe course has a hands-on approach, where participants will learn the basics of coding, data manipulation, and spatial analysis for urban mobility and transportation."
+    "text": "1 Introduction\nThis course aims to provide tools to deal with exploring and treating transportation datasets using R programming, an open-source and widely used tool for data analytics in urban mobility.\nAdditionally, this course provides guidance towards the use of reproducible methods to deal with large datasets that require manipulation and/or spatial analysis.\nThe course has a hands-on approach, where participants will learn the basics of coding, data manipulation, and spatial analysis for urban mobility and transportation.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "index.html#mobility-data",
     "href": "index.html#mobility-data",
     "title": "Get your dataset ready!",
     "section": "1.1 Mobility data",
-    "text": "1.1 Mobility data\nThere is an emerging increase in mobility data, through new forms of technology, which result in very large and diverse datasets.\n\n\n\nE-Scooter trip data in Lisbon. How to deal with it?\n\n\nKnowing how to get, treat and analyze complex datasets with the up-to-date technologies is extremely relevant for academia, policy makers and start-ups, since it allows them to:\n\nacquire critical view on urban mobility based on data;\nspatially identify locations in the city that require policy priorities;\nand improve the efficiency of data analysis processes.\n\n\nWhy R and GIS\nMost academic programs focus on teaching modelling and deep analysis of data. However, there is a need to learn how to explore and prepare a dataset for modelling. The use of programming and GIS techniques have enormous advantages, including their flexibility; reproducibility; and transparency and understanding the step-by-step process.\nThe use of GIS techniques in transportation is, traditionally, not considered in transportation learning programs, despite being of enormous relevance when doing accessibility analysis or reeling with georreferenced transportation data, such as bike sharing route trips’ datasets, origin-destination flows datasets, home/work locations, GTFS public transit data, and so on. There is a need to learn how to locate these open datasets, how to explore them and how to integrate them into transportation and urban analysis. Additionally, the use of open source software and datasets allows researchers to perform methods that are reproducible and transparent.\n\nTLDR\n\nOpen-source tools widely used in data analytics and spatial analysis\nFlexibility and reproducibility in data manipulation and visualization\nCritical for urban mobility and transportation research, with spatial relevance\nLarge transportation datasets are becoming increasingly common"
+    "text": "1.1 Mobility data\nThere is an emerging increase in mobility data, through new forms of technology, which result in very large and diverse datasets.\n\n\n\nE-Scooter trip data in Lisbon. How to deal with it?\n\n\nKnowing how to get, treat and analyze complex datasets with the up-to-date technologies is extremely relevant for academia, policy makers and start-ups, since it allows them to:\n\nacquire critical view on urban mobility based on data;\nspatially identify locations in the city that require policy priorities;\nand improve the efficiency of data analysis processes.\n\n\nWhy R and GIS\nMost academic programs focus on teaching modelling and deep analysis of data. However, there is a need to learn how to explore and prepare a dataset for modelling. The use of programming and GIS techniques have enormous advantages, including their flexibility; reproducibility; and transparency and understanding the step-by-step process.\nThe use of GIS techniques in transportation is, traditionally, not considered in transportation learning programs, despite being of enormous relevance when doing accessibility analysis or reeling with georreferenced transportation data, such as bike sharing route trips’ datasets, origin-destination flows datasets, home/work locations, GTFS public transit data, and so on. There is a need to learn how to locate these open datasets, how to explore them and how to integrate them into transportation and urban analysis. Additionally, the use of open source software and datasets allows researchers to perform methods that are reproducible and transparent.\n\nTLDR\n\nOpen-source tools widely used in data analytics and spatial analysis\nFlexibility and reproducibility in data manipulation and visualization\nCritical for urban mobility and transportation research, with spatial relevance\nLarge transportation datasets are becoming increasingly common",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "index.html#course-objectives",
     "href": "index.html#course-objectives",
     "title": "Get your dataset ready!",
     "section": "1.2 Course objectives",
-    "text": "1.2 Course objectives\n\nIntroduce R Programming Basics\n\nEquip participants with foundational skills in R programming\nEmphasize reproducible research practices to ensure transparency and replicability in analyses\n\n\n\nTeach Data Manipulation Techniques\n\nUse key R packages for data cleaning, manipulation, and summarization of datasets\nEnable participants to efficiently handle large and complex transportation datasets\n\n\n\nSpatial Data Visualization\n\nIntroduce methods for quick and effective spatial data visualization using R and GIS tools\nProvide hands-on experience with creating interactive maps and visualizations\n\n\n\nPerform Basic Spatial Analysis\n\nTeach participants how to perform spatial analysis of transportation datasets using GIS techniques with R\nCover practical applications such as georeferencing data, accessibility analysis, and routing ODs\nUtilize real-world transportation data for practical, hands-on learning"
+    "text": "1.2 Course objectives\n\nIntroduce R Programming Basics\n\nEquip participants with foundational skills in R programming\nEmphasize reproducible research practices to ensure transparency and replicability in analyses\n\n\n\nTeach Data Manipulation Techniques\n\nUse key R packages for data cleaning, manipulation, and summarization of datasets\nEnable participants to efficiently handle large and complex transportation datasets\n\n\n\nSpatial Data Visualization\n\nIntroduce methods for quick and effective spatial data visualization using R and GIS tools\nProvide hands-on experience with creating interactive maps and visualizations\n\n\n\nPerform Basic Spatial Analysis\n\nTeach participants how to perform spatial analysis of transportation datasets using GIS techniques with R\nCover practical applications such as georeferencing data, accessibility analysis, and routing ODs\nUtilize real-world transportation data for practical, hands-on learning",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "index.html#target-audience",
     "href": "index.html#target-audience",
     "title": "Get your dataset ready!",
     "section": "1.3 Target audience",
-    "text": "1.3 Target audience\n\nPh.D. candidates from DTN and other researchers\nPolicy makers and practitioners in urban mobility\nBeginners to intermediate R users, no prior experience needed"
+    "text": "1.3 Target audience\n\nPh.D. candidates from DTN and other researchers\nPolicy makers and practitioners in urban mobility\nBeginners to intermediate R users, no prior experience needed",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "index.html#recommended-readings",
     "href": "index.html#recommended-readings",
     "title": "Get your dataset ready!",
     "section": "1.4 Recommended readings",
-    "text": "1.4 Recommended readings\n\nEngel, Claudia A. (2023) Introduction to R\nLovelace, Robin, Nowosad, Jakub & Muenchow, Johannes. (2023) Geocomputation with R\nPereira, Rafael H. M. & Herszenhut, Daniel. (2023) Introduction to urban accessibility: a practical guide with R. Ipea - Institute of Applied Economic Research"
+    "text": "1.4 Recommended readings\n\nEngel, Claudia A. (2023) Introduction to R\nLovelace, Robin, Nowosad, Jakub & Muenchow, Johannes. (2023) Geocomputation with R\nPereira, Rafael H. M. & Herszenhut, Daniel. (2023) Introduction to urban accessibility: a practical guide with R. Ipea - Institute of Applied Economic Research",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "structure.html",
     "href": "structure.html",
     "title": "2  Course Structure",
     "section": "",
-    "text": "3 Detailed schedule (TBC)\nThe course will take place at Campus Sterre, Building S8, room 2.4.\nCode\nCampus_S8_coord = c(3.7105372, 51.0241258)\nCampus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord)) # create point\nCampus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assign crs\n\nmapview::mapview(Campus_S8, map.types = \"OpenStreetMap\") # quick map view"
+    "text": "2.1 Day 1",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Structure</span>"
+    ]
   },
   {
     "objectID": "structure.html#day-1",
     "href": "structure.html#day-1",
     "title": "2  Course Structure",
-    "section": "2.1 Day 1",
-    "text": "2.1 Day 1\n\nMorning\n\nIntroduction to programming techniques and data structures\nIntroduction to R, and RStudio: software installation and main packages\nR base and basics: examples and exercises\n\n\n\nAfternoon\n\nData manipulation: using the dplyr package to select, filter, left-join, group and summarize\nIntroduction to GIS and spatial data: import and visualize vector data\nR markdown and interactive maps"
+    "section": "",
+    "text": "Morning\n\nIntroduction to programming techniques and data structures\nIntroduction to R, and RStudio: software installation and main packages\nR base and basics: examples and exercises\n\n\n\nAfternoon\n\nData manipulation: using the dplyr package to select, filter, left-join, group and summarize\nIntroduction to GIS and spatial data: import and visualize vector data\nR markdown and interactive maps",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Structure</span>"
+    ]
   },
   {
     "objectID": "structure.html#day-2",
     "href": "structure.html#day-2",
     "title": "2  Course Structure",
     "section": "2.2 Day 2",
-    "text": "2.2 Day 2\n\nMorning\n\nDesire lines from OD and transport zones\nGeoreference coordinates: examples from surveys\nRouting: from euclidean distances to road networks\n\n\n\nAfternoon\n\nOpen Transportation data: where to find it\nAccessibility analysis with R: r5r demo (Rafael Pereira)\nGroup exercise"
+    "text": "2.2 Day 2\n\nMorning\n\nDesire lines from OD and transport zones\nGeoreference coordinates: examples from surveys\nRouting: from euclidean distances to road networks\n\n\n\nAfternoon\n\nOpen Transportation data: where to find it\nAccessibility analysis with R: r5r demo (Rafael Pereira)\nGroup exercise",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Structure</span>"
+    ]
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "3  Software",
+    "section": "",
+    "text": "3.1 R\nYou will need R installed on your computer. R stats (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.\nThe download links live at The Comprehensive R Archive Network (aka CRAN). The most recent version is 4.4.1, but you can use &gt;= 4.1.x if you already have it installed.\nAfter this installation, you don’t need to open R base. Please proceed to install RStudio.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
   },
   {
     "objectID": "software.html#r",
     "href": "software.html#r",
     "title": "3  Software",
-    "section": "3.1 R",
-    "text": "3.1 R\nYou will need R installed on your computer. R stats (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.\nThe download links live at The Comprehensive R Archive Network (aka CRAN). The most recent version is 4.4.1, but you can use &gt;= 4.1.x if you already have it installed.\n\nWindowsMacUbuntu\n\n\nDownload R-4.4.1 for Windows and run the executable file.\nYou will also need to install Rtools, which is a collection of tools necessary to build R packages in Windows.\n\n\nDownload R-4.4.1 for MacOX. You will have to choose between the arm64 or the x86-64 version.\nDownload the .pkg file and install it as usual.\n\n\n\nThese are instructions for Ubuntu. If you use other linux distribution, please follow the instructions on The Comprehensive R Archive Network - CRAN.\n\nYou can look for R in the Ubuntu Software Center or install it via the terminal:\n\n# sudo apt update && sudo apt upgrade -y\nsudo apt install r-base\n\nOr, if you prefer, you can install the latest version of R from CRAN:\n\n# update indices\nsudo apt update -qq\n# install two helper packages we need\nsudo apt install --no-install-recommends software-properties-common dirmngr\n# add the signing key (by Michael Rutter) for these repos\nwget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc\n# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed\nsudo add-apt-repository \"deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/\"\n\nThen run:\n\nsudo apt install r-base r-base-core r-recommended r-base-dev\n\n[Optional] To keep up-to-date r version and packages, you can follow the instructions at r2u\n\n\n\nAfter this installation, you don’t need to open R base. Please proceed to install RStudio."
+    "section": "",
+    "text": "WindowsMacUbuntu\n\n\nDownload R-4.4.1 for Windows and run the executable file.\nYou will also need to install Rtools, which is a collection of tools necessary to build R packages in Windows.\n\n\nDownload R-4.4.1 for MacOX. You will have to choose between the arm64 or the x86-64 version.\nDownload the .pkg file and install it as usual.\n\n\n\nThese are instructions for Ubuntu. If you use other linux distribution, please follow the instructions on The Comprehensive R Archive Network - CRAN.\n\nYou can look for R in the Ubuntu Software Center or install it via the terminal:\n\n# sudo apt update && sudo apt upgrade -y\nsudo apt install r-base\n\nOr, if you prefer, you can install the latest version of R from CRAN:\n\n# update indices\nsudo apt update -qq\n# install two helper packages we need\nsudo apt install --no-install-recommends software-properties-common dirmngr\n# add the signing key (by Michael Rutter) for these repos\nwget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc\n# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed\nsudo add-apt-repository \"deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/\"\n\nThen run:\n\nsudo apt install r-base r-base-core r-recommended r-base-dev\n\n[Optional] To keep up-to-date r version and packages, you can follow the instructions at r2u",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
   },
   {
     "objectID": "software.html#rstudio",
     "href": "software.html#rstudio",
     "title": "3  Software",
     "section": "3.2 RStudio",
-    "text": "3.2 RStudio\nRStudio Desktop is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.\nRStudio is available for free download from Posit RStudio.\n\nWindows 10/11MacOSUbuntu\n\n\nDownload RStudio 2024.04 and run the executable file.\n\n\nDownload RStudio 2024.04 and install it as usual.\n\n\n\nThese are instructions for Ubuntu 22 / Debian 12. If you use other linux distribution, please follow the instructions on Posit RStudio.\n\nInstall it via the terminal:\n\nsudo apt install libssl-dev libclang-dev\nwget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.04.2-764-amd64.deb\nsudo dpkg -i rstudio*\nrm -v rstudio*\n\nIf you already use Ubuntu 24, please check and replace the correct url from RStudio Dailies"
+    "text": "3.2 RStudio\nRStudio Desktop is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.\nRStudio is available for free download from Posit RStudio.\n\nWindows 10/11MacOSUbuntu\n\n\nDownload RStudio 2024.04 and run the executable file.\n\n\nDownload RStudio 2024.04 and install it as usual.\n\n\n\nThese are instructions for Ubuntu 22 / Debian 12. If you use other linux distribution, please follow the instructions on Posit RStudio.\n\nInstall it via the terminal:\n\nsudo apt install libssl-dev libclang-dev\nwget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.04.2-764-amd64.deb\nsudo dpkg -i rstudio*\nrm -v rstudio*\n\nIf you already use Ubuntu 24, please check and replace the correct url from RStudio Dailies",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
   },
   {
     "objectID": "software.html#r-packages",
     "href": "software.html#r-packages",
     "title": "3  Software",
     "section": "3.3 R packages",
-    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\"))\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")"
+    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\"))\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
   },
   {
     "objectID": "software.html#r5r",
     "href": "software.html#r5r",
     "title": "3  Software",
     "section": "3.4 r5r",
-    "text": "3.4 r5r\n\n3.4.1 Java Development Kit\nIt is also known as JDK 21. You will need this to work with the r5r package.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version\n\n\n\n\n\n\n3.4.2 r5r\nInstall the r5r package:\n\ninstall.packages(\"r5r\")\n\n# development version:\n# devtools::install_github(\"ipeaGIT/r5r\", subdir = \"r-package\")\n\n\n\n3.4.3 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others."
+    "text": "3.4 r5r\n\n3.4.1 Java Development Kit\nIt is also known as JDK 21. You will need this to work with the r5r package.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version\n\n\n\n\n\n\n3.4.2 r5r\nInstall the r5r package:\n\ninstall.packages(\"r5r\")\n\n# development version:\n# devtools::install_github(\"ipeaGIT/r5r\", subdir = \"r-package\")\n\n\n\n3.4.3 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
   },
   {
     "objectID": "software.html#footnotes",
     "href": "software.html#footnotes",
     "title": "3  Software",
     "section": "",
-    "text": "We will use RStudio, although if you already use other studio such as VScode, that’s also fine.↩︎"
+    "text": "We will use RStudio, although if you already use other studio such as VScode, that’s also fine.↩︎",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
+  },
+  {
+    "objectID": "r-basics.html",
+    "href": "r-basics.html",
+    "title": "4  R basics",
+    "section": "",
+    "text": "4.1 Simple operations",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
+    ]
   },
   {
     "objectID": "r-basics.html#simple-operations",
     "href": "r-basics.html#simple-operations",
     "title": "4  R basics",
-    "section": "4.1 Simple operations",
-    "text": "4.1 Simple operations\n\n4.1.1 Math operations\n\nSum\n\n1+1\n\n[1] 2\n\n\n\n\nSubtraction\n\n5-2\n\n[1] 3\n\n\n\n\nMultiplication\n\n2*2\n\n[1] 4\n\n\n\n\nDivision\n\n8/2\n\n[1] 4\n\n\n\n\nRound the number\n\nround(3.14)\n\n[1] 3\n\nround(3.14, 1) # The \"1\" indicates to round it up to 1 decimal digit.\n\n[1] 3.1\n\n\nYou can use help ?round in the console to see the description of the function, and the default arguments.\n\n\n\n4.1.2 Basic shortpaths\n\nPerform Combinations\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\nc(1:3) # The \":\" indicates a range between the first and second numbers. \n\n[1] 1 2 3\n\n\n\n\nCreate a comment with ctrl + shift + m\n\n# Comments help you organize your code. The software will not run the comment. \n\n\n\nCreate a table\nA simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.\nDefine variables\n\nmodes &lt;- c(\"car\", \"PT\", \"walking\", \"cycling\") # you can use \"=\" or \"&lt;-\"\nTrips = c(200, 50, 300, 150) # uppercase letters modify\n\nJoin the variables to create a table\n\ntable_example = data.frame(modes, Trips)\n\nTake a look at the table\nVisualize the table by clicking on the “Data” in the “Environment” page or use :\n\nView(table_example)"
+    "section": "",
+    "text": "4.1.1 Math operations\n\nSum\n\n1+1\n\n[1] 2\n\n\n\n\nSubtraction\n\n5-2\n\n[1] 3\n\n\n\n\nMultiplication\n\n2*2\n\n[1] 4\n\n\n\n\nDivision\n\n8/2\n\n[1] 4\n\n\n\n\nRound the number\n\nround(3.14)\n\n[1] 3\n\nround(3.14, 1) # The \"1\" indicates to round it up to 1 decimal digit.\n\n[1] 3.1\n\n\nYou can use help ?round in the console to see the description of the function, and the default arguments.\n\n\n\n4.1.2 Basic shortpaths\n\nPerform Combinations\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\nc(1:3) # The \":\" indicates a range between the first and second numbers. \n\n[1] 1 2 3\n\n\n\n\nCreate a comment with ctrl + shift + m\n\n# Comments help you organize your code. The software will not run the comment. \n\n\n\nCreate a table\nA simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.\nDefine variables\n\nmodes &lt;- c(\"car\", \"PT\", \"walking\", \"cycling\") # you can use \"=\" or \"&lt;-\"\nTrips = c(200, 50, 300, 150) # uppercase letters modify\n\nJoin the variables to create a table\n\ntable_example = data.frame(modes, Trips)\n\nTake a look at the table\nVisualize the table by clicking on the “Data” in the “Environment” page or use :\n\nView(table_example)",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
+    ]
   },
   {
     "objectID": "r-basics.html#practical-exercise",
     "href": "r-basics.html#practical-exercise",
     "title": "4  R basics",
     "section": "4.2 Practical exercise",
-    "text": "4.2 Practical exercise\nDataset: the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal (Instituto National de Estatística 2018).\n\nImport dataset\nYou can click directly in the file under the “Files” pan, or:\n\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\n\n\nNote that after you type \" you can use tab to navigate between folders and files and enter to autocomplete.\n\n\n\nTake a first look at the data\nSummary statistics\n\nsummary(data)\n\n  Origin_mun        Destination_mun        Total             Walk       \n Length:315         Length:315         Min.   :     7   Min.   :     0  \n Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  \n Mode  :character   Mode  :character   Median :  1090   Median :     0  \n                                       Mean   : 16825   Mean   :  4033  \n                                       3rd Qu.:  5374   3rd Qu.:     0  \n                                       Max.   :875144   Max.   :306289  \n      Bike              Car            PTransit            Other        \n Min.   :   0.00   Min.   :     0   Min.   :     0.0   Min.   :    0.0  \n 1st Qu.:   0.00   1st Qu.:   263   1st Qu.:     5.0   1st Qu.:    0.0  \n Median :   0.00   Median :   913   Median :   134.0   Median :    0.0  \n Mean   :  80.19   Mean   :  9956   Mean   :  2602.6   Mean   :  152.4  \n 3rd Qu.:   0.00   3rd Qu.:  4408   3rd Qu.:   975.5   3rd Qu.:   62.5  \n Max.   :5362.00   Max.   :349815   Max.   :202428.0   Max.   :11647.0  \n\n\nCheck the structure of the data\n\nstr(data)\n\n'data.frame':   315 obs. of  8 variables:\n $ Origin_mun     : chr  \"Alcochete\" \"Alcochete\" \"Alcochete\" \"Alcochete\" ...\n $ Destination_mun: chr  \"Alcochete\" \"Almada\" \"Amadora\" \"Barreiro\" ...\n $ Total          : num  20478 567 188 867 114 ...\n $ Walk           : num  6833 0 0 0 0 ...\n $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...\n $ Car            : num  12484 353 107 861 114 ...\n $ PTransit       : num  833 0 81 5 0 ...\n $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...\n\n\nCheck the first values of each variable\n\ndata\n\n\nhead(data, 3) # first 3 values\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7\n2  Alcochete          Almada   567    0    0   353        0   214\n3  Alcochete         Amadora   188    0    0   107       81     0\n\n\nCheck the number of rows (observations) and columns (variables)\n\nnrow(data)\n\n[1] 315\n\nncol(data)\n\n[1] 8\n\n\nOpen the dataset\n\nView(data)\n\n\n\nExplore the data\nCheck the total number of trips\nUse $ to select a variable of the data\n\nsum(data$Total)\n\n[1] 5299853\n\n\nPercentage of car trips related to the total\n\nsum(data$Car)/sum(data$Total) * 100\n\n[1] 59.17638\n\n\nPercentage of active trips related to the total\n\n(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100\n\n[1] 24.44883\n\n\n\n\nModify original data\nCreate a column with the sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nFilter by condition (create new tables)\nFilter trips only with origin from Lisbon\n\ndata_Lisbon = data[data$Origin_mun == \"Lisboa\",]\n\nFilter trips with origin different from Lisbon\n\ndata_out_Lisbon = data[data$Origin_mun != \"Lisboa\",]\n\nFilter trips with origin and destination in Lisbon\n\ndata_in_Out_Lisbon = data[data$Origin_mun == \"Lisboa\" & data$Destination_mun == \"Lisboa\",]\n\nRemove a column\nLook at the first row\n\ndata[1,] #rows and columns start from 1\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153\n\n\nLook at first row and column\n\ndata[1,1]\n\n[1] \"Alcochete\"\n\n\nRemove the first column\n\ndata = data[ ,-1] #first column\n\nCreate a table only with origin, destination and walking trips\nThere are many ways to do the same operation.\n\nnames(data)\n\n[1] \"Destination_mun\" \"Total\"           \"Walk\"            \"Bike\"           \n[5] \"Car\"             \"PTransit\"        \"Other\"           \"Active\"         \n\n\n\ndata_walk2 = data[ ,c(1,2,4)]\n\n\ndata_walk3 = data[ ,-c(3,5:9)]\n\n\n\nExport data\nSave data in .csv and .Rds\n\nwrite.csv(data, 'data/dataset.csv', row.names = FALSE)\nsaveRDS(data, 'data/dataset.Rds') #Choose a different file. \n\n\n\nImport data\n\ncsv_file = read.csv(\"data/dataset.csv\")\nrds_file = readRDS(\"data/dataset.Rds\")\n\n\n\n\n\n\n\nInstituto National de Estatística. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas Do Porto e de Lisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt."
+    "text": "4.2 Practical exercise\nDataset: the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal (Instituto National de Estatística 2018).\n\nImport dataset\nYou can click directly in the file under the “Files” pan, or:\n\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\n\n\nNote that after you type \" you can use tab to navigate between folders and files and enter to autocomplete.\n\n\n\nTake a first look at the data\nSummary statistics\n\nsummary(data)\n\n  Origin_mun        Destination_mun        Total             Walk       \n Length:315         Length:315         Min.   :     7   Min.   :     0  \n Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  \n Mode  :character   Mode  :character   Median :  1090   Median :     0  \n                                       Mean   : 16825   Mean   :  4033  \n                                       3rd Qu.:  5374   3rd Qu.:     0  \n                                       Max.   :875144   Max.   :306289  \n      Bike              Car            PTransit            Other        \n Min.   :   0.00   Min.   :     0   Min.   :     0.0   Min.   :    0.0  \n 1st Qu.:   0.00   1st Qu.:   263   1st Qu.:     5.0   1st Qu.:    0.0  \n Median :   0.00   Median :   913   Median :   134.0   Median :    0.0  \n Mean   :  80.19   Mean   :  9956   Mean   :  2602.6   Mean   :  152.4  \n 3rd Qu.:   0.00   3rd Qu.:  4408   3rd Qu.:   975.5   3rd Qu.:   62.5  \n Max.   :5362.00   Max.   :349815   Max.   :202428.0   Max.   :11647.0  \n\n\nCheck the structure of the data\n\nstr(data)\n\n'data.frame':   315 obs. of  8 variables:\n $ Origin_mun     : chr  \"Alcochete\" \"Alcochete\" \"Alcochete\" \"Alcochete\" ...\n $ Destination_mun: chr  \"Alcochete\" \"Almada\" \"Amadora\" \"Barreiro\" ...\n $ Total          : num  20478 567 188 867 114 ...\n $ Walk           : num  6833 0 0 0 0 ...\n $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...\n $ Car            : num  12484 353 107 861 114 ...\n $ PTransit       : num  833 0 81 5 0 ...\n $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...\n\n\nCheck the first values of each variable\n\ndata\n\n\nhead(data, 3) # first 3 values\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7\n2  Alcochete          Almada   567    0    0   353        0   214\n3  Alcochete         Amadora   188    0    0   107       81     0\n\n\nCheck the number of rows (observations) and columns (variables)\n\nnrow(data)\n\n[1] 315\n\nncol(data)\n\n[1] 8\n\n\nOpen the dataset\n\nView(data)\n\n\n\nExplore the data\nCheck the total number of trips\nUse $ to select a variable of the data\n\nsum(data$Total)\n\n[1] 5299853\n\n\nPercentage of car trips related to the total\n\nsum(data$Car)/sum(data$Total) * 100\n\n[1] 59.17638\n\n\nPercentage of active trips related to the total\n\n(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100\n\n[1] 24.44883\n\n\n\n\nModify original data\nCreate a column with the sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nFilter by condition (create new tables)\nFilter trips only with origin from Lisbon\n\ndata_Lisbon = data[data$Origin_mun == \"Lisboa\",]\n\nFilter trips with origin different from Lisbon\n\ndata_out_Lisbon = data[data$Origin_mun != \"Lisboa\",]\n\nFilter trips with origin and destination in Lisbon\n\ndata_in_Out_Lisbon = data[data$Origin_mun == \"Lisboa\" & data$Destination_mun == \"Lisboa\",]\n\nRemove a column\nLook at the first row\n\ndata[1,] #rows and columns start from 1\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153\n\n\nLook at first row and column\n\ndata[1,1]\n\n[1] \"Alcochete\"\n\n\nRemove the first column\n\ndata = data[ ,-1] #first column\n\nCreate a table only with origin, destination and walking trips\nThere are many ways to do the same operation.\n\nnames(data)\n\n[1] \"Destination_mun\" \"Total\"           \"Walk\"            \"Bike\"           \n[5] \"Car\"             \"PTransit\"        \"Other\"           \"Active\"         \n\n\n\ndata_walk2 = data[ ,c(1,2,4)]\n\n\ndata_walk3 = data[ ,-c(3,5:9)]\n\n\n\nExport data\nSave data in .csv and .Rds\n\nwrite.csv(data, 'data/dataset.csv', row.names = FALSE)\nsaveRDS(data, 'data/dataset.Rds') #Choose a different file. \n\n\n\nImport data\n\ncsv_file = read.csv(\"data/dataset.csv\")\nrds_file = readRDS(\"data/dataset.Rds\")\n\n\n\n\n\n\n\nInstituto National de Estatística. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas Do Porto e de Lisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
+    ]
+  },
+  {
+    "objectID": "data-manipulation.html",
+    "href": "data-manipulation.html",
+    "title": "5  Data manipulation",
+    "section": "",
+    "text": "5.1 Select variables\nHave a look at your dataset. You can open using View(), look at the information at the “Environment” panel, or even print the same information using glimpse()\nglimpse(TRIPS)\nWe will create a new dataset with Origin, Walk, Bike and Total. This time we will use the select() function.\nTRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the dataset\nThe first argument, as usually in R, is the dataset, and the remaining ones are the columns to select.\nWith most of the dplyr functions you don’t need to refer to data$... you can simply type the variable names (and even without the \"...\"!). This makes coding in R simpler :)\nYou can also remove columns that you don’t need.\nTRIPS_new = select(TRIPS_new, -Total) # dropping the Total column",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#select-variables",
     "href": "data-manipulation.html#select-variables",
     "title": "5  Data manipulation",
-    "section": "5.1 Select variables",
-    "text": "5.1 Select variables\nHave a look at your dataset. You can open using View(), look at the information at the “Environment” panel, or even print the same information using glimpse()\n\nglimpse(TRIPS)\n\nWe will create a new dataset with Origin, Walk, Bike and Total. This time we will use the select() function.\n\nTRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the dataset\n\nThe first argument, as usually in R, is the dataset, and the remaining ones are the columns to select.\nWith most of the dplyr functions you don’t need to refer to data$... you can simply type the variable names (and even without the \"...\"!). This makes coding in R simpler :)\nYou can also remove columns that you don’t need.\n\nTRIPS_new = select(TRIPS_new, -Total) # dropping the Total column\n\n\n5.1.1 Using pipes!\nNow, let’s introduce pipes. Pipes are a rule as: “For this, do this.”\nThis is useful to skip the first argument of the functions (usually the dataset to apply the function).\nApplying a pipe to the select() function, we can write as:\n\nTRIPS_new = TRIPS |&gt; select(Origin, Walk, Bike, Total)\n\nTwo things to note:\n\nThe pipe symbol can be written as |&gt; or %&gt;%. 2 To write it you may also use the ctrl+shift+m shortcut.\nAfter typing select( you can press tab and the list of available variables of that dataset will show up! Enter to select. With this you prevent typo errors."
+    "section": "",
+    "text": "5.1.1 Using pipes!\nNow, let’s introduce pipes. Pipes are a rule as: “For this, do this.”\nThis is useful to skip the first argument of the functions (usually the dataset to apply the function).\nApplying a pipe to the select() function, we can write as:\n\nTRIPS_new = TRIPS |&gt; select(Origin, Walk, Bike, Total)\n\nTwo things to note:\n\nThe pipe symbol can be written as |&gt; or %&gt;%. 2 To write it you may also use the ctrl+shift+m shortcut.\nAfter typing select( you can press tab and the list of available variables of that dataset will show up! Enter to select. With this you prevent typo errors.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#filter-observations",
     "href": "data-manipulation.html#filter-observations",
     "title": "5  Data manipulation",
     "section": "5.2 Filter observations",
-    "text": "5.2 Filter observations\nYou can filter observations based on a condition using the filter() function.\n\nTRIPS2 = TRIPS[TRIPS$Total &gt; 25000,] # using r-base, you cant forget the comma\nTRIPS2 = TRIPS2 |&gt; filter(Total &gt; 25000) # using dplyr, it's easier\n\nYou can have other conditions inside the condition.\n\nsummary(TRIPS$Total)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    361    5918   17474   22457   33378  112186 \n\nTRIPS3 = TRIPS |&gt; filter(Total &gt; median(Total)) \n\nOther filter conditions:\n\n== equal, != different\n&lt; smaller, &gt; greater, &lt;= smaller or equal, &gt;= greater or equal\n& and, | or\nis.na, !is.na is not NA\n%in%, !%in% not in"
+    "text": "5.2 Filter observations\nYou can filter observations based on a condition using the filter() function.\n\nTRIPS2 = TRIPS[TRIPS$Total &gt; 25000,] # using r-base, you cant forget the comma\nTRIPS2 = TRIPS2 |&gt; filter(Total &gt; 25000) # using dplyr, it's easier\n\nYou can have other conditions inside the condition.\n\nsummary(TRIPS$Total)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    361    5918   17474   22457   33378  112186 \n\nTRIPS3 = TRIPS |&gt; filter(Total &gt; median(Total)) \n\nOther filter conditions:\n\n== equal, != different\n&lt; smaller, &gt; greater, &lt;= smaller or equal, &gt;= greater or equal\n& and, | or\nis.na, !is.na is not NA\n%in%, !%in% not in",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#create-new-variables",
     "href": "data-manipulation.html#create-new-variables",
     "title": "5  Data manipulation",
     "section": "5.3 Create new variables",
-    "text": "5.3 Create new variables\nYou can also try again to create a variable of Car percentage using pipes! To create a new variable or change an existing one (overwriting), you can use the mutate() function.\n\nTRIPS$Car_perc = TRIPS$Car/TRIPS$Total * 100 # using r-base\n\nTRIPS = TRIPS |&gt; mutate(Car_perc = Car/Total * 100) # using dplyr"
+    "text": "5.3 Create new variables\nYou can also try again to create a variable of Car percentage using pipes! To create a new variable or change an existing one (overwriting), you can use the mutate() function.\n\nTRIPS$Car_perc = TRIPS$Car/TRIPS$Total * 100 # using r-base\n\nTRIPS = TRIPS |&gt; mutate(Car_perc = Car/Total * 100) # using dplyr",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#change-data-type",
     "href": "data-manipulation.html#change-data-type",
     "title": "5  Data manipulation",
     "section": "5.4 Change data type",
-    "text": "5.4 Change data type\nData can be in different formats. For example, the variable Origin is a character, but we can convert it to a numeric variable.\n\nclass(TRIPS$Origin)\n\n[1] \"character\"\n\nTRIPS = TRIPS |&gt; \n  mutate(Origin_num = as.integer(Origin)) # you can use as.numeric() as well\nclass(TRIPS$Origin_num)\n\n[1] \"integer\"\n\n\nMost used data types are:\n\ninteger (int)\nnumeric (num)\ncharacter (chr)\nlogical (logical)\ndate (Date)\nfactor (factor)\n\n\n5.4.1 Factors\nFactors are useful to deal with categorical data. You can convert a character to a factor using as.factor(), and also use labels and levels for categorical ordinal data.\nWe can change the Lisbon variable to a factor, and Internal too.\n\nTRIPS = TRIPS |&gt; \n  mutate(Lisbon_factor = factor(Lisbon, labels = c(\"No\", \"Yes\")),\n         Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\")))\n\nBut how do we know which levels come first? A simple way is to use table() or unique() functions.\n\nunique(TRIPS$Lisbon) # this will show all the different values\n\n[1] 0 1\n\ntable(TRIPS$Lisbon) # this will show the frequency of each value\n\n\n  0   1 \n188  48 \n\ntable(TRIPS$Lisbon_factor)\n\n\n No Yes \n188  48 \n\n\nThe first number to appear is the first level, and so on."
+    "text": "5.4 Change data type\nData can be in different formats. For example, the variable Origin is a character, but we can convert it to a numeric variable.\n\nclass(TRIPS$Origin)\n\n[1] \"character\"\n\nTRIPS = TRIPS |&gt; \n  mutate(Origin_num = as.integer(Origin)) # you can use as.numeric() as well\nclass(TRIPS$Origin_num)\n\n[1] \"integer\"\n\n\nMost used data types are:\n\ninteger (int)\nnumeric (num)\ncharacter (chr)\nlogical (logical)\ndate (Date)\nfactor (factor)\n\n\n5.4.1 Factors\nFactors are useful to deal with categorical data. You can convert a character to a factor using as.factor(), and also use labels and levels for categorical ordinal data.\nWe can change the Lisbon variable to a factor, and Internal too.\n\nTRIPS = TRIPS |&gt; \n  mutate(Lisbon_factor = factor(Lisbon, labels = c(\"No\", \"Yes\")),\n         Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\")))\n\nBut how do we know which levels come first? A simple way is to use table() or unique() functions.\n\nunique(TRIPS$Lisbon) # this will show all the different values\n\n[1] 0 1\n\ntable(TRIPS$Lisbon) # this will show the frequency of each value\n\n\n  0   1 \n188  48 \n\ntable(TRIPS$Lisbon_factor)\n\n\n No Yes \n188  48 \n\n\nThe first number to appear is the first level, and so on.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#join-data-tables",
     "href": "data-manipulation.html#join-data-tables",
     "title": "5  Data manipulation",
     "section": "5.5 Join data tables",
-    "text": "5.5 Join data tables\nWhen having relational tables - i.e. with a common identifier - it is useful to be able to join them in a very efficient way.\nleft_join is a function that joins two tables by a common column. The first table is the one that will be kept, and the second one will be joined to it. How left_join works:\n\n\n\nA visual representation of the left join where every row in x appears in the output.3\n\n\nLet’s join the municipalities to this table with a supporting table that includes all the relation between neighbourhoods and municipalities, and the respective names and codes.\n\nMunicipalities = readRDS(\"data/Municipalities_names.Rds\")\n\n\nhead(TRIPS)\n\n# A tibble: 6 × 13\n  Origin Total  Walk  Bike   Car PTransit Other Internal Lisbon Car_perc\n  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n1 110501 35539 11325  1309 21446     1460     0        0      0     60.3\n2 110501 47602  3502   416 37727     5519   437        1      0     79.3\n3 110506 37183 12645    40 22379     2057    63        0      0     60.2\n4 110506 42313  1418   163 37337     3285   106        1      0     88.2\n5 110507 30725  9389  1481 19654      201     0        0      0     64.0\n6 110507 54586  2630   168 44611     6963   215        1      0     81.7\n# ℹ 3 more variables: Origin_num &lt;int&gt;, Lisbon_factor &lt;fct&gt;,\n#   Internal_factor &lt;fct&gt;\n\ntail(Municipalities)\n\n    Mun_code Neighborhood_code        Municipality\n113     1109            110913               Mafra\n114     1114            111409 Vila Franca de Xira\n115     1109            110918               Mafra\n116     1109            110904               Mafra\n117     1502            150202           Alcochete\n118     1109            110911               Mafra\n                                             Neighborhood\n113                                         Santo Isidoro\n114                                   Vila Franca de Xira\n115 União das freguesias de Azueira e Sobral da Abelheira\n116                                            Encarnação\n117                                               Samouco\n118                                             Milharado\n\n\nWe can see that we have a common variable: Origin in TRIPS and Neighborhood_code in Municipalities.\nTo join these two tables we need to specify the common variable in each table, using the by argument.\n\nTRIPSjoin = TRIPS |&gt; left_join(Municipalities, by = c(\"Origin\" = \"Neighborhood_code\"))\n\nIf you prefer, you can mutate or rename a variable so both tables have the same name. When both tables have the same name, you don’t need to specify the by argument.\n\nMunicipalities = Municipalities |&gt; rename(Origin = \"Neighborhood_code\") # change name\nTRIPSjoin = TRIPS |&gt; left_join(Municipalities) # automatic detects common variable\n\nAs you can see, both tables don’t need to be the same length. The left_join function will keep all the observations from the first table, and join the second table to it. If there is no match, the variables from the second table will be filled with NA."
+    "text": "5.5 Join data tables\nWhen having relational tables - i.e. with a common identifier - it is useful to be able to join them in a very efficient way.\nleft_join is a function that joins two tables by a common column. The first table is the one that will be kept, and the second one will be joined to it. How left_join works:\n\n\n\n\n\n\n\nA visual representation of the left join where every row in x appears in the output.Source: R for Data Science.\n\n\nLet’s join the municipalities to this table with a supporting table that includes all the relation between neighbourhoods and municipalities, and the respective names and codes.\n\nMunicipalities = readRDS(\"data/Municipalities_names.Rds\")\n\n\nhead(TRIPS)\n\n# A tibble: 6 × 13\n  Origin Total  Walk  Bike   Car PTransit Other Internal Lisbon Car_perc\n  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n1 110501 35539 11325  1309 21446     1460     0        0      0     60.3\n2 110501 47602  3502   416 37727     5519   437        1      0     79.3\n3 110506 37183 12645    40 22379     2057    63        0      0     60.2\n4 110506 42313  1418   163 37337     3285   106        1      0     88.2\n5 110507 30725  9389  1481 19654      201     0        0      0     64.0\n6 110507 54586  2630   168 44611     6963   215        1      0     81.7\n# ℹ 3 more variables: Origin_num &lt;int&gt;, Lisbon_factor &lt;fct&gt;,\n#   Internal_factor &lt;fct&gt;\n\ntail(Municipalities)\n\n    Mun_code Neighborhood_code        Municipality\n113     1109            110913               Mafra\n114     1114            111409 Vila Franca de Xira\n115     1109            110918               Mafra\n116     1109            110904               Mafra\n117     1502            150202           Alcochete\n118     1109            110911               Mafra\n                                             Neighborhood\n113                                         Santo Isidoro\n114                                   Vila Franca de Xira\n115 União das freguesias de Azueira e Sobral da Abelheira\n116                                            Encarnação\n117                                               Samouco\n118                                             Milharado\n\n\nWe can see that we have a common variable: Origin in TRIPS and Neighborhood_code in Municipalities.\nTo join these two tables we need to specify the common variable in each table, using the by argument.\n\nTRIPSjoin = TRIPS |&gt; left_join(Municipalities, by = c(\"Origin\" = \"Neighborhood_code\"))\n\nIf you prefer, you can mutate or rename a variable so both tables have the same name. When both tables have the same name, you don’t need to specify the by argument.\n\nMunicipalities = Municipalities |&gt; rename(Origin = \"Neighborhood_code\") # change name\nTRIPSjoin = TRIPS |&gt; left_join(Municipalities) # automatic detects common variable\n\nAs you can see, both tables don’t need to be the same length. The left_join function will keep all the observations from the first table, and join the second table to it. If there is no match, the variables from the second table will be filled with NA.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#group_by-and-summarize",
     "href": "data-manipulation.html#group_by-and-summarize",
     "title": "5  Data manipulation",
     "section": "5.6 group_by and summarize",
-    "text": "5.6 group_by and summarize\nWe have a very large table with all the neighbourhoods and their respective municipalities. We want to know the total number of trips with origin in each municipality.\nTo make it easier to understand, let’s keep only the variables we need.\n\nTRIPSredux = TRIPSjoin |&gt; select(Origin, Municipality, Internal, Car, Total)\nhead(TRIPSredux)\n\n# A tibble: 6 × 5\n  Origin Municipality Internal   Car Total\n  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 110501 Cascais             0 21446 35539\n2 110501 Cascais             1 37727 47602\n3 110506 Cascais             0 22379 37183\n4 110506 Cascais             1 37337 42313\n5 110507 Cascais             0 19654 30725\n6 110507 Cascais             1 44611 54586\n\n\nWe can group this table by the Municipality variable and summarize the number of trips with origin in each municipality.\n\nTRIPSsum = TRIPSredux |&gt; \n  group_by(Municipality) |&gt; # you won't notice any chagne with only this\n  summarize(Total = sum(Total))\nhead(TRIPSsum)\n\n# A tibble: 6 × 2\n  Municipality   Total\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Alcochete      36789\n2 Almada        289834\n3 Amadora       344552\n4 Barreiro      133658\n5 Cascais       373579\n6 Lisboa       1365111\n\n\nWe summed the total number of trips in each municipality.\nIf we want to group by more than one variable, we can add more group_by() functions.\n\nTRIPSsum2 = TRIPSredux |&gt; \n  group_by(Municipality, Internal) |&gt; \n  summarize(Total = sum(Total),\n            Car = sum(Car))\nhead(TRIPSsum2)\n\n# A tibble: 6 × 4\n# Groups:   Municipality [3]\n  Municipality Internal  Total    Car\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 Alcochete           0  16954   9839\n2 Alcochete           1  19835  15632\n3 Almada              0 105841  49012\n4 Almada              1 183993 125091\n5 Amadora             0 117727  33818\n6 Amadora             1 226825 142386\n\n\nWe summed the total number of trips and car trips in each municipality, separated by inter and intra municipal trips.\n\nIt is a good practice to use the ungroup() function after the group_by() function. This will remove the grouping. If you don’t do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset."
+    "text": "5.6 group_by and summarize\nWe have a very large table with all the neighbourhoods and their respective municipalities. We want to know the total number of trips with origin in each municipality.\nTo make it easier to understand, let’s keep only the variables we need.\n\nTRIPSredux = TRIPSjoin |&gt; select(Origin, Municipality, Internal, Car, Total)\nhead(TRIPSredux)\n\n# A tibble: 6 × 5\n  Origin Municipality Internal   Car Total\n  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 110501 Cascais             0 21446 35539\n2 110501 Cascais             1 37727 47602\n3 110506 Cascais             0 22379 37183\n4 110506 Cascais             1 37337 42313\n5 110507 Cascais             0 19654 30725\n6 110507 Cascais             1 44611 54586\n\n\nWe can group this table by the Municipality variable and summarize the number of trips with origin in each municipality.\n\nTRIPSsum = TRIPSredux |&gt; \n  group_by(Municipality) |&gt; # you won't notice any chagne with only this\n  summarize(Total = sum(Total))\nhead(TRIPSsum)\n\n# A tibble: 6 × 2\n  Municipality   Total\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Alcochete      36789\n2 Almada        289834\n3 Amadora       344552\n4 Barreiro      133658\n5 Cascais       373579\n6 Lisboa       1365111\n\n\nWe summed the total number of trips in each municipality.\nIf we want to group by more than one variable, we can add more group_by() functions.\n\nTRIPSsum2 = TRIPSredux |&gt; \n  group_by(Municipality, Internal) |&gt; \n  summarize(Total = sum(Total),\n            Car = sum(Car))\nhead(TRIPSsum2)\n\n# A tibble: 6 × 4\n# Groups:   Municipality [3]\n  Municipality Internal  Total    Car\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 Alcochete           0  16954   9839\n2 Alcochete           1  19835  15632\n3 Almada              0 105841  49012\n4 Almada              1 183993 125091\n5 Amadora             0 117727  33818\n6 Amadora             1 226825 142386\n\n\nWe summed the total number of trips and car trips in each municipality, separated by inter and intra municipal trips.\n\nIt is a good practice to use the ungroup() function after the group_by() function. This will remove the grouping. If you don’t do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#arrange-data",
     "href": "data-manipulation.html#arrange-data",
     "title": "5  Data manipulation",
     "section": "5.7 Arrange data",
-    "text": "5.7 Arrange data\nYou can sort a dataset by one or more variables.\nFor instance, arrange() by Total trips, ascending or descending order.\n\nTRIPS2 = TRIPSsum2 |&gt; arrange(Total)\nTRIPS2 = TRIPSsum2 |&gt; arrange(-Total) # descending\nTRIPS2 = TRIPSsum2 |&gt; arrange(Municipality) # alphabetic\nTRIPS4 = TRIPS |&gt; arrange(Lisbon_factor, Total)\n\nThis is not the same as opening the view table and click on the arrows. When you do that, the order is not saved in the dataset. If you want to save the order, you need to use the arrange() function."
+    "text": "5.7 Arrange data\nYou can sort a dataset by one or more variables.\nFor instance, arrange() by Total trips, ascending or descending order.\n\nTRIPS2 = TRIPSsum2 |&gt; arrange(Total)\nTRIPS2 = TRIPSsum2 |&gt; arrange(-Total) # descending\n\nTRIPS2 = TRIPSsum2 |&gt; arrange(Municipality) # alphabetic\n\nTRIPS4 = TRIPS |&gt; arrange(Lisbon_factor, Total) # more than one variable\n\nThis is not the same as opening the view table and click on the arrows. When you do that, the order is not saved in the dataset. If you want to save the order, you need to use the arrange() function.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#all-together-now",
     "href": "data-manipulation.html#all-together-now",
     "title": "5  Data manipulation",
     "section": "5.8 All together now!",
-    "text": "5.8 All together now!\nThis is the pipes magic. It takes the last result and applies the next function to it. “With this, do this.”. You can chain as many functions as you want.\n\nTRIPS_pipes = TRIPS |&gt; \n  select(Origin, Internal, Car, Total) |&gt; \n  \n  mutate(Origin_num = as.integer(Origin)) |&gt; \n  mutate(Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\"))) |&gt; \n  \n  filter(Internal_factor == \"Inter\")|&gt;\n  \n  left_join(Municipalities) |&gt;\n  \n  group_by(Municipality) |&gt;\n  summarize(Total = sum(Total),\n            Car = sum(Car),\n            Car_perc = Car/Total * 100) |&gt; \n  \n  arrange(desc(Car_perc))\n\nWith this code we will have a table with the total number of intercity trips, by municipality, with their names instead of codes, arranged by the percentage of car trips.\n\nTRIPS_pipes\n\n# A tibble: 18 × 4\n   Municipality         Total    Car Car_perc\n   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1 Mafra                65811  46329     70.4\n 2 Sesimbra             49370  31975     64.8\n 3 Cascais             161194  96523     59.9\n 4 Palmela              66428  39688     59.7\n 5 Alcochete            16954   9839     58.0\n 6 Setúbal             129059  70318     54.5\n 7 Montijo              57164  30900     54.1\n 8 Seixal              120747  63070     52.2\n 9 Sintra              237445 123408     52.0\n10 Oeiras              134862  66972     49.7\n11 Almada              105841  49012     46.3\n12 Loures              132310  60478     45.7\n13 Barreiro             52962  24160     45.6\n14 Odivelas             93709  39151     41.8\n15 Vila Franca de Xira 115152  47201     41.0\n16 Moita                51040  17394     34.1\n17 Amadora             117727  33818     28.7\n18 Lisboa              280079  69038     24.6"
+    "text": "5.8 All together now!\nThis is the pipes magic. It takes the last result and applies the next function to it. “With this, do this.”. You can chain as many functions as you want.\n\nTRIPS_pipes = TRIPS |&gt; \n  select(Origin, Internal, Car, Total) |&gt; \n  \n  mutate(Origin_num = as.integer(Origin)) |&gt; \n  mutate(Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\"))) |&gt; \n  \n  filter(Internal_factor == \"Inter\")|&gt;\n  \n  left_join(Municipalities) |&gt;\n  \n  group_by(Municipality) |&gt;\n  summarize(Total = sum(Total),\n            Car = sum(Car),\n            Car_perc = Car/Total * 100) |&gt; \n  \n  arrange(desc(Car_perc))\n\nWith this code we will have a table with the total number of intercity trips, by municipality, with their names instead of codes, arranged by the percentage of car trips.\n\nTRIPS_pipes\n\n# A tibble: 18 × 4\n   Municipality         Total    Car Car_perc\n   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1 Mafra                65811  46329     70.4\n 2 Sesimbra             49370  31975     64.8\n 3 Cascais             161194  96523     59.9\n 4 Palmela              66428  39688     59.7\n 5 Alcochete            16954   9839     58.0\n 6 Setúbal             129059  70318     54.5\n 7 Montijo              57164  30900     54.1\n 8 Seixal              120747  63070     52.2\n 9 Sintra              237445 123408     52.0\n10 Oeiras              134862  66972     49.7\n11 Almada              105841  49012     46.3\n12 Loures              132310  60478     45.7\n13 Barreiro             52962  24160     45.6\n14 Odivelas             93709  39151     41.8\n15 Vila Franca de Xira 115152  47201     41.0\n16 Moita                51040  17394     34.1\n17 Amadora             117727  33818     28.7\n18 Lisboa              280079  69038     24.6",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#other-dplyr-functions",
     "href": "data-manipulation.html#other-dplyr-functions",
     "title": "5  Data manipulation",
     "section": "5.9 Other dplyr functions",
-    "text": "5.9 Other dplyr functions\nYou can explore other dplyr functions and variations to manipulate data in the dplyr cheat sheet:\n\n\n\n\n\nTake a particular attention to pivot_wider and pivot_longer (tidyr package) to transform OD matrices in wide and long formats.\n\n\n\nOD matrix in long format\n\n\nOrigins\nDestinations\nTrips\n\n\n\n\nA\nB\n20\n\n\nA\nC\n45\n\n\nB\nA\n10\n\n\nC\nC\n5\n\n\nC\nA\n30\n\n\n\n\n\n\n\n\nOD matrix in wide format\n\n\nTrips\nA\nB\nC\n\n\n\n\nA\nNA\n20\n45\n\n\nB\n10\nNA\nNA\n\n\nC\n30\nNA\n5"
+    "text": "5.9 Other dplyr functions\nYou can explore other dplyr functions and variations to manipulate data in the dplyr cheat sheet:\n\nTake a particular attention to pivot_wider and pivot_longer (tidyr package) to transform OD matrices in wide and long formats.\n\n\n\nOD matrix in long format\n\n\nOrigins\nDestinations\nTrips\n\n\n\n\nA\nB\n20\n\n\nA\nC\n45\n\n\nB\nA\n10\n\n\nC\nC\n5\n\n\nC\nA\n30\n\n\n\n\n\n\n\n\nOD matrix in wide format\n\n\nTrips\nA\nB\nC\n\n\n\n\nA\nNA\n20\n45\n\n\nB\n10\nNA\nNA\n\n\nC\n30\nNA\n5",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "data-manipulation.html#footnotes",
     "href": "data-manipulation.html#footnotes",
     "title": "5  Data manipulation",
     "section": "",
-    "text": "This dataset includes the number of trips with origin in each neighborhood, divided by mode of transport, and inter or intra municipal trips.↩︎\nYou can change this in RStudio &gt; Tools &gt; Global Options &gt; Code.↩︎\nSource: R for Data Science.↩︎"
+    "text": "This dataset includes the number of trips with origin in each neighborhood, divided by mode of transport, and inter or intra municipal trips.↩︎\nYou can change this in RStudio &gt; Tools &gt; Global Options &gt; Code.↩︎",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
+    ]
   },
   {
     "objectID": "spatial-data.html",
     "href": "spatial-data.html",
     "title": "6  Introduction to spatial data",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Spatial data is data that is associated with a geometry. This geometry can be a point, a line, a polygon, or a grid.\nSpatial data can be represented in many ways, such as vector data and raster data. In this tutorial, we will learn how to work with spatial data in R.\nWe will use the sf package to work with vector data, and the dplyr package to manipulate data.\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE\n\n\nCode\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
   },
   {
     "objectID": "interactive-maps.html",
     "href": "interactive-maps.html",
     "title": "7  Interactive maps",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "7.1 Mapview\nMapview allows to create quick interactive maps, only by declaring the function mapview().\nCode\nlibrary(mapview)\nmapview(TRIPSgeo)\nTo color the points by a variable, you can use the zcol argument.\nCode\nmapview(TRIPSgeo, zcol = \"Total\")\nAs you can see, a color palette is automatically assigned to the continuous variable.\nTry to use a categorical variable.\nCode\nmapview(TRIPSgeo, zcol = \"Municipality\")\nNote that you can change the basemap, and click on the geometries to see the data associated with them.\nYou can go crazy with all the options that mapview offers. Please refer to the documentation to see all the options.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
+    ]
+  },
+  {
+    "objectID": "interactive-maps.html#mapview",
+    "href": "interactive-maps.html#mapview",
+    "title": "7  Interactive maps",
+    "section": "",
+    "text": "7.1.1 Export\nYou can export a map as an html file or image.\n\n\nCode\n# install.packages(\"webshot2\") # you will need this\n\nmap = mapview(TRIPSgeo, zcol = \"Total\") # fisrt create a objet with the desited map\n\nmapshot2(map, \"data/map.html\") # as webpage\nmapshot2(map, file = \"data/map.png\") # as image\n\n\n\nThis is not the most straightforward solution.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
+    ]
+  },
+  {
+    "objectID": "interactive-maps.html#tmap",
+    "href": "interactive-maps.html#tmap",
+    "title": "7  Interactive maps",
+    "section": "7.2 tmap",
+    "text": "7.2 tmap\nThe tmap package is another package to create interactive maps.\nTo create a map, you need to declare a tm_shape() for the dataset you are using and a tm_polygons(). (or lines or other) to declare the representation you want.\n\n\nCode\n# install.packages(\"tmap\")\nlibrary(tmap)\ntmap_mode(\"view\") # by default tmap_mode is \"plot\" - a static map\n\ntm_shape(TRIPSgeo) + tm_polygons(\"Total\")\n\n\n\n\n\n\n\n\n7.2.1 Export\nWith tmap you can directly export the map as an html file or image, using the Viewer panel.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
+    ]
+  },
+  {
+    "objectID": "interactive-maps.html#rmarkdown",
+    "href": "interactive-maps.html#rmarkdown",
+    "title": "7  Interactive maps",
+    "section": "7.3 Rmarkdown",
+    "text": "7.3 Rmarkdown\nTo include a map on a report, website, paper (any type), you can create an Rmarkdown file.\n\nAnd include a R code chunk with a map. If the output is html, you will get an interactive map on your document!",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
+    ]
   },
   {
     "objectID": "desire-lines.html",
     "href": "desire-lines.html",
     "title": "8  OD pairs and desire lines",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>OD pairs and desire lines</span>"
+    ]
   },
   {
     "objectID": "geocode.html",
     "href": "geocode.html",
     "title": "9  Georeferenced coordinates",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Georeferenced coordinates</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html",
+    "href": "distances.html",
+    "title": "10  Euclidean and routing distances",
+    "section": "",
+    "text": "10.1 Euclidean distances\nTaking the municipality centroids, or survey respondents’ location\nSee Knuth (1984) for additional discussion of literate programming.\nCode\n42 + 3.14\n\n\n[1] 45.14",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
   },
   {
     "objectID": "distances.html#euclidean-distances",
     "href": "distances.html#euclidean-distances",
     "title": "10  Euclidean and routing distances",
-    "section": "10.1 Euclidean distances",
-    "text": "10.1 Euclidean distances\nTaking the municipality centroids, or survey respondents’ location\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
   },
   {
     "objectID": "open-data.html",
     "href": "open-data.html",
     "title": "11  Open transportation data",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+    ]
   },
   {
     "objectID": "r5r.html",
     "href": "r5r.html",
     "title": "12  Routing and Accessibility with r5r",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Routing and Accessibility with `r5r`</span>"
+    ]
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "13  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\ndata_walk = data[,c(\"Origin_mun\", \"Destination_mun\", \"Walk\")]\nhead(data_walk)\n\n\n  Origin_mun Destination_mun Walk\n1  Alcochete       Alcochete 6833\n2  Alcochete          Almada    0\n3  Alcochete         Amadora    0\n4  Alcochete        Barreiro    0\n5  Alcochete         Cascais    0\n6  Alcochete          Lisboa   69\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\ndata_walk = data[,c(\"Origin_mun\", \"Destination_mun\", \"Walk\")]\nhead(data_walk)\n\n\n  Origin_mun Destination_mun Walk\n1  Alcochete       Alcochete 6833\n2  Alcochete          Almada    0\n3  Alcochete         Amadora    0\n4  Alcochete        Barreiro    0\n5  Alcochete         Cascais    0\n6  Alcochete          Lisboa   69\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Instituto National de Estatística. 2018. “Mobilidade e\nFuncionalidade Do Território Nas Áreas Metropolitanas Do Porto e de\nLisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Instituto National de Estatística. 2018. “Mobilidade e\nFuncionalidade Do Território Nas Áreas Metropolitanas Do Porto e de\nLisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
   }
 ]
