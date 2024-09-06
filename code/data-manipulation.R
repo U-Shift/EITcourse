@@ -78,8 +78,10 @@ head(TRIPSsum2)
 
 TRIPS2 = TRIPSsum2 |> arrange(Total)
 TRIPS2 = TRIPSsum2 |> arrange(-Total) # descending
+
 TRIPS2 = TRIPSsum2 |> arrange(Municipality) # alphabetic
-TRIPS4 = TRIPS |> arrange(Lisbon_factor, Total)
+
+TRIPS4 = TRIPS |> arrange(Lisbon_factor, Total) # more than one variable
 
 TRIPS_pipes = TRIPS |> 
   select(Origin, Internal, Car, Total) |> 
