@@ -50,18 +50,22 @@ TRIPS = readRDS("data/TRIPSorigin.Rds")
 
 > Note that it is very important to understand the R basics, that's why we started from there, even if the following functions will provide the same results.
 
-You don't need to know everything! And you don't need to know by heart. The following functions are the ones you will probably use most of the time to handle data.
+You don't need to know everything!
+And you don't need to know by heart.
+The following functions are the ones you will probably use most of the time to handle data.
 
 ## Select variables
 
-Have a look at your dataset. You can open using `View()`, look at the information at the "Environment" panel, or even print the same information using `glimpse()`
+Have a look at your dataset.
+You can open using `View()`, look at the information at the "Environment" panel, or even print the same information using `glimpse()`
 
 ```{r}
 #| eval: false
 glimpse(TRIPS)
 ```
 
-We will create a new dataset with *Origin*, *Walk,* *Bike* and *Total*. This time we will use the `select()` function.
+We will create a new dataset with *Origin*, *Walk,* *Bike* and *Total*.
+This time we will use the `select()` function.
 
 ```{r}
 TRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the dataset
@@ -69,7 +73,8 @@ TRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the
 
 The first argument, as usually in R, is the dataset, and the remaining ones are the columns to select.
 
-With most of the `dplyr` functions you don't need to refer to `data$...` you can simply type the variable names (and even without the `"..."`!). This makes coding in R simpler :)
+With most of the `dplyr` functions you don't need to refer to `data$...` you can simply type the variable names (and even without the `"..."`!).
+This makes coding in R simpler :)
 
 You can also remove columns that you don't need.
 
@@ -79,7 +84,8 @@ TRIPS_new = select(TRIPS_new, -Total) # dropping the Total column
 
 ### Using pipes!
 
-Now, let's introduce pipes. Pipes are a rule as: "**For this, do this.**"
+Now, let's introduce pipes.
+Pipes are a rule as: "**For this, do this.**"
 
 This is useful to skip the first argument of the functions (usually the dataset to apply the function).
 
@@ -91,7 +97,8 @@ TRIPS_new = TRIPS |> select(Origin, Walk, Bike, Total)
 
 Two things to **note**:
 
-1.  The pipe symbol can be written as `|>` or `%>%`. [^data-manipulation-2] To write it you may also use the `ctrl+shift+m` shortcut.
+1.  The pipe symbol can be written as `|>` or `%>%`.
+    [^data-manipulation-2] To write it you may also use the `ctrl+shift+m` shortcut.
 
 2.  After typing `select(` you can press `tab` and the list of available variables of that dataset will show up! `Enter` to select. With this you prevent typo errors.
 
@@ -123,7 +130,8 @@ Other filter conditions:
 
 ## Create new variables
 
-You can also try again to create a variable of Car percentage using pipes! To create a new variable or change an existing one (overwriting), you can use the `mutate()` function.
+You can also try again to create a variable of Car percentage using pipes!
+To create a new variable or change an existing one (overwriting), you can use the `mutate()` function.
 
 ```{r}
 TRIPS$Car_perc = TRIPS$Car/TRIPS$Total * 100 # using r-base
@@ -133,7 +141,8 @@ TRIPS = TRIPS |> mutate(Car_perc = Car/Total * 100) # using dplyr
 
 ## Change data type
 
-Data can be in different formats. For example, the variable *Origin* is a character, but we can convert it to a numeric variable.
+Data can be in different formats.
+For example, the variable *Origin* is a character, but we can convert it to a numeric variable.
 
 ```{r}
 class(TRIPS$Origin)
@@ -153,7 +162,8 @@ Most used data types are:
 
 ### Factors
 
-Factors are useful to deal with categorical data. You can convert a character to a factor using `as.factor()`, and also use labels and levels for categorical ordinal data.
+Factors are useful to deal with categorical data.
+You can convert a character to a factor using `as.factor()`, and also use labels and levels for categorical ordinal data.
 
 We can change the `Lisbon` variable to a factor, and `Internal` too.
 
@@ -163,7 +173,8 @@ TRIPS = TRIPS |>
          Internal_factor = factor(Internal, labels = c("Inter", "Intra")))
 ```
 
-But how do we know which levels come first? A simple way is to use `table()` or `unique()` functions.
+But how do we know which levels come first?
+A simple way is to use `table()` or `unique()` functions.
 
 ```{r}
 unique(TRIPS$Lisbon) # this will show all the different values
@@ -177,15 +188,14 @@ The first number to appear is the first level, and so on.
 
 When having relational tables - *i.e.* with a common identifier - it is useful to be able to join them in a very efficient way.
 
-`left_join` is a function that joins two tables **by a common column**. The **first table is the one that will be kept**, and the **second one will be joined to** it. How `left_join` works:
+`left_join` is a function that joins two tables **by a common column**.
+The **first table is the one that will be kept**, and the **second one will be joined to** it.
+How `left_join` works:
 
-[![A visual representation of the left join where every row in x appears in the output.[^data-manipulation-3]](images/clipboard-1594422253.png){fig-align="center" width="424"}](https://r4ds.hadley.nz/joins#fig-join-left)
-
-[^data-manipulation-3]: Source: [R for Data Science](https://r4ds.hadley.nz/).
-
-[^data-manipulation-4]: Source: [R for Data Science](https://r4ds.hadley.nz/).
+[![A visual representation of the left join where every row in x appears in the output.Source: R for Data Science.](images/clipboard-1594422253.png){fig-align="center" width="424"}](https://r4ds.hadley.nz/joins#fig-join-left)
 
 Let's **join the municipalities** to this table with a supporting table that includes all the **relation** between neighbourhoods and municipalities, and the respective names and codes.
+
 ```{r}
 Municipalities = readRDS("data/Municipalities_names.Rds")
 ```
@@ -253,8 +263,9 @@ head(TRIPSsum2)
 
 We summed the total number of trips and car trips in each municipality, **separated by** inter and intra municipal trips.
 
-> It is a good practice to use the `ungroup()` function after the `group_by()` function. This will remove the grouping. If you don't do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.
-
+> It is a good practice to use the `ungroup()` function after the `group_by()` function.
+> This will remove the grouping.
+> If you don't do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.
 
 ## Arrange data
 
@@ -265,8 +276,10 @@ For instance, `arrange()` by Total trips, ascending or descending order.
 ```{r}
 TRIPS2 = TRIPSsum2 |> arrange(Total)
 TRIPS2 = TRIPSsum2 |> arrange(-Total) # descending
+
 TRIPS2 = TRIPSsum2 |> arrange(Municipality) # alphabetic
-TRIPS4 = TRIPS |> arrange(Lisbon_factor, Total)
+
+TRIPS4 = TRIPS |> arrange(Lisbon_factor, Total) # more than one variable
 ```
 
 This is not the same as opening the view table and click on the arrows.
@@ -276,7 +289,8 @@ If you want to save the order, you need to use the `arrange()` function.
 ## All together now!
 
 This is the pipes magic.
-It takes the last result and applies the next function to it. "With this, do this.".
+It takes the last result and applies the next function to it.
+"With this, do this.".
 You can chain as many functions as you want.
 
 ```{r}
