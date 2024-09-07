@@ -1,9 +1,107 @@
 # Introduction to spatial data
 
-This is a book created from markdown and executable code.
+Spatial data is **data that is associated with a geometry**.
+This geometry can be a point, a line, a polygon, or a grid.
 
-See @knuth84 for additional discussion of literate programming.
+Spatial data can be represented in many ways, such as vector data and raster data.
+In this tutorial, we will learn how to work with spatial data in R.
+
+We will use the `sf` package to work with vector data, and the `dplyr` package to manipulate data.
 
 ```{r}
-42 + 3.14
+#| message: false
+library(sf)
+library(dplyr)
 ```
+
+```{r}
+#| include: false
+#| eval: false
+# data preparation
+Municipalities_geo = st_read("data/TRIPSgeo.gpkg")
+Municipalities_geo = Municipalities_geo |> 
+  select(Municipality, geom)
+st_write(Municipalities_geo, "data/Municipalities_geo.gpkg")
+```
+
+The `sf` package is a powerful package for working with spatial data in R.
+It includes hundreds of [functions](https://r-spatial.github.io/sf/reference/index.html) to deal with spatial data [@sf].
+
+## Import vector data
+
+Download and open `Municipalities_geo.gpkg` under [EITcourse/data](https://github.com/U-Shift/EITcourse/tree/main/data) repository.
+
+Within the `sf` package, we use the `st_read()` to read spatial features.
+
+```{r}
+Municipalities_geo = st_read("data/Municipalities_geo.gpkg")
+```
+
+::: {.callout-tip appearance="simple"}
+You can also open directly from url from github.
+Example:
+
+`Municipalities_geo = st_read("https://github.com/U-Shift/EITcourse/raw/main/data/Municipalities_geo.gpkg")`
+:::
+
+### Projected vs Geographic Coordinate Systems
+
+A **projected coordinate system** is a flat representation of the Earth's surface.
+A **geographic coordinate system** is a spherical representation of the Earth's surface.
+
+![Source: ESRI](images/clipboard-1233124217.png){fig-align="center"}
+
+The `st_crs()` function can be used to check the coordinate reference system of a spatial object.
+
+```{r}
+st_crs(Municipalities_geo)
+```
+
+WGS84 is the most common geographic coordinate system, used in GPS, and [EPSG:**4326**](https://epsg.io/4326) is code for it.
+
+If we want to project the data to a projected coordinate system, to use **metric units** instead of degrees, we can use the `st_transform()` function.
+
+In this case, the [EPGS:**3857**](https://epsg.io/3857) is the code for the Pseudo-Mercator coordinate system.
+
+```{r}
+#| eval: false
+Municipalities_projected = st_transform(Municipalities_geo, crs = 3857)
+```
+
+Now see the differences when calling `Municipalities_geo` and `Municipalities_projected.`
+
+## Join geometries to data frames
+
+Join to TRIPS_pipes data frame.
+
+## Visuzlize spatial data
+
+Represent Transport Zones with Total, and with Car %.
+
+```{r carper}
+# create Car_per variable
+TRIPSgeo_mun = TRIPSgeo_mun |> mutate(Car_per = Car / Total * 100)
+TRIPSgeo_freg = TRIPSgeo_freg |> mutate(Car_per = Car / Total * 100)
+
+#Vizualize in map
+mapview(TRIPSgeo_mun, zcol = "Car_per")
+mapview(TRIPSgeo_freg, zcol = "Car_per", col.regions = rev(hcl.colors(9, "-Inferno"))) #palete inferno with 9 classes, reverse color ramp
+```
+
+## Export spatial data
+
+You can save your spatial data in different formats using the function `st_write()`, such as shapefiles (ESRI), GeoJSON, and GeoPackage.
+
+This is also useful to convert spatial data between formats.
+
+```{r}
+#| eval: false
+st_write(TRIPS_geo, "data/TRIPS_geo.gpkg") # as geopackage
+st_write(TRIPS_geo, "data/TRIPS_geo.shp") # as shapefile
+st_write(TRIPS_geo, "data/TRIPS_geo.geojson") # as geojson
+st_write(TRIPS_geo, "data/TRIPS_geo.csv", layer_options = "GEOMETRY=AS_WKT") # as csv, with WKT geometry
+```
+
+::: {.callout-warning appearance="simple"}
+If you already have a file with the same name, you can use the `delete_dns = TRUE` argument, otherwise it won't overwrite the file.
+:::
