@@ -14,9 +14,11 @@ In this chapter we will guide you through the installation of R, RStudio and the
 
 ## R
 
-You will need **R** installed on your computer. **R stats** (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.
+You will need **R** installed on your computer.
+**R stats** (how it is also known) is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.
 
-The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN). The most recent version is `4.4.1`, but you can use `>= 4.1.x` if you already have it installed.
+The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN).
+The most recent version is `4.4.1`, but you can use `>= 4.1.x` if you already have it installed.
 
 ::: {.panel-tabset .nav-pills}
 ### Windows
@@ -27,13 +29,15 @@ You will also need to install Rtools, which is a collection of tools necessary t
 
 ### Mac
 
-[Download R-4.4.1 for MacOX](https://cran.r-project.org/). You will have to choose between the arm64 or the x86-64 version.
+[Download R-4.4.1 for MacOX](https://cran.r-project.org/).
+You will have to choose between the arm64 or the x86-64 version.
 
 Download the `.pkg` file and install it as usual.
 
 ### Ubuntu
 
-> These are instructions for Ubuntu. If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
+> These are instructions for Ubuntu.
+> If you use other linux distribution, please follow the instructions on [The Comprehensive R Archive Network - CRAN](https://cran.r-project.org/bin/linux/).
 
 You can look for R in the Ubuntu **Software Center** or install it via the terminal:
 
@@ -64,11 +68,13 @@ sudo apt install r-base r-base-core r-recommended r-base-dev
 \[Optional\] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
 :::
 
-After this installation, you don't need to open R base. Please proceed to install RStudio.
+After this installation, you don't need to open R base.
+Please proceed to install RStudio.
 
 ## RStudio
 
-RStudio Desktop is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.
+RStudio Desktop is an integrated development environment (IDE) for R.
+It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.
 
 RStudio is available for free download from [Posit RStudio](https://posit.co/download/rstudio-desktop/).
 
@@ -83,7 +89,8 @@ RStudio is available for free download from [Posit RStudio](https://posit.co/dow
 
 ### Ubuntu
 
-> These are instructions for Ubuntu **22** / Debian 12. If you use other linux distribution, please follow the instructions on [Posit RStudio](https://posit.co/download/rstudio-desktop/).
+> These are instructions for Ubuntu **22** / Debian 12.
+> If you use other linux distribution, please follow the instructions on [Posit RStudio](https://posit.co/download/rstudio-desktop/).
 
 Install it via the terminal:
 
@@ -117,7 +124,7 @@ You can install them in RStudio by searching for them in the **Packages** tab:
 install.packages("tidyverse")
 install.packages("readxl")
 
-install.packages(c("remotes", "devtools", "usethis"))
+install.packages(c("remotes", "devtools", "usethis")) # optional
 install.packages("sf")
 install.packages("mapview")
 install.packages("rmarkdown")
@@ -125,9 +132,38 @@ install.packages("rmarkdown")
 
 ## r5r
 
+The workshop **“A crash course on urban accessibility with R"** uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.
+
+```{r}
+pkgs = c("r5r", "accessibility", "rJavaEnv", "h3jsr")
+
+install.packages(pkgs)
+```
+
 ### Java Development Kit
 
-It is also known as JDK 21. You will need this to work with the **r5r** package.
+To use the `{r5r}` package (version v2.0 or higher), you will need to have *Java Development Kit (JDK) 21* installed on your computer.
+There are numerous open-source JDK implementations.
+The easiest way to install JDK is using the new [{rJavaEnv}](https://www.ekotov.pro/rJavaEnv/) package in R.
+
+```{r}
+# check version of Java currently installed (if any) 
+rJavaEnv::java_check_version_rjava()
+
+## if this is the first time you use {rJavaEnv}, you might need to run this code
+## below to consent the installation of Java.
+# rJavaEnv::rje_consent(provided = TRUE)
+
+# install Java 21
+rJavaEnv::java_quick_install(
+  version = 21,
+  distribution = 'Corretto')
+
+# check if Java was successfully installed
+rJavaEnv::java_check_version_rjava()
+```
+
+**Alternatively**, you can manually download and install JDK 21.
 
 ::: {.panel-tabset .nav-pills}
 ### Windows and MacOS
@@ -144,20 +180,11 @@ java -version
 ```
 :::
 
-### r5r
 
-Install the **r5r** package:
+## Open Route Service
 
-```{r}
-install.packages("r5r")
-
-# development version:
-# devtools::install_github("ipeaGIT/r5r", subdir = "r-package")
-```
-
-### Open Route Service
-
-[Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. Copy your API.
+[Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token.
+Copy your API.
 
 In RStudio console, run:
 
