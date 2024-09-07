@@ -51,63 +51,45 @@ Try to use a **categorical variable**.
 ```{r}
 #| eval: false
 #| code-fold: true
-mapview(TRIPSgeo, zcol = "Municipality")
+mapview(TRIPSgeo, zcol = "Municipality", alpha.regions = 0.4) # also add transparency)
 ```
 
-Note that you can change the basemap, and click on the geometries to see the data associated with them.
+::: callout-note
+Note that you can change the **basemap**, and click on the geometries to **see the data** associated with them.
+:::
 
-![](images/clipboard-3307189144.png)
+![](images/clipboard-3307189144.png){width="540"}
 
 You can go crazy with all the options that `mapview` offers.
 Please refer to the [documentation](https://r-spatial.github.io/mapview/articles/mapview_02-advanced.html) to see all the options.
 
 ### Export
 
-You can export a map as an html file or image.
+You can directly export the map as an `html` file or image, using the Viewer panel.
+
+![](images/clipboard-3542861620.png){width="470"}
+
+::: {.callout-warning appearance="minimal" icon="false"}
+This is the most straightforward solution.
+:::
+
+You can also export a map as an html file or image using code.
 
 ```{r}
 #| eval: false
 # install.packages("webshot2") # you will need this
 
-map = mapview(TRIPSgeo, zcol = "Total") # fisrt create a objet with the desited map
+map = mapview(TRIPSgeo, zcol = "Total") # fisrt create a objet with the desired map
 
 mapshot2(map, "data/map.html") # as webpage
 mapshot2(map, file = "data/map.png") # as image
 ```
 
-
-## tmap
-
-The `tmap` package is another package to create interactive maps.
-
-To create a map, you need to declare a `tm_shape()` for the dataset you are using and a `tm_polygons()`.
-(or lines or other) to declare the representation you want.
-
-```{r}
-#| message: false
-#| fig-format: png
-# install.packages("tmap")
-library(tmap)
-tmap_mode("view") # by default tmap_mode is "plot" - a static map
-
-tm_shape(TRIPSgeo) + tm_polygons("Total")
-```
-
-### Export
-
-With `tmap` you can directly export the map as an `html` file or image, using the Viewer panel.
-
-![](images/clipboard-2756755188.png)
-
-::: {.callout-warning appearance="minimal" icon="false"}
-This is a most straightforward solution.
-:::
-
 ## Rmarkdown
 
 To include a map on a report, website, paper (any type), you can create an Rmarkdown file.
 
-![](images/clipboard-297102165.png)
+![](images/clipboard-1842640045.png){width="388"}
 
-And include a R code chunk with a map.
+And include a R code chunk (`ctrl + alt + i`) with a map.
 If the output is html, you will get an interactive map on your document!
