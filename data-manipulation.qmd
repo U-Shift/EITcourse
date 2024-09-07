@@ -48,11 +48,18 @@ write.table(Municipalities, "data/Municipalities_names.txt", row.names = FALSE, 
 TRIPS = readRDS("data/TRIPSorigin.Rds")
 ```
 
-> Note that it is very important to understand the R basics, that's why we started from there, even if the following functions will provide the same results.
+::: callout-important
+Note that it is very important to understand the R basics, that's why we started from there, even if the following functions will provide the same results.
+:::
 
 You don't need to know everything!
 And you don't need to know by heart.
 The following functions are the ones you will probably use most of the time to handle data.
+
+::: {.callout-tip appearance="simple"}
+There are several ways to reach the same solution.
+Here we present only one of them.
+:::
 
 ## Select variables
 
@@ -263,9 +270,11 @@ head(TRIPSsum2)
 
 We summed the total number of trips and car trips in each municipality, **separated by** inter and intra municipal trips.
 
-> It is a good practice to use the `ungroup()` function after the `group_by()` function.
-> This will remove the grouping.
-> If you don't do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.
+::: {.callout-caution appearance="simple"}
+It is a good practice to use the `ungroup()` function after the `group_by()` function.
+This will remove the grouping.
+If you don't do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.
+:::
 
 ## Arrange data
 
@@ -309,6 +318,7 @@ TRIPS_pipes = TRIPS |>
   summarize(Total = sum(Total),
             Car = sum(Car),
             Car_perc = Car/Total * 100) |> 
+  ungroup() |> 
   
   arrange(desc(Car_perc))
 ```
