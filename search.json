@@ -205,7 +205,7 @@
     "href": "data-manipulation.html#select-variables",
     "title": "5  Data manipulation",
     "section": "",
-    "text": "5.1.1 Using pipes!\nNow, let’s introduce pipes. Pipes are a rule as: “For this, do this.”\nThis is useful to skip the first argument of the functions (usually the dataset to apply the function).\nApplying a pipe to the select() function, we can write as:\n\nTRIPS_new = TRIPS |&gt; select(Origin, Walk, Bike, Total)\n\nTwo things to note:\n\nThe pipe symbol can be written as |&gt; or %&gt;%. 2 To write it you may also use the ctrl+shift+m shortcut.\nAfter typing select( you can press tab and the list of available variables of that dataset will show up! Enter to select. With this you prevent typo errors.",
+    "text": "5.1.1 Using pipes!\nNow, let’s introduce pipes. Pipes are a rule as: “With this, do this.”\nThis is useful to skip the first argument of the functions (usually the dataset to apply the function).\nApplying a pipe to the select() function, we can write as:\n\nTRIPS_new = TRIPS |&gt; select(Origin, Walk, Bike, Total)\n\nTwo things to note:\n\nThe pipe symbol can be written as |&gt; or %&gt;%. 2 To write it you may also use the ctrl+shift+m shortcut.\nAfter typing select( you can press tab and the list of available variables of that dataset will show up! Enter to select. With this you prevent typo errors.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
@@ -414,7 +414,29 @@
     "href": "open-data.html",
     "title": "11  Open transportation data",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "11.1 Road Network",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+    ]
+  },
+  {
+    "objectID": "open-data.html#road-network",
+    "href": "open-data.html#road-network",
+    "title": "11  Open transportation data",
+    "section": "",
+    "text": "11.1.1 OpenStreetMap\nThe OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world. This is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.\n\n\n\n\n\n\nAlthough it can be not 100% accurate, it is a good source of data for most of the cases.\n\n\n\nYou can access it’s visualization tool at www.openstreetmap.org. To edit the map, you can use the Editor, once you register.\nIf you want to download the data, you can use the following tools.\n\nOverpass API\nGeofabrik\n\nThese websites include all the OSM data, with much more information than you need.\n\n\n11.1.2 HOT Export Tool\nThis interactive tool helps you to select the region you want to extract, the type of information to include, and the output data format.\nAccess via export.hotosm.org. You need an OSM account to use it.\n\nAfter the export, you can read in R using the sf package\n\n\nCode\nGent = sf::st_read(\"data/Gent_center.gpkg\", quiet = TRUE)\n\nmapview::mapview(Gent, zcol = \"highway\")\n\n\n\n\n\n\n\n\n11.1.3 OSM in R\nThere are also some R packages that can help you to download and work with OpenStreetMap data, such as:\n\nosmdata\nosmextract\n\nThis is an example of how to download OpenStreetMap road network data using the osmextract package:\n\n\nCode\nlibrary(osmextract)\nOSM_Malta = oe_get_network(place = \"Malta\") # it will geocode the place\n\nMalta_main_roads = OSM_Malta |&gt; \n  filter(highway %in% c(\"primary\", \"secondary\", \"tertiary\", \"trunk\"))\n\nplot(Malta_main_roads[\"highway\"])",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+    ]
+  },
+  {
+    "objectID": "open-data.html#transportation-services-data",
+    "href": "open-data.html#transportation-services-data",
+    "title": "11  Open transportation data",
+    "section": "11.2 Transportation Services’ Data",
+    "text": "11.2 Transportation Services’ Data\n\n11.2.1 GTFS\n\n\n\n11.2.2 National Access Points\nList of the European Union members states with National Access Points for Transportation data\nhttps://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en\nExample of Bus services data in Belgium:\n\n\n\nSource: Transport Data Belgium",
     "crumbs": [
       "**Day 2**",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
