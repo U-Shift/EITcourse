@@ -8,7 +8,8 @@ format:
 
 The course consists of an in-person 2-day course, taking place during the EIT DTN Annual Meeting on the **19th and 20th September 2024**.
 
-The first day will focus on learning the basics of R programming and how to treat and explore datasets. The second day will focus on analyzing spatial datasets, and routing origins to destinations.
+The first day will focus on learning the basics of R programming and how to treat and explore datasets.
+The second day will focus on analyzing spatial datasets, and routing origins to destinations.
 
 ## Day 1
 
@@ -49,7 +50,7 @@ The first day will focus on learning the basics of R programming and how to trea
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                 |
-|----------------|--------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                           |
 | 10.00 | Introduction to programming techniques and data structures                                                      |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                   |
@@ -67,7 +68,7 @@ The first day will focus on learning the basics of R programming and how to trea
 | 17.00 | *End of day 1*                                                                                                  |
 
 | Day 2 |                                                                                    |
-|----------------|--------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | 9.30  | Desire-lines from OD pairs and transport zones: examples and exercises             |
 | 10.30 | Georeferenced coordinates from survey responses: example and exercises             |
 | 11.00 | *Coffee break*                                                                     |
@@ -88,6 +89,7 @@ The first day will focus on learning the basics of R programming and how to trea
 The course will take place at Campus Sterre, Building S8, room 2.4.
 
 ```{r}
+#| fig-format: png
 Campus_S8_coord = c(3.7105372, 51.0241258)
 Campus_S8 = sf::st_sfc(sf::st_point(Campus_S8_coord)) # create point
 Campus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assign crs

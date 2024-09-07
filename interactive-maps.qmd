@@ -32,6 +32,7 @@ For instance, the `tmap` package, the `leaflet` package, and the `mapview` packa
 Mapview allows to create quick interactive maps, only by declaring the function `mapview()`.
 
 ```{r}
+#| fig-format: png
 library(mapview)
 mapview(TRIPSgeo)
 ```
@@ -39,6 +40,7 @@ mapview(TRIPSgeo)
 To color the points by a variable, you can use the `zcol` argument.
 
 ```{r}
+#| fig-format: png
 mapview(TRIPSgeo, zcol = "Total")
 ```
 
@@ -59,7 +61,6 @@ Note that you can change the basemap, and click on the geometries to see the dat
 You can go crazy with all the options that `mapview` offers.
 Please refer to the [documentation](https://r-spatial.github.io/mapview/articles/mapview_02-advanced.html) to see all the options.
 
-
 ### Export
 
 You can export a map as an html file or image.
@@ -73,7 +74,7 @@ map = mapview(TRIPSgeo, zcol = "Total") # fisrt create a objet with the desited 
 mapshot2(map, "data/map.html") # as webpage
 mapshot2(map, file = "data/map.png") # as image
 ```
-> This is not the most straightforward solution.
+
 
 ## tmap
 
@@ -84,6 +85,7 @@ To create a map, you need to declare a `tm_shape()` for the dataset you are usin
 
 ```{r}
 #| message: false
+#| fig-format: png
 # install.packages("tmap")
 library(tmap)
 tmap_mode("view") # by default tmap_mode is "plot" - a static map
@@ -96,6 +98,10 @@ tm_shape(TRIPSgeo) + tm_polygons("Total")
 With `tmap` you can directly export the map as an `html` file or image, using the Viewer panel.
 
 ![](images/clipboard-2756755188.png)
+
+::: {.callout-warning appearance="minimal" icon="false"}
+This is a most straightforward solution.
+:::
 
 ## Rmarkdown
 
