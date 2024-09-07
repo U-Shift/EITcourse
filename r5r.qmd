@@ -16,7 +16,7 @@ Please access it here: <https://ipeagit.github.io/access_workshop_eit_2024/>
 Institute for Applied Economic Research (Ipea), Brazil\
 [Website](https://www.urbandemographics.org/about/) \| [Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl) \| [Twitter](https://x.com/UrbanDemog) \| [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) \|
 
-**Short bio of the instructor:**
+**Short bio**
 
 Rafael H. M. Pereira is a senior researcher in the fields of urban analytics, spatial data science and transport studies at the Institute for Applied Economic Research (Ipea), Brazil.
 His research looks broadly at how urban policies and technologies shape the spatial organization of cities, human mobility as well as their impacts on social and health inequalities.
