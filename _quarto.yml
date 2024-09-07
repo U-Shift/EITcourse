@@ -46,7 +46,7 @@ book:
   sidebar:
     tools:
       - icon: download
-        href: https://github.com/U-Shift/EITcourse/raw/main/Get-your-dataset-ready.pdf
+        href: https://github.com/U-Shift/EITcourse/blob/main/Get-your-datase-ready.pdf
         text: "Download PDF"
         target: _blank
   page-footer:
@@ -71,6 +71,7 @@ format:
     # engine: knitr
     toc: true
     number-depth: 3
+    toc-depth: 3
     output-file: "EITcourse_GetYourDatasetReady2024"
     output-ext:  "pdf"
 # prefer-html: true
