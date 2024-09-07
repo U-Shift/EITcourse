@@ -85,7 +85,7 @@ TRIPS_new = select(TRIPS_new, -Total) # dropping the Total column
 ### Using pipes!
 
 Now, let's introduce pipes.
-Pipes are a rule as: "**For this, do this.**"
+Pipes are a rule as: "**With this, do this.**"
 
 This is useful to skip the first argument of the functions (usually the dataset to apply the function).
 
