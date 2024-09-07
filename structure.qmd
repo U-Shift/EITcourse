@@ -50,7 +50,7 @@ The second day will focus on analyzing spatial datasets, and routing origins to 
 # Detailed schedule (TBC)
 
 | Day 1 |                                                                                                                 |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                           |
 | 10.00 | Introduction to programming techniques and data structures                                                      |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                   |
@@ -61,16 +61,15 @@ The second day will focus on analyzing spatial datasets, and routing origins to 
 | 12.30 | *Lunch break*                                                                                                   |
 |       |                                                                                                                 |
 | 13.30 | Data manipulation: examples and exercises (select, filter, left-join, group and summarize, using dplyr package) |
-| 15.00 | Introduction to GIS and spatial data: import and visualize vector data                                          |
 | 15.30 | *Coffee break*                                                                                                  |
-| 15.45 | (cont.)                                                                                                         |
-| 16.15 | View and export interactive maps                                                                                |
+| 15.45 | Introoduction to GIS and spatial data: import and visualize vector data                                         |
+| 16.30 | View and export interactive maps                                                                                |
 | 17.00 | *End of day 1*                                                                                                  |
 
 | Day 2 |                                                                                    |
-|------------------|------------------------------------------------------|
-| 9.30  | Desire-lines from OD pairs and transport zones: examples and exercises             |
-| 10.30 | Georeferenced coordinates from survey responses: example and exercises             |
+|-------------------|-----------------------------------------------------|
+| 9.30  | Centroids and Georeferenced coordinates from survey responses                      |
+| 10.30 | Desire-lines from OD pairs and transport zones                                     |
 | 11.00 | *Coffee break*                                                                     |
 | 11.15 | (cont.)                                                                            |
 | 11.30 | Euclidean and routing distances with sf and r5r                                    |
