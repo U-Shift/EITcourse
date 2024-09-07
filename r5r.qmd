@@ -1,9 +1,25 @@
-# Routing and Accessibility with `r5r`
+# Urban Accessibility with R
 
-This is a book created from markdown and executable code.
+The module “**A crash course on urban accessibility with R**”, lectured by [Rafael H. M. Pereira](https://ipeagit.github.io/access_workshop_eit_2024/#about-the-instructor), has it's own website with materials.
 
-See @knuth84 for additional discussion of literate programming.
+::: {.callout-note appearance="simple"}
+Please access it here: <https://ipeagit.github.io/access_workshop_eit_2024/>
+:::
 
-```{r}
-42 + 3.14
-```
+
+[![Screenshot of the website for this learning module.](images/clipboard-4241488434.png)](https://ipeagit.github.io/access_workshop_eit_2024/)
+
+## About the instructor {.unnumbered}
+
+**Rafael H. M. Pereira**\
+*Head of Data Science*\
+Institute for Applied Economic Research (Ipea), Brazil\
+[Website](https://www.urbandemographics.org/about/) \| [Google Scholar](https://scholar.google.com.br/citations?user=dbRivsEAAAAJ&hl) \| [Twitter](https://x.com/UrbanDemog) \| [Linkedin](https://www.linkedin.com/in/rafael-h-m-pereira/) \|
+
+**Short bio of the instructor:**
+
+Rafael H. M. Pereira is a senior researcher in the fields of urban analytics, spatial data science and transport studies at the Institute for Applied Economic Research (Ipea), Brazil.
+His research looks broadly at how urban policies and technologies shape the spatial organization of cities, human mobility as well as their impacts on social and health inequalities.
+Some of his key contributions to the fields of urban analytics and planning involve the development of new methods and open-source computational tools to the study of urban systems and transportation networks.
+These contributions emerge from substantive interests around social justice and sustainability issues in urban development, with particular focus on transportation equity and inequalities in access to opportunities, and the environmental impacts of built environments and mobility patterns.
+With a background in Sociology and Demography, Dr. Pereira obtained his PhD in Geography from the Transport Studies Unit at Oxford University.
