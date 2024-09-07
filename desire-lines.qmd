@@ -1,9 +1,40 @@
 # OD pairs and desire lines
 
-This is a book created from markdown and executable code.
+Desire lines are a way to represent the flow of people or goods between two points. They are often used in transport planning to represent the flow of trips between zones.
+In this example, we will use the `stplanr` package to create desire lines from origin-destination (OD) pairs.
 
-See @knuth84 for additional discussion of literate programming.
+## Create desire lines with stplanr
 
-```{r}
-42 + 3.14
+First, we need to install the `stplanr` package.
+
+<!-- TO-DO -->
+
+
+# Desire Lines
+
+Download `TRIPSdl_mun.gpkg` 
+
+```{r getdl}
+TRIPSdl_mun = st_read("geo/TRIPSdl_mun.gpkg", quiet = TRUE) 
 ```
+
+Filter intrazonal trips, and trips with origin or desination in Lisbon.
+
+```{r withlx}
+TRIPSdl_mun = TRIPSdl_mun |> 
+  filter(Origin_mun != Destination_mun) |> 
+  filter(Total > 5000) # remove noise
+
+mapview(TRIPSdl_mun, zcol = "Total", lwd = 5)
+```
+
+```{r filterlx}
+TRIPSdl_mun_noLX = TRIPSdl_mun |> 
+  filter(Origin_mun != "Lisboa", Destination_mun != "Lisboa")
+
+mapview(TRIPSdl_mun_noLX, zcol = "Total", lwd = 8)
+```
+
+You can replace the `Total` with other variable, such as `Car`, `PTransit`, and so on.
+
+> Note: The function [`od_oneway()`](https://docs.ropensci.org/stplanr/reference/od_oneway.html) aggregates oneway lines to produce bidirectional flows. By default, it returns the sum of each numeric column for each bidirectional origin-destination pair. This is better for viz purpouses.
