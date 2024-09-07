@@ -1,14 +1,17 @@
 # Open transportation data
 
-## Road Network
+In this chapter we will guide you through sources of open data for transportation analysis: road networks and public transportation information.
+
+## Road Networks
 
 ### OpenStreetMap
 
 The OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.
-This is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.
+
+This is the most used source of road network data for transportation analysis in academia, since it is available almost **everywhere in the world**, is open and free to use.
 
 ::: {.callout-caution appearance="simple"}
-Although it can be not 100% accurate, it is a good source of data for most of the cases.
+Although it can be not 100% accurate, OSM is a good source of data for most of the cases.
 :::
 
 You can access it's visualization tool at [www.openstreetmap.org](https://www.openstreetmap.org/).
@@ -30,7 +33,7 @@ You need an OSM account to use it.
 
 ![](images/clipboard-1441436716.png)
 
-After the export, you can read in R using the `sf` package
+After the export, you can read in R using the `sf` package:
 
 ```{r}
 #| fig-format: png
@@ -69,9 +72,10 @@ plot(Malta_main_roads["highway"])
 
 ### National Access Points
 
-List of the European Union members states with National Access Points for Transportation data
+The European Union has a directive that requires the member states to provide access to transportation data.
+Data includes not only **Public Transportation** data, but also **road network**s, car **parking**, and other transportation-related information.
 
-<https://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en>
+[List of the European Union members states with National Access Points for Transportation data](https://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en)
 
 Example of Bus services data in Belgium:
 
