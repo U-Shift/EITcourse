@@ -74,6 +74,16 @@ Now see the differences when calling `Municipalities_geo` and `Municipalities_pr
 
 Join to TRIPS_pipes data frame.
 
+<!-- TO-DO -->
+
+```{r}
+TRIPSpipes =
+  read.csv("data/TRIPS_pipes.csv") |>
+  st_as_sf(coords = c("lon", "lat"), crs = 4326) |>
+  left_join(Municipalities_geo)
+```
+
+
 ## Visuzlize spatial data
 
 Represent Transport Zones with Total, and with Car %.
@@ -81,7 +91,6 @@ Represent Transport Zones with Total, and with Car %.
 ```{r carper}
 # create Car_per variable
 TRIPSgeo_mun = TRIPSgeo_mun |> mutate(Car_per = Car / Total * 100)
-TRIPSgeo_freg = TRIPSgeo_freg |> mutate(Car_per = Car / Total * 100)
 
 #Vizualize in map
 mapview(TRIPSgeo_mun, zcol = "Car_per")
