@@ -1,9 +1,55 @@
 # Georeferenced coordinates
 
-This is a book created from markdown and executable code.
 
-See @knuth84 for additional discussion of literate programming.
+# Centroids
 
-```{r}
-42 + 3.14
+## Geometric centroids
+
+```{r geocentroid}
+CENTROIDSgeo = st_centroid(TRIPSgeo_mun)
+# mapview(CENTROIDSgeo)
 ```
+
+
+## Weigthed centroids
+
+Get BGRI Data^[Base Geográfica de Referenciação de Informação, Censos 2021] from INE website, at *Área Metropolitana de Lisboa* level: [https://mapas.ine.pt/download/index2021.phtml](mapas.ine.pt/download/index2021.phtml)
+
+```{r getcensus}
+BGRI = st_read("original/BGRI21_LISBOA.gpkg", quiet = TRUE)
+```
+
+It is not that easy to estimate weighted centroids with R. See [here](https://wzbsocialsciencecenter.github.io/spatially_weighted_avg/).  
+We will make a bridge connection to QGIS to use its native function of mean coordinates.  
+
+<!-- CHANGE -->
+
+
+```{r weighted}
+library(qgisprocess)
+# qgis_search_algorithms("mean") # search the exact function name
+# qgis_get_argument_specs("native:meancoordinates") |> select(name, description) # see the required inputs
+
+# with population
+CENTROIDSpop = qgis_run_algorithm(algorithm = "native:meancoordinates",
+                                  INPUT = BGRI,
+                                  WEIGHT = "N_INDIVIDUOS",
+                                  UID = "DTMN21")
+CENTROIDSpop = st_as_sf(CENTROIDSpop)
+
+# with buildings
+CENTROIDSbuild = qgis_run_algorithm(algorithm = "native:meancoordinates",
+                                  INPUT = BGRI,
+                                  WEIGHT = "N_EDIFICIOS_CLASSICOS",
+                                  UID = "DTMN21")
+CENTROIDSbuild = st_as_sf(CENTROIDSbuild)
+```
+
+
+## Compare in map
+
+```{r mapcentroid}
+mapview(CENTROIDSgeo) + mapview(CENTROIDSpop, col.region = "red") + mapview(CENTROIDSbuild, col.region = "black")
+```
+
+See how the building, poulation and geometric centroids of Montijo are appart, from closer to Tagus, to the rural area.
