@@ -44,7 +44,7 @@
     "href": "index.html#recommended-readings",
     "title": "Get your dataset ready",
     "section": "1.4 Recommended readings",
-    "text": "1.4 Recommended readings\n\nEngel, Claudia A.\n\nIntroduction to R\n\nLovelace, Robin, Nowosad, Jakub & Muenchow, Johannes.\n\nGeocomputation with R\n\nPereira, Rafael H. M. & Herszenhut, Daniel.\n\nIntroduction to urban accessibility: a practical guide with R. Ipea - Institute of Applied Economic Research",
+    "text": "1.4 Recommended readings\n\nEngel, Claudia A (2023) Introduction to R\nLovelace, Robin, Nowosad, Jakub & Muenchow, Johannes (2023) Geocomputation with R\nPereira, Rafael H. M. & Herszenhut, Daniel (2023) Introduction to urban accessibility: a practical guide with R. Ipea - Institute of Applied Economic Research",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -117,7 +117,7 @@
     "href": "software.html#r-packages",
     "title": "3  Software",
     "section": "3.3 R packages",
-    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\"))\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")",
+    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\")) # optional\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
@@ -128,7 +128,18 @@
     "href": "software.html#r5r",
     "title": "3  Software",
     "section": "3.4 r5r",
-    "text": "3.4 r5r\n\n3.4.1 Java Development Kit\nIt is also known as JDK 21. You will need this to work with the r5r package.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version\n\n\n\n\n\n\n3.4.2 r5r\nInstall the r5r package:\n\ninstall.packages(\"r5r\")\n\n# development version:\n# devtools::install_github(\"ipeaGIT/r5r\", subdir = \"r-package\")\n\n\n\n3.4.3 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others.",
+    "text": "3.4 r5r\nThe workshop “A crash course on urban accessibility with R” uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\npkgs = c(\"r5r\", \"accessibility\", \"rJavaEnv\", \"h3jsr\")\n\ninstall.packages(pkgs)\n\n\n3.4.1 Java Development Kit\nTo use the {r5r} package (version v2.0 or higher), you will need to have Java Development Kit (JDK) 21 installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new {rJavaEnv} package in R.\n\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n\nAlternatively, you can manually download and install JDK 21.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
+    ]
+  },
+  {
+    "objectID": "software.html#open-route-service",
+    "href": "software.html#open-route-service",
+    "title": "3  Software",
+    "section": "3.5 Open Route Service",
+    "text": "3.5 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
