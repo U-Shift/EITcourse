@@ -3,7 +3,7 @@ Materials for the course delivered at the **EIT Doctoral Training Network Annual
 [![](images/EIT_logo-EU1-horizontal_1.png){fig-align="center" width="473"}](https://www.eiturbanmobility.eu/academy/doctoral-training-network/)
 
 |                                                                                |                                                                       |
-|:------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
+|:-----------------------------------:|:---------------------------------:|
 | [![](images/Ist-logo-01.jpg){width="150"}](https://ushift.tecnico.ulisboa.pt/) | [![](images/ipea-logo-01.png){width="230"}](https://www.ipea.gov.br/) |
 
 # Introduction
@@ -86,9 +86,6 @@ Additionally, the use of open source software and datasets allows researchers to
 
 ## Recommended readings
 
--   Engel, Claudia A.
-    (2023) [Introduction to R](https://cengel.github.io/R-intro/)
--   Lovelace, Robin, Nowosad, Jakub & Muenchow, Johannes.
-    (2023) [Geocomputation with R](https://geocompr.robinlovelace.net/)
--   Pereira, Rafael H. M. & Herszenhut, Daniel.
-    (2023) [Introduction to urban accessibility: a practical guide with R](https://ipeagit.github.io/intro_access_book/index.en.html). Ipea - Institute of Applied Economic Research
+-   Engel, Claudia A (2023) [Introduction to R](https://cengel.github.io/R-intro/)
+-   Lovelace, Robin, Nowosad, Jakub & Muenchow, Johannes (2023) [Geocomputation with R](https://geocompr.robinlovelace.net/)
+-   Pereira, Rafael H. M. & Herszenhut, Daniel (2023) [Introduction to urban accessibility: a practical guide with R](https://ipeagit.github.io/intro_access_book/index.en.html). Ipea - Institute of Applied Economic Research
