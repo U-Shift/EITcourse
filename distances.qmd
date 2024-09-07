@@ -6,9 +6,178 @@ We will show how to estimate euclidean distances (*as crown flights*) using `sf`
 
 Taking the municipality centroids, or survey respondents' location
 
+### Import survey and visualize
 
-See @knuth84 for additional discussion of literate programming.
+```{r survey}
+SURVEY = read.csv("geo/SURVEYist.txt", sep = "\t") # tab delimiter
+SURVEY = st_as_sf(SURVEY, coords = c("lon", "lat"), crs = 4326) # transform as geo data
 
-```{r}
-42 + 3.14
+mapview(SURVEY, zcol = "MODE") + mapview(IST, col.region = "red", cex = 12)
 ```
+
+
+### Create new point at IST
+
+```{r createist}
+IST = st_sfc(st_point(c(-9.1397404, 38.7370168)), crs = 4326)
+```
+
+
+### Reproject layers
+
+In R we can process distances in meters on-fly.
+
+Buy here is the code to project layers from Geographic coordinates (WGS 84 - EPSG:[4364](https://epsg.io/4326)) to Projected coordinates (Pseudo-Mercator - EPSG:[3857](https://epsg.io/3857), or Portuguese Tranversor-Mercator 06 - EPSG:[3763](https://epsg.io/3763)).
+
+```{r projectlayers}
+ISTprojected = st_transform(IST, crs = 3857)
+SURVEYprojected = st_transform(SURVEY, crs = 3857)
+```
+
+### Straight lines and distance
+
+Nearest point between the two layers. As we only have 1 point at IST layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
+
+```{r eucdistance}
+SURVEYeuclidean = st_nearest_points(SURVEY, IST, pairwise = TRUE) |> st_as_sf() # this creates lines
+
+mapview(SURVEYeuclidean)
+
+SURVEY$distance = st_length(SURVEYeuclidean) # compute distance and add directly in the first layer
+
+summary(SURVEY$distance) # in meters
+
+# to remove the units - can be useful
+SURVEY$distance = units::drop_units(SURVEY$distance)
+```
+
+
+## Routing distance
+
+We use the [openrouteservice-r](https://giscience.github.io/openrouteservice-r/) package. For that you need to [create an account](https://openrouteservice.org/dev/#/signup) and get a Token / api key.
+
+See the [documentation](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html) for more details.
+
+### Distances 1 point to many points
+
+Estimate the time and distance by `foot-waking` and `driving-car`, `fastest` mode, from survey locations (under 2 km^[for speed-up purposes - api request limit up to 40 / minute]) to IST.
+
+```{r routingdataprep}
+# devtools::install_github("GIScience/openrouteservice-r")
+library(openrouteservice)
+# ors_api_key(Sys.getenv("ORS_API_KEY")) # one time setup
+
+# get coordinates variable
+SURVEY$coordinates = st_coordinates(SURVEY)
+IST$coordinates = st_coordinates(IST)
+
+# Filter only the locations up to 2km euclidean
+SURVEYsample = SURVEY |> filter(distance <= 2000)
+# nrow(SURVEYsample) # 95
+```
+
+
+Although it is the same algorithm, here it works differently from QGIS.
+
+There are many ways of doing this. If we want to know only time and distance, and **not the route** itself, we can use the `ors_matrix()`. See example [here](https://web.tecnico.ulisboa.pt/~rosamfelix/gis/trips/timedistancematrix.html#Distance_and_time_matrix).  
+If we need the route, we should use the function `ors_directions()`. This one is not that easy to set-up because the function is prepared to retrieve only one result per request :( So we do a loop. Don't worry, it is not that
+
+```{r orsloop1, eval=FALSE, include=TRUE}
+ROUTES_foot = data.frame() # initial empty data frame
+
+# loop - the origin (i) is the survey location, and the IST is always the same destination
+for (i in 1:nrow(SURVEYsample)) {
+  ROUTES1 = ors_directions(
+    data.frame(
+      lon = c(SURVEYsample$coordinates[i, 1], IST$coordinates[1, 1]),
+      lat = c(SURVEYsample$coordinates[i, 2], IST$coordinates[1, 2])
+    ),
+    profile = "foot-walking", # or driving-car cycling-regular cycling-electric
+    preference = "fastest", # or shortest
+    output = "sf"
+  )
+  ROUTES1$distance = ROUTES1$summary[[1]]$distance # extract these values from summary
+  ROUTES1$duration = ROUTES1$summary[[1]]$duration
+  
+  ROUTES_foot = rbind(ROUTES_foot, ROUTES1) # to keep adding in the same df
+}
+
+ROUTES_foot = ROUTES_foot |>
+  select(distance, duration, geometry) |> # discard unnecessary variables
+  mutate(ID = SURVEYsample$ID) # cbind with syrvey ID
+```
+
+Repeat the same for `car-driving`.
+
+```{r orsloop2, eval=FALSE, include=TRUE}
+ROUTES_car = data.frame() # initial empty data frame
+
+# loop - the origin (i) is the survey location, and the IST is always the same destination
+for (i in 1:nrow(SURVEYsample)) {
+  ROUTES1 = ors_directions(
+    data.frame(
+      lon = c(SURVEYsample$coordinates[i, 1], IST$coordinates[1, 1]),
+      lat = c(SURVEYsample$coordinates[i, 2], IST$coordinates[1, 2])
+    ),
+    profile = "driving-car", # or cycling-regular cycling-electric foot-walking
+    preference = "fastest", # or shortest
+    output = "sf"
+  )
+  ROUTES1$distance = ROUTES1$summary[[1]]$distance # extract these values from summary
+  ROUTES1$duration = ROUTES1$summary[[1]]$duration
+  
+  ROUTES_car = rbind(ROUTES_car, ROUTES1) # to keep adding in the same df
+}
+
+ROUTES_car = ROUTES_car |>
+  select(distance, duration, geometry) |> # discard unnecessary variables
+  mutate(ID = SURVEYsample$ID) # cbind with syrvey ID
+```
+
+```{r importexport1, include=FALSE}
+# st_write(ROUTES_foot, "original/routes_foot.geojson")
+# st_write(ROUTES_car, "original/routes_car.geojson")
+
+ROUTES_foot = st_read("original/routes_foot.geojson", quiet = TRUE)
+ROUTES_car = st_read("original/routes_car.geojson", quiet = TRUE)
+```
+
+## Compare distances
+
+We can compare the euclidean and routing distances that we estimated for the survey locations under 2 km.
+
+```{r distancessummary}
+summary(SURVEYsample$distance) # Euclidean
+summary(ROUTES_foot$distance) # Walk
+summary(ROUTES_car$distance) # Car
+```
+
+## Vizualise routes
+
+Visualize with transparency of 30%
+
+```{r maproutes}
+mapview(ROUTES_foot, alpha = 0.3)
+mapview(ROUTES_car, alpha = 0.3, color = "red")
+```
+
+We can also use the `overline()` [function from stplanr package](https://docs.ropensci.org/stplanr/reference/overline.html) to break up the routes when they overline, and add them up.
+
+```{r overline, message=FALSE, warning=FALSE}
+library(stplanr)
+
+# we create a value that we can later sum, it also could be the number of trips represented by this route. in this case is only one respondent per route
+ROUTES_foot$trips = 1 
+
+ROUTES_foot_overline = overline(
+  ROUTES_foot,
+  attrib = "trips",
+  fun = sum
+)
+
+mapview(ROUTES_foot_overline, zcol = "trips", lwd = 3)
+```
+
+*   How many people are entering IST by the stairs near *Bar de Civil*?  
+*   And by the North gate?
+*   And from Alameda stairs?
