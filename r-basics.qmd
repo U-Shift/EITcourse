@@ -1,6 +1,7 @@
 ---
 eval: true
 code-fold: false
+number-depth: 2
 engine: knitr
 ---
 
@@ -8,35 +9,33 @@ engine: knitr
 
 In this chapter we will introduce to the R basics and some exercises to get familiar to how R works.
 
-## Simple operations
+## Math operations
 
-### Math operations
-
-#### **Sum**
+### Sum
 
 ```{r}
 1+1
 ```
 
-#### **Subtraction**
+### Subtraction
 
 ```{r}
 5-2
 ```
 
-#### **Multiplication**
+### Multiplication
 
 ```{r}
 2*2
 ```
 
-#### **Division**
+### Division
 
 ```{r}
 8/2
 ```
 
-#### **Round the number**
+### Round the number
 
 ```{r}
 round(3.14)
@@ -45,22 +44,22 @@ round(3.14, 1) # The "1" indicates to round it up to 1 decimal digit.
 
 You can use help `?round` in the console to see the description of the function, and the default arguments.
 
-### Basic shortpaths
+## Basic shortpaths
 
-#### **Perform Combinations**
+### Perform Combinations
 
 ```{r}
 c(1, 2, 3)
 c(1:3) # The ":" indicates a range between the first and second numbers. 
 ```
 
-#### **Create a comment with `ctrl + shift + m`**
+### Create a comment with `ctrl + shift + m`
 
 ```{r}
 # Comments help you organize your code. The software will not run the comment. 
 ```
 
-#### Create a table
+### Create a table
 
 A simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.
 
@@ -90,17 +89,19 @@ View(table_example)
 
 **Dataset:** the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal [@IMOB].
 
-#### Import dataset
+### Import dataset
 
 You can click directly in the file under the "Files" pan, or:
 
 ```{r}
-data = readRDS("data/TRIPSmode_mun.Rds")
+data = readRDS("data/TRIPSmode.Rds")
 ```
 
-> Note that after you type `"` you can use `tab` to navigate between folders and files and `enter` to autocomplete.
+::: {.callout-tip appearance="simple"}
+After you type `"` you can use `tab` to navigate between folders and files and `enter` to autocomplete.
+:::
 
-#### Take a first look at the data
+### Take a first look at the data
 
 **Summary statistics**
 
@@ -138,7 +139,7 @@ ncol(data)
 View(data)
 ```
 
-#### Explore the data
+### Explore the data
 
 **Check the total number of trips**
 
@@ -160,7 +161,7 @@ sum(data$Car)/sum(data$Total) * 100
 (sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100
 ```
 
-#### Modify original data
+### Modify original data
 
 **Create a column with the sum of the number of trips for active modes**
 
@@ -224,7 +225,7 @@ data_walk2 = data[ ,c(1,2,4)]
 data_walk3 = data[ ,-c(3,5:9)]
 ```
 
-#### Export data
+### Export data
 
 Save data in **.csv** and **.Rds**
 
@@ -233,7 +234,7 @@ write.csv(data, 'data/dataset.csv', row.names = FALSE)
 saveRDS(data, 'data/dataset.Rds') #Choose a different file. 
 ```
 
-#### Import data
+### Import data
 
 ```{r}
 csv_file = read.csv("data/dataset.csv")

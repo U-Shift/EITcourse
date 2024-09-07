@@ -90,7 +90,7 @@ View(table_example)
 # You can click directly in the file under the "Files" pan, or:
 # 
 
-data = readRDS("data/TRIPSmode_mun.Rds")
+data = readRDS("data/TRIPSmode.Rds")
 
 # 
 # > Note that after you type `"` you can use `tab` to navigate between folders and files and `enter` to autocomplete.
