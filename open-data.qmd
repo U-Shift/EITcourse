@@ -1,9 +1,78 @@
 # Open transportation data
 
-This is a book created from markdown and executable code.
+## Road Network
 
-See @knuth84 for additional discussion of literate programming.
+### OpenStreetMap
+
+The OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.
+This is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.
+
+::: {.callout-caution appearance="simple"}
+Although it can be not 100% accurate, it is a good source of data for most of the cases.
+:::
+
+You can access it's visualization tool at [www.openstreetmap.org](https://www.openstreetmap.org/).
+To edit the map, you can use the [Editor](https://www.openstreetmap.org/edit), once you register.
+
+If you want to **download** the data, you can use the following tools.
+
+-   [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API)
+-   [Geofabrik](https://download.geofabrik.de/)
+
+These websites include all the OSM data, with **much more information than you need**.
+
+### HOT Export Tool
+
+This interactive tool helps you to select the **region** you want to extract, the type of **information** to include, and the output data **format**.
+
+Access via [export.hotosm.org](https://export.hotosm.org/).
+You need an OSM account to use it.
+
+![](images/clipboard-1441436716.png)
+
+After the export, you can read in R using the `sf` package
 
 ```{r}
-42 + 3.14
+#| fig-format: png
+Gent = sf::st_read("data/Gent_center.gpkg", quiet = TRUE)
+
+mapview::mapview(Gent, zcol = "highway")
 ```
+
+### OSM in R
+
+There are also some R packages that can help you to download and work with OpenStreetMap data, such as:
+
+-   [`osmdata`](https://cran.r-project.org/web/packages/osmdata/index.html)
+-   [`osmextract`](https://docs.ropensci.org/osmextract)
+
+This is an example of how to download OpenStreetMap road network data using the `osmextract` package:
+
+```{r}
+#| eval: false
+library(osmextract)
+OSM_Malta = oe_get_network(place = "Malta") # it will geocode the place
+
+Malta_main_roads = OSM_Malta |> 
+  filter(highway %in% c("primary", "secondary", "tertiary", "trunk"))
+
+plot(Malta_main_roads["highway"])
+```
+
+![](images/malta_roads.png){fig-align="center"}
+
+## Transportation Services' Data
+
+### GTFS
+
+<!-- TO-DO -->
+
+### National Access Points
+
+List of the European Union members states with National Access Points for Transportation data
+
+<https://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en>
+
+Example of Bus services data in Belgium:
+
+[![Source: Transport Data Belgium](images/clipboard-3645209787.png)](https://www.transportdata.be/en/dataset?tags=Bus)
