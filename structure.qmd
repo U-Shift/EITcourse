@@ -25,7 +25,7 @@ After having everything setup, we will start with the [R basics](r-basics.qmd), 
 
 In the afternoon, we will focus on [data manipulation](data-manipulation.qmd), using the dplyr package to select, filter, left-join, group and summarize datasets.
 
-Then, we will [introduce GIS and spatial data](spatia-data.qmd), learning how to importing and visualize vector data.
+Then, we will [introduce GIS and spatial data](spatial-data.qmd), learning how to importing and visualize vector data.
 
 Finally, we will learn how to create cool [interactive maps](interactive-maps.qmd) using mapview and R markdown.
 
@@ -43,7 +43,7 @@ We will then learn how to estimate [euclidean and routing distances](distances.q
 
 In the second afternoon, we will briefly learn where to find and extract [open transportation data](open-data.qmd), such as OpenStreetMap and GTFS.
 
-Then, we will learn how to perform [accessibility analysis](accessibility-analysis.qmd), using the r5r package.
+Then, we will learn how to perform [accessibility analysis](r5r.qmd), using the r5r package.
 
 And finally, to wrap up all this topics, we will have a group exercise using other complex datasets, where you will apply the knowledge learned during the course.
 
