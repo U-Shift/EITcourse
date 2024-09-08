@@ -52,7 +52,7 @@ book:
   sidebar:
     tools:
       - icon: download
-        href: https://github.com/U-Shift/EITcourse/blob/main/Get-your-datase-ready.pdf
+        href: https://github.com/U-Shift/EITcourse/releases/download/2024.09/Get-your-dataset-ready.pdf
         text: "Download PDF"
         target: _blank
   page-footer:
