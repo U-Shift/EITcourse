@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Urban Accessibility with R – Get your dataset ready</title>
+<title>11&nbsp; Urban Accessibility with R – Get your dataset ready</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./open-data.html" rel="prev">
 <link href="./images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta name="citation_title" content="[10]{.chapter-number}&nbsp; [Urban Accessibility with R]{.chapter-title}">
+<meta name="citation_title" content="[11]{.chapter-number}&nbsp; [Urban Accessibility with R]{.chapter-title}">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Literate Programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
 <meta name="citation_reference" content="citation_title=Mobilidade e funcionalidade do território nas Áreas Metropolitanas do Porto e de Lisboa: 2017;,citation_author=undefined INE;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://www.ine.pt/xportal/xmain?xpid=INE&amp;amp;amp;xpgid=ine_publicacoes&amp;PUBLICACOESpub_boui=349495406&amp;PUBLICACOESmodo=2&amp;xlang=pt;,citation_isbn=978-989-25-0478-0;,citation_technical_report_institution=Instituto National de Estatística;">
@@ -115,6 +115,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_reference" content="citation_title=Spatial Data Science: With Applications in R;,citation_author=Edzer Pebesma;,citation_author=Roger Bivand;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://doi.org/10.1201/9780429459016;,citation_doi=10.1201/9780429459016;">
 <meta name="citation_reference" content="citation_title=Jittering: A Computationally Efficient Method for Generating Realistic Route Networks from Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Rosa Félix;,citation_author=Dustin Carlino;,citation_publication_date=2022-04-08;,citation_cover_date=2022-04-08;,citation_year=2022;,citation_doi=10.32866/001c.33873;,citation_journal_title=Findings;,citation_publisher=Findings Press;">
 <meta name="citation_reference" content="citation_title=centr: Weighted and Unweighted Spatial Centers;,citation_author=Ryan Zomorrodi;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://ryanzomorrodi.github.io/centr/;">
+<meta name="citation_reference" content="citation_title=stplanr: A Package for Transport Planning;,citation_author=Robin Lovelace;,citation_author=Richard Ellison;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=2;,citation_doi=10.32614/RJ-2018-053;,citation_volume=10;,citation_journal_title=The R Journal;">
+<meta name="citation_reference" content="citation_title=od: Manipulate and Map Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Malcolm Morgan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://github.com/itsleeds/od;">
 </head>
 
 <body class="nav-sidebar floating">
@@ -126,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./r5r.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./r5r.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -226,20 +228,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./desire-lines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">OD pairs and desire lines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./open-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r5r.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,9 +269,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./r5r.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./r5r.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -936,12 +938,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./open-data.html" class="pagination-link" aria-label="Open transportation data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

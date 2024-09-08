@@ -135,6 +135,8 @@ div.csl-indent {
 <meta name="citation_reference" content="citation_title=Spatial Data Science: With Applications in R;,citation_author=Edzer Pebesma;,citation_author=Roger Bivand;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://doi.org/10.1201/9780429459016;,citation_doi=10.1201/9780429459016;">
 <meta name="citation_reference" content="citation_title=Jittering: A Computationally Efficient Method for Generating Realistic Route Networks from Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Rosa Félix;,citation_author=Dustin Carlino;,citation_publication_date=2022-04-08;,citation_cover_date=2022-04-08;,citation_year=2022;,citation_doi=10.32866/001c.33873;,citation_journal_title=Findings;,citation_publisher=Findings Press;">
 <meta name="citation_reference" content="citation_title=centr: Weighted and Unweighted Spatial Centers;,citation_author=Ryan Zomorrodi;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://ryanzomorrodi.github.io/centr/;">
+<meta name="citation_reference" content="citation_title=stplanr: A Package for Transport Planning;,citation_author=Robin Lovelace;,citation_author=Richard Ellison;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=2;,citation_doi=10.32614/RJ-2018-053;,citation_volume=10;,citation_journal_title=The R Journal;">
+<meta name="citation_reference" content="citation_title=od: Manipulate and Map Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Malcolm Morgan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://github.com/itsleeds/od;">
 </head>
 
 <body class="nav-sidebar floating">
@@ -246,20 +248,20 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./desire-lines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">OD pairs and desire lines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./open-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r5r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
   </div>
 </li>
       </ul>
@@ -448,7 +450,7 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Origin_mun        Destination_mun        Total             Walk       
+<pre><code>    Origin          Destination            Total             Walk       
  Length:315         Length:315         Min.   :     7   Min.   :     0  
  Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  
  Mode  :character   Mode  :character   Median :  1090   Median :     0  
@@ -469,14 +471,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   315 obs. of  8 variables:
- $ Origin_mun     : chr  "Alcochete" "Alcochete" "Alcochete" "Alcochete" ...
- $ Destination_mun: chr  "Alcochete" "Almada" "Amadora" "Barreiro" ...
- $ Total          : num  20478 567 188 867 114 ...
- $ Walk           : num  6833 0 0 0 0 ...
- $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...
- $ Car            : num  12484 353 107 861 114 ...
- $ PTransit       : num  833 0 81 5 0 ...
- $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...</code></pre>
+ $ Origin     : chr  "Alcochete" "Alcochete" "Alcochete" "Alcochete" ...
+ $ Destination: chr  "Alcochete" "Almada" "Amadora" "Barreiro" ...
+ $ Total      : num  20478 567 188 867 114 ...
+ $ Walk       : num  6833 0 0 0 0 ...
+ $ Bike       : num  320 0 0 0 0 0 0 0 91 0 ...
+ $ Car        : num  12484 353 107 861 114 ...
+ $ PTransit   : num  833 0 81 5 0 ...
+ $ Other      : num  7 214 0 0 0 0 0 0 0 0 ...</code></pre>
 </div>
 </div>
 <p><strong>Check the first values of each variable</strong></p>
@@ -486,10 +488,10 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data, <span class="dv">3</span>) <span class="co"># first 3 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other
-1  Alcochete       Alcochete 20478 6833  320 12484      833     7
-2  Alcochete          Almada   567    0    0   353        0   214
-3  Alcochete         Amadora   188    0    0   107       81     0</code></pre>
+<pre><code>     Origin Destination Total Walk Bike   Car PTransit Other
+1 Alcochete   Alcochete 20478 6833  320 12484      833     7
+2 Alcochete      Almada   567    0    0   353        0   214
+3 Alcochete     Amadora   188    0    0   107       81     0</code></pre>
 </div>
 </div>
 <p><strong>Check the number of rows (observations) and columns (variables)</strong></p>
@@ -542,23 +544,23 @@ div.csl-indent {
 <p><strong>Filter by condition (create new tables)</strong></p>
 <p>Filter trips only with origin from Lisbon</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Filter trips with origin <strong>different</strong> from Lisbon</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data_out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">!=</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data_out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">!=</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Filter trips with origin <strong>and</strong> destination in Lisbon</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data_in_Out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">==</span> <span class="st">"Lisboa"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Destination_mun <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data_in_Out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">==</span> <span class="st">"Lisboa"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Destination <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Remove a column</strong></p>
 <p>Look at the first row</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span>,] <span class="co">#rows and columns start from 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active
-1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153</code></pre>
+<pre><code>     Origin Destination Total Walk Bike   Car PTransit Other Active
+1 Alcochete   Alcochete 20478 6833  320 12484      833     7   7153</code></pre>
 </div>
 </div>
 <p>Look at first row and column</p>
@@ -577,8 +579,8 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Destination_mun" "Total"           "Walk"            "Bike"           
-[5] "Car"             "PTransit"        "Other"           "Active"         </code></pre>
+<pre><code>[1] "Destination" "Total"       "Walk"        "Bike"        "Car"        
+[6] "PTransit"    "Other"       "Active"     </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1418,19 +1420,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb55-216"><a href="#cb55-216" aria-hidden="true" tabindex="-1"></a>Filter trips only with origin from Lisbon</span>
 <span id="cb55-217"><a href="#cb55-217" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-220"><a href="#cb55-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb55-221"><a href="#cb55-221" aria-hidden="true" tabindex="-1"></a>data_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span>
+<span id="cb55-221"><a href="#cb55-221" aria-hidden="true" tabindex="-1"></a>data_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span>
 <span id="cb55-222"><a href="#cb55-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb55-223"><a href="#cb55-223" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-224"><a href="#cb55-224" aria-hidden="true" tabindex="-1"></a>Filter trips with origin **different** from Lisbon</span>
 <span id="cb55-225"><a href="#cb55-225" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-228"><a href="#cb55-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb55-229"><a href="#cb55-229" aria-hidden="true" tabindex="-1"></a>data_out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">!=</span> <span class="st">"Lisboa"</span>,]</span>
+<span id="cb55-229"><a href="#cb55-229" aria-hidden="true" tabindex="-1"></a>data_out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">!=</span> <span class="st">"Lisboa"</span>,]</span>
 <span id="cb55-230"><a href="#cb55-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb55-231"><a href="#cb55-231" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-232"><a href="#cb55-232" aria-hidden="true" tabindex="-1"></a>Filter trips with origin **and** destination in Lisbon</span>
 <span id="cb55-233"><a href="#cb55-233" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-236"><a href="#cb55-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb55-237"><a href="#cb55-237" aria-hidden="true" tabindex="-1"></a>data_in_Out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin_mun <span class="sc">==</span> <span class="st">"Lisboa"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Destination_mun <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span>
+<span id="cb55-237"><a href="#cb55-237" aria-hidden="true" tabindex="-1"></a>data_in_Out_Lisbon <span class="ot">=</span> data[data<span class="sc">$</span>Origin <span class="sc">==</span> <span class="st">"Lisboa"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Destination <span class="sc">==</span> <span class="st">"Lisboa"</span>,]</span>
 <span id="cb55-238"><a href="#cb55-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb55-239"><a href="#cb55-239" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-240"><a href="#cb55-240" aria-hidden="true" tabindex="-1"></a>**Remove a column**</span>

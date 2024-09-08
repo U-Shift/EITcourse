@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Open transportation data – Get your dataset ready</title>
+<title>10&nbsp; Open transportation data – Get your dataset ready</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./r5r.html" rel="next">
-<link href="./centroids.html" rel="prev">
+<link href="./desire-lines.html" rel="prev">
 <link href="./images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<meta name="citation_title" content="[9]{.chapter-number}&nbsp; [Open transportation data]{.chapter-title}">
+<meta name="citation_title" content="[10]{.chapter-number}&nbsp; [Open transportation data]{.chapter-title}">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Literate Programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
 <meta name="citation_reference" content="citation_title=Mobilidade e funcionalidade do território nas Áreas Metropolitanas do Porto e de Lisboa: 2017;,citation_author=undefined INE;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://www.ine.pt/xportal/xmain?xpid=INE&amp;amp;amp;xpgid=ine_publicacoes&amp;PUBLICACOESpub_boui=349495406&amp;PUBLICACOESmodo=2&amp;xlang=pt;,citation_isbn=978-989-25-0478-0;,citation_technical_report_institution=Instituto National de Estatística;">
@@ -151,6 +151,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_reference" content="citation_title=Spatial Data Science: With Applications in R;,citation_author=Edzer Pebesma;,citation_author=Roger Bivand;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://doi.org/10.1201/9780429459016;,citation_doi=10.1201/9780429459016;">
 <meta name="citation_reference" content="citation_title=Jittering: A Computationally Efficient Method for Generating Realistic Route Networks from Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Rosa Félix;,citation_author=Dustin Carlino;,citation_publication_date=2022-04-08;,citation_cover_date=2022-04-08;,citation_year=2022;,citation_doi=10.32866/001c.33873;,citation_journal_title=Findings;,citation_publisher=Findings Press;">
 <meta name="citation_reference" content="citation_title=centr: Weighted and Unweighted Spatial Centers;,citation_author=Ryan Zomorrodi;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://ryanzomorrodi.github.io/centr/;">
+<meta name="citation_reference" content="citation_title=stplanr: A Package for Transport Planning;,citation_author=Robin Lovelace;,citation_author=Richard Ellison;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=2;,citation_doi=10.32614/RJ-2018-053;,citation_volume=10;,citation_journal_title=The R Journal;">
+<meta name="citation_reference" content="citation_title=od: Manipulate and Map Origin-Destination Data;,citation_author=Robin Lovelace;,citation_author=Malcolm Morgan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://github.com/itsleeds/od;">
 </head>
 
 <body class="nav-sidebar floating">
@@ -162,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./open-data.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./open-data.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -262,20 +264,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./desire-lines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">OD pairs and desire lines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./open-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r5r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span></a>
   </div>
 </li>
       </ul>
@@ -296,16 +298,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#road-networks" id="toc-road-networks" class="nav-link active" data-scroll-target="#road-networks"><span class="header-section-number">9.1</span> Road Networks</a>
+  <li><a href="#road-networks" id="toc-road-networks" class="nav-link active" data-scroll-target="#road-networks"><span class="header-section-number">10.1</span> Road Networks</a>
   <ul class="collapse">
-  <li><a href="#openstreetmap" id="toc-openstreetmap" class="nav-link" data-scroll-target="#openstreetmap"><span class="header-section-number">9.1.1</span> OpenStreetMap</a></li>
-  <li><a href="#hot-export-tool" id="toc-hot-export-tool" class="nav-link" data-scroll-target="#hot-export-tool"><span class="header-section-number">9.1.2</span> HOT Export Tool</a></li>
-  <li><a href="#osm-in-r" id="toc-osm-in-r" class="nav-link" data-scroll-target="#osm-in-r"><span class="header-section-number">9.1.3</span> OSM in R</a></li>
+  <li><a href="#openstreetmap" id="toc-openstreetmap" class="nav-link" data-scroll-target="#openstreetmap"><span class="header-section-number">10.1.1</span> OpenStreetMap</a></li>
+  <li><a href="#hot-export-tool" id="toc-hot-export-tool" class="nav-link" data-scroll-target="#hot-export-tool"><span class="header-section-number">10.1.2</span> HOT Export Tool</a></li>
+  <li><a href="#osm-in-r" id="toc-osm-in-r" class="nav-link" data-scroll-target="#osm-in-r"><span class="header-section-number">10.1.3</span> OSM in R</a></li>
   </ul></li>
-  <li><a href="#transportation-services-data" id="toc-transportation-services-data" class="nav-link" data-scroll-target="#transportation-services-data"><span class="header-section-number">9.2</span> Transportation Services’ Data</a>
+  <li><a href="#transportation-services-data" id="toc-transportation-services-data" class="nav-link" data-scroll-target="#transportation-services-data"><span class="header-section-number">10.2</span> Transportation Services’ Data</a>
   <ul class="collapse">
-  <li><a href="#gtfs" id="toc-gtfs" class="nav-link" data-scroll-target="#gtfs"><span class="header-section-number">9.2.1</span> GTFS</a></li>
-  <li><a href="#national-access-points" id="toc-national-access-points" class="nav-link" data-scroll-target="#national-access-points"><span class="header-section-number">9.2.2</span> National Access Points</a></li>
+  <li><a href="#gtfs" id="toc-gtfs" class="nav-link" data-scroll-target="#gtfs"><span class="header-section-number">10.2.1</span> GTFS</a></li>
+  <li><a href="#national-access-points" id="toc-national-access-points" class="nav-link" data-scroll-target="#national-access-points"><span class="header-section-number">10.2.2</span> National Access Points</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -313,9 +315,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./open-data.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./centroids.html"><strong>Day 2</strong></a></li><li class="breadcrumb-item"><a href="./open-data.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Open transportation data</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open transportation data</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -333,10 +335,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this chapter we will guide you through sources of open data for transportation analysis: road networks and public transportation information.</p>
-<section id="road-networks" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="road-networks"><span class="header-section-number">9.1</span> Road Networks</h2>
-<section id="openstreetmap" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="openstreetmap"><span class="header-section-number">9.1.1</span> OpenStreetMap</h3>
+<section id="road-networks" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="road-networks"><span class="header-section-number">10.1</span> Road Networks</h2>
+<section id="openstreetmap" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="openstreetmap"><span class="header-section-number">10.1.1</span> OpenStreetMap</h3>
 <p>The OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.</p>
 <p>This is the most used source of road network data for transportation analysis in academia, since it is available almost <strong>everywhere in the world</strong>, is open and free to use.</p>
 <div class="callout callout-style-simple callout-caution">
@@ -357,8 +359,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>These websites include all the OSM data, with <strong>much more information than you need</strong>.</p>
 </section>
-<section id="hot-export-tool" class="level3" data-number="9.1.2">
-<h3 data-number="9.1.2" class="anchored" data-anchor-id="hot-export-tool"><span class="header-section-number">9.1.2</span> HOT Export Tool</h3>
+<section id="hot-export-tool" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="hot-export-tool"><span class="header-section-number">10.1.2</span> HOT Export Tool</h3>
 <p>This interactive tool helps you to select the <strong>region</strong> you want to extract, the type of <strong>information</strong> to include, and the output data <strong>format</strong>.</p>
 <p>Access via <a href="https://export.hotosm.org/">export.hotosm.org</a>. You need an OSM account to use it.</p>
 <p><img src="images/clipboard-1441436716.png" class="img-fluid"></p>
@@ -376,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="osm-in-r" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="osm-in-r"><span class="header-section-number">9.1.3</span> OSM in R</h3>
+<section id="osm-in-r" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="osm-in-r"><span class="header-section-number">10.1.3</span> OSM in R</h3>
 <p>There are also some R packages that can help you to download and work with OpenStreetMap data, such as:</p>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/osmdata/index.html"><code>osmdata</code></a></li>
@@ -403,14 +405,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="transportation-services-data" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="transportation-services-data"><span class="header-section-number">9.2</span> Transportation Services’ Data</h2>
-<section id="gtfs" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="gtfs"><span class="header-section-number">9.2.1</span> GTFS</h3>
+<section id="transportation-services-data" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="transportation-services-data"><span class="header-section-number">10.2</span> Transportation Services’ Data</h2>
+<section id="gtfs" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="gtfs"><span class="header-section-number">10.2.1</span> GTFS</h3>
 <!-- TO-DO -->
 </section>
-<section id="national-access-points" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="national-access-points"><span class="header-section-number">9.2.2</span> National Access Points</h3>
+<section id="national-access-points" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="national-access-points"><span class="header-section-number">10.2.2</span> National Access Points</h3>
 <p>The European Union has a directive that requires the member states to provide access to transportation data. Data includes not only <strong>Public Transportation</strong> data, but also <strong>road network</strong>s, car <strong>parking</strong>, and other transportation-related information.</p>
 <p><a href="https://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en">List of the European Union members states with National Access Points for Transportation data</a></p>
 <p>Example of Bus services data in Belgium:</p>
@@ -1045,13 +1047,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./centroids.html" class="pagination-link" aria-label="Centroids of transport zones">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Centroids of transport zones</span></span>
+      <a href="./desire-lines.html" class="pagination-link" aria-label="OD pairs and desire lines">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">OD pairs and desire lines</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./r5r.html" class="pagination-link" aria-label="Urban Accessibility with R">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Urban Accessibility with R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
