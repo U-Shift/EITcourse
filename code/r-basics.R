@@ -165,19 +165,19 @@ data$Active = data$Walk + data$Bike
 # Filter trips only with origin from Lisbon
 # 
 
-data_Lisbon = data[data$Origin_mun == "Lisboa",]
+data_Lisbon = data[data$Origin == "Lisboa",]
 
 # 
 # Filter trips with origin different from Lisbon
 # 
 
-data_out_Lisbon = data[data$Origin_mun != "Lisboa",]
+data_out_Lisbon = data[data$Origin != "Lisboa",]
 
 # 
 # Filter trips with origin and destination in Lisbon
 # 
 
-data_in_Out_Lisbon = data[data$Origin_mun == "Lisboa" & data$Destination_mun == "Lisboa",]
+data_in_Out_Lisbon = data[data$Origin == "Lisboa" & data$Destination == "Lisboa",]
 
 # 
 # Remove a column
