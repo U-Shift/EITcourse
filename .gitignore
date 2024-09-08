@@ -56,3 +56,4 @@ _freeze/
 data/dataset.Rds
 data/dataset.csv
 data/dataset.Rds
+data/network.dat
