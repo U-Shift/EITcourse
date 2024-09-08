@@ -53,6 +53,9 @@ rsconnect/
 _book/
 !_book/Get*
 _freeze/
+rjavaenv/
+
+# some datasets
 data/dataset.Rds
 data/dataset.csv
 data/dataset.Rds
