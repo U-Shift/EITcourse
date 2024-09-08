@@ -8,6 +8,7 @@
 
 # User-specific files
 .Ruserdata
+.Rprofile
 
 # Example code in package build process
 *-Ex.R
@@ -60,3 +61,4 @@ data/dataset.Rds
 data/dataset.csv
 data/dataset.Rds
 data/network.dat
+
