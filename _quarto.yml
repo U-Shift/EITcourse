@@ -41,7 +41,7 @@ book:
         - centroids.qmd
         # - geocode.qmd
         - desire-lines.qmd
-        # - distances.qmd
+        - distances.qmd
         - open-data.qmd
         - r5r.qmd
         # - intro.qmd

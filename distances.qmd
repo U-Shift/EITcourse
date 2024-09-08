@@ -1,186 +1,276 @@
+---
+number-depth: 2
+---
+
 # Euclidean and routing distances
 
 We will show how to estimate euclidean distances (*as crown flights*) using `sf` package, and the distances using a road network using `r5r` package (demonstrative).
 
 ## Euclidean distances
 
-Taking the municipality centroids, or survey respondents' location
+Taking the survey respondents' location, we will estimate the distance to the university (IST) using the `sf` package.
 
-### Import survey and visualize
+### Import survey data frame convert to sf
+
+We will use a survey dataset with 200 observations, with the following variables: ID, Affiliation, Age, Sex, Transport Mode to IST, and latitude and longitude coordinates.
 
 ```{r}
-SURVEY = read.csv("data/SURVEYist.txt", sep = "\t") # tab delimiter
-SURVEY = st_as_sf(SURVEY, coords = c("lon", "lat"), crs = 4326) # transform as geo data
+#| message: false
+library(dplyr)
 
-mapview(SURVEY, zcol = "MODE") + mapview(IST, col.region = "red", cex = 12)
+SURVEY = read.csv("data/SURVEY.txt", sep = "\t") # tab delimiter
+names(SURVEY)
 ```
 
-### Create new point at IST
+As we have the coordinates, we can convert this data frame to a spatial feature, as explained in the [Introduction to spatial data](spatial-data.qmd#create-spatial-data-from-coordinates) section.
 
 ```{r}
-IST = st_sfc(st_point(c(-9.1397404, 38.7370168)), crs = 4326)
+#| message: false
+library(sf)
+
+SURVEYgeo = st_as_sf(SURVEY, coords = c("lon", "lat"), crs = 4326) # convert to as sf data
 ```
 
-### Reproject layers
+### Create new point at the university
 
-In R we can process distances in meters on-fly.
-
-Buy here is the code to project layers from Geographic coordinates (WGS 84 - EPSG:[4364](https://epsg.io/4326)) to Projected coordinates (Pseudo-Mercator - EPSG:[3857](https://epsg.io/3857), or Portuguese Tranversor-Mercator 06 - EPSG:[3763](https://epsg.io/3763)).
+Using coordinates from Instituto Superior Técnico, we can directly create a simple feature and assign its crs.
 
 ```{r}
-ISTprojected = st_transform(IST, crs = 3857)
-SURVEYprojected = st_transform(SURVEY, crs = 3857)
+UNIVERSITY = data.frame(place = "IST",
+                        lon = -9.1397404,
+                        lat = 38.7370168) |>  # first a dataframe
+  st_as_sf(coords = c("lon", "lat"), # then a spacial feature
+           crs = 4326)
 ```
 
-### Straight lines and distance
-
-Nearest point between the two layers.
-As we only have 1 point at IST layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
+Visualize in a map:
 
 ```{r}
-SURVEYeuclidean = st_nearest_points(SURVEY, IST, pairwise = TRUE) |> st_as_sf() # this creates lines
+#| fig-format: png
+#| message: false
+library(mapview)
+mapview(SURVEYgeo, zcol = "MODE") + mapview(UNIVERSITY, col.region = "red", cex = 12)
+```
+
+### Straight lines
+
+First we will create lines connecting the survey locations to the university, using the `st_nearest_points()` function.
+
+This function finds returns the nearest points between two geometries, and creates a line between them.
+This can be useful to find the nearest train station to each point, for instance.
+
+As we only have 1 point at UNIVERSITY layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
+
+```{r}
+#| fig-format: png
+SURVEYeuclidean = st_nearest_points(SURVEYgeo, UNIVERSITY, pairwise = TRUE) |>
+  st_as_sf() # this creates lines
 
 mapview(SURVEYeuclidean)
-
-SURVEY$distance = st_length(SURVEYeuclidean) # compute distance and add directly in the first layer
-
-summary(SURVEY$distance) # in meters
-
-# to remove the units - can be useful
-SURVEY$distance = units::drop_units(SURVEY$distance)
 ```
 
-## Routing distance
+Note that if we have more than one point in the second layer, the `pairwise = TRUE` will create a line for each combination of points.
+Set to `FALSE` if, for instance, you have the same number of points in both layers and want to create a line between the corresponding points.
 
-We use the [openrouteservice-r](https://giscience.github.io/openrouteservice-r/) package.
-For that you need to [create an account](https://openrouteservice.org/dev/#/signup) and get a Token / api key.
+### Distance
 
-See the [documentation](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html) for more details.
-
-### Distances 1 point to many points
-
-Estimate the time and distance by `foot-waking` and `driving-car`, `fastest` mode, from survey locations (under 2 km[^distances-1]) to IST.
-
-[^distances-1]: for speed-up purposes - api request limit up to 40 / minute
+Now we can estimate the distance using the `st_length()` function.
 
 ```{r}
-# devtools::install_github("GIScience/openrouteservice-r")
-library(openrouteservice)
-# ors_api_key(Sys.getenv("ORS_API_KEY")) # one time setup
+#| eval: false
+# compute the line length and add directly in the first survey layer
+SURVEYgeo = SURVEYgeo |> 
+  mutate(distance = st_length(SURVEYeuclidean))
 
-# get coordinates variable
-SURVEY$coordinates = st_coordinates(SURVEY)
-IST$coordinates = st_coordinates(IST)
-
-# Filter only the locations up to 2km euclidean
-SURVEYsample = SURVEY |> filter(distance <= 2000)
-# nrow(SURVEYsample) # 95
+# remove the units - can be useful
+SURVEYgeo$distance = units::drop_units(SURVEYgeo$distance) 
 ```
 
-Although it is the same algorithm, here it works differently from QGIS.
-
-There are many ways of doing this.
-If we want to know only time and distance, and **not the route** itself, we can use the `ors_matrix()`.
-See example [here](https://web.tecnico.ulisboa.pt/~rosamfelix/gis/trips/timedistancematrix.html#Distance_and_time_matrix).\
-If we need the route, we should use the function `ors_directions()`.
-This one is not that easy to set-up because the function is prepared to retrieve only one result per request :( So we do a loop. Don't worry, it is not that
+We could also estimate the distance using the `st_distance()` function **directly**, without creating the lines.
 
 ```{r}
-ROUTES_foot = data.frame() # initial empty data frame
+SURVEYgeo = SURVEYgeo |> 
+  mutate(distance = st_distance(SURVEYgeo, UNIVERSITY)[,1] |>  # in meters
+           units::drop_units()) |>  # remove units
+  mutate(distance = round(distance)) # round to integer
 
-# loop - the origin (i) is the survey location, and the IST is always the same destination
-for (i in 1:nrow(SURVEYsample)) {
-  ROUTES1 = ors_directions(
-    data.frame(
-      lon = c(SURVEYsample$coordinates[i, 1], IST$coordinates[1, 1]),
-      lat = c(SURVEYsample$coordinates[i, 2], IST$coordinates[1, 2])
-    ),
-    profile = "foot-walking", # or driving-car cycling-regular cycling-electric
-    preference = "fastest", # or shortest
-    output = "sf"
-  )
-  ROUTES1$distance = ROUTES1$summary[[1]]$distance # extract these values from summary
-  ROUTES1$duration = ROUTES1$summary[[1]]$duration
-  
-  ROUTES_foot = rbind(ROUTES_foot, ROUTES1) # to keep adding in the same df
-}
-
-ROUTES_foot = ROUTES_foot |>
-  select(distance, duration, geometry) |> # discard unnecessary variables
-  mutate(ID = SURVEYsample$ID) # cbind with syrvey ID
+summary(SURVEYgeo$distance)
 ```
 
-Repeat the same for `car-driving`.
+## Routing distances with r5r
+
+We use the `r5r` package to estimate the distance using a road network.
+
+::: {.callout-note appearance="simple"}
+To properly the setup r5r model for the area you are working on, you need to download the **road network** data from OpenStreetMap and, if needed, add a **GTFS** and **DEM** file, as it will be explained in the [next section](r5r.qmd).
+:::
 
 ```{r}
-ROUTES_car = data.frame() # initial empty data frame
+#| message: false
+#| warning: false
+#| include: false
+options(java.parameters = "-Xmx4G") # allocate memory
+url = "https://github.com/U-Shift/EITcourse/releases/download/2024.09/network.dat"
+download.file(url, destfile = "data/network.dat", mode = "wb")
 
-# loop - the origin (i) is the survey location, and the IST is always the same destination
-for (i in 1:nrow(SURVEYsample)) {
-  ROUTES1 = ors_directions(
-    data.frame(
-      lon = c(SURVEYsample$coordinates[i, 1], IST$coordinates[1, 1]),
-      lat = c(SURVEYsample$coordinates[i, 2], IST$coordinates[1, 2])
-    ),
-    profile = "driving-car", # or cycling-regular cycling-electric foot-walking
-    preference = "fastest", # or shortest
-    output = "sf"
-  )
-  ROUTES1$distance = ROUTES1$summary[[1]]$distance # extract these values from summary
-  ROUTES1$duration = ROUTES1$summary[[1]]$duration
-  
-  ROUTES_car = rbind(ROUTES_car, ROUTES1) # to keep adding in the same df
-}
-
-ROUTES_car = ROUTES_car |>
-  select(distance, duration, geometry) |> # discard unnecessary variables
-  mutate(ID = SURVEYsample$ID) # cbind with syrvey ID
+library(r5r)
+r5r_network = setup_r5("data/", overwrite = FALSE) # load existing network
 ```
 
-```{r}
-# st_write(ROUTES_foot, "original/routes_foot.geojson")
-# st_write(ROUTES_car, "original/routes_car.geojson")
+We will use only respondents with a distance to the university less than 2 km.
 
-ROUTES_foot = st_read("original/routes_foot.geojson", quiet = TRUE)
-ROUTES_car = st_read("original/routes_car.geojson", quiet = TRUE)
+```{r}
+#| warning: false
+SURVEYsample = SURVEYgeo |> filter(distance <= 2000)
+nrow(SURVEYsample)
+```
+
+We need an id (unique identifier) for each survey location, to be used in the routing functions of `r5r`.
+
+```{r}
+# create id columns for both datasets
+SURVEYsample = SURVEYsample |> 
+  mutate(id = c(1:nrow(SURVEYsample))) # from 1 to the number of rows
+
+UNIVERSITY = UNIVERSITY |> 
+  mutate(id = 1) # only one row
+```
+
+### Distances by car
+
+Estimate the routes with time and distance by car, from survey locations to University.
+
+```{r}
+#| warning: false
+SURVEYcar = detailed_itineraries(
+  r5r_core = r5r_network,
+  origins = SURVEYsample,
+  destinations = UNIVERSITY,
+  mode = "CAR",
+  all_to_all = TRUE # if false, only 1-1 would be calculated
+)
+
+names(SURVEYcar)
+```
+
+The [`detailed_itineraries()`](https://ipeagit.github.io/r5r/reference/detailed_itineraries.html) function is super detailed!
+
+::: {.callout-note appearance="simple"}
+If we want to know only time and distance, and **not the route** itself, we can use the [`travel_time_matrix()`](https://ipeagit.github.io/r5r/reference/travel_time_matrix.html).
+:::
+
+### Distances by foot
+
+Repeat the same for `WALK`[^distances-1].
+
+[^distances-1]: For bike you would use `BICYCLE`.
+
+```{r}
+#| warning: false
+#| code-fold: true
+SURVEYwalk = detailed_itineraries(
+  r5r_core = r5r_network,
+  origins = SURVEYsample,
+  destinations = UNIVERSITY,
+  mode = "WALK",
+  all_to_all = TRUE # if false, only 1-1 would be calculated
+)
+```
+
+### Distances by PT
+
+For Public Transit (`TRANSIT`) you may specify the egress mode, the departure time, and the maximum number of transfers.
+
+```{r}
+#| warning: false
+#| code-fold: true
+#| eval: false
+SURVEYtransit = detailed_itineraries(
+  r5r_core = r5r_network,
+  origins = SURVEYsample,
+  destinations = UNIVERSITY,
+  mode = "TRANSIT",
+  mode_egress = "WALK",
+  max_rides = 1, # The maximum PT rides allowed in the same trip
+  departure_datetime =  as.POSIXct("20-09-2023 08:00:00",
+                                 format = "%d-%m-%Y %H:%M:%S"),
+  all_to_all = TRUE # if false, only 1-1 would be calculated
+)
 ```
 
 ## Compare distances
 
-We can compare the euclidean and routing distances that we estimated for the survey locations under 2 km.
+We can now compare the euclidean and routing distances that we estimated for the survey locations under 2 km.
 
 ```{r}
 summary(SURVEYsample$distance) # Euclidean
-summary(ROUTES_foot$distance) # Walk
-summary(ROUTES_car$distance) # Car
+summary(SURVEYwalk$distance) # Walk
+summary(SURVEYcar$distance) # Car
+```
+
+What can you understand from this results?
+
+```{r}
+#| code-fold: true
+distances = data.frame(euclidean = SURVEYsample$distance,
+                       walk = SURVEYwalk$distance,
+                       car = SURVEYcar$distance)
+distances = distances |> arrange(euclidean)
+
+# Define the number of observations
+n <- nrow(distances)
+
+# Create an empty plot with the appropriate y-axis limits
+plot(1:n, distances$euclidean, type = "n", 
+     ylim = range(distances), 
+     xlab = "Observation (sorted by Euclidean distance)", 
+     ylab = "Distance [m]", 
+     main = "Distances by Euclidean, Walk, and Car")
+
+# Add lines for each type of distance
+lines(1:n, distances$euclidean, lwd = 2)
+lines(1:n, distances$walk, col = "red", lwd = 2)
+lines(1:n, distances$car, col = "blue", lwd = 2)
+
+# Optional: Add points for better visibility
+points(1:n, distances$euclidean, pch = 16)
+points(1:n, distances$walk, col = "red", pch = 16)
+points(1:n, distances$car, col = "blue", pch = 16)
+
+# Add a legend to distinguish the lines
+legend("topleft", legend = c("Euclidean", "Walk", "Car"),
+       col = c("black", "red", "blue"), 
+       lwd = 2, lty = c(1, 2, 3), pch = 16)
 ```
 
 ## Vizualise routes
 
-Visualize with transparency of 30%
+Visualize with transparency of 30%, to get a clue when they overlay.
 
 ```{r}
-mapview(ROUTES_foot, alpha = 0.3)
-mapview(ROUTES_car, alpha = 0.3, color = "red")
+#| fig-format: png
+mapview(SURVEYwalk, alpha = 0.3)
+mapview(SURVEYcar, alpha = 0.3, color = "red")
 ```
 
-We can also use the `overline()` [function from stplanr package](https://docs.ropensci.org/stplanr/reference/overline.html) to break up the routes when they overline, and add them up.
+We can also use the [`overline()`](https://docs.ropensci.org/stplanr/reference/overline.html) function from `stplanr` package to break up the routes when they *overline*, and add them up.
 
 ```{r}
-library(stplanr)
+#| message: false
+#| fig-format: png
+# we create a value that we can later sum
+# it can be the number of trips represented by this route
+SURVEYwalk$trips = 1 # in this case is only one respondent per route
 
-# we create a value that we can later sum, it also could be the number of trips represented by this route. in this case is only one respondent per route
-ROUTES_foot$trips = 1 
-
-ROUTES_foot_overline = overline(
-  ROUTES_foot,
+SURVEYwalk_overline = stplanr::overline(
+  SURVEYwalk,
   attrib = "trips",
   fun = sum
 )
 
-mapview(ROUTES_foot_overline, zcol = "trips", lwd = 3)
+mapview(SURVEYwalk_overline, zcol = "trips", lwd = 3)
 ```
 
--   How many people are entering IST by the stairs near *Bar de Civil*?\
--   And by the North gate?
--   And from Alameda stairs?
+With this we can visually inform on how many people travel along a route, from the survey dataset[^distances-2].
+
+[^distances-2]: Assuming all travel by the shortest path.
