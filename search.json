@@ -531,11 +531,11 @@
     ]
   },
   {
-    "objectID": "distances.html#vizualise-routes",
-    "href": "distances.html#vizualise-routes",
+    "objectID": "distances.html#vizualize-routes",
+    "href": "distances.html#vizualize-routes",
     "title": "10  Euclidean and routing distances",
-    "section": "10.4 Vizualise routes",
-    "text": "10.4 Vizualise routes\nVisualize with transparency of 30%, to get a clue when they overlay.\n\n\nCode\nmapview(SURVEYwalk, alpha = 0.3)\n\n\n\n\n\n\nCode\nmapview(SURVEYcar, alpha = 0.3, color = \"red\")\n\n\n\n\n\n\nWe can also use the overline() function from stplanr package to break up the routes when they overline, and add them up.\n\n\nCode\n# we create a value that we can later sum\n# it can be the number of trips represented by this route\nSURVEYwalk$trips = 1 # in this case is only one respondent per route\n\nSURVEYwalk_overline = stplanr::overline(\n  SURVEYwalk,\n  attrib = \"trips\",\n  fun = sum\n)\n\nmapview(SURVEYwalk_overline, zcol = \"trips\", lwd = 3)\n\n\n\n\n\n\nWith this we can visually inform on how many people travel along a route, from the survey dataset2.",
+    "section": "10.4 Vizualize routes",
+    "text": "10.4 Vizualize routes\nVisualize with transparency of 30%, to get a clue when they overlay.\n\n\nCode\nmapview(SURVEYwalk, alpha = 0.3)\n\n\n\n\n\n\nCode\nmapview(SURVEYcar, alpha = 0.3, color = \"red\")\n\n\n\n\n\n\nWe can also use the overline() function from stplanr package to break up the routes when they overline, and add them up.\n\n\nCode\n# we create a value that we can later sum\n# it can be the number of trips represented by this route\nSURVEYwalk$trips = 1 # in this case is only one respondent per route\n\nSURVEYwalk_overline = stplanr::overline(\n  SURVEYwalk,\n  attrib = \"trips\",\n  fun = sum\n)\n\nmapview(SURVEYwalk_overline, zcol = \"trips\", lwd = 3)\n\n\n\n\n\n\nWith this we can visually inform on how many people travel along a route, from the survey dataset2.",
     "crumbs": [
       "**Day 2**",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
