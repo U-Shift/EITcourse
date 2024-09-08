@@ -24,7 +24,7 @@ This creates points at the geometric center of each polygon.
 #| message: false
 #| fig-format: png
 mapview(Centroids_geo)
-mapview(Centroids_geo) + mapview(Municipalities_geo, alpha.regions = 0) # both, with full transparency in polygons
+mapview(Centroids_geo) + mapview(Municipalities_geo, alpha.regions = 0) # both maps, with full transparency in polygons
 ```
 
 But...
@@ -35,7 +35,7 @@ Example: lakes, forests, etc.
 
 To overcome this, we can use **weighted centroids**.
 
-## Weigthed centroids
+## Weighted centroids
 
 We will weight centroids of transport zones by population and by number of buildings.
 
@@ -65,9 +65,8 @@ Census = st_read("data/census.gpkg", quiet = TRUE)
 mapview(Census |> filter(Municipality == "Lisboa"), zcol = "Population")
 ```
 
-
-It was not that easy to estimate weighted centroids with R, as it is with GIS softwares.
-But there is this [new package](https://ryanzomorrodi.github.io/centr), `centr`, that can help us [@centr].
+It was not that easy to estimate weighted centroids with R, as it is with GIS software.
+But there is this new package [`centr`](https://ryanzomorrodi.github.io/centr) that can help us [@centr].
 
 We need to specify the **group** we want to calculate the **mean centroids**, and the **weight variable** we want to use.
 
@@ -85,7 +84,6 @@ Centroid_build = Census |>
   mean_center(group = "Municipality", weight = "Buildings")
 ```
 
-
 ## Compare centroids in a map
 
 ### Interactive map
@@ -98,7 +96,7 @@ mapview(Centroids_geo, col.region = "blue") +
   mapview(Municipalities_geo, alpha.regions = 0) # polygon limits
 ```
 
-See how the building, population and geometric centroids of Sintra are appart, from closer to Tagus, to the rural area.
+See how the building, population and geometric centroids of Sintra are apart, from closer to Tagus, to the rural area.
 
 ### Static map
 

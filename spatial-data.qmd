@@ -163,5 +163,5 @@ st_write(TRIPSgeo, "data/TRIPSgeo.csv", layer_options = "GEOMETRY=AS_WKT") # as 
 ```
 
 ::: {.callout-warning appearance="simple"}
-If you already have a file with the same name, you can use the `delete_dns = TRUE` argument, otherwise it won't overwrite the file.
+If you already have a file with the same name, you can use the `delete_dns = TRUE` argument to overwrite it.
 :::
