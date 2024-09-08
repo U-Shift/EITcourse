@@ -8,7 +8,11 @@ Taking the `Municipalities_geo` data from the previous section, we will calculat
 
 ```{r geocentroid}
 #| message: false
+#| warning: false
+library(dplyr)
 library(sf)
+library(mapview)
+
 Municipalities_geo = st_read("data/Municipalities_geo.gpkg", quiet = TRUE)
 
 Centroids_geo = st_centroid(Municipalities_geo)
@@ -19,8 +23,6 @@ This creates points at the geometric center of each polygon.
 ```{r}
 #| message: false
 #| fig-format: png
-library(mapview)
-
 mapview(Centroids_geo)
 mapview(Centroids_geo) + mapview(Municipalities_geo, alpha.regions = 0) # both, with full transparency in polygons
 ```
@@ -31,13 +33,13 @@ is this the best way to represent the center of a transport zone?
 These results may be biased by the shape of the polygons, and not represent where activities are.
 Example: lakes, forests, etc.
 
-To overcome this, we can use *weighted centroids*.
+To overcome this, we can use **weighted centroids**.
 
 ## Weigthed centroids
 
 We will weight centroids of transport zones by population and by number of buildings.
 
-For this, we will need the census data [@INE2021].
+For this, we will need the census data [@INEcensus].
 
 ```{r}
 #| eval: false
@@ -63,8 +65,9 @@ Census = st_read("data/census.gpkg", quiet = TRUE)
 mapview(Census |> filter(Municipality == "Lisboa"), zcol = "Population")
 ```
 
+
 It was not that easy to estimate weighted centroids with R, as it is with GIS softwares.
-But there is this [new package](https://ryanzomorrodi.github.io/centr), `centr`, that can help us.
+But there is this [new package](https://ryanzomorrodi.github.io/centr), `centr`, that can help us [@centr].
 
 We need to specify the **group** we want to calculate the **mean centroids**, and the **weight variable** we want to use.
 
@@ -117,6 +120,7 @@ Centroid_build = st_transform(Centroid_build, crs = 4326)
 Now, to use `plot()` we incrementally add layers to the plot.
 
 ```{r}
+#| fig-width: 8
 # Plot the Municipalities_geo polygons first (with no fill)
 plot(st_geometry(Municipalities_geo), col = NA, border = "black", main = "Map of different Centroids of Municipalities")
 

@@ -1,8 +1,3 @@
----
-eval: false
----
-
-
 # Euclidean and routing distances
 
 We will show how to estimate euclidean distances (*as crown flights*) using `sf` package, and the distances using a road network using `r5r` package (demonstrative).
@@ -13,20 +8,18 @@ Taking the municipality centroids, or survey respondents' location
 
 ### Import survey and visualize
 
-```{r survey}
-SURVEY = read.csv("geo/SURVEYist.txt", sep = "\t") # tab delimiter
+```{r}
+SURVEY = read.csv("data/SURVEYist.txt", sep = "\t") # tab delimiter
 SURVEY = st_as_sf(SURVEY, coords = c("lon", "lat"), crs = 4326) # transform as geo data
 
 mapview(SURVEY, zcol = "MODE") + mapview(IST, col.region = "red", cex = 12)
 ```
 
-
 ### Create new point at IST
 
-```{r createist}
+```{r}
 IST = st_sfc(st_point(c(-9.1397404, 38.7370168)), crs = 4326)
 ```
-
 
 ### Reproject layers
 
@@ -34,16 +27,17 @@ In R we can process distances in meters on-fly.
 
 Buy here is the code to project layers from Geographic coordinates (WGS 84 - EPSG:[4364](https://epsg.io/4326)) to Projected coordinates (Pseudo-Mercator - EPSG:[3857](https://epsg.io/3857), or Portuguese Tranversor-Mercator 06 - EPSG:[3763](https://epsg.io/3763)).
 
-```{r projectlayers}
+```{r}
 ISTprojected = st_transform(IST, crs = 3857)
 SURVEYprojected = st_transform(SURVEY, crs = 3857)
 ```
 
 ### Straight lines and distance
 
-Nearest point between the two layers. As we only have 1 point at IST layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
+Nearest point between the two layers.
+As we only have 1 point at IST layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
 
-```{r eucdistance}
+```{r}
 SURVEYeuclidean = st_nearest_points(SURVEY, IST, pairwise = TRUE) |> st_as_sf() # this creates lines
 
 mapview(SURVEYeuclidean)
@@ -56,18 +50,20 @@ summary(SURVEY$distance) # in meters
 SURVEY$distance = units::drop_units(SURVEY$distance)
 ```
 
-
 ## Routing distance
 
-We use the [openrouteservice-r](https://giscience.github.io/openrouteservice-r/) package. For that you need to [create an account](https://openrouteservice.org/dev/#/signup) and get a Token / api key.
+We use the [openrouteservice-r](https://giscience.github.io/openrouteservice-r/) package.
+For that you need to [create an account](https://openrouteservice.org/dev/#/signup) and get a Token / api key.
 
 See the [documentation](https://giscience.github.io/openrouteservice-r/articles/openrouteservice.html) for more details.
 
 ### Distances 1 point to many points
 
-Estimate the time and distance by `foot-waking` and `driving-car`, `fastest` mode, from survey locations (under 2 km^[for speed-up purposes - api request limit up to 40 / minute]) to IST.
+Estimate the time and distance by `foot-waking` and `driving-car`, `fastest` mode, from survey locations (under 2 km[^distances-1]) to IST.
 
-```{r routingdataprep}
+[^distances-1]: for speed-up purposes - api request limit up to 40 / minute
+
+```{r}
 # devtools::install_github("GIScience/openrouteservice-r")
 library(openrouteservice)
 # ors_api_key(Sys.getenv("ORS_API_KEY")) # one time setup
@@ -81,13 +77,15 @@ SURVEYsample = SURVEY |> filter(distance <= 2000)
 # nrow(SURVEYsample) # 95
 ```
 
-
 Although it is the same algorithm, here it works differently from QGIS.
 
-There are many ways of doing this. If we want to know only time and distance, and **not the route** itself, we can use the `ors_matrix()`. See example [here](https://web.tecnico.ulisboa.pt/~rosamfelix/gis/trips/timedistancematrix.html#Distance_and_time_matrix).  
-If we need the route, we should use the function `ors_directions()`. This one is not that easy to set-up because the function is prepared to retrieve only one result per request :( So we do a loop. Don't worry, it is not that
+There are many ways of doing this.
+If we want to know only time and distance, and **not the route** itself, we can use the `ors_matrix()`.
+See example [here](https://web.tecnico.ulisboa.pt/~rosamfelix/gis/trips/timedistancematrix.html#Distance_and_time_matrix).\
+If we need the route, we should use the function `ors_directions()`.
+This one is not that easy to set-up because the function is prepared to retrieve only one result per request :( So we do a loop. Don't worry, it is not that
 
-```{r orsloop1, eval=FALSE, include=TRUE}
+```{r}
 ROUTES_foot = data.frame() # initial empty data frame
 
 # loop - the origin (i) is the survey location, and the IST is always the same destination
@@ -114,7 +112,7 @@ ROUTES_foot = ROUTES_foot |>
 
 Repeat the same for `car-driving`.
 
-```{r orsloop2, eval=FALSE, include=TRUE}
+```{r}
 ROUTES_car = data.frame() # initial empty data frame
 
 # loop - the origin (i) is the survey location, and the IST is always the same destination
@@ -139,7 +137,7 @@ ROUTES_car = ROUTES_car |>
   mutate(ID = SURVEYsample$ID) # cbind with syrvey ID
 ```
 
-```{r importexport1, include=FALSE}
+```{r}
 # st_write(ROUTES_foot, "original/routes_foot.geojson")
 # st_write(ROUTES_car, "original/routes_car.geojson")
 
@@ -151,7 +149,7 @@ ROUTES_car = st_read("original/routes_car.geojson", quiet = TRUE)
 
 We can compare the euclidean and routing distances that we estimated for the survey locations under 2 km.
 
-```{r distancessummary}
+```{r}
 summary(SURVEYsample$distance) # Euclidean
 summary(ROUTES_foot$distance) # Walk
 summary(ROUTES_car$distance) # Car
@@ -161,14 +159,14 @@ summary(ROUTES_car$distance) # Car
 
 Visualize with transparency of 30%
 
-```{r maproutes}
+```{r}
 mapview(ROUTES_foot, alpha = 0.3)
 mapview(ROUTES_car, alpha = 0.3, color = "red")
 ```
 
 We can also use the `overline()` [function from stplanr package](https://docs.ropensci.org/stplanr/reference/overline.html) to break up the routes when they overline, and add them up.
 
-```{r overline, message=FALSE, warning=FALSE}
+```{r}
 library(stplanr)
 
 # we create a value that we can later sum, it also could be the number of trips represented by this route. in this case is only one respondent per route
@@ -183,6 +181,6 @@ ROUTES_foot_overline = overline(
 mapview(ROUTES_foot_overline, zcol = "trips", lwd = 3)
 ```
 
-*   How many people are entering IST by the stairs near *Bar de Civil*?  
-*   And by the North gate?
-*   And from Alameda stairs?
+-   How many people are entering IST by the stairs near *Bar de Civil*?\
+-   And by the North gate?
+-   And from Alameda stairs?

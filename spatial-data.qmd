@@ -89,6 +89,7 @@ class(Municipalities_geo)
 To join the geometries from the `Municipalities_geo` to the data frame, we can use the `left_join()` function from the `dplyr` package.
 
 ```{r}
+#| message: false
 TRIPSgeo =
   TRIPSmun |> 
   left_join(Municipalities_geo)
