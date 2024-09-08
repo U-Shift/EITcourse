@@ -15,37 +15,37 @@ The second day will focus on analyzing spatial datasets, and routing origins to 
 
 ### Morning {.unnumbered}
 
--   Introduction to **programming** techniques and **data structures**
+We will start by a brief introduction to this course, followed by an introduction to programming techniques and data structures.
 
--   Introduction to R, and RStudio: **software installation** and main packages
+Then, we will install R and RStudio, and and the required R packages for this course, as in [Software](software.qmd) section.
 
--   **R base and basics**: examples and exercises
+After having everything setup, we will start with the [R basics](r-basics.qmd), with examples and exercises.
 
 ### Afternoon {.unnumbered}
 
--   **Data manipulation**: using the dplyr package to select, filter, left-join, group and summarize
+In the afternoon, we will focus on [data manipulation](data-manipulation.qmd), using the dplyr package to select, filter, left-join, group and summarize datasets.
 
--   Introduction to **GIS** and **spatial data**: import and visualize vector data
+Then, we will [introduce GIS and spatial data](spatia-data.qmd), learning how to importing and visualize vector data.
 
--   R markdown and **interactive maps**
+Finally, we will learn how to create cool [interactive maps](interactive-maps.qmd) using mapview and R markdown.
 
 ## Day 2
 
 ### Morning {.unnumbered}
 
--   **Desire lines** from OD and transport zones
+We will start the day by estimating the different types of [centroids of transport zones](centroids.qmd).
 
--   **Georeference** coordinates: examples from surveys
+After this, the natural next step is to create [desire lines](desire-lines.qmd) from orgins and destinations of the transport zones.
 
--   **Routing**: from euclidean distances to road networks
+We will then learn how to estimate [euclidean and routing distances](distances.qmd) for the desire-lines, using transport networks.
 
 ### Afternoon {.unnumbered}
 
--   **Open Transportation data**: where to find it
+In the second afternoon, we will briefly learn where to find and extract [open transportation data](open-data.qmd), such as OpenStreetMap and GTFS.
 
--   **Accessibility analysis with R**: *r5r demo* (Rafael Pereira)
+Then, we will learn how to perform [accessibility analysis](accessibility-analysis.qmd), using the r5r package.
 
--   Group **exercise**
+And finally, to wrap up all this topics, we will have a group exercise using other complex datasets, where you will apply the knowledge learned during the course.
 
 # Detailed schedule (TBC)
 
