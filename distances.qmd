@@ -243,7 +243,7 @@ legend("topleft", legend = c("Euclidean", "Walk", "Car"),
        lwd = 2, lty = c(1, 2, 3), pch = 16)
 ```
 
-## Vizualize routes
+## Visualize routes
 
 Visualize with transparency of 30%, to get a clue when they overlay.
 
