@@ -1,55 +1,133 @@
-# Georeferenced coordinates
+# Centroids of transport zones
 
-
-# Centroids
+In this section we will calculate the geometric and the weighted centroids of transport zones.
 
 ## Geometric centroids
 
+Taking the `Municipalities_geo` data from the previous section, we will calculate the geometric centroids, using the `st_centroid()` function.
+
 ```{r geocentroid}
-CENTROIDSgeo = st_centroid(TRIPSgeo_mun)
-# mapview(CENTROIDSgeo)
+#| message: false
+library(sf)
+Municipalities_geo = st_read("data/Municipalities_geo.gpkg", quiet = TRUE)
+
+Centroids_geo = st_centroid(Municipalities_geo)
 ```
 
+This creates points at the geometric center of each polygon.
+
+```{r}
+#| message: false
+#| fig-format: png
+library(mapview)
+
+mapview(Centroids_geo)
+mapview(Centroids_geo) + mapview(Municipalities_geo, alpha.regions = 0) # both, with full transparency in polygons
+```
+
+But...
+is this the best way to represent the center of a transport zone?
+
+These results may be biased by the shape of the polygons, and not represent where activities are.
+Example: lakes, forests, etc.
+
+To overcome this, we can use *weighted centroids*.
 
 ## Weigthed centroids
 
-Get BGRI Data^[Base Geográfica de Referenciação de Informação, Censos 2021] from INE website, at *Área Metropolitana de Lisboa* level: [https://mapas.ine.pt/download/index2021.phtml](mapas.ine.pt/download/index2021.phtml)
+We will weight centroids of transport zones by population and by number of buildings.
+
+For this, we will need the census data [@INE2021].
+
+```{r}
+#| eval: false
+#| include: false
+# data prep
+CENSUS = st_read("D:/GIS/MQAT/original/BGRI21_LISBOA.gpkg")
+CENSUS = CENSUS |> 
+  select(DTMN21, SUBSECCAO, N_INDIVIDUOS, N_EDIFICIOS_CLASSICOS) |>
+  rename(Mun_code = "DTMN21",
+         UID = "SUBSECCAO",
+         Population = "N_INDIVIDUOS",
+         Buildings = "N_EDIFICIOS_CLASSICOS")
+CENSUS = CENSUS |> left_join(Municipalities |> select(Mun_code, Municipality) |> distinct()) |> 
+  select(Municipality, UID, Population, Buildings)
+st_write(CENSUS, "data/census.gpkg")
+```
 
 ```{r getcensus}
-BGRI = st_read("original/BGRI21_LISBOA.gpkg", quiet = TRUE)
+#| message: false
+#| fig-format: png
+Census = st_read("data/census.gpkg", quiet = TRUE)
+
+mapview(Census |> filter(Municipality == "Lisboa"), zcol = "Population")
 ```
 
-It is not that easy to estimate weighted centroids with R. See [here](https://wzbsocialsciencecenter.github.io/spatially_weighted_avg/).  
-We will make a bridge connection to QGIS to use its native function of mean coordinates.  
+It was not that easy to estimate weighted centroids with R, as it is with GIS softwares.
+But there is this [new package](https://ryanzomorrodi.github.io/centr), `centr`, that can help us.
 
-<!-- CHANGE -->
+We need to specify the **group** we want to calculate the **mean centroids**, and the **weight variable** we want to use.
 
+```{r}
+# test
+library(centr)
+Centroid_pop = Census |> 
+  mean_center(group = "Municipality", weight = "Population")
+```
 
-```{r weighted}
-library(qgisprocess)
-# qgis_search_algorithms("mean") # search the exact function name
-# qgis_get_argument_specs("native:meancoordinates") |> select(name, description) # see the required inputs
+We can do the same for buildings.
 
-# with population
-CENTROIDSpop = qgis_run_algorithm(algorithm = "native:meancoordinates",
-                                  INPUT = BGRI,
-                                  WEIGHT = "N_INDIVIDUOS",
-                                  UID = "DTMN21")
-CENTROIDSpop = st_as_sf(CENTROIDSpop)
-
-# with buildings
-CENTROIDSbuild = qgis_run_algorithm(algorithm = "native:meancoordinates",
-                                  INPUT = BGRI,
-                                  WEIGHT = "N_EDIFICIOS_CLASSICOS",
-                                  UID = "DTMN21")
-CENTROIDSbuild = st_as_sf(CENTROIDSbuild)
+```{r}
+Centroid_build = Census |> 
+  mean_center(group = "Municipality", weight = "Buildings")
 ```
 
 
-## Compare in map
+## Compare centroids in a map
 
-```{r mapcentroid}
-mapview(CENTROIDSgeo) + mapview(CENTROIDSpop, col.region = "red") + mapview(CENTROIDSbuild, col.region = "black")
+### Interactive map
+
+```{r}
+#| fig-format: png
+mapview(Centroids_geo, col.region = "blue") +
+  mapview(Centroid_pop, col.region = "red") +
+  mapview(Centroid_build, col.region = "black") +
+  mapview(Municipalities_geo, alpha.regions = 0) # polygon limits
 ```
 
-See how the building, poulation and geometric centroids of Montijo are appart, from closer to Tagus, to the rural area.
+See how the building, population and geometric centroids of Sintra are appart, from closer to Tagus, to the rural area.
+
+### Static map
+
+To produce the same map, using only `plot()` and `st_geometry()`, we need to make sure that the geometries have the same crs.
+
+```{r}
+#| eval: false
+st_crs(Centroids_geo) # 4326 WGS84
+st_crs(Centroid_pop) # 3763 Portugal TM06
+```
+
+So, we need to transform the geometries to the same crs.
+
+```{r}
+Centroid_pop = st_transform(Centroid_pop, crs = 4326)
+Centroid_build = st_transform(Centroid_build, crs = 4326)
+```
+
+Now, to use `plot()` we incrementally add layers to the plot.
+
+```{r}
+# Plot the Municipalities_geo polygons first (with no fill)
+plot(st_geometry(Municipalities_geo), col = NA, border = "black", main = "Map of different Centroids of Municipalities")
+
+# Add the Centroids_geo points in blue
+plot(st_geometry(Centroids_geo), col = "blue", pch = 16, add = TRUE) # add!
+
+# Add the Centroid_pop points in red
+plot(st_geometry(Centroid_pop), col = "red", pch = 16, add = TRUE)
+
+# Add the Centroid_build points in black
+plot(st_geometry(Centroid_build), col = "black", pch = 16, add = TRUE)
+```
+
+In the next section we will use these centroids to calculate the desire lines between them.

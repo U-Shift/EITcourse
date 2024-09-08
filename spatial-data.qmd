@@ -39,6 +39,7 @@ Download and open `Municipalities_geo.gpkg` under [EITcourse/data](https://githu
 Within the `sf` package, we use the `st_read()` to read spatial features.
 
 ```{r}
+#| message: false
 Municipalities_geo = st_read("data/Municipalities_geo.gpkg")
 ```
 
