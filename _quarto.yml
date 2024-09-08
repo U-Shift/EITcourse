@@ -39,7 +39,7 @@ book:
     - part: "**Day 2**"
       chapters:
         - centroids.qmd
-        # - desire-lines.qmd
+        - desire-lines.qmd
         # - distances.qmd
         - open-data.qmd
         - r5r.qmd

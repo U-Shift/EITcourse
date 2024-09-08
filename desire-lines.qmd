@@ -1,51 +1,173 @@
----
-eval: false
----
-
 # OD pairs and desire lines
 
-Desire lines are a way to represent the flow of people or goods between two points. They are often used in transport planning to represent the flow of trips between zones.
-In this example, we will use the `stplanr` package to create desire lines from origin-destination (OD) pairs.
+Desire lines are a way to represent the flow of people or goods between two points.
+They are often used in transport planning to represent the flow of trips between zones.
 
-## Create desire lines with stplanr
+The [`stplanr`](https://docs.ropensci.org/stplanr/index.html) package is a collection of functions for sustainable transport planning with R, and it is built on top of the `sf` package [@stplanr].
 
-First, we need to install the `stplanr` package.
-
-<!-- TO-DO -->
+In this workshop, we will use the [`od`](https://itsleeds.github.io/od/) package, a lightweight package with a few functions from `stplanr`, namely the ones to create desire lines from origin-destination (OD) pairs [@od].
 
 
-# Desire Lines
+## Desire lines with od_2_sf
 
-Download `TRIPSdl_mun.gpkg` 
+To create desire lines, we need a dataset with OD pairs **and** other dataset with the corresponding transport zones (spatial data).
 
-```{r getdl}
-TRIPSdl_mun = st_read("geo/TRIPSdl_mun.gpkg", quiet = TRUE) 
+The `TRIPSmode.Rds` dataset includes origins, destinations and number of trips between municipalities.
+
+```{r}
+#| message: false
+TRIPSmode = readRDS("data/TRIPSmode.Rds")
 ```
 
-Filter intrazonal trips, and trips with origin or desination in Lisbon.
+The `Municipalities_geo.gpkg` dataset includes the geometry of the transport zones.
 
-```{r withlx}
-TRIPSdl_mun = TRIPSdl_mun |> 
-  filter(Origin_mun != Destination_mun) |> 
+```{r}
+#| message: false
+#| warning: false
+library(sf)
+Municipalities_geo = st_read("data/Municipalities_geo.gpkg", quiet = TRUE) # supress mesage
+```
+
+Then, we need to load the `od` package.
+We will use the `od_to_sf()` function to create desire lines from OD pairs.
+
+```{r}
+#| message: false
+# install.packages("od")
+library(od)
+
+TRIPSdlines = od_to_sf(TRIPSmode, z = Municipalities_geo) # z for zones
+```
+
+For this magic to work smoothly, the first two columns of the `TRIPSmode` dataset must be the **origin** and **destination** zones, and these zones need to correspond to the first column of the `Municipalities_geo` dataset (with an associated geometry).
+
+::: {.callout-tip appearance="simple" icon="false"}
+See more options with the `?stplanr::od2line` function.
+:::
+
+Now we can visualize the desire lines using the `mapview` function.
+
+```{r}
+#| message: false
+#| fig-format: png
+library(mapview)
+mapview(TRIPSdlines, zcol = "Total")
+```
+
+As you can see, this is too much information to be able to understand the flows.
+
+### Filtering desire lines
+
+Filter **intrazonal** trips.
+
+```{r}
+#| message: false
+#| fig-format: png
+library(dplyr)
+
+TRIPSdlines_inter = TRIPSdlines |> 
+  filter(Origin != Destination) |> # remove intrazonal trips
   filter(Total > 5000) # remove noise
 
-mapview(TRIPSdl_mun, zcol = "Total", lwd = 5)
+mapview(TRIPSdlines_inter, zcol = "Total", lwd = 5)
 ```
 
-```{r filterlx}
-TRIPSdl_mun_noLX = TRIPSdl_mun |> 
-  filter(Origin_mun != "Lisboa", Destination_mun != "Lisboa")
+Filter trips with origin or destination **not in** Lisbon.
 
-mapview(TRIPSdl_mun_noLX, zcol = "Total", lwd = 8)
+```{r}
+#| fig-format: png
+TRIPSdl_noLX = TRIPSdlines_inter |> 
+  filter(Origin != "Lisboa", Destination != "Lisboa")
+
+mapview(TRIPSdl_noLX, zcol = "Total", lwd = 8) # larger line width
 ```
 
-You can replace the `Total` with other variable, such as `Car`, `PTransit`, and so on.
-
-> Note: The function [`od_oneway()`](https://docs.ropensci.org/stplanr/reference/od_oneway.html) aggregates oneway lines to produce bidirectional flows. By default, it returns the sum of each numeric column for each bidirectional origin-destination pair. This is better for viz purpouses.
+Try to replace the `Total` with other variables, such as `Car`, `PTransit`, and see the differences.
 
 
-## OD Jittering
+## Oneway desire lines
 
-Other option would be using the OD jittering approach [@Lovelace2022], but this is not the focus of this tutorial.
+Note that the `od_to_sf()` function creates bidirectional desire lines.
+This can be not the ideal for visualization / representation purposes, as you will have 2 lines overlaping.
 
-![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png)
+The function [`od_oneway()`](https://itsleeds.github.io/od/reference/od_oneway.html) aggregates oneway lines to produce bidirectional flows.
+
+By default, it returns the sum of each numeric column for each bidirectional origin-destination pair.
+
+```{r}
+nrow(TRIPSdlines)
+TRIPSdlines_oneway = od_oneway(TRIPSdlines)
+nrow(TRIPSdlines_oneway)
+```
+
+Note that for the last municipalities you have less combinations now. Nevertheless, all the possible combinations are represented.
+
+```{r}
+head(TRIPSdlines_oneway[c(1,2),]) # just the first 2 columns
+tail(TRIPSdlines_oneway[c(1,2),])
+```
+
+Example of visualization with Public Transit trips in both ways.
+
+```{r}
+#| fig-format: png
+TRIPSdlines_oneway_noLX = TRIPSdlines_oneway |> 
+  filter(o != d) |> # remove intrazonal trips
+  filter(PTransit > 5000) # reduce noise
+
+mapview(TRIPSdlines_oneway_noLX, zcol = "PTransit", lwd = 8)
+```
+
+## Using population centroids
+
+The `od_to_sf()` function uses the geometric center of the zones to create the desire lines.
+But if we replace those zones by the weighted centroids, we can have a more realistic representation of the flows.
+
+```{r}
+#| message: false
+#| include: false
+Centroid_pop = st_read("data/Centroid_pop.gpkg", quiet = TRUE)
+```
+
+```{r}
+#| message: false
+TRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |>  # works the same way
+  od_oneway() # oneway
+```
+
+Check differences of lines with trips from/to Lisbon:
+
+```{r}
+#| fig-format: png
+TRIPSdlines_geo_noLX = TRIPSdlines_oneway |> 
+  filter(o == "Lisboa" | d == "Lisboa") # or condition
+TRIPSdlines_pop_noLX = TRIPSdlines_pop |> 
+  filter(o == "Lisboa" | d == "Lisboa")
+
+mapview(TRIPSdlines_geo_noLX, color = "blue") + mapview(TRIPSdlines_pop_noLX, color = "red")
+```
+
+<!-- ## Plot desire lines with line width for number of trips -->
+
+<!-- ```{r} -->
+<!-- plot(TRIPSdlines_oneway_noLX$geometry, lwd = TRIPSdlines_pop_noLX$Total / 20000) -->
+<!-- ``` -->
+
+
+<!-- ## OD Jittering -->
+
+<!-- Other option would be using the OD jittering approach [@Lovelace2022], but this is not the focus of this tutorial. -->
+
+<!-- ![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png) --> 
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- TRIPSjitter = od_jitter(TRIPSmode, z = Municipalities_geo) -->
+
+<!-- plot(TRIPSdlines$geometry, col = "red", lwd = 2) -->
+<!-- plot(TRIPSjitter$geometry, add = TRUE) -->
+<!-- ``` -->
+
+The next step will be estimating the **euclidean distances** between these centroids, and compare them with the **routing distances**.
+
+

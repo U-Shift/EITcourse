@@ -129,6 +129,7 @@ install.packages("sf")
 install.packages("mapview")
 install.packages("rmarkdown")
 install.packages("centr")
+install.packages("od")
 install.packages("osmextract")
 ```
 
