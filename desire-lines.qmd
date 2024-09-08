@@ -7,7 +7,6 @@ The [`stplanr`](https://docs.ropensci.org/stplanr/index.html) package is a colle
 
 In this workshop, we will use the [`od`](https://itsleeds.github.io/od/) package, a lightweight package with a few functions from `stplanr`, namely the ones to create desire lines from origin-destination (OD) pairs [@od].
 
-
 ## Desire lines with od_2_sf
 
 To create desire lines, we need a dataset with OD pairs **and** other dataset with the corresponding transport zones (spatial data).
@@ -84,7 +83,6 @@ mapview(TRIPSdl_noLX, zcol = "Total", lwd = 8) # larger line width
 
 Try to replace the `Total` with other variables, such as `Car`, `PTransit`, and see the differences.
 
-
 ## Oneway desire lines
 
 Note that the `od_to_sf()` function creates bidirectional desire lines.
@@ -100,11 +98,12 @@ TRIPSdlines_oneway = od_oneway(TRIPSdlines)
 nrow(TRIPSdlines_oneway)
 ```
 
-Note that for the last municipalities you have less combinations now. Nevertheless, all the possible combinations are represented.
+Note that for the last municipalities you have less combinations now.
+Nevertheless, all the possible combinations are represented.
 
 ```{r}
-head(TRIPSdlines_oneway[c(1,2),]) # just the first 2 columns
-tail(TRIPSdlines_oneway[c(1,2),])
+head(TRIPSdlines_oneway[,c(1,2)]) # just the first 2 columns
+tail(TRIPSdlines_oneway[,c(1,2)])
 ```
 
 Example of visualization with Public Transit trips in both ways.
@@ -131,6 +130,8 @@ Centroid_pop = st_read("data/Centroid_pop.gpkg", quiet = TRUE)
 
 ```{r}
 #| message: false
+# Centroid_pop = st_read("data/Centroid_pop.gpkg")
+
 TRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |>  # works the same way
   od_oneway() # oneway
 ```
@@ -139,35 +140,80 @@ Check differences of lines with trips from/to Lisbon:
 
 ```{r}
 #| fig-format: png
-TRIPSdlines_geo_noLX = TRIPSdlines_oneway |> 
+TRIPSdlines_geo_LX = TRIPSdlines_oneway |> 
   filter(o == "Lisboa" | d == "Lisboa") # or condition
-TRIPSdlines_pop_noLX = TRIPSdlines_pop |> 
+TRIPSdlines_pop_LX = TRIPSdlines_pop |> 
   filter(o == "Lisboa" | d == "Lisboa")
 
-mapview(TRIPSdlines_geo_noLX, color = "blue") + mapview(TRIPSdlines_pop_noLX, color = "red")
+mapview(TRIPSdlines_geo_LX, color = "blue") + mapview(TRIPSdlines_pop_LX, color = "red")
 ```
 
-<!-- ## Plot desire lines with line width for number of trips -->
+<!-- ## Desire lines with line width for number of trips -->
 
 <!-- ```{r} -->
+
 <!-- plot(TRIPSdlines_oneway_noLX$geometry, lwd = TRIPSdlines_pop_noLX$Total / 20000) -->
+
 <!-- ``` -->
 
+<!-- Altough mapview is great for a quick visualization, it is not that easy to customize the line width. -->
+
+<!-- tmap is a great alternative for this, altough mote complex. -->
+
+<!-- ```{r} -->
+
+<!-- library(tmap) -->
+
+<!-- tmap_mode("view") -->
+
+<!-- LINES = TRIPSdlines_oneway |> -->
+
+<!--              filter(Total >= 5000) |> -->
+
+<!--              filter(o != "Lisboa", d != "Lisboa") |>  -->
+
+<!--              filter(o != d) -->
+
+<!-- tm_shape(Municipalities_geo) + -->
+
+<!--   tm_borders(col = "grey") + -->
+
+<!--   tm_shape(LINES) + -->
+
+<!--   tm_lines("Total",  -->
+
+<!--            # palette = viridis::magma(n = 4, direction = -1), -->
+
+<!--            # breaks = c(5000, 10000, 20000, 50000, 80000), -->
+
+<!--            # lwd = "Total", -->
+
+<!--            # scale = 30, -->
+
+<!--            title.col = "Intermumicipal trips, without Lisbon") + -->
+
+<!--   tm_shape(Centroid_pop) + -->
+
+<!--   tm_text("group", size = 0.8, col = "gray25") -->
+
+<!-- ``` -->
 
 <!-- ## OD Jittering -->
 
 <!-- Other option would be using the OD jittering approach [@Lovelace2022], but this is not the focus of this tutorial. -->
 
-<!-- ![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png) --> 
+<!-- ![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png) -->
 
 <!-- ```{r} -->
+
 <!-- #| eval: false -->
+
 <!-- TRIPSjitter = od_jitter(TRIPSmode, z = Municipalities_geo) -->
 
 <!-- plot(TRIPSdlines$geometry, col = "red", lwd = 2) -->
+
 <!-- plot(TRIPSjitter$geometry, add = TRUE) -->
+
 <!-- ``` -->
 
 The next step will be estimating the **euclidean distances** between these centroids, and compare them with the **routing distances**.
-
-

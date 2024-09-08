@@ -39,11 +39,12 @@ book:
     - part: "**Day 2**"
       chapters:
         - centroids.qmd
+        # - geocode.qmd
         - desire-lines.qmd
         # - distances.qmd
         - open-data.qmd
         - r5r.qmd
-        - intro.qmd
+        # - intro.qmd
     - references.qmd
   
   repo-url: https://github.com/U-Shift/EITcourse
