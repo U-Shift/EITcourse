@@ -22,6 +22,11 @@ Municipalities_geo = st_read("data/TRIPSgeo.gpkg")
 Municipalities_geo = Municipalities_geo |> 
   select(Municipality, geom)
 st_write(Municipalities_geo, "data/Municipalities_geo.gpkg")
+
+TRIPSgeo = st_read("data/TRIPSgeo.gpkg")
+TRIPSmun = TRIPSgeo |> 
+  st_drop_geometry()
+saveRDS(TRIPSmun, "data/TRIPSmun.Rds")
 ```
 
 The `sf` package is a powerful package for working with spatial data in R.
@@ -51,7 +56,7 @@ A **geographic coordinate system** is a spherical representation of the Earth's 
 
 ![Source: ESRI](images/clipboard-1233124217.png){fig-align="center"}
 
-The `st_crs()` function can be used to check the coordinate reference system of a spatial object.
+The `st_crs()` function can be used to check the **coordinate reference system** of a spatial object.
 
 ```{r}
 st_crs(Municipalities_geo)
@@ -72,30 +77,74 @@ Now see the differences when calling `Municipalities_geo` and `Municipalities_pr
 
 ## Join geometries to data frames
 
-Join to TRIPS_pipes data frame.
-
-<!-- TO-DO -->
+Import `TRIPSmun.Rds` file and check data class-
 
 ```{r}
-TRIPSpipes =
-  read.csv("data/TRIPS_pipes.csv") |>
-  st_as_sf(coords = c("lon", "lat"), crs = 4326) |>
-  left_join(Municipalities_geo)
+TRIPSmun = readRDS("data/TRIPSmun.Rds")
+class(TRIPSmun)
+class(Municipalities_geo)
 ```
 
+To join the geometries from the `Municipalities_geo` to the data frame, we can use the `left_join()` function from the `dplyr` package.
+
+```{r}
+TRIPSgeo =
+  TRIPSmun |> 
+  left_join(Municipalities_geo)
+
+class(TRIPSgeo)
+```
+
+As you can see, this **does not make the object a spatial feature**.
+To do this, we need to use the `st_as_sf()` function.
+
+```{r}
+TRIPSgeo = TRIPSgeo |> st_as_sf()
+class(TRIPSgeo)
+```
+
+Now we have a spatial feature with the data frame.
+
+## Create spatial data from coordinates
+
+The `st_as_sf()` function can also be used to create a spatial feature from a data frame with coordinates.
+In that case, we need to specify the columns with the coordinates.
+
+We will use survey data (in `.txt`) with the participants' home latitude/longitude coordinates to create a spatial feature.
+
+```{r}
+SURVEY = read.csv("data/SURVEY.txt", sep = "\t") # tab delimiter
+class(SURVEY)
+
+SURVEYgeo = st_as_sf(SURVEY, coords = c("lon", "lat"), crs = 4326) # create spatial feature
+class(SURVEYgeo)
+```
+
+We can also set the **crs** of the spatial feature on the fly.
+
+Check the differences between both data variables.
 
 ## Visuzlize spatial data
 
-Represent Transport Zones with Total, and with Car %.
+Represent Transport Zones with Total and Car, using `plot()`.
 
-```{r carper}
-# create Car_per variable
-TRIPSgeo_mun = TRIPSgeo_mun |> mutate(Car_per = Car / Total * 100)
+```{r}
+plot(TRIPSgeo) # all variables
 
-#Vizualize in map
-mapview(TRIPSgeo_mun, zcol = "Car_per")
-mapview(TRIPSgeo_freg, zcol = "Car_per", col.regions = rev(hcl.colors(9, "-Inferno"))) #palete inferno with 9 classes, reverse color ramp
+plot(TRIPSgeo["Municipality"])
+
+plot(TRIPSgeo["Total"])
+
+plot(TRIPSgeo["Car"])
+
+
+# plot pointy data
+plot(SURVEYgeo)
 ```
+
+::: {.callout-note appearance="simple"}
+In the next chapter we will learn how to create interactive maps.
+:::
 
 ## Export spatial data
 
@@ -105,10 +154,10 @@ This is also useful to convert spatial data between formats.
 
 ```{r}
 #| eval: false
-st_write(TRIPS_geo, "data/TRIPS_geo.gpkg") # as geopackage
-st_write(TRIPS_geo, "data/TRIPS_geo.shp") # as shapefile
-st_write(TRIPS_geo, "data/TRIPS_geo.geojson") # as geojson
-st_write(TRIPS_geo, "data/TRIPS_geo.csv", layer_options = "GEOMETRY=AS_WKT") # as csv, with WKT geometry
+st_write(TRIPSgeo, "data/TRIPSgeo.gpkg") # as geopackage
+st_write(TRIPSgeo, "data/TRIPSgeo.shp") # as shapefile
+st_write(TRIPSgeo, "data/TRIPSgeo.geojson") # as geojson
+st_write(TRIPSgeo, "data/TRIPSgeo.csv", layer_options = "GEOMETRY=AS_WKT") # as csv, with WKT geometry
 ```
 
 ::: {.callout-warning appearance="simple"}
