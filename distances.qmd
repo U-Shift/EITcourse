@@ -211,7 +211,7 @@ summary(SURVEYcar$distance) # Car
 > What can you understand from this results?
 
 ```{r}
-#| include: false
+#| echo: false
 distances = data.frame(euclidean = SURVEYsample$distance,
                        walk = SURVEYwalk$distance,
                        car = SURVEYcar$distance)
