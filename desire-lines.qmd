@@ -120,7 +120,7 @@ mapview(TRIPSdlines_oneway_noLX, zcol = "PTransit", lwd = 8)
 ## Using population centroids
 
 The `od_to_sf()` function uses the geometric center of the zones to create the desire lines.
-But if we replace those zones by the weighted centroids, we can have a more realistic representation of the flows.
+But if we replace those zones by the [weighted centroids](spatial-data.qmd#weighted-centroids), we can have a more realistic representation of the flows.
 
 ```{r}
 #| message: false
@@ -147,73 +147,5 @@ TRIPSdlines_pop_LX = TRIPSdlines_pop |>
 
 mapview(TRIPSdlines_geo_LX, color = "blue") + mapview(TRIPSdlines_pop_LX, color = "red")
 ```
-
-<!-- ## Desire lines with line width for number of trips -->
-
-<!-- ```{r} -->
-
-<!-- plot(TRIPSdlines_oneway_noLX$geometry, lwd = TRIPSdlines_pop_noLX$Total / 20000) -->
-
-<!-- ``` -->
-
-<!-- Altough mapview is great for a quick visualization, it is not that easy to customize the line width. -->
-
-<!-- tmap is a great alternative for this, altough mote complex. -->
-
-<!-- ```{r} -->
-
-<!-- library(tmap) -->
-
-<!-- tmap_mode("view") -->
-
-<!-- LINES = TRIPSdlines_oneway |> -->
-
-<!--              filter(Total >= 5000) |> -->
-
-<!--              filter(o != "Lisboa", d != "Lisboa") |>  -->
-
-<!--              filter(o != d) -->
-
-<!-- tm_shape(Municipalities_geo) + -->
-
-<!--   tm_borders(col = "grey") + -->
-
-<!--   tm_shape(LINES) + -->
-
-<!--   tm_lines("Total",  -->
-
-<!--            # palette = viridis::magma(n = 4, direction = -1), -->
-
-<!--            # breaks = c(5000, 10000, 20000, 50000, 80000), -->
-
-<!--            # lwd = "Total", -->
-
-<!--            # scale = 30, -->
-
-<!--            title.col = "Intermumicipal trips, without Lisbon") + -->
-
-<!--   tm_shape(Centroid_pop) + -->
-
-<!--   tm_text("group", size = 0.8, col = "gray25") -->
-
-<!-- ``` -->
-
-<!-- ## OD Jittering -->
-
-<!-- Other option would be using the OD jittering approach [@Lovelace2022], but this is not the focus of this tutorial. -->
-
-<!-- ![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png) -->
-
-<!-- ```{r} -->
-
-<!-- #| eval: false -->
-
-<!-- TRIPSjitter = od_jitter(TRIPSmode, z = Municipalities_geo) -->
-
-<!-- plot(TRIPSdlines$geometry, col = "red", lwd = 2) -->
-
-<!-- plot(TRIPSjitter$geometry, add = TRUE) -->
-
-<!-- ``` -->
 
 The next step will be estimating the **euclidean distances** between these centroids, and compare them with the **routing distances**.
