@@ -1,3 +1,7 @@
+---
+eval: false
+---
+
 # OD pairs and desire lines
 
 Desire lines are a way to represent the flow of people or goods between two points. They are often used in transport planning to represent the flow of trips between zones.
@@ -38,3 +42,10 @@ mapview(TRIPSdl_mun_noLX, zcol = "Total", lwd = 8)
 You can replace the `Total` with other variable, such as `Car`, `PTransit`, and so on.
 
 > Note: The function [`od_oneway()`](https://docs.ropensci.org/stplanr/reference/od_oneway.html) aggregates oneway lines to produce bidirectional flows. By default, it returns the sum of each numeric column for each bidirectional origin-destination pair. This is better for viz purpouses.
+
+
+## OD Jittering
+
+Other option would be using the OD jittering approach [@Lovelace2022], but this is not the focus of this tutorial.
+
+![Conversion of OD data to geographic desire lines using population weighted centroids for origins and destinations (A) and jittered results. Source: @Lovelace2022](images/clipboard-1233322223.png)

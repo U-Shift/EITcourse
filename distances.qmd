@@ -1,3 +1,8 @@
+---
+eval: false
+---
+
+
 # Euclidean and routing distances
 
 We will show how to estimate euclidean distances (*as crown flights*) using `sf` package, and the distances using a road network using `r5r` package (demonstrative).
