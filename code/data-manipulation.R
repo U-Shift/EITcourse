@@ -97,6 +97,7 @@ TRIPS_pipes = TRIPS |>
   summarize(Total = sum(Total),
             Car = sum(Car),
             Car_perc = Car/Total * 100) |> 
+  ungroup() |> 
   
   arrange(desc(Car_perc))
 
