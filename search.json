@@ -64,7 +64,7 @@
     "href": "structure.html#day-1",
     "title": "2  Course Structure",
     "section": "",
-    "text": "Morning\n\nIntroduction to programming techniques and data structures\nIntroduction to R, and RStudio: software installation and main packages\nR base and basics: examples and exercises\n\n\n\nAfternoon\n\nData manipulation: using the dplyr package to select, filter, left-join, group and summarize\nIntroduction to GIS and spatial data: import and visualize vector data\nR markdown and interactive maps",
+    "text": "Morning\nWe will start by a brief introduction to this course, followed by an introduction to programming techniques and data structures.\nThen, we will install R and RStudio, and and the required R packages for this course, as in Software section.\nAfter having everything setup, we will start with the R basics, with examples and exercises.\n\n\nAfternoon\nIn the afternoon, we will focus on data manipulation, using the dplyr package to select, filter, left-join, group and summarize datasets.\nThen, we will introduce GIS and spatial data, learning how to importing and visualize vector data.\nFinally, we will learn how to create cool interactive maps using mapview and R markdown.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Structure</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "structure.html#day-2",
     "title": "2  Course Structure",
     "section": "2.2 Day 2",
-    "text": "2.2 Day 2\n\nMorning\n\nDesire lines from OD and transport zones\nGeoreference coordinates: examples from surveys\nRouting: from euclidean distances to road networks\n\n\n\nAfternoon\n\nOpen Transportation data: where to find it\nAccessibility analysis with R: r5r demo (Rafael Pereira)\nGroup exercise",
+    "text": "2.2 Day 2\n\nMorning\nWe will start the day by estimating the different types of centroids of transport zones.\nAfter this, the natural next step is to create desire lines from orgins and destinations of the transport zones.\nWe will then learn how to estimate euclidean and routing distances for the desire-lines, using transport networks.\n\n\nAfternoon\nIn the second afternoon, we will briefly learn where to find and extract open transportation data, such as OpenStreetMap and GTFS.\nThen, we will learn how to perform accessibility analysis, using the r5r package.\nAnd finally, to wrap up all this topics, we will have a group exercise using other complex datasets, where you will apply the knowledge learned during the course.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Course Structure</span>"
     ]
@@ -117,7 +117,7 @@
     "href": "software.html#r-packages",
     "title": "3  Software",
     "section": "3.3 R packages",
-    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\")) # optional\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")\ninstall.packages(\"centr\")\ninstall.packages(\"od\")\ninstall.packages(\"osmextract\")",
+    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")\ninstall.packages(\"centr\")\ninstall.packages(\"od\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\")) # optional\ninstall.packages(\"osmextract\") # optional\ninstall.packages(\"stplanr\") # optional",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
@@ -129,17 +129,6 @@
     "title": "3  Software",
     "section": "3.4 r5r",
     "text": "3.4 r5r\nThe workshop “A crash course on urban accessibility with R” uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.\n\npkgs = c(\"r5r\", \"accessibility\", \"rJavaEnv\", \"h3jsr\")\n\ninstall.packages(pkgs)\n\n\n3.4.1 Java Development Kit\nTo use the {r5r} package (version v2.0 or higher), you will need to have Java Development Kit (JDK) 21 installed on your computer. There are numerous open-source JDK implementations. The easiest way to install JDK is using the new {rJavaEnv} package in R.\n\n# check version of Java currently installed (if any) \nrJavaEnv::java_check_version_rjava()\n\n## if this is the first time you use {rJavaEnv}, you might need to run this code\n## below to consent the installation of Java.\n# rJavaEnv::rje_consent(provided = TRUE)\n\n# install Java 21\nrJavaEnv::java_quick_install(\n  version = 21,\n  distribution = 'Corretto')\n\n# check if Java was successfully installed\nrJavaEnv::java_check_version_rjava()\n\nAlternatively, you can manually download and install JDK 21.\n\nWindows and MacOSUbuntu\n\n\nGo to Java Development Kit 21, download the latest 21 build corresponding to your operating system and run the executable file.\n\n\nInstall it via the terminal:\n\nsudo apt install -y openjdk-21-jdk openjdk-21-jre\njava -version",
-    "crumbs": [
-      "**Day 1**",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
-    ]
-  },
-  {
-    "objectID": "software.html#open-route-service",
-    "href": "software.html#open-route-service",
-    "title": "3  Software",
-    "section": "3.5 Open Route Service",
-    "text": "3.5 Open Route Service\nSign up for an account and create a token. Copy your API.\nIn RStudio console, run:\n\n# install.packages(\"openrouteservice\")\nopenrouteservice::ors_api_key(\"YOUR-API-KEY\")\n\nThis will store your key on your .Renviron file, meaning that every time you open RStudio, you won’t need to run this command again.\nThis is useful also to write your openrouteservice scripts without sharing your key with others.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
@@ -403,7 +392,7 @@
     "href": "interactive-maps.html#mapview",
     "title": "7  Interactive maps",
     "section": "",
-    "text": "Note\n\n\n\nNote that you can change the basemap, and click on the geometries to see the data associated with them.\n\n\n\n\n\n7.1.1 Export\nYou can directly export the map as an html file or image, using the Viewer panel.\n\n\n\n\n\n\n\nThis is the most straightforward solution.\n\n\n\nYou can also export a map as an html file or image using code.\n\n\nCode\n# install.packages(\"webshot2\") # you will need this\n\nmap = mapview(TRIPSgeo, zcol = \"Total\") # fisrt create a objet with the desired map\n\nmapshot2(map, \"data/map.html\") # as webpage\nmapshot2(map, file = \"data/map.png\") # as image",
+    "text": "Note that you can change the basemap, and click on the geometries to see the data associated with them.\n\n\n\n\n\n\n7.1.1 Export\nYou can directly export the map as an html file or image, using the Viewer panel.\n\n\n\n\n\n\n\nThis is the most straightforward solution.\n\n\n\nYou can also export a map as an html file or image using code.\n\n\nCode\n# install.packages(\"webshot2\") # you will need this\n\nmap = mapview(TRIPSgeo, zcol = \"Total\") # fisrt create a objet with the desired map\n\nmapshot2(map, \"data/map.html\") # as webpage\nmapshot2(map, file = \"data/map.png\") # as image",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
@@ -491,54 +480,120 @@
     "href": "desire-lines.html#using-population-centroids",
     "title": "9  OD pairs and desire lines",
     "section": "9.3 Using population centroids",
-    "text": "9.3 Using population centroids\nThe od_to_sf() function uses the geometric center of the zones to create the desire lines. But if we replace those zones by the weighted centroids, we can have a more realistic representation of the flows.\n\n\nCode\n# Centroid_pop = st_read(\"data/Centroid_pop.gpkg\")\n\nTRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |&gt;  # works the same way\n  od_oneway() # oneway\n\n\nCheck differences of lines with trips from/to Lisbon:\n\n\nCode\nTRIPSdlines_geo_LX = TRIPSdlines_oneway |&gt; \n  filter(o == \"Lisboa\" | d == \"Lisboa\") # or condition\nTRIPSdlines_pop_LX = TRIPSdlines_pop |&gt; \n  filter(o == \"Lisboa\" | d == \"Lisboa\")\n\nmapview(TRIPSdlines_geo_LX, color = \"blue\") + mapview(TRIPSdlines_pop_LX, color = \"red\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe next step will be estimating the euclidean distances between these centroids, and compare them with the routing distances.\n\n\n\n\n\n\nLovelace, Robin, and Malcolm Morgan. 2024. Od: Manipulate and Map Origin-Destination Data. https://github.com/itsleeds/od.\n\n\nRobin Lovelace, and Richard Ellison. 2018. “Stplanr: A Package for Transport Planning.” The R Journal 10 (2): 10. https://doi.org/10.32614/RJ-2018-053.",
+    "text": "9.3 Using population centroids\nThe od_to_sf() function uses the geometric center of the zones to create the desire lines. But if we replace those zones by the weighted centroids, we can have a more realistic representation of the flows.\n\n\nCode\n# Centroid_pop = st_read(\"data/Centroid_pop.gpkg\")\n\nTRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |&gt;  # works the same way\n  od_oneway() # oneway\n\n\nCheck differences of lines with trips from/to Lisbon:\n\n\nCode\nTRIPSdlines_geo_LX = TRIPSdlines_oneway |&gt; \n  filter(o == \"Lisboa\" | d == \"Lisboa\") # or condition\nTRIPSdlines_pop_LX = TRIPSdlines_pop |&gt; \n  filter(o == \"Lisboa\" | d == \"Lisboa\")\n\nmapview(TRIPSdlines_geo_LX, color = \"blue\") + mapview(TRIPSdlines_pop_LX, color = \"red\")\n\n\n\n\n\n\nThe next step will be estimating the euclidean distances between these centroids, and compare them with the routing distances.\n\n\n\n\n\n\nLovelace, Robin, and Richard Ellison. 2018. “Stplanr: A Package for Transport Planning.” The R Journal 10 (2): 10. https://doi.org/10.32614/RJ-2018-053.\n\n\nLovelace, Robin, and Malcolm Morgan. 2024. Od: Manipulate and Map Origin-Destination Data. https://github.com/itsleeds/od.",
     "crumbs": [
       "**Day 2**",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>OD pairs and desire lines</span>"
     ]
   },
   {
-    "objectID": "open-data.html",
-    "href": "open-data.html",
-    "title": "10  Open transportation data",
+    "objectID": "distances.html",
+    "href": "distances.html",
+    "title": "10  Euclidean and routing distances",
     "section": "",
-    "text": "10.1 Road Networks",
+    "text": "10.1 Euclidean distances\nTaking the survey respondents’ location, we will estimate the distance to the university (IST) using the sf package.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html#euclidean-distances",
+    "href": "distances.html#euclidean-distances",
+    "title": "10  Euclidean and routing distances",
+    "section": "",
+    "text": "Import survey data frame convert to sf\nWe will use a survey dataset with 200 observations, with the following variables: ID, Affiliation, Age, Sex, Transport Mode to IST, and latitude and longitude coordinates.\n\n\nCode\nlibrary(dplyr)\n\nSURVEY = read.csv(\"data/SURVEY.txt\", sep = \"\\t\") # tab delimiter\nnames(SURVEY)\n\n\n[1] \"ID\"   \"AFF\"  \"AGE\"  \"SEX\"  \"MODE\" \"lat\"  \"lon\" \n\n\nAs we have the coordinates, we can convert this data frame to a spatial feature, as explained in the Introduction to spatial data section.\n\n\nCode\nlibrary(sf)\n\nSURVEYgeo = st_as_sf(SURVEY, coords = c(\"lon\", \"lat\"), crs = 4326) # convert to as sf data\n\n\n\n\nCreate new point at the university\nUsing coordinates from Instituto Superior Técnico, we can directly create a simple feature and assign its crs.\n\n\nCode\nUNIVERSITY = data.frame(place = \"IST\",\n                        lon = -9.1397404,\n                        lat = 38.7370168) |&gt;  # first a dataframe\n  st_as_sf(coords = c(\"lon\", \"lat\"), # then a spacial feature\n           crs = 4326)\n\n\nVisualize in a map:\n\n\nCode\nlibrary(mapview)\nmapview(SURVEYgeo, zcol = \"MODE\") + mapview(UNIVERSITY, col.region = \"red\", cex = 12)\n\n\n\n\n\n\n\n\nStraight lines\nFirst we will create lines connecting the survey locations to the university, using the st_nearest_points() function.\nThis function finds returns the nearest points between two geometries, and creates a line between them. This can be useful to find the nearest train station to each point, for instance.\nAs we only have 1 point at UNIVERSITY layer, we will have the same number of lines as number of surveys = 200.\n\n\nCode\nSURVEYeuclidean = st_nearest_points(SURVEYgeo, UNIVERSITY, pairwise = TRUE) |&gt;\n  st_as_sf() # this creates lines\n\nmapview(SURVEYeuclidean)\n\n\nWarning in cbind(`Feature ID` = fid, mat): number of rows of result is not a\nmultiple of vector length (arg 1)\n\n\n\n\n\n\nNote that if we have more than one point in the second layer, the pairwise = TRUE will create a line for each combination of points. Set to FALSE if, for instance, you have the same number of points in both layers and want to create a line between the corresponding points.\n\n\nDistance\nNow we can estimate the distance using the st_length() function.\n\n\nCode\n# compute the line length and add directly in the first survey layer\nSURVEYgeo = SURVEYgeo |&gt; \n  mutate(distance = st_length(SURVEYeuclidean))\n\n# remove the units - can be useful\nSURVEYgeo$distance = units::drop_units(SURVEYgeo$distance) \n\n\nWe could also estimate the distance using the st_distance() function directly, without creating the lines.\n\n\nCode\nSURVEYgeo = SURVEYgeo |&gt; \n  mutate(distance = st_distance(SURVEYgeo, UNIVERSITY)[,1] |&gt;  # in meters\n           units::drop_units()) |&gt;  # remove units\n  mutate(distance = round(distance)) # round to integer\n\nsummary(SURVEYgeo$distance)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    298    1106    2186    2658    3683    8600",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html#routing-distances-with-r5r",
+    "href": "distances.html#routing-distances-with-r5r",
+    "title": "10  Euclidean and routing distances",
+    "section": "10.2 Routing distances with r5r",
+    "text": "10.2 Routing distances with r5r\nWe use the r5r package to estimate the distance using a road network.\n\n\n\n\n\n\nTo properly the setup r5r model for the area you are working on, you need to download the road network data from OpenStreetMap and, if needed, add a GTFS and DEM file, as it will be explained in the next section.\n\n\n\nWe will use only respondents with a distance to the university less than 2 km.\n\n\nCode\nSURVEYsample = SURVEYgeo |&gt; filter(distance &lt;= 2000)\nnrow(SURVEYsample)\n\n\n[1] 95\n\n\nWe need an id (unique identifier) for each survey location, to be used in the routing functions of r5r.\n\n\nCode\n# create id columns for both datasets\nSURVEYsample = SURVEYsample |&gt; \n  mutate(id = c(1:nrow(SURVEYsample))) # from 1 to the number of rows\n\nUNIVERSITY = UNIVERSITY |&gt; \n  mutate(id = 1) # only one row\n\n\n\nDistances by car\nEstimate the routes with time and distance by car, from survey locations to University.\n\n\nCode\nSURVEYcar = detailed_itineraries(\n  r5r_core = r5r_network,\n  origins = SURVEYsample,\n  destinations = UNIVERSITY,\n  mode = \"CAR\",\n  all_to_all = TRUE # if false, only 1-1 would be calculated\n)\n\nnames(SURVEYcar)\n\n\n [1] \"from_id\"          \"from_lat\"         \"from_lon\"         \"to_id\"           \n [5] \"to_lat\"           \"to_lon\"           \"option\"           \"departure_time\"  \n [9] \"total_duration\"   \"total_distance\"   \"segment\"          \"mode\"            \n[13] \"segment_duration\" \"wait\"             \"distance\"         \"route\"           \n[17] \"geometry\"        \n\n\nThe detailed_itineraries() function is super detailed!\n\n\n\n\n\n\nIf we want to know only time and distance, and not the route itself, we can use the travel_time_matrix().\n\n\n\n\n\nDistances by foot\nRepeat the same for WALK1.\n\n\nCode\nSURVEYwalk = detailed_itineraries(\n  r5r_core = r5r_network,\n  origins = SURVEYsample,\n  destinations = UNIVERSITY,\n  mode = \"WALK\",\n  all_to_all = TRUE # if false, only 1-1 would be calculated\n)\n\n\n\n\nDistances by PT\nFor Public Transit (TRANSIT) you may specify the egress mode, the departure time, and the maximum number of transfers.\n\n\nCode\nSURVEYtransit = detailed_itineraries(\n  r5r_core = r5r_network,\n  origins = SURVEYsample,\n  destinations = UNIVERSITY,\n  mode = \"TRANSIT\",\n  mode_egress = \"WALK\",\n  max_rides = 1, # The maximum PT rides allowed in the same trip\n  departure_datetime =  as.POSIXct(\"20-09-2023 08:00:00\",\n                                 format = \"%d-%m-%Y %H:%M:%S\"),\n  all_to_all = TRUE # if false, only 1-1 would be calculated\n)",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html#compare-distances",
+    "href": "distances.html#compare-distances",
+    "title": "10  Euclidean and routing distances",
+    "section": "10.3 Compare distances",
+    "text": "10.3 Compare distances\nWe can now compare the euclidean and routing distances that we estimated for the survey locations under 2 km.\n\n\nCode\nsummary(SURVEYsample$distance) # Euclidean\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    298     790    1046    1112    1470    1963 \n\n\nCode\nsummary(SURVEYwalk$distance) # Walk\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    569    1090    1465    1505    1925    2710 \n\n\nCode\nsummary(SURVEYcar$distance) # Car\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    228    1401    1823    1893    2431    3177 \n\n\n\nWhat can you understand from this results?",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html#vizualise-routes",
+    "href": "distances.html#vizualise-routes",
+    "title": "10  Euclidean and routing distances",
+    "section": "10.4 Vizualise routes",
+    "text": "10.4 Vizualise routes\nVisualize with transparency of 30%, to get a clue when they overlay.\n\n\nCode\nmapview(SURVEYwalk, alpha = 0.3)\n\n\n\n\n\n\nCode\nmapview(SURVEYcar, alpha = 0.3, color = \"red\")\n\n\n\n\n\n\nWe can also use the overline() function from stplanr package to break up the routes when they overline, and add them up.\n\n\nCode\n# we create a value that we can later sum\n# it can be the number of trips represented by this route\nSURVEYwalk$trips = 1 # in this case is only one respondent per route\n\nSURVEYwalk_overline = stplanr::overline(\n  SURVEYwalk,\n  attrib = \"trips\",\n  fun = sum\n)\n\nmapview(SURVEYwalk_overline, zcol = \"trips\", lwd = 3)\n\n\n\n\n\n\nWith this we can visually inform on how many people travel along a route, from the survey dataset2.",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "distances.html#footnotes",
+    "href": "distances.html#footnotes",
+    "title": "10  Euclidean and routing distances",
+    "section": "",
+    "text": "For bike you would use BICYCLE.↩︎\nAssuming all travel by the shortest path.↩︎",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+    ]
+  },
+  {
+    "objectID": "open-data.html",
+    "href": "open-data.html",
+    "title": "11  Open transportation data",
+    "section": "",
+    "text": "11.1 Road Networks",
+    "crumbs": [
+      "**Day 2**",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
     "objectID": "open-data.html#road-networks",
     "href": "open-data.html#road-networks",
-    "title": "10  Open transportation data",
+    "title": "11  Open transportation data",
     "section": "",
-    "text": "10.1.1 OpenStreetMap\nThe OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.\nThis is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.\n\n\n\n\n\n\nAlthough it can be not 100% accurate, OSM is a good source of data for most of the cases.\n\n\n\nYou can access it’s visualization tool at www.openstreetmap.org. To edit the map, you can use the Editor, once you register.\nIf you want to download the data, you can use the following tools.\n\nOverpass API\nGeofabrik\n\nThese websites include all the OSM data, with much more information than you need.\n\n\n10.1.2 HOT Export Tool\nThis interactive tool helps you to select the region you want to extract, the type of information to include, and the output data format.\nAccess via export.hotosm.org. You need an OSM account to use it.\n\nAfter the export, you can read in R using the sf package:\n\n\nCode\nGent = sf::st_read(\"data/Gent_center.gpkg\", quiet = TRUE)\n\nmapview::mapview(Gent, zcol = \"highway\")\n\n\n\n\n\n\n\n\n10.1.3 OSM in R\nThere are also some R packages that can help you to download and work with OpenStreetMap data, such as:\n\nosmdata\nosmextract\n\nThis is an example of how to download OpenStreetMap road network data using the osmextract package:\n\n\nCode\nlibrary(osmextract)\nOSM_Malta = oe_get_network(place = \"Malta\") # it will geocode the place\n\nMalta_main_roads = OSM_Malta |&gt; \n  filter(highway %in% c(\"primary\", \"secondary\", \"tertiary\", \"trunk\"))\n\nplot(Malta_main_roads[\"highway\"])",
+    "text": "11.1.1 OpenStreetMap\nThe OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.\nThis is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.\n\n\n\n\n\n\nAlthough it can be not 100% accurate, OSM is a good source of data for most of the cases.\n\n\n\nYou can access it’s visualization tool at www.openstreetmap.org. To edit the map, you can use the Editor, once you register.\nIf you want to download the data, you can use the following tools.\n\nOverpass API\nGeofabrik\n\nThese websites include all the OSM data, with much more information than you need.\n\n\n11.1.2 HOT Export Tool\nThis interactive tool helps you to select the region you want to extract, the type of information to include, and the output data format.\nAccess via export.hotosm.org. You need an OSM account to use it.\n\nAfter the export, you can read in R using the sf package:\n\n\nCode\nGent = sf::st_read(\"data/Gent_center.gpkg\", quiet = TRUE)\n\nmapview::mapview(Gent, zcol = \"highway\")\n\n\n\n\n\n\n\n\n11.1.3 OSM in R\nThere are also some R packages that can help you to download and work with OpenStreetMap data, such as:\n\nosmdata\nosmextract\n\nThis is an example of how to download OpenStreetMap road network data using the osmextract package:\n\n\nCode\nlibrary(osmextract)\nOSM_Malta = oe_get_network(place = \"Malta\") # it will geocode the place\n\nMalta_main_roads = OSM_Malta |&gt; \n  filter(highway %in% c(\"primary\", \"secondary\", \"tertiary\", \"trunk\"))\n\nplot(Malta_main_roads[\"highway\"])",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
     "objectID": "open-data.html#transportation-services-data",
     "href": "open-data.html#transportation-services-data",
-    "title": "10  Open transportation data",
-    "section": "10.2 Transportation Services’ Data",
-    "text": "10.2 Transportation Services’ Data\n\n10.2.1 GTFS\n\n\n\n10.2.2 National Access Points\nThe European Union has a directive that requires the member states to provide access to transportation data. Data includes not only Public Transportation data, but also road networks, car parking, and other transportation-related information.\nList of the European Union members states with National Access Points for Transportation data\nExample of Bus services data in Belgium:\n\n\n\nSource: Transport Data Belgium",
+    "title": "11  Open transportation data",
+    "section": "11.2 Transportation Services’ Data",
+    "text": "11.2 Transportation Services’ Data\n\n11.2.1 GTFS\n\n\n\n11.2.2 National Access Points\nThe European Union has a directive that requires the member states to provide access to transportation data. Data includes not only Public Transportation data, but also road networks, car parking, and other transportation-related information.\nList of the European Union members states with National Access Points for Transportation data\nExample of Bus services data in Belgium:\n\n\n\nSource: Transport Data Belgium",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
     "objectID": "r5r.html",
     "href": "r5r.html",
-    "title": "11  Urban Accessibility with R",
+    "title": "12  Urban Accessibility with R",
     "section": "",
     "text": "About the instructor\nRafael H. M. Pereira\nHead of Data Science\nInstitute for Applied Economic Research (Ipea), Brazil\nWebsite | Google Scholar | Twitter | Linkedin |\nShort bio\nRafael H. M. Pereira is a senior researcher in the fields of urban analytics, spatial data science and transport studies at the Institute for Applied Economic Research (Ipea), Brazil. His research looks broadly at how urban policies and technologies shape the spatial organization of cities, human mobility as well as their impacts on social and health inequalities. Some of his key contributions to the fields of urban analytics and planning involve the development of new methods and open-source computational tools to the study of urban systems and transportation networks. These contributions emerge from substantive interests around social justice and sustainability issues in urban development, with particular focus on transportation equity and inequalities in access to opportunities, and the environmental impacts of built environments and mobility patterns. With a background in Sociology and Demography, Dr. Pereira obtained his PhD in Geography from the Transport Studies Unit at Oxford University.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Urban Accessibility with R</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Urban Accessibility with R</span>"
     ]
   },
   {
@@ -546,7 +601,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "INE. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas do Porto e de Lisboa:\n2017.” Lisboa: Instituto National de Estatística. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\n———. 2022. “Censos 2021- XVI Recenseamento\nGeral da População. VI Recenseamento Geral da Habitação.”\nLisboa: Instituto National de Estatística. https://censos.ine.pt/xurl/pub/65586079.\n\n\nLovelace, Robin, and Malcolm Morgan. 2024. Od: Manipulate and Map\nOrigin-Destination Data. https://github.com/itsleeds/od.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With\nApplications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.\n\n\nRobin Lovelace, and Richard Ellison. 2018. “Stplanr: A Package for\nTransport Planning.” The R Journal 10 (2):\n10. https://doi.org/10.32614/RJ-2018-053.\n\n\nZomorrodi, Ryan. 2024. Centr: Weighted and Unweighted Spatial\nCenters. https://ryanzomorrodi.github.io/centr/.",
+    "text": "INE. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas do Porto e de Lisboa:\n2017.” Lisboa: Instituto National de Estatística. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\n———. 2022. “Censos 2021- XVI Recenseamento\nGeral da População. VI Recenseamento Geral da Habitação.”\nLisboa: Instituto National de Estatística. https://censos.ine.pt/xurl/pub/65586079.\n\n\nLovelace, Robin, and Richard Ellison. 2018. “Stplanr: A Package\nfor Transport Planning.” The R Journal 10\n(2): 10. https://doi.org/10.32614/RJ-2018-053.\n\n\nLovelace, Robin, and Malcolm Morgan. 2024. Od: Manipulate and Map\nOrigin-Destination Data. https://github.com/itsleeds/od.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With\nApplications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.\n\n\nZomorrodi, Ryan. 2024. Centr: Weighted and Unweighted Spatial\nCenters. https://ryanzomorrodi.github.io/centr/.",
     "crumbs": [
       "References"
     ]
