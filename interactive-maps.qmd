@@ -54,7 +54,7 @@ Try to use a **categorical variable**.
 mapview(TRIPSgeo, zcol = "Municipality", alpha.regions = 0.4) # also add transparency)
 ```
 
-::: callout-note
+::: {.callout-note appearance="simple"}
 Note that you can change the **basemap**, and click on the geometries to **see the data** associated with them.
 :::
 

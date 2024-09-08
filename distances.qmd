@@ -208,10 +208,10 @@ summary(SURVEYwalk$distance) # Walk
 summary(SURVEYcar$distance) # Car
 ```
 
-What can you understand from this results?
+> What can you understand from this results?
 
 ```{r}
-#| code-fold: true
+#| include: false
 distances = data.frame(euclidean = SURVEYsample$distance,
                        walk = SURVEYwalk$distance,
                        car = SURVEYcar$distance)
