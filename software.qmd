@@ -128,6 +128,8 @@ install.packages(c("remotes", "devtools", "usethis")) # optional
 install.packages("sf")
 install.packages("mapview")
 install.packages("rmarkdown")
+install.packages("centr")
+install.packages("osmextract")
 ```
 
 ## r5r
