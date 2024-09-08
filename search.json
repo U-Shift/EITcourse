@@ -117,7 +117,7 @@
     "href": "software.html#r-packages",
     "title": "3  Software",
     "section": "3.3 R packages",
-    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\")) # optional\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")",
+    "text": "3.3 R packages\nYou will need to install some packages to work with the data and scripts in this course.\nYou can install them in RStudio by searching for them in the Packages tab:\n\nor by running the following code in the console:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"readxl\")\n\ninstall.packages(c(\"remotes\", \"devtools\", \"usethis\")) # optional\ninstall.packages(\"sf\")\ninstall.packages(\"mapview\")\ninstall.packages(\"rmarkdown\")\ninstall.packages(\"centr\")\ninstall.packages(\"osmextract\")",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Software</span>"
@@ -161,18 +161,29 @@
     "href": "r-basics.html",
     "title": "4  R basics",
     "section": "",
-    "text": "4.1 Simple operations",
+    "text": "4.1 Math operations",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
     ]
   },
   {
-    "objectID": "r-basics.html#simple-operations",
-    "href": "r-basics.html#simple-operations",
+    "objectID": "r-basics.html#math-operations",
+    "href": "r-basics.html#math-operations",
     "title": "4  R basics",
     "section": "",
-    "text": "4.1.1 Math operations\n\nSum\n\n1+1\n\n[1] 2\n\n\n\n\nSubtraction\n\n5-2\n\n[1] 3\n\n\n\n\nMultiplication\n\n2*2\n\n[1] 4\n\n\n\n\nDivision\n\n8/2\n\n[1] 4\n\n\n\n\nRound the number\n\nround(3.14)\n\n[1] 3\n\nround(3.14, 1) # The \"1\" indicates to round it up to 1 decimal digit.\n\n[1] 3.1\n\n\nYou can use help ?round in the console to see the description of the function, and the default arguments.\n\n\n\n4.1.2 Basic shortpaths\n\nPerform Combinations\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\nc(1:3) # The \":\" indicates a range between the first and second numbers. \n\n[1] 1 2 3\n\n\n\n\nCreate a comment with ctrl + shift + m\n\n# Comments help you organize your code. The software will not run the comment. \n\n\n\nCreate a table\nA simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.\nDefine variables\n\nmodes &lt;- c(\"car\", \"PT\", \"walking\", \"cycling\") # you can use \"=\" or \"&lt;-\"\nTrips = c(200, 50, 300, 150) # uppercase letters modify\n\nJoin the variables to create a table\n\ntable_example = data.frame(modes, Trips)\n\nTake a look at the table\nVisualize the table by clicking on the “Data” in the “Environment” page or use :\n\nView(table_example)",
+    "text": "Sum\n\n1+1\n\n[1] 2\n\n\n\n\nSubtraction\n\n5-2\n\n[1] 3\n\n\n\n\nMultiplication\n\n2*2\n\n[1] 4\n\n\n\n\nDivision\n\n8/2\n\n[1] 4\n\n\n\n\nRound the number\n\nround(3.14)\n\n[1] 3\n\nround(3.14, 1) # The \"1\" indicates to round it up to 1 decimal digit.\n\n[1] 3.1\n\n\nYou can use help ?round in the console to see the description of the function, and the default arguments.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
+    ]
+  },
+  {
+    "objectID": "r-basics.html#basic-shortpaths",
+    "href": "r-basics.html#basic-shortpaths",
+    "title": "4  R basics",
+    "section": "4.2 Basic shortpaths",
+    "text": "4.2 Basic shortpaths\n\nPerform Combinations\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\nc(1:3) # The \":\" indicates a range between the first and second numbers. \n\n[1] 1 2 3\n\n\n\n\nCreate a comment with ctrl + shift + m\n\n# Comments help you organize your code. The software will not run the comment. \n\n\n\nCreate a table\nA simple table with the number of trips by car, PT, walking, and cycling in a hypothetical street segment at a certain period.\nDefine variables\n\nmodes &lt;- c(\"car\", \"PT\", \"walking\", \"cycling\") # you can use \"=\" or \"&lt;-\"\nTrips = c(200, 50, 300, 150) # uppercase letters modify\n\nJoin the variables to create a table\n\ntable_example = data.frame(modes, Trips)\n\nTake a look at the table\nVisualize the table by clicking on the “Data” in the “Environment” page or use :\n\nView(table_example)",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
@@ -182,8 +193,8 @@
     "objectID": "r-basics.html#practical-exercise",
     "href": "r-basics.html#practical-exercise",
     "title": "4  R basics",
-    "section": "4.2 Practical exercise",
-    "text": "4.2 Practical exercise\nDataset: the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal (Instituto National de Estatística 2018).\n\nImport dataset\nYou can click directly in the file under the “Files” pan, or:\n\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\n\n\nNote that after you type \" you can use tab to navigate between folders and files and enter to autocomplete.\n\n\n\nTake a first look at the data\nSummary statistics\n\nsummary(data)\n\n  Origin_mun        Destination_mun        Total             Walk       \n Length:315         Length:315         Min.   :     7   Min.   :     0  \n Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  \n Mode  :character   Mode  :character   Median :  1090   Median :     0  \n                                       Mean   : 16825   Mean   :  4033  \n                                       3rd Qu.:  5374   3rd Qu.:     0  \n                                       Max.   :875144   Max.   :306289  \n      Bike              Car            PTransit            Other        \n Min.   :   0.00   Min.   :     0   Min.   :     0.0   Min.   :    0.0  \n 1st Qu.:   0.00   1st Qu.:   263   1st Qu.:     5.0   1st Qu.:    0.0  \n Median :   0.00   Median :   913   Median :   134.0   Median :    0.0  \n Mean   :  80.19   Mean   :  9956   Mean   :  2602.6   Mean   :  152.4  \n 3rd Qu.:   0.00   3rd Qu.:  4408   3rd Qu.:   975.5   3rd Qu.:   62.5  \n Max.   :5362.00   Max.   :349815   Max.   :202428.0   Max.   :11647.0  \n\n\nCheck the structure of the data\n\nstr(data)\n\n'data.frame':   315 obs. of  8 variables:\n $ Origin_mun     : chr  \"Alcochete\" \"Alcochete\" \"Alcochete\" \"Alcochete\" ...\n $ Destination_mun: chr  \"Alcochete\" \"Almada\" \"Amadora\" \"Barreiro\" ...\n $ Total          : num  20478 567 188 867 114 ...\n $ Walk           : num  6833 0 0 0 0 ...\n $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...\n $ Car            : num  12484 353 107 861 114 ...\n $ PTransit       : num  833 0 81 5 0 ...\n $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...\n\n\nCheck the first values of each variable\n\ndata\n\n\nhead(data, 3) # first 3 values\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7\n2  Alcochete          Almada   567    0    0   353        0   214\n3  Alcochete         Amadora   188    0    0   107       81     0\n\n\nCheck the number of rows (observations) and columns (variables)\n\nnrow(data)\n\n[1] 315\n\nncol(data)\n\n[1] 8\n\n\nOpen the dataset\n\nView(data)\n\n\n\nExplore the data\nCheck the total number of trips\nUse $ to select a variable of the data\n\nsum(data$Total)\n\n[1] 5299853\n\n\nPercentage of car trips related to the total\n\nsum(data$Car)/sum(data$Total) * 100\n\n[1] 59.17638\n\n\nPercentage of active trips related to the total\n\n(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100\n\n[1] 24.44883\n\n\n\n\nModify original data\nCreate a column with the sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nFilter by condition (create new tables)\nFilter trips only with origin from Lisbon\n\ndata_Lisbon = data[data$Origin_mun == \"Lisboa\",]\n\nFilter trips with origin different from Lisbon\n\ndata_out_Lisbon = data[data$Origin_mun != \"Lisboa\",]\n\nFilter trips with origin and destination in Lisbon\n\ndata_in_Out_Lisbon = data[data$Origin_mun == \"Lisboa\" & data$Destination_mun == \"Lisboa\",]\n\nRemove a column\nLook at the first row\n\ndata[1,] #rows and columns start from 1\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153\n\n\nLook at first row and column\n\ndata[1,1]\n\n[1] \"Alcochete\"\n\n\nRemove the first column\n\ndata = data[ ,-1] #first column\n\nCreate a table only with origin, destination and walking trips\nThere are many ways to do the same operation.\n\nnames(data)\n\n[1] \"Destination_mun\" \"Total\"           \"Walk\"            \"Bike\"           \n[5] \"Car\"             \"PTransit\"        \"Other\"           \"Active\"         \n\n\n\ndata_walk2 = data[ ,c(1,2,4)]\n\n\ndata_walk3 = data[ ,-c(3,5:9)]\n\n\n\nExport data\nSave data in .csv and .Rds\n\nwrite.csv(data, 'data/dataset.csv', row.names = FALSE)\nsaveRDS(data, 'data/dataset.Rds') #Choose a different file. \n\n\n\nImport data\n\ncsv_file = read.csv(\"data/dataset.csv\")\nrds_file = readRDS(\"data/dataset.Rds\")\n\n\n\n\n\n\n\nInstituto National de Estatística. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas Do Porto e de Lisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.",
+    "section": "4.3 Practical exercise",
+    "text": "4.3 Practical exercise\nDataset: the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal (INE 2018).\n\nImport dataset\nYou can click directly in the file under the “Files” pan, or:\n\ndata = readRDS(\"data/TRIPSmode.Rds\")\n\n\n\n\n\n\n\nAfter you type \" you can use tab to navigate between folders and files and enter to autocomplete.\n\n\n\n\n\nTake a first look at the data\nSummary statistics\n\nsummary(data)\n\n  Origin_mun        Destination_mun        Total             Walk       \n Length:315         Length:315         Min.   :     7   Min.   :     0  \n Class :character   Class :character   1st Qu.:   330   1st Qu.:     0  \n Mode  :character   Mode  :character   Median :  1090   Median :     0  \n                                       Mean   : 16825   Mean   :  4033  \n                                       3rd Qu.:  5374   3rd Qu.:     0  \n                                       Max.   :875144   Max.   :306289  \n      Bike              Car            PTransit            Other        \n Min.   :   0.00   Min.   :     0   Min.   :     0.0   Min.   :    0.0  \n 1st Qu.:   0.00   1st Qu.:   263   1st Qu.:     5.0   1st Qu.:    0.0  \n Median :   0.00   Median :   913   Median :   134.0   Median :    0.0  \n Mean   :  80.19   Mean   :  9956   Mean   :  2602.6   Mean   :  152.4  \n 3rd Qu.:   0.00   3rd Qu.:  4408   3rd Qu.:   975.5   3rd Qu.:   62.5  \n Max.   :5362.00   Max.   :349815   Max.   :202428.0   Max.   :11647.0  \n\n\nCheck the structure of the data\n\nstr(data)\n\n'data.frame':   315 obs. of  8 variables:\n $ Origin_mun     : chr  \"Alcochete\" \"Alcochete\" \"Alcochete\" \"Alcochete\" ...\n $ Destination_mun: chr  \"Alcochete\" \"Almada\" \"Amadora\" \"Barreiro\" ...\n $ Total          : num  20478 567 188 867 114 ...\n $ Walk           : num  6833 0 0 0 0 ...\n $ Bike           : num  320 0 0 0 0 0 0 0 91 0 ...\n $ Car            : num  12484 353 107 861 114 ...\n $ PTransit       : num  833 0 81 5 0 ...\n $ Other          : num  7 214 0 0 0 0 0 0 0 0 ...\n\n\nCheck the first values of each variable\n\ndata\n\n\nhead(data, 3) # first 3 values\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7\n2  Alcochete          Almada   567    0    0   353        0   214\n3  Alcochete         Amadora   188    0    0   107       81     0\n\n\nCheck the number of rows (observations) and columns (variables)\n\nnrow(data)\n\n[1] 315\n\nncol(data)\n\n[1] 8\n\n\nOpen the dataset\n\nView(data)\n\n\n\nExplore the data\nCheck the total number of trips\nUse $ to select a variable of the data\n\nsum(data$Total)\n\n[1] 5299853\n\n\nPercentage of car trips related to the total\n\nsum(data$Car)/sum(data$Total) * 100\n\n[1] 59.17638\n\n\nPercentage of active trips related to the total\n\n(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100\n\n[1] 24.44883\n\n\n\n\nModify original data\nCreate a column with the sum of the number of trips for active modes\n\ndata$Active = data$Walk + data$Bike\n\nFilter by condition (create new tables)\nFilter trips only with origin from Lisbon\n\ndata_Lisbon = data[data$Origin_mun == \"Lisboa\",]\n\nFilter trips with origin different from Lisbon\n\ndata_out_Lisbon = data[data$Origin_mun != \"Lisboa\",]\n\nFilter trips with origin and destination in Lisbon\n\ndata_in_Out_Lisbon = data[data$Origin_mun == \"Lisboa\" & data$Destination_mun == \"Lisboa\",]\n\nRemove a column\nLook at the first row\n\ndata[1,] #rows and columns start from 1\n\n  Origin_mun Destination_mun Total Walk Bike   Car PTransit Other Active\n1  Alcochete       Alcochete 20478 6833  320 12484      833     7   7153\n\n\nLook at first row and column\n\ndata[1,1]\n\n[1] \"Alcochete\"\n\n\nRemove the first column\n\ndata = data[ ,-1] #first column\n\nCreate a table only with origin, destination and walking trips\nThere are many ways to do the same operation.\n\nnames(data)\n\n[1] \"Destination_mun\" \"Total\"           \"Walk\"            \"Bike\"           \n[5] \"Car\"             \"PTransit\"        \"Other\"           \"Active\"         \n\n\n\ndata_walk2 = data[ ,c(1,2,4)]\n\n\ndata_walk3 = data[ ,-c(3,5:9)]\n\n\n\nExport data\nSave data in .csv and .Rds\n\nwrite.csv(data, 'data/dataset.csv', row.names = FALSE)\nsaveRDS(data, 'data/dataset.Rds') #Choose a different file. \n\n\n\nImport data\n\ncsv_file = read.csv(\"data/dataset.csv\")\nrds_file = readRDS(\"data/dataset.Rds\")\n\n\n\n\n\n\n\nINE. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas do Porto e de Lisboa: 2017.” Lisboa: Instituto National de Estatística. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R basics</span>"
@@ -260,7 +271,7 @@
     "href": "data-manipulation.html#group_by-and-summarize",
     "title": "5  Data manipulation",
     "section": "5.6 group_by and summarize",
-    "text": "5.6 group_by and summarize\nWe have a very large table with all the neighbourhoods and their respective municipalities. We want to know the total number of trips with origin in each municipality.\nTo make it easier to understand, let’s keep only the variables we need.\n\nTRIPSredux = TRIPSjoin |&gt; select(Origin, Municipality, Internal, Car, Total)\nhead(TRIPSredux)\n\n# A tibble: 6 × 5\n  Origin Municipality Internal   Car Total\n  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 110501 Cascais             0 21446 35539\n2 110501 Cascais             1 37727 47602\n3 110506 Cascais             0 22379 37183\n4 110506 Cascais             1 37337 42313\n5 110507 Cascais             0 19654 30725\n6 110507 Cascais             1 44611 54586\n\n\nWe can group this table by the Municipality variable and summarize the number of trips with origin in each municipality.\n\nTRIPSsum = TRIPSredux |&gt; \n  group_by(Municipality) |&gt; # you won't notice any chagne with only this\n  summarize(Total = sum(Total))\nhead(TRIPSsum)\n\n# A tibble: 6 × 2\n  Municipality   Total\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Alcochete      36789\n2 Almada        289834\n3 Amadora       344552\n4 Barreiro      133658\n5 Cascais       373579\n6 Lisboa       1365111\n\n\nWe summed the total number of trips in each municipality.\nIf we want to group by more than one variable, we can add more group_by() functions.\n\nTRIPSsum2 = TRIPSredux |&gt; \n  group_by(Municipality, Internal) |&gt; \n  summarize(Total = sum(Total),\n            Car = sum(Car))\nhead(TRIPSsum2)\n\n# A tibble: 6 × 4\n# Groups:   Municipality [3]\n  Municipality Internal  Total    Car\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 Alcochete           0  16954   9839\n2 Alcochete           1  19835  15632\n3 Almada              0 105841  49012\n4 Almada              1 183993 125091\n5 Amadora             0 117727  33818\n6 Amadora             1 226825 142386\n\n\nWe summed the total number of trips and car trips in each municipality, separated by inter and intra municipal trips.\n\nIt is a good practice to use the ungroup() function after the group_by() function. This will remove the grouping. If you don’t do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.",
+    "text": "5.6 group_by and summarize\nWe have a very large table with all the neighbourhoods and their respective municipalities. We want to know the total number of trips with origin in each municipality.\nTo make it easier to understand, let’s keep only the variables we need.\n\nTRIPSredux = TRIPSjoin |&gt; select(Origin, Municipality, Internal, Car, Total)\nhead(TRIPSredux)\n\n# A tibble: 6 × 5\n  Origin Municipality Internal   Car Total\n  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 110501 Cascais             0 21446 35539\n2 110501 Cascais             1 37727 47602\n3 110506 Cascais             0 22379 37183\n4 110506 Cascais             1 37337 42313\n5 110507 Cascais             0 19654 30725\n6 110507 Cascais             1 44611 54586\n\n\nWe can group this table by the Municipality variable and summarize the number of trips with origin in each municipality.\n\nTRIPSsum = TRIPSredux |&gt; \n  group_by(Municipality) |&gt; # you won't notice any chagne with only this\n  summarize(Total = sum(Total))\nhead(TRIPSsum)\n\n# A tibble: 6 × 2\n  Municipality   Total\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Alcochete      36789\n2 Almada        289834\n3 Amadora       344552\n4 Barreiro      133658\n5 Cascais       373579\n6 Lisboa       1365111\n\n\nWe summed the total number of trips in each municipality.\nIf we want to group by more than one variable, we can add more group_by() functions.\n\nTRIPSsum2 = TRIPSredux |&gt; \n  group_by(Municipality, Internal) |&gt; \n  summarize(Total = sum(Total),\n            Car = sum(Car))\nhead(TRIPSsum2)\n\n# A tibble: 6 × 4\n# Groups:   Municipality [3]\n  Municipality Internal  Total    Car\n  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 Alcochete           0  16954   9839\n2 Alcochete           1  19835  15632\n3 Almada              0 105841  49012\n4 Almada              1 183993 125091\n5 Amadora             0 117727  33818\n6 Amadora             1 226825 142386\n\n\nWe summed the total number of trips and car trips in each municipality, separated by inter and intra municipal trips.\n\n\n\n\n\n\nIt is a good practice to use the ungroup() function after the group_by() function. This will remove the grouping. If you don’t do this, the grouping will be kept and you may have unexpected results in the next time you use that dataset.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
@@ -282,7 +293,7 @@
     "href": "data-manipulation.html#all-together-now",
     "title": "5  Data manipulation",
     "section": "5.8 All together now!",
-    "text": "5.8 All together now!\nThis is the pipes magic. It takes the last result and applies the next function to it. “With this, do this.”. You can chain as many functions as you want.\n\nTRIPS_pipes = TRIPS |&gt; \n  select(Origin, Internal, Car, Total) |&gt; \n  \n  mutate(Origin_num = as.integer(Origin)) |&gt; \n  mutate(Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\"))) |&gt; \n  \n  filter(Internal_factor == \"Inter\")|&gt;\n  \n  left_join(Municipalities) |&gt;\n  \n  group_by(Municipality) |&gt;\n  summarize(Total = sum(Total),\n            Car = sum(Car),\n            Car_perc = Car/Total * 100) |&gt; \n  \n  arrange(desc(Car_perc))\n\nWith this code we will have a table with the total number of intercity trips, by municipality, with their names instead of codes, arranged by the percentage of car trips.\n\nTRIPS_pipes\n\n# A tibble: 18 × 4\n   Municipality         Total    Car Car_perc\n   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1 Mafra                65811  46329     70.4\n 2 Sesimbra             49370  31975     64.8\n 3 Cascais             161194  96523     59.9\n 4 Palmela              66428  39688     59.7\n 5 Alcochete            16954   9839     58.0\n 6 Setúbal             129059  70318     54.5\n 7 Montijo              57164  30900     54.1\n 8 Seixal              120747  63070     52.2\n 9 Sintra              237445 123408     52.0\n10 Oeiras              134862  66972     49.7\n11 Almada              105841  49012     46.3\n12 Loures              132310  60478     45.7\n13 Barreiro             52962  24160     45.6\n14 Odivelas             93709  39151     41.8\n15 Vila Franca de Xira 115152  47201     41.0\n16 Moita                51040  17394     34.1\n17 Amadora             117727  33818     28.7\n18 Lisboa              280079  69038     24.6",
+    "text": "5.8 All together now!\nThis is the pipes magic. It takes the last result and applies the next function to it. “With this, do this.”. You can chain as many functions as you want.\n\nTRIPS_pipes = TRIPS |&gt; \n  select(Origin, Internal, Car, Total) |&gt; \n  \n  mutate(Origin_num = as.integer(Origin)) |&gt; \n  mutate(Internal_factor = factor(Internal, labels = c(\"Inter\", \"Intra\"))) |&gt; \n  \n  filter(Internal_factor == \"Inter\")|&gt;\n  \n  left_join(Municipalities) |&gt;\n  \n  group_by(Municipality) |&gt;\n  summarize(Total = sum(Total),\n            Car = sum(Car),\n            Car_perc = Car/Total * 100) |&gt; \n  ungroup() |&gt; \n  \n  arrange(desc(Car_perc))\n\nWith this code we will have a table with the total number of intercity trips, by municipality, with their names instead of codes, arranged by the percentage of car trips.\n\nTRIPS_pipes\n\n# A tibble: 18 × 4\n   Municipality         Total    Car Car_perc\n   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;\n 1 Mafra                65811  46329     70.4\n 2 Sesimbra             49370  31975     64.8\n 3 Cascais             161194  96523     59.9\n 4 Palmela              66428  39688     59.7\n 5 Alcochete            16954   9839     58.0\n 6 Setúbal             129059  70318     54.5\n 7 Montijo              57164  30900     54.1\n 8 Seixal              120747  63070     52.2\n 9 Sintra              237445 123408     52.0\n10 Oeiras              134862  66972     49.7\n11 Almada              105841  49012     46.3\n12 Loures              132310  60478     45.7\n13 Barreiro             52962  24160     45.6\n14 Odivelas             93709  39151     41.8\n15 Vila Franca de Xira 115152  47201     41.0\n16 Moita                51040  17394     34.1\n17 Amadora             117727  33818     28.7\n18 Lisboa              280079  69038     24.6",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data manipulation</span>"
@@ -315,7 +326,62 @@
     "href": "spatial-data.html",
     "title": "6  Introduction to spatial data",
     "section": "",
-    "text": "Spatial data is data that is associated with a geometry. This geometry can be a point, a line, a polygon, or a grid.\nSpatial data can be represented in many ways, such as vector data and raster data. In this tutorial, we will learn how to work with spatial data in R.\nWe will use the sf package to work with vector data, and the dplyr package to manipulate data.\n\n\nCode\nlibrary(sf)\n\n\nLinking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE\n\n\nCode\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union",
+    "text": "6.1 Import vector data\nDownload and open Municipalities_geo.gpkg under EITcourse/data repository.\nWithin the sf package, we use the st_read() to read spatial features.\nCode\nMunicipalities_geo = st_read(\"data/Municipalities_geo.gpkg\")\n\n\nReading layer `Municipalities_geo' from data source \n  `D:\\GIS\\EITcourse\\data\\Municipalities_geo.gpkg' using driver `GPKG'\nSimple feature collection with 18 features and 1 field\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -9.500527 ymin: 38.40907 xmax: -8.490972 ymax: 39.06472\nGeodetic CRS:  WGS 84",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "spatial-data.html#import-vector-data",
+    "href": "spatial-data.html#import-vector-data",
+    "title": "6  Introduction to spatial data",
+    "section": "",
+    "text": "You can also open directly from url from github. Example:\nMunicipalities_geo = st_read(\"https://github.com/U-Shift/EITcourse/raw/main/data/Municipalities_geo.gpkg\")\n\n\n\n\n6.1.1 Projected vs Geographic Coordinate Systems\nA projected coordinate system is a flat representation of the Earth’s surface. A geographic coordinate system is a spherical representation of the Earth’s surface.\n\n\n\nSource: ESRI\n\n\nThe st_crs() function can be used to check the coordinate reference system of a spatial object.\n\n\nCode\nst_crs(Municipalities_geo)\n\n\nCoordinate Reference System:\n  User input: WGS 84 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        MEMBER[\"World Geodetic System 1984 (G2139)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\n\nWGS84 is the most common geographic coordinate system, used in GPS, and EPSG:4326 is code for it.\nIf we want to project the data to a projected coordinate system, to use metric units instead of degrees, we can use the st_transform() function.\nIn this case, the EPGS:3857 is the code for the Pseudo-Mercator coordinate system.\n\n\nCode\nMunicipalities_projected = st_transform(Municipalities_geo, crs = 3857)\n\n\nNow see the differences when calling Municipalities_geo and Municipalities_projected.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "spatial-data.html#join-geometries-to-data-frames",
+    "href": "spatial-data.html#join-geometries-to-data-frames",
+    "title": "6  Introduction to spatial data",
+    "section": "6.2 Join geometries to data frames",
+    "text": "6.2 Join geometries to data frames\nImport TRIPSmun.Rds file and check data class-\n\n\nCode\nTRIPSmun = readRDS(\"data/TRIPSmun.Rds\")\nclass(TRIPSmun)\n\n\n[1] \"data.frame\"\n\n\nCode\nclass(Municipalities_geo)\n\n\n[1] \"sf\"         \"data.frame\"\n\n\nTo join the geometries from the Municipalities_geo to the data frame, we can use the left_join() function from the dplyr package.\n\n\nCode\nTRIPSgeo =\n  TRIPSmun |&gt; \n  left_join(Municipalities_geo)\n\nclass(TRIPSgeo)\n\n\n[1] \"data.frame\"\n\n\nAs you can see, this does not make the object a spatial feature. To do this, we need to use the st_as_sf() function.\n\n\nCode\nTRIPSgeo = TRIPSgeo |&gt; st_as_sf()\nclass(TRIPSgeo)\n\n\n[1] \"sf\"         \"data.frame\"\n\n\nNow we have a spatial feature with the data frame.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "spatial-data.html#create-spatial-data-from-coordinates",
+    "href": "spatial-data.html#create-spatial-data-from-coordinates",
+    "title": "6  Introduction to spatial data",
+    "section": "6.3 Create spatial data from coordinates",
+    "text": "6.3 Create spatial data from coordinates\nThe st_as_sf() function can also be used to create a spatial feature from a data frame with coordinates. In that case, we need to specify the columns with the coordinates.\nWe will use survey data (in .txt) with the participants’ home latitude/longitude coordinates to create a spatial feature.\n\n\nCode\nSURVEY = read.csv(\"data/SURVEY.txt\", sep = \"\\t\") # tab delimiter\nclass(SURVEY)\n\n\n[1] \"data.frame\"\n\n\nCode\nSURVEYgeo = st_as_sf(SURVEY, coords = c(\"lon\", \"lat\"), crs = 4326) # create spatial feature\nclass(SURVEYgeo)\n\n\n[1] \"sf\"         \"data.frame\"\n\n\nWe can also set the crs of the spatial feature on the fly.\nCheck the differences between both data variables.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "spatial-data.html#visuzlize-spatial-data",
+    "href": "spatial-data.html#visuzlize-spatial-data",
+    "title": "6  Introduction to spatial data",
+    "section": "6.4 Visuzlize spatial data",
+    "text": "6.4 Visuzlize spatial data\nRepresent Transport Zones with Total and Car, using plot().\n\n\nCode\nplot(TRIPSgeo) # all variables\n\n\n\n\n\n\n\n\n\nCode\nplot(TRIPSgeo[\"Municipality\"])\n\n\n\n\n\n\n\n\n\nCode\nplot(TRIPSgeo[\"Total\"])\n\n\n\n\n\n\n\n\n\nCode\nplot(TRIPSgeo[\"Car\"])\n\n\n\n\n\n\n\n\n\nCode\n# plot pointy data\nplot(SURVEYgeo)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the next chapter we will learn how to create interactive maps.",
+    "crumbs": [
+      "**Day 1**",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "spatial-data.html#export-spatial-data",
+    "href": "spatial-data.html#export-spatial-data",
+    "title": "6  Introduction to spatial data",
+    "section": "6.5 Export spatial data",
+    "text": "6.5 Export spatial data\nYou can save your spatial data in different formats using the function st_write(), such as shapefiles (ESRI), GeoJSON, and GeoPackage.\nThis is also useful to convert spatial data between formats.\n\n\nCode\nst_write(TRIPSgeo, \"data/TRIPSgeo.gpkg\") # as geopackage\nst_write(TRIPSgeo, \"data/TRIPSgeo.shp\") # as shapefile\nst_write(TRIPSgeo, \"data/TRIPSgeo.geojson\") # as geojson\nst_write(TRIPSgeo, \"data/TRIPSgeo.csv\", layer_options = \"GEOMETRY=AS_WKT\") # as csv, with WKT geometry\n\n\n\n\n\n\n\n\nIf you already have a file with the same name, you can use the delete_dns = TRUE argument, otherwise it won’t overwrite the file.\n\n\n\n\n\n\n\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With Applications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction to spatial data</span>"
@@ -326,7 +392,7 @@
     "href": "interactive-maps.html",
     "title": "7  Interactive maps",
     "section": "",
-    "text": "7.1 Mapview\nMapview allows to create quick interactive maps, only by declaring the function mapview().\nCode\nlibrary(mapview)\nmapview(TRIPSgeo)\nTo color the points by a variable, you can use the zcol argument.\nCode\nmapview(TRIPSgeo, zcol = \"Total\")\nAs you can see, a color palette is automatically assigned to the continuous variable.\nTry to use a categorical variable.\nCode\nmapview(TRIPSgeo, zcol = \"Municipality\")\nNote that you can change the basemap, and click on the geometries to see the data associated with them.\nYou can go crazy with all the options that mapview offers. Please refer to the documentation to see all the options.",
+    "text": "7.1 Mapview\nMapview allows to create quick interactive maps, only by declaring the function mapview().\nCode\nlibrary(mapview)\nmapview(TRIPSgeo)\nTo color the points by a variable, you can use the zcol argument.\nCode\nmapview(TRIPSgeo, zcol = \"Total\")\nAs you can see, a color palette is automatically assigned to the continuous variable.\nTry to use a categorical variable.\nCode\nmapview(TRIPSgeo, zcol = \"Municipality\", alpha.regions = 0.4) # also add transparency)\nYou can go crazy with all the options that mapview offers. Please refer to the documentation to see all the options.",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
@@ -337,18 +403,7 @@
     "href": "interactive-maps.html#mapview",
     "title": "7  Interactive maps",
     "section": "",
-    "text": "7.1.1 Export\nYou can export a map as an html file or image.\n\n\nCode\n# install.packages(\"webshot2\") # you will need this\n\nmap = mapview(TRIPSgeo, zcol = \"Total\") # fisrt create a objet with the desited map\n\nmapshot2(map, \"data/map.html\") # as webpage\nmapshot2(map, file = \"data/map.png\") # as image",
-    "crumbs": [
-      "**Day 1**",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
-    ]
-  },
-  {
-    "objectID": "interactive-maps.html#tmap",
-    "href": "interactive-maps.html#tmap",
-    "title": "7  Interactive maps",
-    "section": "7.2 tmap",
-    "text": "7.2 tmap\nThe tmap package is another package to create interactive maps.\nTo create a map, you need to declare a tm_shape() for the dataset you are using and a tm_polygons(). (or lines or other) to declare the representation you want.\n\n\nCode\n# install.packages(\"tmap\")\nlibrary(tmap)\ntmap_mode(\"view\") # by default tmap_mode is \"plot\" - a static map\n\ntm_shape(TRIPSgeo) + tm_polygons(\"Total\")\n\n\n\n\n\n\n\n\n7.2.1 Export\nWith tmap you can directly export the map as an html file or image, using the Viewer panel.\n\n\n\n\n\n\n\nThis is a most straightforward solution.",
+    "text": "Note\n\n\n\nNote that you can change the basemap, and click on the geometries to see the data associated with them.\n\n\n\n\n\n7.1.1 Export\nYou can directly export the map as an html file or image, using the Viewer panel.\n\n\n\n\n\n\n\nThis is the most straightforward solution.\n\n\n\nYou can also export a map as an html file or image using code.\n\n\nCode\n# install.packages(\"webshot2\") # you will need this\n\nmap = mapview(TRIPSgeo, zcol = \"Total\") # fisrt create a objet with the desired map\n\nmapshot2(map, \"data/map.html\") # as webpage\nmapshot2(map, file = \"data/map.png\") # as image",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
@@ -358,110 +413,99 @@
     "objectID": "interactive-maps.html#rmarkdown",
     "href": "interactive-maps.html#rmarkdown",
     "title": "7  Interactive maps",
-    "section": "7.3 Rmarkdown",
-    "text": "7.3 Rmarkdown\nTo include a map on a report, website, paper (any type), you can create an Rmarkdown file.\n\nAnd include a R code chunk with a map. If the output is html, you will get an interactive map on your document!",
+    "section": "7.2 Rmarkdown",
+    "text": "7.2 Rmarkdown\nTo include a map on a report, website, paper (any type), you can create an Rmarkdown file.\n\nAnd include a R code chunk (ctrl + alt + i) with a map. If the output is html, you will get an interactive map on your document!",
     "crumbs": [
       "**Day 1**",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interactive maps</span>"
     ]
   },
   {
-    "objectID": "desire-lines.html",
-    "href": "desire-lines.html",
-    "title": "8  OD pairs and desire lines",
+    "objectID": "centroids.html",
+    "href": "centroids.html",
+    "title": "8  Centroids of transport zones",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "8.1 Geometric centroids\nTaking the Municipalities_geo data from the previous section, we will calculate the geometric centroids, using the st_centroid() function.\nCode\nlibrary(dplyr)\nlibrary(sf)\nlibrary(mapview)\n\nMunicipalities_geo = st_read(\"data/Municipalities_geo.gpkg\", quiet = TRUE)\n\nCentroids_geo = st_centroid(Municipalities_geo)\nThis creates points at the geometric center of each polygon.\nCode\nmapview(Centroids_geo)\n\n\n\n\n\n\nCode\nmapview(Centroids_geo) + mapview(Municipalities_geo, alpha.regions = 0) # both, with full transparency in polygons\nBut… is this the best way to represent the center of a transport zone?\nThese results may be biased by the shape of the polygons, and not represent where activities are. Example: lakes, forests, etc.\nTo overcome this, we can use weighted centroids.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>OD pairs and desire lines</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Centroids of transport zones</span>"
     ]
   },
   {
-    "objectID": "geocode.html",
-    "href": "geocode.html",
-    "title": "9  Georeferenced coordinates",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\n42 + 3.14\n\n\n[1] 45.14\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "centroids.html#weigthed-centroids",
+    "href": "centroids.html#weigthed-centroids",
+    "title": "8  Centroids of transport zones",
+    "section": "8.2 Weigthed centroids",
+    "text": "8.2 Weigthed centroids\nWe will weight centroids of transport zones by population and by number of buildings.\nFor this, we will need the census data (INE 2022).\n\n\nCode\nCensus = st_read(\"data/census.gpkg\", quiet = TRUE)\n\nmapview(Census |&gt; filter(Municipality == \"Lisboa\"), zcol = \"Population\")\n\n\n\n\n\n\nIt was not that easy to estimate weighted centroids with R, as it is with GIS softwares. But there is this new package, centr, that can help us (centr?).\nWe need to specify the group we want to calculate the mean centroids, and the weight variable we want to use.\n\n\nCode\n# test\nlibrary(centr)\nCentroid_pop = Census |&gt; \n  mean_center(group = \"Municipality\", weight = \"Population\")\n\n\nWe can do the same for buildings.\n\n\nCode\nCentroid_build = Census |&gt; \n  mean_center(group = \"Municipality\", weight = \"Buildings\")",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Georeferenced coordinates</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Centroids of transport zones</span>"
     ]
   },
   {
-    "objectID": "distances.html",
-    "href": "distances.html",
-    "title": "10  Euclidean and routing distances",
-    "section": "",
-    "text": "10.1 Euclidean distances\nTaking the municipality centroids, or survey respondents’ location\nSee Knuth (1984) for additional discussion of literate programming.\nCode\n42 + 3.14\n\n\n[1] 45.14",
+    "objectID": "centroids.html#compare-centroids-in-a-map",
+    "href": "centroids.html#compare-centroids-in-a-map",
+    "title": "8  Centroids of transport zones",
+    "section": "8.3 Compare centroids in a map",
+    "text": "8.3 Compare centroids in a map\n\n8.3.1 Interactive map\n\n\nCode\nmapview(Centroids_geo, col.region = \"blue\") +\n  mapview(Centroid_pop, col.region = \"red\") +\n  mapview(Centroid_build, col.region = \"black\") +\n  mapview(Municipalities_geo, alpha.regions = 0) # polygon limits\n\n\n\n\n\n\nSee how the building, population and geometric centroids of Sintra are appart, from closer to Tagus, to the rural area.\n\n\n8.3.2 Static map\nTo produce the same map, using only plot() and st_geometry(), we need to make sure that the geometries have the same crs.\n\n\nCode\nst_crs(Centroids_geo) # 4326 WGS84\nst_crs(Centroid_pop) # 3763 Portugal TM06\n\n\nSo, we need to transform the geometries to the same crs.\n\n\nCode\nCentroid_pop = st_transform(Centroid_pop, crs = 4326)\nCentroid_build = st_transform(Centroid_build, crs = 4326)\n\n\nNow, to use plot() we incrementally add layers to the plot.\n\n\nCode\n# Plot the Municipalities_geo polygons first (with no fill)\nplot(st_geometry(Municipalities_geo), col = NA, border = \"black\", main = \"Map of different Centroids of Municipalities\")\n\n# Add the Centroids_geo points in blue\nplot(st_geometry(Centroids_geo), col = \"blue\", pch = 16, add = TRUE) # add!\n\n# Add the Centroid_pop points in red\nplot(st_geometry(Centroid_pop), col = \"red\", pch = 16, add = TRUE)\n\n# Add the Centroid_build points in black\nplot(st_geometry(Centroid_build), col = \"black\", pch = 16, add = TRUE)\n\n\n\n\n\n\n\n\n\nIn the next section we will use these centroids to calculate the desire lines between them.\n\n\n\n\n\n\nINE. 2022. “Censos 2021- XVI Recenseamento Geral da População. VI Recenseamento Geral da Habitação.” Lisboa: Instituto National de Estatística. https://censos.ine.pt/xurl/pub/65586079.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
-    ]
-  },
-  {
-    "objectID": "distances.html#euclidean-distances",
-    "href": "distances.html#euclidean-distances",
-    "title": "10  Euclidean and routing distances",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "**Day 2**",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Euclidean and routing distances</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Centroids of transport zones</span>"
     ]
   },
   {
     "objectID": "open-data.html",
     "href": "open-data.html",
-    "title": "11  Open transportation data",
+    "title": "9  Open transportation data",
     "section": "",
-    "text": "11.1 Road Network",
+    "text": "9.1 Road Networks",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
-    "objectID": "open-data.html#road-network",
-    "href": "open-data.html#road-network",
-    "title": "11  Open transportation data",
+    "objectID": "open-data.html#road-networks",
+    "href": "open-data.html#road-networks",
+    "title": "9  Open transportation data",
     "section": "",
-    "text": "11.1.1 OpenStreetMap\nThe OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world. This is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.\n\n\n\n\n\n\nAlthough it can be not 100% accurate, it is a good source of data for most of the cases.\n\n\n\nYou can access it’s visualization tool at www.openstreetmap.org. To edit the map, you can use the Editor, once you register.\nIf you want to download the data, you can use the following tools.\n\nOverpass API\nGeofabrik\n\nThese websites include all the OSM data, with much more information than you need.\n\n\n11.1.2 HOT Export Tool\nThis interactive tool helps you to select the region you want to extract, the type of information to include, and the output data format.\nAccess via export.hotosm.org. You need an OSM account to use it.\n\nAfter the export, you can read in R using the sf package\n\n\nCode\nGent = sf::st_read(\"data/Gent_center.gpkg\", quiet = TRUE)\n\nmapview::mapview(Gent, zcol = \"highway\")\n\n\n\n\n\n\n\n\n11.1.3 OSM in R\nThere are also some R packages that can help you to download and work with OpenStreetMap data, such as:\n\nosmdata\nosmextract\n\nThis is an example of how to download OpenStreetMap road network data using the osmextract package:\n\n\nCode\nlibrary(osmextract)\nOSM_Malta = oe_get_network(place = \"Malta\") # it will geocode the place\n\nMalta_main_roads = OSM_Malta |&gt; \n  filter(highway %in% c(\"primary\", \"secondary\", \"tertiary\", \"trunk\"))\n\nplot(Malta_main_roads[\"highway\"])",
+    "text": "9.1.1 OpenStreetMap\nThe OpenStreetMap is a collaborative online mapping project that creates a free editable map of the world.\nThis is the most used source of road network data for transportation analysis in academia, since it is available almost everywhere in the world, is open and free to use.\n\n\n\n\n\n\nAlthough it can be not 100% accurate, OSM is a good source of data for most of the cases.\n\n\n\nYou can access it’s visualization tool at www.openstreetmap.org. To edit the map, you can use the Editor, once you register.\nIf you want to download the data, you can use the following tools.\n\nOverpass API\nGeofabrik\n\nThese websites include all the OSM data, with much more information than you need.\n\n\n9.1.2 HOT Export Tool\nThis interactive tool helps you to select the region you want to extract, the type of information to include, and the output data format.\nAccess via export.hotosm.org. You need an OSM account to use it.\n\nAfter the export, you can read in R using the sf package:\n\n\nCode\nGent = sf::st_read(\"data/Gent_center.gpkg\", quiet = TRUE)\n\nmapview::mapview(Gent, zcol = \"highway\")\n\n\n\n\n\n\n\n\n9.1.3 OSM in R\nThere are also some R packages that can help you to download and work with OpenStreetMap data, such as:\n\nosmdata\nosmextract\n\nThis is an example of how to download OpenStreetMap road network data using the osmextract package:\n\n\nCode\nlibrary(osmextract)\nOSM_Malta = oe_get_network(place = \"Malta\") # it will geocode the place\n\nMalta_main_roads = OSM_Malta |&gt; \n  filter(highway %in% c(\"primary\", \"secondary\", \"tertiary\", \"trunk\"))\n\nplot(Malta_main_roads[\"highway\"])",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
     "objectID": "open-data.html#transportation-services-data",
     "href": "open-data.html#transportation-services-data",
-    "title": "11  Open transportation data",
-    "section": "11.2 Transportation Services’ Data",
-    "text": "11.2 Transportation Services’ Data\n\n11.2.1 GTFS\n\n\n\n11.2.2 National Access Points\nList of the European Union members states with National Access Points for Transportation data\nhttps://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en\nExample of Bus services data in Belgium:\n\n\n\nSource: Transport Data Belgium",
+    "title": "9  Open transportation data",
+    "section": "9.2 Transportation Services’ Data",
+    "text": "9.2 Transportation Services’ Data\n\n9.2.1 GTFS\n\n\n\n9.2.2 National Access Points\nThe European Union has a directive that requires the member states to provide access to transportation data. Data includes not only Public Transportation data, but also road networks, car parking, and other transportation-related information.\nList of the European Union members states with National Access Points for Transportation data\nExample of Bus services data in Belgium:\n\n\n\nSource: Transport Data Belgium",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Open transportation data</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Open transportation data</span>"
     ]
   },
   {
     "objectID": "r5r.html",
     "href": "r5r.html",
-    "title": "12  Urban Accessibility with R",
+    "title": "10  Urban Accessibility with R",
     "section": "",
     "text": "About the instructor\nRafael H. M. Pereira\nHead of Data Science\nInstitute for Applied Economic Research (Ipea), Brazil\nWebsite | Google Scholar | Twitter | Linkedin |\nShort bio\nRafael H. M. Pereira is a senior researcher in the fields of urban analytics, spatial data science and transport studies at the Institute for Applied Economic Research (Ipea), Brazil. His research looks broadly at how urban policies and technologies shape the spatial organization of cities, human mobility as well as their impacts on social and health inequalities. Some of his key contributions to the fields of urban analytics and planning involve the development of new methods and open-source computational tools to the study of urban systems and transportation networks. These contributions emerge from substantive interests around social justice and sustainability issues in urban development, with particular focus on transportation equity and inequalities in access to opportunities, and the environmental impacts of built environments and mobility patterns. With a background in Sociology and Demography, Dr. Pereira obtained his PhD in Geography from the Transport Studies Unit at Oxford University.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Urban Accessibility with R</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Urban Accessibility with R</span>"
     ]
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "13  Introduction",
+    "title": "11  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\ndata = readRDS(\"data/TRIPSmode_mun.Rds\")\ndata_walk = data[,c(\"Origin_mun\", \"Destination_mun\", \"Walk\")]\nhead(data_walk)\n\n\n  Origin_mun Destination_mun Walk\n1  Alcochete       Alcochete 6833\n2  Alcochete          Almada    0\n3  Alcochete         Amadora    0\n4  Alcochete        Barreiro    0\n5  Alcochete         Cascais    0\n6  Alcochete          Lisboa   69\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\nCode\ndata = readRDS(\"data/TRIPSmode.Rds\")\ndata_walk = data[,c(\"Origin_mun\", \"Destination_mun\", \"Walk\")]\nhead(data_walk)\n\n\n  Origin_mun Destination_mun Walk\n1  Alcochete       Alcochete 6833\n2  Alcochete          Almada    0\n3  Alcochete         Amadora    0\n4  Alcochete        Barreiro    0\n5  Alcochete         Cascais    0\n6  Alcochete          Lisboa   69\n\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "**Day 2**",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -469,7 +513,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Instituto National de Estatística. 2018. “Mobilidade e\nFuncionalidade Do Território Nas Áreas Metropolitanas Do Porto e de\nLisboa: 2017.” Lisboa. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "INE. 2018. “Mobilidade e Funcionalidade Do Território Nas Áreas Metropolitanas do Porto e de Lisboa:\n2017.” Lisboa: Instituto National de Estatística. https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_publicacoes&PUBLICACOESpub_boui=349495406&PUBLICACOESmodo=2&xlang=pt.\n\n\n———. 2022. “Censos 2021- XVI Recenseamento\nGeral da População. VI Recenseamento Geral da Habitação.”\nLisboa: Instituto National de Estatística. https://censos.ine.pt/xurl/pub/65586079.\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With\nApplications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.",
     "crumbs": [
       "References"
     ]
