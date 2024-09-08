@@ -124,13 +124,15 @@ You can install them in RStudio by searching for them in the **Packages** tab:
 install.packages("tidyverse")
 install.packages("readxl")
 
-install.packages(c("remotes", "devtools", "usethis")) # optional
 install.packages("sf")
 install.packages("mapview")
 install.packages("rmarkdown")
 install.packages("centr")
 install.packages("od")
-install.packages("osmextract")
+
+install.packages(c("remotes", "devtools", "usethis")) # optional
+install.packages("osmextract") # optional
+install.packages("stplanr") # optional
 ```
 
 ## r5r
@@ -183,18 +185,18 @@ java -version
 ```
 :::
 
-## Open Route Service
+<!-- ## Open Route Service -->
 
-[Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token.
-Copy your API.
+<!-- [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. -->
+<!-- Copy your API. -->
 
-In RStudio console, run:
+<!-- In RStudio console, run: -->
 
-```{r}
-# install.packages("openrouteservice")
-openrouteservice::ors_api_key("YOUR-API-KEY")
-```
+<!-- ```{r} -->
+<!-- # install.packages("openrouteservice") -->
+<!-- openrouteservice::ors_api_key("YOUR-API-KEY") -->
+<!-- ``` -->
 
-This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again.
+<!-- This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again. -->
 
-This is useful also to write your `openrouteservice` scripts without sharing your key with others.
+<!-- This is useful also to write your `openrouteservice` scripts without sharing your key with others. -->
