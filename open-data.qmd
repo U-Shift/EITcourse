@@ -1,3 +1,9 @@
+---
+format:
+  pdf:
+    prefer-html: true
+---
+
 # Open transportation data
 
 In this chapter we will guide you through sources of open data for transportation analysis: road networks and public transportation information.

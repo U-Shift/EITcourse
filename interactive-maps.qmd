@@ -1,3 +1,9 @@
+---
+format:
+  pdf:
+    prefer-html: true
+---
+
 # Interactive maps
 
 You can plot a static map using `plof(sf)`, but you can also create interactive maps.

@@ -1,3 +1,9 @@
+---
+format:
+  pdf:
+    prefer-html: true
+---
+
 # Centroids of transport zones
 
 In this section we will calculate the geometric and the weighted centroids of transport zones.

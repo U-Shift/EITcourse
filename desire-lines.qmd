@@ -1,3 +1,9 @@
+---
+format:
+  pdf:
+    prefer-html: true
+---
+
 # OD pairs and desire lines
 
 Desire lines are a way to represent the flow of people or goods between two points.
