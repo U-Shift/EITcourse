@@ -56,8 +56,7 @@ mapview(SURVEYgeo, zcol = "MODE") + mapview(UNIVERSITY, col.region = "red", cex 
 
 First we will create lines connecting the survey locations to the university, using the `st_nearest_points()` function.
 
-This function finds returns the nearest points between two geometries, and creates a line between them.
-This can be useful to find the nearest train station to each point, for instance.
+This function finds returns the nearest points between two geometries, and creates a line between them. This can be useful to find the nearest train station to each point, for instance.
 
 As we only have 1 point at UNIVERSITY layer, we will have the same number of lines as number of surveys = `r nrow(SURVEY)`.
 
@@ -69,8 +68,7 @@ SURVEYeuclidean = st_nearest_points(SURVEYgeo, UNIVERSITY, pairwise = TRUE) |>
 mapview(SURVEYeuclidean)
 ```
 
-Note that if we have more than one point in the second layer, the `pairwise = TRUE` will create a line for each combination of points.
-Set to `FALSE` if, for instance, you have the same number of points in both layers and want to create a line between the corresponding points.
+Note that if we have more than one point in the second layer, the `pairwise = TRUE` will create a line for each combination of points. Set to `FALSE` if, for instance, you have the same number of points in both layers and want to create a line between the corresponding points.
 
 ### Distance
 
@@ -242,6 +240,12 @@ legend("topleft", legend = c("Euclidean", "Walk", "Car"),
        col = c("black", "red", "blue"), 
        lwd = 2, lty = c(1, 2, 3), pch = 16)
 ```
+
+### Circuity
+
+Compare 1 single route.
+
+<!-- TO-DO -->
 
 ## Visualize routes
 
