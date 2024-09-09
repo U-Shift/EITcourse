@@ -86,6 +86,6 @@ Additionally, the use of open source software and datasets allows researchers to
 
 ## Recommended readings
 
--   Engel, Claudia A (2023) [Introduction to R](https://cengel.github.io/R-intro/)
--   Lovelace, Robin, Nowosad, Jakub & Muenchow, Johannes (2023) [Geocomputation with R](https://geocompr.robinlovelace.net/)
--   Pereira, Rafael H. M. & Herszenhut, Daniel (2023) [Introduction to urban accessibility: a practical guide with R](https://ipeagit.github.io/intro_access_book/index.en.html). Ipea - Institute of Applied Economic Research
+-   @intror [Introduction to R](https://cengel.github.io/R-intro/).
+-   @geocomputation [Geocomputation with R](https://geocompr.robinlovelace.net/).
+-   @accessibility [Introduction to urban accessibility: a practical guide with R](https://ipeagit.github.io/intro_access_book/index.en.html).
