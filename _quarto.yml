@@ -45,6 +45,7 @@ book:
         - open-data.qmd
         - r5r.qmd
         # - intro.qmd
+    - about.qmd
     - references.qmd
   
   repo-url: https://github.com/U-Shift/EITcourse
