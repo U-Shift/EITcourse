@@ -74,15 +74,24 @@ plot(Malta_main_roads["highway"])
 
 ### GTFS
 
-General Transit Feed Specification (GTFS) is standardized format for documenting public transportation dataset, including routes, schedule, stop locations, and trips.
-Transit agencies are responsible for maintaining the data up to date.
-The data is given in .txt files and are related to one another by "id".
+General Transit Feed Specification (GTFS) is [standard format](https://developers.google.com/transit/gtfs/reference) for documenting public transportation information, including: routes, schedules, stop locations, calendar patterns, trips, and possible transfers.
+Transit agencies are responsible for maintaining the data up-to-date.
 
-GTFS data can be downloaded in the following websites:
+This information is used in several applications, such as Google Maps, to provide public transportation directions.
+It can be offered for a city, a region, or even a whole country, depending on the PT agency.
 
-[TransitLand](https://www.transit.land)
+The recent version 2 of the GTFS standard includes more information, such as **real-time data**.
 
-[TransitFeeds](https://transitfeeds.com/)
+The data is usually in a `.zip` file that includes several `.txt` files (one for each type of information) with tabular relations.
+
+![Source: [trilliumtransit.com](https://trilliumtransit.com/2016/07/05/gtfs-examples/)](images/clipboard-2676687965.png){fig-align="center" width="493"}
+
+You can find most GTFS data in the following websites:
+
+-   [TransitLand](https://www.transit.land)
+-   [TransitFeeds](https://transitfeeds.com/)
+
+Some PT agencies also provide their open-data in their websites.
 
 ### National Access Points
 
