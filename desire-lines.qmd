@@ -1,7 +1,7 @@
 ---
-format:
-  pdf:
-    prefer-html: true
+# format:
+#   pdf:
+#     prefer-html: true
 ---
 
 # OD pairs and desire lines

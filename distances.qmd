@@ -1,8 +1,8 @@
 ---
 number-depth: 2
-format:
-  pdf:
-    prefer-html: true
+# format:
+#   pdf:
+#     prefer-html: true
 ---
 
 # Euclidean and routing distances
