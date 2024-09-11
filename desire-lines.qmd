@@ -9,6 +9,19 @@ format:
 Desire lines are a way to represent the flow of people or goods between two points.
 They are often used in transport planning to represent the flow of trips between zones.
 
+There are many ways to create desire lines, connecting origins and destinations.
+For instance:
+
+-   1 origin to 1 destination
+    -   home ⟷ work place
+-   multiple origins to a single destination - students’ homes ⟷ 1 school
+-   origin zone to destination zone - for aggregated trips (macro representation)
+-   OD jittering[^desire-lines-1]
+
+[^desire-lines-1]: See [@Lovelace2022].
+
+![](images/clipboard-157094575.png){width="261"} ![](images/clipboard-1443223500.png){width="215"} ![Examples of representation od desire lines: a) multiple origins and 1 destination; b) transport zones; c) od jittering](images/clipboard-2000165959.png){width="242"}
+
 The [`stplanr`](https://docs.ropensci.org/stplanr/index.html) package is a collection of functions for sustainable transport planning with R, and it is built on top of the `sf` package [@stplanr].
 
 In this workshop, we will use the [`od`](https://itsleeds.github.io/od/) package, a lightweight package with a few functions from `stplanr`, namely the ones to create desire lines from origin-destination (OD) pairs [@od].
