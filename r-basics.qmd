@@ -85,6 +85,18 @@ Visualize the table by clicking on the "Data" in the "Environment" page or use :
 View(table_example)
 ```
 
+**Look at the first row**
+
+```{r}
+table_example[1,] #rows and columns start from 1 in R, differently from Python which starts from 0.
+```
+
+**Look at first row and column**
+
+```{r}
+table_example[1,1]
+```
+
 ## Practical exercise
 
 **Dataset:** the number of trips between all municipalities in the Lisbon Metropolitan Area, Portugal [@IMOB].
@@ -189,21 +201,7 @@ Filter trips with origin **and** destination in Lisbon
 data_in_Out_Lisbon = data[data$Origin == "Lisboa" & data$Destination == "Lisboa",]
 ```
 
-**Remove a column**
-
-Look at the first row
-
-```{r}
-data[1,] #rows and columns start from 1
-```
-
-Look at first row and column
-
-```{r}
-data[1,1]
-```
-
-Remove the first column
+**Remove the first column**
 
 ```{r}
 data = data[ ,-1] #first column
