@@ -13,9 +13,17 @@ There are many ways to create desire lines, connecting origins and destinations.
 For instance:
 
 -   1 origin to 1 destination
+
     -   home ⟷ work place
--   multiple origins to a single destination - students’ homes ⟷ 1 school
--   origin zone to destination zone - for aggregated trips (macro representation)
+
+-   multiple origins to a single destinations
+
+    -   students’ homes ⟷ 1 school
+
+-   origin zone to destination zone
+
+    -   for aggregated trips (macro representation)
+
 -   OD jittering[^desire-lines-1]
 
 [^desire-lines-1]: See [@Lovelace2022].

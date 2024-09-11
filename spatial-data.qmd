@@ -47,7 +47,8 @@ Municipalities_geo = st_read("data/Municipalities_geo.gpkg")
 You can also open directly from url from github.
 Example:
 
-`Municipalities_geo = st_read("https://github.com/U-Shift/EITcourse/raw/main/data/Municipalities_geo.gpkg")`
+`url = "https://github.com/U-Shift/EITcourse/raw/main/data/Municipalities_geo.gpkg"`
+`Municipalities_geo = st_read(url)`
 :::
 
 ### Projected vs Geographic Coordinate Systems
