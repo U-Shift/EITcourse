@@ -1,7 +1,7 @@
 ---
-format:
-  pdf:
-    prefer-html: true
+# format:
+#   pdf:
+#     prefer-html: true
 ---
 
 # Course Structure
@@ -50,7 +50,7 @@ And finally, to wrap up all this topics, we will have a group exercise using oth
 # Detailed schedule
 
 | Day 1 |                                                                                                                 |
-|---------|----------------------------------------------------------|
+|---------|-------------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                           |
 | 10.00 | Introduction to programming techniques and data structures                                                      |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                   |
@@ -67,7 +67,7 @@ And finally, to wrap up all this topics, we will have a group exercise using oth
 | 17.00 | *End of day 1*                                                                                                  |
 
 | Day 2 |                                                                                    |
-|---------|-----------------------------------------------------------|
+|---------|-------------------------------------------------------|
 | 9.30  | Centroids of transport zones                                                       |
 | 10.15 | Desire-lines from OD pairs and transport zones                                     |
 | 11.00 | *Coffee break*                                                                     |

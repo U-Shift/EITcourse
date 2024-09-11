@@ -20,7 +20,8 @@ This is the most used source of road network data for transportation analysis in
 Although it can be not 100% accurate, OSM is a good source of data for most of the cases.
 :::
 
-You can access it's visualization tool at [www.openstreetmap.org](https://www.openstreetmap.org/). To edit the map, you can use the [Editor](https://www.openstreetmap.org/edit), once you register.
+You can access it's visualization tool at [www.openstreetmap.org](https://www.openstreetmap.org/).
+To edit the map, you can use the [Editor](https://www.openstreetmap.org/edit), once you register.
 
 If you want to **download** the data, you can use the following tools.
 
@@ -33,7 +34,8 @@ These websites include all the OSM data, with **much more information than you n
 
 This interactive tool helps you to select the **region** you want to extract, the type of **information** to include, and the output data **format**.
 
-Access via [export.hotosm.org](https://export.hotosm.org/). You need an OSM account to use it.
+Access via [export.hotosm.org](https://export.hotosm.org/).
+You need an OSM account to use it.
 
 ![](images/clipboard-1441436716.png)
 
@@ -72,7 +74,9 @@ plot(Malta_main_roads["highway"])
 
 ### GTFS
 
-General Transit Feed Specification (GTFS) is standardized format for documenting public transportation dataset, including routes, schedule, stop locations, and trips. Transit agencies are responsible for maintaining the data up to date. The data is given in .txt files and are related to one another by "id".
+General Transit Feed Specification (GTFS) is standardized format for documenting public transportation dataset, including routes, schedule, stop locations, and trips.
+Transit agencies are responsible for maintaining the data up to date.
+The data is given in .txt files and are related to one another by "id".
 
 GTFS data can be downloaded in the following websites:
 
@@ -82,7 +86,8 @@ GTFS data can be downloaded in the following websites:
 
 ### National Access Points
 
-The European Union has a directive that requires the member states to provide access to transportation data. Data includes not only **Public Transportation** data, but also **road network**s, car **parking**, and other transportation-related information.
+The European Union has a directive that requires the member states to provide access to transportation data.
+Data includes not only **Public Transportation** data, but also **road network**s, car **parking**, and other transportation-related information.
 
 [List of the European Union members states with National Access Points for Transportation data](https://transport.ec.europa.eu/transport-themes/smart-mobility/road/its-directive-and-action-plan/national-access-points_en)
 
