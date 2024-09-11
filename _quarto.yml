@@ -6,7 +6,8 @@ execute:
   
   
 book:
-  title: "Get your dataset ready"
+  title: "Get your dataset ready!"
+  output-file: "EITcourse_GetYourDatasetReady2024"
   subtitle: "Using R and GIS"
   author: 
     - name: "Rosa Félix"
@@ -53,7 +54,7 @@ book:
   sidebar:
     tools:
       - icon: download
-        href: https://github.com/U-Shift/EITcourse/releases/download/2024.09/Get-your-dataset-ready.pdf
+        href: https://github.com/U-Shift/EITcourse/releases/download/2024.09/EITcourse_GetYourDatasetReady2024.pdf
         text: "Download PDF"
         target: _blank
   page-footer:
@@ -79,7 +80,7 @@ format:
     toc: true
     number-depth: 3
     toc-depth: 3
-    output-file: "EITcourse_GetYourDatasetReady2024"
+    cover-image: images/cover.png # not working
     output-ext:  "pdf"
 # prefer-html: true
     
