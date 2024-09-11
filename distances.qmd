@@ -89,7 +89,7 @@ SURVEYgeo = SURVEYgeo |>
 SURVEYgeo$distance = units::drop_units(SURVEYgeo$distance) 
 ```
 
-We could also estimate the distance using the `st_distance()` function **directly**, without creating the lines.
+We could also estimate the distance using the `st_distance()` function **directly**, although we would not get and sf with lines.
 
 ```{r}
 SURVEYgeo = SURVEYgeo |> 
@@ -99,8 +99,42 @@ SURVEYgeo = SURVEYgeo |>
 
 summary(SURVEYgeo$distance)
 ```
+`SURVEYgeo` is still a points' sf.
 
-## Routing distances with r5r
+## Routing Engines
+
+There are different types of routing engines, regarding the type of network they use, the type of transportation they consider, and the type of data they need.
+We can have:
+
+-   Uni-modal vs. Multi-modal
+
+    -   One mode per trip vs. One trip with multiple legs that can be made with different modes
+    -   Multi-modal routing may require GTFS data (realistic Public Transit)
+
+-   Output level of the results
+
+    -   Routes (1 journey = 1 route)
+    -   Legs
+    -   Segments
+
+-   Routing profiles
+
+    -   Type of user
+    -   fastest / shortest path
+    -   avoid barriers / tolls, etc
+
+![Routing options in [OpenRouteService](https://maps.openrouteservice.org/)](images/clipboard-1370155720.png){fig-align="center"}
+
+-   Local vs. Remote (service request - usually web API)
+
+    -   Speed vs. Quota limits / price
+    -   Hard vs. Easy set up
+    -   Hardware limitations in local routing
+    -   Global coverage in remote routing, with frequent updates
+
+Examples: [OSRM](https://project-osrm.org/), [Dodgr](https://urbananalyst.github.io/dodgr/), [r5r](https://ipeagit.github.io/r5r/), [Googleway](https://symbolixau.github.io/googleway/reference/access_result.html), [CycleStreets](https://m.cyclestreets.net/journey), [HERE](https://munterfi.github.io/hereR/).
+
+### Routing distances with r5r
 
 We use the `r5r` package to estimate the distance using a road network [@Pereira2021r5r].
 
@@ -139,7 +173,7 @@ UNIVERSITY = UNIVERSITY |>
   mutate(id = 1) # only one row
 ```
 
-### Distances by car
+#### Distances by car
 
 Estimate the routes with time and distance by car, from survey locations to University.
 
@@ -162,7 +196,7 @@ The [`detailed_itineraries()`](https://ipeagit.github.io/r5r/reference/detailed_
 If we want to know only time and distance, and **not the route** itself, we can use the [`travel_time_matrix()`](https://ipeagit.github.io/r5r/reference/travel_time_matrix.html).
 :::
 
-### Distances by foot
+#### Distances by foot
 
 Repeat the same for `WALK`[^distances-1].
 
@@ -180,7 +214,7 @@ SURVEYwalk = detailed_itineraries(
 )
 ```
 
-### Distances by PT
+#### Distances by PT
 
 For Public Transit (`TRANSIT`) you may specify the egress mode, the departure time, and the maximum number of transfers.
 
@@ -250,7 +284,18 @@ legend("topleft", legend = c("Euclidean", "Walk", "Car"),
 
 Compare 1 single route.
 
-<!-- TO-DO -->
+```{r}
+#| fig-format: png
+#| code-fold: true
+mapview(SURVEYeuclidean[165,], color = "black") + # 1556 meters
+  mapview(SURVEYwalk[78,], color = "red") + # 1989 meters
+  mapview(SURVEYcar[78,], color = "blue") # 2565 meters
+```
+
+With this we can see the **circuity** of the routes, a measure of route / transportation efficiency, which is the ratio between the routing distance and the euclidean distance.
+
+The cicuity for car (`r round(2565/1556,2)`) is usually higher than for walking (`r round(1989/1556,2)`) or biking, for shorter distances.
+
 
 ## Visualize routes
 
