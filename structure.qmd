@@ -1,7 +1,8 @@
 ---
-# format:
-#   pdf:
-#     prefer-html: true
+number-depth: 2
+format:
+  pdf:
+    prefer-html: true
 ---
 
 # Course Structure
@@ -11,9 +12,11 @@ The course consists of an in-person 2-day course, taking place during the EIT DT
 The first day will focus on learning the basics of R programming and how to treat and explore datasets.
 The second day will focus on analyzing spatial datasets, and routing origins to destinations.
 
-## Day 1
+## Contents
 
-### Morning {.unnumbered}
+### Day 1
+
+#### Morning {.unnumbered}
 
 We will start by a brief introduction to this course, followed by an introduction to programming techniques and data structures.
 
@@ -21,7 +24,7 @@ Then, we will install R and RStudio, and and the required R packages for this co
 
 After having everything setup, we will start with the [R basics](r-basics.qmd), with examples and exercises.
 
-### Afternoon {.unnumbered}
+#### Afternoon {.unnumbered}
 
 In the afternoon, we will focus on [data manipulation](data-manipulation.qmd), using the dplyr package to select, filter, left-join, group and summarize datasets.
 
@@ -29,9 +32,9 @@ Then, we will [introduce GIS and spatial data](spatial-data.qmd), learning how t
 
 Finally, we will learn how to create cool [interactive maps](interactive-maps.qmd) using mapview and R markdown.
 
-## Day 2
+### Day 2
 
-### Morning {.unnumbered}
+#### Morning {.unnumbered}
 
 We will start the day by estimating the different types of [centroids of transport zones](centroids.qmd).
 
@@ -39,7 +42,7 @@ After this, the natural next step is to create [desire lines](desire-lines.qmd) 
 
 We will then learn how to estimate [euclidean and routing distances](distances.qmd) for the desire-lines, using transport networks.
 
-### Afternoon {.unnumbered}
+#### Afternoon {.unnumbered}
 
 In the second afternoon, we will briefly learn where to find and extract [open transportation data](open-data.qmd), such as OpenStreetMap and GTFS.
 
@@ -47,10 +50,10 @@ Then, we will learn how to perform [accessibility analysis](r5r.qmd), using the 
 
 And finally, to wrap up all this topics, we will have a group exercise using other complex datasets, where you will apply the knowledge learned during the course.
 
-# Detailed schedule
+## Detailed schedule
 
 | Day 1 |                                                                                                                 |
-|---------|-------------------------------------------------------|
+|---------|----------------------------------------------------------|
 | 9.30  | Introductions and Presentation of the course contents                                                           |
 | 10.00 | Introduction to programming techniques and data structures                                                      |
 | 10.30 | Introduction to R and RStudio: hands-on to install software and main packages                                   |
@@ -67,7 +70,7 @@ And finally, to wrap up all this topics, we will have a group exercise using oth
 | 17.00 | *End of day 1*                                                                                                  |
 
 | Day 2 |                                                                                    |
-|---------|-------------------------------------------------------|
+|----------|---------------------------------------------------------|
 | 9.30  | Centroids of transport zones                                                       |
 | 10.15 | Desire-lines from OD pairs and transport zones                                     |
 | 11.00 | *Coffee break*                                                                     |
@@ -83,7 +86,7 @@ And finally, to wrap up all this topics, we will have a group exercise using oth
 | 16.45 | Survey and feedback from participants                                              |
 | 17.00 | *End of day 2*                                                                     |
 
-# Location
+## Location
 
 The course will take place at Campus Sterre, Building S8, room 2.4.
 
@@ -96,7 +99,7 @@ Campus_S8 = sf::st_as_sf(Campus_S8, crs = 4326) # assign crs
 mapview::mapview(Campus_S8, map.types = "OpenStreetMap") # quick map view
 ```
 
-# Resources
+## Resources
 
 -   You laptop, with any OS
 
