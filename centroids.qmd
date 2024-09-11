@@ -1,7 +1,7 @@
 ---
-format:
-  pdf:
-    prefer-html: true
+# format:
+#   pdf:
+#     prefer-html: true
 ---
 
 # Centroids of transport zones
@@ -124,9 +124,11 @@ Centroid_build = st_transform(Centroid_build, crs = 4326)
 Now, to use `plot()` we incrementally add layers to the plot.
 
 ```{r}
-#| fig-width: 8
+#| fig.dpi: 300
+#| fig-cap: "Static map of different centroids of Municipalities"
+#| fig-format: png
 # Plot the Municipalities_geo polygons first (with no fill)
-plot(st_geometry(Municipalities_geo), col = NA, border = "black", main = "Map of different Centroids of Municipalities")
+plot(st_geometry(Municipalities_geo), col = NA, border = "black")
 
 # Add the Centroids_geo points in blue
 plot(st_geometry(Centroids_geo), col = "blue", pch = 16, add = TRUE) # add!
@@ -138,4 +140,4 @@ plot(st_geometry(Centroid_pop), col = "red", pch = 16, add = TRUE)
 plot(st_geometry(Centroid_build), col = "black", pch = 16, add = TRUE)
 ```
 
-In the next section we will use these centroids to calculate the desire lines between them.
+In the [next section](desire-lines.qmd) we will use these centroids to calculate the desire lines between them.
