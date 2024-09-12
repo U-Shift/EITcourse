@@ -21,7 +21,7 @@ Rosa has worked in multiple R&D and consultancy projects with both municipalitie
 [^about-1]: Biclar.
     Available at: <https://biclar.tmlmobilidade.pt>
 
-![](images/rosa_greencap2000.jpg){width="370"}
+![](images/rosa_greencap2000.jpg){fig-align="center" width="370"}
 
 ## Gabriel Valença {.unnumbered}
 
@@ -40,7 +40,7 @@ He did his international placement at the Technical University of Denmark for 6 
 His background is in Civil Engineering, where he graduated at the Federal University of Rio Grande do Norte (UFRN) in Brazil, while studying part of his degree at the University of Toronto, in Canada.
 His main research areas are in integrating concepts related to street design, smart cities, urban mobility and intelligent transportation systems focusing on traveler behavior, transport demand modelling and artificial intelligence. 
 
-![](images/clipboard-1707780526.png){width="400"}
+![](images/clipboard-1707780526.png){fig-align="center" width="400"}
 
 ## Rafael H. M. Pereira {.unnumbered}
 
@@ -58,4 +58,4 @@ These contributions emerge from substantive interests around social justice and 
 
 With a background in Sociology and Demography, Dr. Pereira obtained his PhD in Geography from the Transport Studies Unit at Oxford University.
 
-![](images/clipboard-1490291846.png){width="400"}
+![](images/clipboard-1490291846.png){fig-align="center" width="400"}
