@@ -25,7 +25,9 @@ The most recent version is `4.4.1`, but you can use `>= 4.1.x` if you already ha
 
 [Download R-4.4.1 for Windows](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe) and run the executable file.
 
-You will also need to install Rtools, which is a collection of tools necessary to build R packages in Windows.
+::: {.callout-important icon="false"}
+You will also need to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html), which is a collection of tools necessary to build R packages in Windows.
+:::
 
 ### Mac
 
@@ -188,13 +190,17 @@ java -version
 <!-- ## Open Route Service -->
 
 <!-- [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. -->
+
 <!-- Copy your API. -->
 
 <!-- In RStudio console, run: -->
 
 <!-- ```{r} -->
+
 <!-- # install.packages("openrouteservice") -->
+
 <!-- openrouteservice::ors_api_key("YOUR-API-KEY") -->
+
 <!-- ``` -->
 
 <!-- This will store your key on your `.Renviron` file, meaning that every time you open RStudio, you won't need to run this command again. -->
