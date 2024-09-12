@@ -34,8 +34,9 @@ These websites include all the OSM data, with **much more information than you n
 
 This interactive tool helps you to select the **region** you want to extract, the type of **information** to include, and the output data **format**.
 
-Access via [export.hotosm.org](https://export.hotosm.org/).
-You need an OSM account to use it.
+Access via [export.hotosm.org](https://export.hotosm.org/)[^open-data-1].
+
+[^open-data-1]: You need an OSM account to use it.
 
 ![](images/clipboard-1441436716.png)
 
