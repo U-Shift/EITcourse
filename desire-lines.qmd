@@ -34,7 +34,7 @@ The [`stplanr`](https://docs.ropensci.org/stplanr/index.html) package is a colle
 
 In this workshop, we will use the [`od`](https://itsleeds.github.io/od/) package, a lightweight package with a few functions from `stplanr`, namely the ones to create desire lines from origin-destination (OD) pairs [@od].
 
-## Desire lines with od_2_sf
+## Desire lines with `od_2_sf`
 
 To create desire lines, we need a dataset with OD pairs **and** other dataset with the corresponding transport zones (spatial data).
 

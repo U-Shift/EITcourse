@@ -99,6 +99,7 @@ SURVEYgeo = SURVEYgeo |>
 
 summary(SURVEYgeo$distance)
 ```
+
 `SURVEYgeo` is still a points' sf.
 
 ## Routing Engines
@@ -134,7 +135,7 @@ We can have:
 
 Examples: [OSRM](https://project-osrm.org/), [Dodgr](https://urbananalyst.github.io/dodgr/), [r5r](https://ipeagit.github.io/r5r/), [Googleway](https://symbolixau.github.io/googleway/reference/access_result.html), [CycleStreets](https://m.cyclestreets.net/journey), [HERE](https://munterfi.github.io/hereR/).
 
-### Routing distances with r5r
+### Routing distances with `r5r`
 
 We use the `r5r` package to estimate the distance using a road network [@Pereira2021r5r].
 
@@ -295,7 +296,6 @@ mapview(SURVEYeuclidean[165,], color = "black") + # 1556 meters
 With this we can see the **circuity** of the routes, a measure of route / transportation efficiency, which is the ratio between the routing distance and the euclidean distance.
 
 The cicuity for car (`r round(2565/1556,2)`) is usually higher than for walking (`r round(1989/1556,2)`) or biking, for shorter distances.
-
 
 ## Visualize routes
 
