@@ -5,36 +5,26 @@
 
 ## Math operations
 
-### Sum
-
+# Sum
 
 1+1
 
-
-### Subtraction
-
+# Subtraction
 
 5-2
 
-
-### Multiplication
-
+# Multiplication
 
 2*2
 
-
-### Division
-
+# Division
 
 8/2
 
-
-### Round the number
-
+# Round the number
 
 round(3.14)
 round(3.14, 1) # The "1" indicates to round it up to 1 decimal digit.
-
 
 # You can use help `?round` in the console to see the description of the function, and the default arguments.
 
@@ -42,9 +32,12 @@ round(3.14, 1) # The "1" indicates to round it up to 1 decimal digit.
 
 ### Perform Combinations
 
-
 c(1, 2, 3)
 c(1:3) # The ":" indicates a range between the first and second numbers. 
+
+#Try to write a combination with the number 10, 11, 56, 57,58
+
+#...
 
 
 ### Create a comment with `ctrl + shift + m`
@@ -59,37 +52,35 @@ c(1:3) # The ":" indicates a range between the first and second numbers.
 
 # Define variables
 
-
 modes <- c("car", "PT", "walking", "cycling") # you can use "=" or "<-"
 Trips = c(200, 50, 300, 150) # uppercase letters modify
 
-
-
 # Join the variables to create a table
 
-
 table_example = data.frame(modes, Trips)
-
 
 # Take a look at the table
 
 # Visualize the table by clicking on the "Data" in the "Environment" page or use :
 
-
 View(table_example)
 
-
-# Look at the first row
-
+# dataset[row, column]
+# Look at the first row 
 
 table_example[1,] #rows and columns start from 1 in R, differently from Python which starts from 0.
 
-
 # Look at first row and column
-
 
 table_example[1,1]
 
+#try to find the element "300"
+
+#...
+
+# Remove the first row
+
+table_example = table_example[-1,] #first column
 
 ## Practical exercise
 
@@ -99,9 +90,11 @@ table_example[1,1]
 
 # You can click directly in the file under the "Files" pan, or:
 
+table_raw = readRDS("data/TRIPSmode.Rds")
 
-data = readRDS("data/TRIPSmode.Rds")
+# It is good practice to not use the original database
 
+table_trips = table_raw
 
 # After you type " you can use `tab` to navigate between folders and files and `enter` to autocomplete.
 
@@ -109,94 +102,76 @@ data = readRDS("data/TRIPSmode.Rds")
 
 # Summary statistics
 
-
-summary(data)
-
+summary(table_trips)
 
 # Check the structure of the data
 
+str(table_trips)
 
-str(data)
+table_trips
 
-
-# Check the first values of each variable
-
-
-#| eval: false
-## data
-
-
-
-head(data, 3) # first 3 values
-
+head(table_trips, 3) # first 3 values
 
 # Check the number of rows (observations) and columns (variables)
 
-
-nrow(data)
-ncol(data)
-
+nrow(table_trips)
+ncol(table_trips)
 
 # Open the dataset
 
+View(table_trips)
 
-View(data)
-
-
-### Explore the data
+### Explore the table_trips
 
 # Check the total number of trips
 
-# Use `$` to select a variable of the data
+# Use `$` to select a variable of the table_trips
 
+sum(table_trips$Total)
 
-sum(data$Total)
-
+#...
 
 # Percentage of car trips related to the total
 
 
-sum(data$Car)/sum(data$Total) * 100
+sum(table_trips$Car)/sum(table_trips$Total) * 100
 
 
 # Percentage of active trips related to the total
 
 
-(sum(data$Walk) + sum(data$Bike)) / sum(data$Total) * 100
+(sum(table_trips$Walk) + sum(table_trips$Bike)) / sum(table_trips$Total) * 100
 
 
-### Modify original data
+### Modify original table_trips
 
 # Create a column with the sum of the number of trips for active modes
 
 
-data$Active = data$Walk + data$Bike
+table_trips$Active = table_trips$Walk + table_trips$Bike
 
+# Create a variable of motorized trips to add the sum of trips by "PT" and "car"
+
+#...
 
 # Filter by condition (create new tables)
 
 # Filter trips only with origin from Lisbon
 
 
-data_Lisbon = data[data$Origin == "Lisboa",]
+trips_Lisbon = table_trips[table_trips$Origin == "Lisboa",]
 
 
 # Filter trips with origin different from Lisbon
 
 
-data_out_Lisbon = data[data$Origin != "Lisboa",]
+trips_out_Lisbon = table_trips[table_trips$Origin != "Lisboa",]
 
 
 # Filter trips with origin and destination in Lisbon
 
 
-data_in_Out_Lisbon = data[data$Origin == "Lisboa" & data$Destination == "Lisboa",]
-
-
-# Remove the first column
-
-
-data = data[ ,-1] #first column
+trips_in_Out_Lisbon = table_trips[table_trips$Origin == "Lisboa" & table_trips$Destination == "Lisboa",]
 
 
 # Create a table only with origin, destination and walking trips
@@ -204,28 +179,27 @@ data = data[ ,-1] #first column
 # There are many ways to do the same operation.
 
 
-names(data)
+names(table_trips)
 
+# Create a table only with origin,destination, and Walk
 
+trips_walk = table_trips[ ,c(1,2,4)]
 
-data_walk2 = data[ ,c(1,2,4)]
+trips_walk2 = table_trips[ ,-c(3,5:9)]
 
+# create a table with trips from car and PT...
 
-
-data_walk3 = data[ ,-c(3,5:9)]
-
+#...
 
 ### Export data
 
 # Save data in .csv and .Rds
 
-
-write.csv(data, 'data/dataset.csv') # , row.names = FALSE
-saveRDS(data, 'data/dataset.Rds') #Choose a different file. 
+write.csv(table_trips, 'data/dataset.csv') # , row.names = FALSE
+saveRDS(table_trips, 'data/dataset.Rds') #Choose a different file. 
 
 
 ### Import data
-
 
 csv_file = read.csv("data/dataset.csv")
 rds_file = readRDS("data/dataset.Rds")
