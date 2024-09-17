@@ -191,6 +191,13 @@ table(TRIPS$Lisbon_factor)
 
 The first number to appear is the first level, and so on.
 
+You can see the difference between using a continuous variable (in this case `Lisbon`\` has 0 and 1) and a categorical variable (`Lisbon_factor`).
+
+```{r}
+plot(TRIPS$Lisbon) # the values range between 0 and 1
+plot(TRIPS$Lisbon_factor) # the values are categorical and labeled with Yes/No
+```
+
 ## Join data tables
 
 When having relational tables - *i.e.* with a common identifier - it is useful to be able to join them in a very efficient way.
