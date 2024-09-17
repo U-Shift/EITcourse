@@ -367,6 +367,7 @@ knitr::kable(matrix, caption = "OD matrix in wide format")
 ```{r}
 #| include: false
 #| echo: false
+#| eval: false
 # this converts this quarto to a plain r script
 knitr::purl("data-manipulation.qmd", "code/data-manipulation.R", documentation = 0)
 ```
