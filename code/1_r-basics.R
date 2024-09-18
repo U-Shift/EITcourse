@@ -40,7 +40,7 @@ c(1:3) # The ":" indicates a range between the first and second numbers.
 #...
 
 
-### Create a comment with `ctrl + shift + m`
+### Create a comment with `ctrl + shift + c`
 
 
 # Comments help you organize your code. The software will not run the comment. 
@@ -80,7 +80,7 @@ table_example[1,1]
 
 # Remove the first row
 
-table_example = table_example[-1,] #first column
+table_example = table_example[-1,] 
 
 ## Practical exercise
 
