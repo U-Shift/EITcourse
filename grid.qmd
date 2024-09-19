@@ -1,0 +1,28 @@
+# Grids
+
+## Make grid
+
+```{r}
+#| eval: false
+library(sf)
+library(dplyr)
+MUNICIPIOSgeo = st_read("data/Municipalities_geo.gpkg")
+LISBON = MUNICIPIOSgeo |> filter(Municipality == "Lisboa") |> st_transform(crs = 3857)
+```
+
+TO make a grid we is the st_make_grid() function.
+
+```{r}
+GRID = LISBON |> st_make_grid(cellsize = 800)
+mapview::mapview(GRID)
+```
+
+## Count points in polygons
+
+See @knuth84 for additional discussion of literate programming.
+
+```{r}
+data = readRDS("data/TRIPSmode.Rds")
+data_walk = data[,c("Origin", "Destination", "Walk")]
+head(data_walk)
+```
