@@ -1,28 +1,53 @@
+---
+eval: false
+---
+
 # Grids
 
 ## Make grid
 
 ```{r}
-#| eval: false
+#| message: false
+#| warning: false
 library(sf)
 library(dplyr)
+library(mapview)
+
 MUNICIPIOSgeo = st_read("data/Municipalities_geo.gpkg")
-LISBON = MUNICIPIOSgeo |> filter(Municipality == "Lisboa") |> st_transform(crs = 3857)
+LISBON = MUNICIPIOSgeo |> filter(Municipality == "Lisboa") |> st_transform(3857)
 ```
 
-TO make a grid we is the st_make_grid() function.
+To make a grid we is the `st_make_grid()` function.
 
 ```{r}
-GRID = LISBON |> st_make_grid(cellsize = 800)
-mapview::mapview(GRID)
+GRID = LISBON |>
+  st_make_grid(cellsize = 800, what = "polygons", square = TRUE) |> # 800m, we are using a projected crs
+  st_sf() |> # from list to sf
+  st_transform(crs = 4326) # to WGS84
+
+GRID = GRID |>  
+  mutate(id = c(1:nrow(GRID)))  # just to give an ID to each cell 
+
+mapview(GRID)
 ```
 
 ## Count points in polygons
 
-See @knuth84 for additional discussion of literate programming.
 
 ```{r}
-data = readRDS("data/TRIPSmode.Rds")
-data_walk = data[,c("Origin", "Destination", "Walk")]
-head(data_walk)
+SURVEY = read.csv("data/SURVEY.txt", sep = "\t")
+SURVEYgeo = SURVEY |> st_as_sf(coords = c("lon", "lat"), crs = 4326)
+
+GRIDdensity = SURVEYgeo |> 
+  st_join(GRID, 
+          join = st_intersects) |> 
+    st_drop_geometry() |> 
+    group_by(id) |> 
+    summarise(count = n()) |> 
+    ungroup()
+
+# back to grid
+GRIDdensity = GRID |> left_join(GRIDdensity)
+
+mapview(GRIDdensity, zcol = "count")
 ```
