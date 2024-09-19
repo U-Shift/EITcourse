@@ -38,7 +38,7 @@ mapview(GRID)
 SURVEY = read.csv("data/SURVEY.txt", sep = "\t")
 SURVEYgeo = SURVEY |> st_as_sf(coords = c("lon", "lat"), crs = 4326)
 
-GRIDdensity = SURVEYgeo |> 
+SURVEY_with_GRIDid = SURVEYgeo |> 
   st_join(GRID, 
           join = st_intersects) |> 
     st_drop_geometry() |> 
@@ -47,7 +47,7 @@ GRIDdensity = SURVEYgeo |>
     ungroup()
 
 # back to grid
-GRIDdensity = GRID |> left_join(GRIDdensity)
+GRIDdensity = GRID |> left_join(SURVEY_with_GRIDid)
 
 mapview(GRIDdensity, zcol = "count")
 ```
