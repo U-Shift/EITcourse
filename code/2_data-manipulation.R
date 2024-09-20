@@ -1,40 +1,26 @@
 # library(tidyverse)
 library(dplyr)
 
-# data preparation
-TABLE = readRDS(url("https://github.com/U-Shift/MQAT/raw/main/data/IMOBmodel0.Rds"))
-TABLE = TABLE |> 
-  rename(Origin = "Origin_dicofre16",
-         Lisbon = "Lisboa",
-         Internal = "internal") |> 
-  select(1,3:8,2,9)
-saveRDS(TABLE, "data/TRIPSorigin.Rds")
-
-Municipalities = readRDS(url("https://github.com/U-Shift/MQAT/raw/main/data/Dicofre_names.Rds"))
-Municipalities = Municipalities |> 
-  rename(Mun_code = "DTCC",
-         Neighborhood_code = "Dicofre",
-         Municipality = "Concelho",
-         Neighborhood = "Freguesia")
-saveRDS(Municipalities, "data/Municipalities_names.Rds")
-write.table(Municipalities, "data/Municipalities_names.txt", row.names = FALSE, sep = "\t")
 
 TRIPS = readRDS("data/TRIPSorigin.Rds")
 
 glimpse(TRIPS)
 
+# select
 TRIPS_new = select(TRIPS, Origin, Walk, Bike, Total) # the first argument is the dataset
 
 TRIPS_new = select(TRIPS_new, -Total) # dropping the Total column
 
 TRIPS_new = TRIPS |> select(Origin, Walk, Bike, Total)
 
+# filter
 TRIPS2 = TRIPS[TRIPS$Total > 25000,] # using r-base, you cant forget the comma
 TRIPS2 = TRIPS2 |> filter(Total > 25000) # using dplyr, it's easier
 
 summary(TRIPS$Total)
 TRIPS3 = TRIPS |> filter(Total > median(Total)) 
 
+# mutate
 TRIPS$Car_perc = TRIPS$Car/TRIPS$Total * 100 # using r-base
 
 TRIPS = TRIPS |> mutate(Car_perc = Car/Total * 100) # using dplyr
@@ -48,10 +34,13 @@ TRIPS = TRIPS |>
   mutate(Lisbon_factor = factor(Lisbon, labels = c("No", "Yes")),
          Internal_factor = factor(Internal, labels = c("Inter", "Intra")))
 
+# unique
 unique(TRIPS$Lisbon) # this will show all the different values
 table(TRIPS$Lisbon) # this will show the frequency of each value
 table(TRIPS$Lisbon_factor)
 
+
+# left_join
 Municipalities = readRDS("data/Municipalities_names.Rds")
 
 head(TRIPS)
@@ -62,6 +51,7 @@ TRIPSjoin = TRIPS |> left_join(Municipalities, by = c("Origin" = "Neighborhood_c
 Municipalities = Municipalities |> rename(Origin = "Neighborhood_code") # change name
 TRIPSjoin = TRIPS |> left_join(Municipalities) # automatic detects common variable
 
+# group_by and summarise
 TRIPSredux = TRIPSjoin |> select(Origin, Municipality, Internal, Car, Total)
 head(TRIPSredux)
 
@@ -76,6 +66,7 @@ TRIPSsum2 = TRIPSredux |>
             Car = sum(Car))
 head(TRIPSsum2)
 
+# arrange
 TRIPS2 = TRIPSsum2 |> arrange(Total)
 TRIPS2 = TRIPSsum2 |> arrange(-Total) # descending
 
@@ -103,6 +94,8 @@ TRIPS_pipes = TRIPS |>
 
 TRIPS_pipes
 
+
+# pivot tables
 pivot = data.frame(Origins = c("A", "A", "B", "C", "C"),
                    Destinations = c("B", "C", "A", "C", "A"),
                    Trips = c(20, 45, 10, 5, 30))
@@ -114,6 +107,3 @@ matrix = pivot |>
                                      names_sort = TRUE) |> 
   dplyr::rename(Trips = "Origins")
 knitr::kable(matrix, caption = "OD matrix in wide format")
-
-# this converts this quarto to a plain r script
-knitr::purl("data-manipulation.qmd", "code/data-manipulation.R", documentation = 0)
