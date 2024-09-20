@@ -121,7 +121,8 @@ By default, it returns the sum of each numeric column for each bidirectional ori
 
 ```{r}
 nrow(TRIPSdlines)
-TRIPSdlines_oneway = od_oneway(TRIPSdlines)
+TRIPSdlines_oneway = od_oneway(TRIPSdlines) |> 
+  filter(o != d) |> # remove intrazonal trips
 nrow(TRIPSdlines_oneway)
 ```
 
@@ -138,7 +139,6 @@ Example of visualization with Public Transit trips in both ways.
 ```{r}
 #| fig-format: png
 TRIPSdlines_oneway_noLX = TRIPSdlines_oneway |> 
-  filter(o != d) |> # remove intrazonal trips
   filter(PTransit > 5000) # reduce noise
 
 mapview(TRIPSdlines_oneway_noLX, zcol = "PTransit", lwd = 8)
@@ -160,7 +160,8 @@ Centroid_pop = st_read("data/Centroid_pop.gpkg", quiet = TRUE)
 # Centroid_pop = st_read("data/Centroid_pop.gpkg")
 
 TRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |>  # works the same way
-  od_oneway() # oneway
+  od_oneway() |> # oneway
+  filter(o != d) # remove intrazonal trips
 ```
 
 Check differences of lines with trips from/to Lisbon:
