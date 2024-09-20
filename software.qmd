@@ -20,7 +20,7 @@ You will need **R** installed on your computer.
 The download links live at [The Comprehensive R Archive Network](https://cran.r-project.org/) (aka CRAN).
 The most recent version is `4.4.1`, but you can use `>= 4.1.x` if you already have it installed.
 
-::: {.panel-tabset .nav-pills}
+:::: {.panel-tabset .nav-pills}
 ### Windows
 
 [Download R-4.4.1 for Windows](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe) and run the executable file.
@@ -68,7 +68,7 @@ sudo apt install r-base r-base-core r-recommended r-base-dev
 ```
 
 \[Optional\] To keep up-to-date r version and packages, you can follow the instructions at [r2u](https://eddelbuettel.github.io/r2u/)
-:::
+::::
 
 After this installation, you don't need to open R base.
 Please proceed to install RStudio.
@@ -142,7 +142,7 @@ install.packages("stplanr") # optional
 The workshop **“A crash course on urban accessibility with R"** uses a few R packages that need to be installed on your machine. The simplest way to do this is running the code below. This might take a few minutes if this is the first time you install these packages.
 
 ```{r}
-pkgs = c("r5r", "accessibility", "rJavaEnv", "h3jsr")
+pkgs = c("r5r", "accessibility", "rJavaEnv", "h3jsr", "quantreg")
 
 install.packages(pkgs)
 ```
@@ -204,9 +204,6 @@ To use some LaTeX packages, you also need to install `tlmgr`.
 tinytex::tlmgr_install()
 tinytex::tlmgr_update() # updates all latex pkgs
 ```
-
-
-
 
 <!-- ## Open Route Service -->
 
