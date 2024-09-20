@@ -122,7 +122,7 @@ By default, it returns the sum of each numeric column for each bidirectional ori
 ```{r}
 nrow(TRIPSdlines)
 TRIPSdlines_oneway = od_oneway(TRIPSdlines) |> 
-  filter(o != d) |> # remove intrazonal trips
+  filter(o != d) |> # remove empty geometries
 nrow(TRIPSdlines_oneway)
 ```
 
@@ -161,7 +161,7 @@ Centroid_pop = st_read("data/Centroid_pop.gpkg", quiet = TRUE)
 
 TRIPSdlines_pop = od_to_sf(TRIPSmode, z = Centroid_pop) |>  # works the same way
   od_oneway() |> # oneway
-  filter(o != d) # remove intrazonal trips
+  filter(o != d) # remove empty geometries
 ```
 
 Check differences of lines with trips from/to Lisbon:
