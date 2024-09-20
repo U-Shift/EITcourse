@@ -57,7 +57,11 @@ Try to use a **categorical variable**.
 ```{r}
 #| eval: false
 #| code-fold: true
-mapview(TRIPSgeo, zcol = "Municipality", alpha.regions = 0.4) # also add transparency)
+mapview(TRIPSgeo,
+        zcol = "Municipality", # depending on the variable
+        alpha.regions = 0.4, # also add transparency
+        color = "white" # border color
+        ) 
 ```
 
 ::: {.callout-note appearance="simple"}
