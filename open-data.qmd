@@ -87,12 +87,25 @@ The data is usually in a `.zip` file that includes several `.txt` files (one for
 
 ![Source: [trilliumtransit.com](https://trilliumtransit.com/2016/07/05/gtfs-examples/)](images/clipboard-2676687965.png){fig-align="center" width="493"}
 
+#### Online sources
+
 You can find most GTFS data in the following websites:
 
 -   [TransitLand](https://www.transit.land)
 -   [TransitFeeds](https://transitfeeds.com/)
 
 Some PT agencies also provide their open-data in their websites.
+
+#### R packages
+
+There are some nice R packages to read and manipulate GTFS data, such as:
+
+-   [`tidytransit`](https://r-transit.github.io/tidytransit/)
+-   [`gtfstools`](https://ipeagit.github.io/gtfstools/)
+
+::: {.callout-note appearance="simple"}
+Be aware that they may share the same function names, so it is important to use of of them at the time.
+:::
 
 ### National Access Points
 
