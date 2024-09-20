@@ -187,6 +187,27 @@ java -version
 ```
 :::
 
+## tinytex
+
+To be able to **export** your Rmakdown document to a pdf file, you will need a LaTeX processor.
+`tinytex` is a low weight R package with the most used features of LaTeX that you can use with R.
+
+```{r}
+# you need to run both lines
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+To use some LaTeX packages, you also need to install `tlmgr`.
+
+```{r}
+tinytex::tlmgr_install()
+tinytex::tlmgr_update() # updates all latex pkgs
+```
+
+
+
+
 <!-- ## Open Route Service -->
 
 <!-- [Sign up for an account](https://openrouteservice.org/dev/#/signup) and create a token. -->
