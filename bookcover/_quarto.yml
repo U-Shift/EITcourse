@@ -1,0 +1,138 @@
+project:
+  type: book
+
+book:
+  title: "Get your dataset ready!"
+  subtitle: "Using R and GIS"
+  output-file: "covertitle"
+  author: 
+    - name: "Rosa Félix"
+      email: rosamfelix@tecnico.pt
+      url: http://www.rosafelix.bike
+      orcid: 0000-0002-5642-6006
+      affiliations:
+        - id: ceris
+          name: University of Lisbon
+          department: Instituto Superior Técnico
+          address: 
+            # - Av. Rovisco Pais 1
+            # - 1049-001
+            - Lisboa, Portugal
+    - name: "Gabriel Valença"
+      email: gabrielvalenca@tecnico.pt
+      url: https://ushift.tecnico.ulisboa.pt/team-gabriel-valenca/
+      orcid: 0000-0002-3684-3005
+      affiliations:
+        - ref: ceris
+    - name: "Rafael H. M. Pereira"
+      email: rafael.pereira@ipea.gov.br
+      url: https://www.urbandemographics.org
+      orcid: 0000-0003-2125-7465
+      affiliations:
+        - id: IPEA
+          name: IPEA - Institute of Applied Economic Research
+          address: 
+            - Brazil
+  date: "September 2024"
+  date-format: "MMMM YYYY"
+  chapters:
+  - index.qmd
+
+# bibliography: references.bib
+
+format:
+  # html:
+  #   theme: cosmo
+  # pdf:
+    # documentclass: scrreprt
+  titlepage-pdf:
+    # titlepage: vline
+    coverpage: true
+    coverpage-bg-image: "cover.jpg"
+    documentclass: scrreprt
+    classoption: ["oneside", "open=any"]
+    # coverpage: great-wave
+    # coverpage-bg-image: "_extensions/nmfs-opensci/titlepage/images/TheGreatWaveoffKanagawa.jpeg"
+    coverpage-title: "Get your dataset ready!"
+    coverpage-footer: "Using R and GIS"
+    coverpage-theme:
+      page-html-color: "f0c566" #"8abcbe"
+      header-style: "none"
+      title-fontfamily: "FiraSans-Heavy.otf"
+      title-fontsize: 92 #34 #86 #80
+      title-spacing: 80
+      title-fontstyle: "textbf"
+      title-align: "right" # spread
+      title-bottom: "10in"
+      footer-fontfamily: "FiraSans-SemiBold.otf"
+      footer-fontsize: 36 #32
+      footer-align: "right"
+      footer-bottom: "6.5in" #9.2 #5.6
+      author-style: "plain"
+      author-sep: "newline"
+      author-align: "left"
+      author-bottom: "2.2in"
+      author-fontsize: 26
+      author-fontfamily: "FiraSans-Regular.otf"
+      # author-fontstyle: "textbf"
+      # author-spacing: 16
+      date-style: "none" #plain
+      date-bottom: "6in" #???
+      date-fontsize: 14
+      date-align: "center"
+      bg-image-fading: "fadeout"
+      
+      
+    titlepage: formal # academic
+    titlepage-logo: "images/EIT_logo-EU1-horizontal_1.png"
+    titlepage-header: | # could not set author-adress with different font styles...
+       |  
+       |  **Rosa Félix**
+       |  Instituto Superior Técnico - University of Lisbon
+       |  Portugal
+       |  _rosamfelix@tecnico.pt_
+       |  
+       |
+       |  **Gabriel Valença**
+       |  Instituto Superior Técnico - University of Lisbon
+       |  Portugal
+       |
+       |  
+       |  **Rafael H. M. Pereira**
+       |  IPEA - Institute of Applied Economic Research
+       |  Brazil
+       |  
+    titlepage-footer: | # text
+      EIT Urban Mobility\
+      Doctoral Training Network
+    titlepage-theme:
+      elements: ["\\titleblock", "\\headerblock", "\\vfill", "\\dateblock \\vspace{0.6cm}", "see [Online Version](https://u-shift.github.io/EITcourse)", "\\vfill \\vspace{2cm}", "\\footerblock", "\\logoblock"]
+      page-align: "center"
+      title-style: "plain"
+      title-fontstyle: ["Huge", "textbf"]
+      title-space-after: "1.5cm"
+      subtitle-fontstyle: "LARGE"
+      title-subtitle-space-between: "0.5cm"
+      header-space-after: "3cm"
+      header-fontsize: 14
+      # author-style: author-address #"plain" #superscript
+      # author-sep: "newline"
+      author-fontstyle: ["textbf", "large"]
+      author-fontsize: 16
+      author-space-between: "1.5cm"
+      affiliation-style: "none" #"numbered-list"
+      # affiliation-sep: "newline"
+      affiliation-fontstyle: "large" #normal
+      affiliation-space-after: "20pt"
+      footer-style: "plain"
+      # footer-fontstyle: ["Large", "textsc"]
+      footer-space-before: "2cm"
+      footer-space-after: "0.2cm"
+      logo-size: "0.8\\textwidth"
+      logo-space-after: "0cm"
+      date-style: "plain"
+      date-fontsize: 14
+      date-align: "center"
+keep-tex: true
+editor: visual
+
