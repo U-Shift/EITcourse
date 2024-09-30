@@ -1,0 +1,7 @@
+README rosa!
+
+1. build book at Qtests.Rproj (builds cover and title pages)
+2. build book at EITcourse
+3. run the pdf_extract.sh within the EITcourse.Rproj
+4. in terminal, if everything ok, run:
+quarto publish gh-pages
